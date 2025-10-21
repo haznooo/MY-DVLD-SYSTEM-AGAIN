@@ -55,10 +55,10 @@
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManagePeopleMenu.cs">
+    <Compile Include="People\ManagePeopleMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManagePeopleMenu.Designer.cs">
+    <Compile Include="People\ManagePeopleMenu.Designer.cs">
       <DependentUpon>ManagePeopleMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="People\AddUpdatePeopleMenu.cs">
@@ -84,7 +84,7 @@
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManagePeopleMenu.resx">
+    <EmbeddedResource Include="People\ManagePeopleMenu.resx">
       <DependentUpon>ManagePeopleMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\AddUpdatePeopleMenu.resx">
