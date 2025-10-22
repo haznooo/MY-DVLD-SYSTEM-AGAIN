@@ -99,11 +99,23 @@
     <Compile Include="Users\AddUpdateUsersMenu.Designer.cs">
       <DependentUpon>AddUpdateUsersMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\ctrlLoginInfos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Users\ctrlLoginInfos.Designer.cs">
+      <DependentUpon>ctrlLoginInfos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\ManageUsersMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Users\ManageUsersMenu.Designer.cs">
       <DependentUpon>ManageUsersMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\UserDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\UserDetails.Designer.cs">
+      <DependentUpon>UserDetails.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
@@ -139,8 +151,14 @@
     <EmbeddedResource Include="Users\AddUpdateUsersMenu.resx">
       <DependentUpon>AddUpdateUsersMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Users\ctrlLoginInfos.resx">
+      <DependentUpon>ctrlLoginInfos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\ManageUsersMenu.resx">
       <DependentUpon>ManageUsersMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\UserDetails.resx">
+      <DependentUpon>UserDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

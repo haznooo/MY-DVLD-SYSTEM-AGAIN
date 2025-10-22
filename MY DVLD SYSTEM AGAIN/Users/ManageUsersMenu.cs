@@ -168,9 +168,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
         private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-             UserDetails frm = new UserDetails((int)dgvUsers.CurrentRow.Cells[0].Value);
-            frm.ShowDialog();
-            _refreshList();
+         //    UserDetails frm = new UserDetails((int)dgvUsers.CurrentRow.Cells[0].Value);
+          //  frm.ShowDialog();
+           // _refreshList();
 
         }
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
