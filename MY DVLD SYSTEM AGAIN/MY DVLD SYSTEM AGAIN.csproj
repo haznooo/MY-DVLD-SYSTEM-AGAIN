@@ -93,6 +93,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\AddUpdateUsersMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\AddUpdateUsersMenu.Designer.cs">
+      <DependentUpon>AddUpdateUsersMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\ManageUsersMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\ManageUsersMenu.Designer.cs">
+      <DependentUpon>ManageUsersMenu.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +136,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Users\AddUpdateUsersMenu.resx">
+      <DependentUpon>AddUpdateUsersMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\ManageUsersMenu.resx">
+      <DependentUpon>ManageUsersMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -493,6 +511,9 @@
       <Project>{7021ff87-e981-44e5-a433-e1aae722b1d1}</Project>
       <Name>BusinessLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Back 32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
