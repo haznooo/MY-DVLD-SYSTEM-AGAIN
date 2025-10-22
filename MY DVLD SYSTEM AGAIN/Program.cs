@@ -16,7 +16,7 @@ namespace MY_DVLD_SYSTEM_AGAIN
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenu());
+            Application.Run(new LoginMenu());
         }
     }
 }

@@ -52,6 +52,7 @@
             // 
             // cbIsActive
             // 
+            this.cbIsActive.AllowDrop = true;
             this.cbIsActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbIsActive.FormattingEnabled = true;
             this.cbIsActive.Items.AddRange(new object[] {
@@ -106,6 +107,7 @@
             this.cbSearchFilter.Name = "cbSearchFilter";
             this.cbSearchFilter.Size = new System.Drawing.Size(121, 28);
             this.cbSearchFilter.TabIndex = 39;
+            this.cbSearchFilter.SelectedIndexChanged += new System.EventHandler(this.cbSearchFilter_SelectedIndexChanged);
             // 
             // lbTotalRecords
             // 
@@ -233,6 +235,7 @@
             this.Controls.Add(this.dgvUsers);
             this.Name = "ManageUsersMenu";
             this.Text = "ManageUsersMenu";
+            this.Load += new System.EventHandler(this.ManageUsersMenu_Load);
             this.Click += new System.EventHandler(this.ManageUsersMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -1,4 +1,5 @@
 ﻿using MY_DVLD_SYSTEM.Global;
+using MY_DVLD_SYSTEM_AGAIN.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +16,12 @@ namespace MY_DVLD_SYSTEM_AGAIN
     {
   
 
-    //    LoginMenu _loginMenu;
-        public MainMenu()
+       LoginMenu _loginMenu;
+        public MainMenu(LoginMenu loginMenu)
         {
             InitializeComponent();
 
-        //    _loginMenu = loginMenu;
+           _loginMenu = loginMenu;
         }
 
         private void MainMenu_Load(object sender, EventArgs e)
@@ -40,8 +41,8 @@ namespace MY_DVLD_SYSTEM_AGAIN
         {
 
 
-       //     ManageUsersMenu frm = new ManageUsersMenu();
-       //     frm.ShowDialog();
+           ManageUsersMenu frm = new ManageUsersMenu();
+            frm.ShowDialog();
         }
 
         private void applicationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -64,9 +65,9 @@ namespace MY_DVLD_SYSTEM_AGAIN
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        //    clsGlobal.CurrentUser = null;
-        //    _loginMenu.Show();
-       //     this.Close();
+            clsGlobal.CurrentUser = null;
+            _loginMenu.Show();
+           this.Close();
         }
 
         private void manageApplicationsTypeToolStripMenuItem_Click(object sender, EventArgs e)
