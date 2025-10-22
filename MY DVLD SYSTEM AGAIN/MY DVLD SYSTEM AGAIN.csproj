@@ -99,6 +99,12 @@
     <Compile Include="Users\AddUpdateUsersMenu.Designer.cs">
       <DependentUpon>AddUpdateUsersMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\ChangePasswordMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\ChangePasswordMenu.Designer.cs">
+      <DependentUpon>ChangePasswordMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\ctrlLoginInfos.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     </Compile>
     <EmbeddedResource Include="Users\AddUpdateUsersMenu.resx">
       <DependentUpon>AddUpdateUsersMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\ChangePasswordMenu.resx">
+      <DependentUpon>ChangePasswordMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\ctrlLoginInfos.resx">
       <DependentUpon>ctrlLoginInfos.cs</DependentUpon>
