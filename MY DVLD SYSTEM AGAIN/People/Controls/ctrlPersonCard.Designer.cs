@@ -119,6 +119,7 @@
             this.llEditPerson.TabIndex = 84;
             this.llEditPerson.TabStop = true;
             this.llEditPerson.Text = "Edit Person";
+            this.llEditPerson.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llEditPerson_LinkClicked);
             // 
             // pictureBox11
             // 

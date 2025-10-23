@@ -59,5 +59,11 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
 
             }
         }
+
+        private void editApplicationTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateApplicationTypeMenu frm = new UpdateApplicationTypeMenu((int)dgvApplications.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+        }
     }
 }

@@ -52,6 +52,12 @@
     <Compile Include="Applications\Application types\ApplicationTypesMenu.Designer.cs">
       <DependentUpon>ApplicationTypesMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\Application types\UpdateApplicationTypeMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Application types\UpdateApplicationTypeMenu.Designer.cs">
+      <DependentUpon>UpdateApplicationTypeMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global\clsGlobal.cs" />
     <Compile Include="Global\clsValidatoin.cs" />
     <Compile Include="Global\util.cs" />
@@ -137,6 +143,9 @@
     </Compile>
     <EmbeddedResource Include="Applications\Application types\ApplicationTypesMenu.resx">
       <DependentUpon>ApplicationTypesMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Application types\UpdateApplicationTypeMenu.resx">
+      <DependentUpon>UpdateApplicationTypeMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginMenu.resx">
       <DependentUpon>LoginMenu.cs</DependentUpon>
