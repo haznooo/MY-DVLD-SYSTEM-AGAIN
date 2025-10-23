@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Applications\Application types\ApplicationTypesMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Application types\ApplicationTypesMenu.Designer.cs">
+      <DependentUpon>ApplicationTypesMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global\clsGlobal.cs" />
     <Compile Include="Global\clsValidatoin.cs" />
     <Compile Include="Global\util.cs" />
@@ -129,6 +135,9 @@
     <Compile Include="Users\UserDetails.Designer.cs">
       <DependentUpon>UserDetails.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Applications\Application types\ApplicationTypesMenu.resx">
+      <DependentUpon>ApplicationTypesMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginMenu.resx">
       <DependentUpon>LoginMenu.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,4 +1,5 @@
 ﻿using MY_DVLD_SYSTEM.Global;
+using MY_DVLD_SYSTEM_AGAIN.Applications.Application_types;
 using MY_DVLD_SYSTEM_AGAIN.Users;
 using System;
 using System.Collections.Generic;
@@ -67,11 +68,13 @@ namespace MY_DVLD_SYSTEM_AGAIN
            this.Close();
         }
 
-        private void manageApplicationsTypeToolStripMenuItem_Click(object sender, EventArgs e)
+      
+        private void applicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-         //   ApplicationTypesMenu frm = new ApplicationTypesMenu();
-         //   frm.ShowDialog();
+            ApplicationTypesMenu frm = new ApplicationTypesMenu();
+            frm.ShowDialog();
+
         }
     }
 }

@@ -158,6 +158,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ctrlLoginInfos1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ChangePasswordMenu";
             this.Text = "ChangePasswordMenu";
             this.Load += new System.EventHandler(this.ChangePasswordMenu_Load);

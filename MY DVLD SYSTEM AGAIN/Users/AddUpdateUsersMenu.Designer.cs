@@ -31,12 +31,17 @@
             this.components = new System.ComponentModel.Container();
             this.tcAddUpdateUsers = new System.Windows.Forms.TabControl();
             this.tpLinkPerson = new System.Windows.Forms.TabPage();
+            this.ctrlPersonCardWithFilter1 = new MY_DVLD_SYSTEM.People.Controls.ctrlPersonCardWithFilter();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
             this.lbLinkPersonMessage = new System.Windows.Forms.Label();
             this.tpAddUser = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.lbAddUserMessage = new System.Windows.Forms.Label();
             this.cbIsActvie = new System.Windows.Forms.CheckBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -45,11 +50,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
-            this.ctrlPersonCardWithFilter1 = new MY_DVLD_SYSTEM.People.Controls.ctrlPersonCardWithFilter();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tcAddUpdateUsers.SuspendLayout();
             this.tpLinkPerson.SuspendLayout();
@@ -85,6 +85,16 @@
             this.tpLinkPerson.Text = "Link a Person";
             this.tpLinkPerson.UseVisualStyleBackColor = true;
             // 
+            // ctrlPersonCardWithFilter1
+            // 
+            this.ctrlPersonCardWithFilter1.EnableAddButton = true;
+            this.ctrlPersonCardWithFilter1.FilterEnabled = true;
+            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(15, 51);
+            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
+            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(850, 431);
+            this.ctrlPersonCardWithFilter1.TabIndex = 14;
+            this.ctrlPersonCardWithFilter1.OnPersonSelected += new System.Action<int>(this.ctrlPersonCardWithFilter1_OnPersonSelected);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -106,6 +116,27 @@
             this.label2.Size = new System.Drawing.Size(53, 24);
             this.label2.TabIndex = 12;
             this.label2.Text = "Next";
+            // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnClose.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.cross_32;
+            this.btnClose.Location = new System.Drawing.Point(793, 488);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(72, 40);
+            this.btnClose.TabIndex = 11;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Next_32;
+            this.btnNext.Location = new System.Drawing.Point(930, 488);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(72, 40);
+            this.btnNext.TabIndex = 10;
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // lbLinkPersonMessage
             // 
@@ -161,6 +192,26 @@
             this.label7.Size = new System.Drawing.Size(56, 24);
             this.label7.TabIndex = 16;
             this.label7.Text = "Save";
+            // 
+            // btnBack
+            // 
+            this.btnBack.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Back_32;
+            this.btnBack.Location = new System.Drawing.Point(770, 479);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(51, 40);
+            this.btnBack.TabIndex = 15;
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Save_32;
+            this.btnSave.Location = new System.Drawing.Point(899, 479);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(54, 43);
+            this.btnSave.TabIndex = 14;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lbAddUserMessage
             // 
@@ -244,57 +295,6 @@
             this.txtConfirmPassword.TabIndex = 7;
             this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtConfirmPassword_Validating);
             // 
-            // ctrlPersonCardWithFilter1
-            // 
-            this.ctrlPersonCardWithFilter1.EnableAddButton = true;
-            this.ctrlPersonCardWithFilter1.FilterEnabled = true;
-            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(15, 51);
-            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
-            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(850, 431);
-            this.ctrlPersonCardWithFilter1.TabIndex = 14;
-            this.ctrlPersonCardWithFilter1.OnPersonSelected += new System.Action<int>(this.ctrlPersonCardWithFilter1_OnPersonSelected);
-            // 
-            // btnClose
-            // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnClose.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.cross_32;
-            this.btnClose.Location = new System.Drawing.Point(793, 488);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(72, 40);
-            this.btnClose.TabIndex = 11;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Next_32;
-            this.btnNext.Location = new System.Drawing.Point(930, 488);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(72, 40);
-            this.btnNext.TabIndex = 10;
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnBack
-            // 
-            this.btnBack.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Back_32;
-            this.btnBack.Location = new System.Drawing.Point(770, 479);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(51, 40);
-            this.btnBack.TabIndex = 15;
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Save_32;
-            this.btnSave.Location = new System.Drawing.Point(899, 479);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(54, 43);
-            this.btnSave.TabIndex = 14;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -305,6 +305,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1039, 586);
             this.Controls.Add(this.tcAddUpdateUsers);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddUpdateUsersMenu";
             this.Text = "AddUpdateUsersMenu";
             this.Load += new System.EventHandler(this._AddUpdateUsersMenu_Load);

@@ -31,13 +31,13 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.applicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageApplicationsTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.managePeopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.currentInfosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.applicationTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -72,21 +72,12 @@
             // applicationToolStripMenuItem
             // 
             this.applicationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manageApplicationsTypeToolStripMenuItem});
+            this.applicationTypesToolStripMenuItem});
             this.applicationToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.applicationToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Applications;
             this.applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
             this.applicationToolStripMenuItem.Size = new System.Drawing.Size(183, 64);
             this.applicationToolStripMenuItem.Text = "Application";
-            this.applicationToolStripMenuItem.Click += new System.EventHandler(this.manageApplicationsTypeToolStripMenuItem_Click);
-            // 
-            // manageApplicationsTypeToolStripMenuItem
-            // 
-            this.manageApplicationsTypeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.manageApplicationsTypeToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Application_Types_512;
-            this.manageApplicationsTypeToolStripMenuItem.Name = "manageApplicationsTypeToolStripMenuItem";
-            this.manageApplicationsTypeToolStripMenuItem.Size = new System.Drawing.Size(292, 66);
-            this.manageApplicationsTypeToolStripMenuItem.Text = "Manage Application Types";
             // 
             // managePeopleToolStripMenuItem
             // 
@@ -123,7 +114,7 @@
             this.currentInfosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentInfosToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.PersonDetails_32;
             this.currentInfosToolStripMenuItem.Name = "currentInfosToolStripMenuItem";
-            this.currentInfosToolStripMenuItem.Size = new System.Drawing.Size(260, 66);
+            this.currentInfosToolStripMenuItem.Size = new System.Drawing.Size(216, 28);
             this.currentInfosToolStripMenuItem.Text = "Current Infos";
             this.currentInfosToolStripMenuItem.Click += new System.EventHandler(this.currentInfosToolStripMenuItem_Click);
             // 
@@ -131,7 +122,7 @@
             // 
             this.changePasswordToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Password_32;
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(260, 66);
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(216, 28);
             this.changePasswordToolStripMenuItem.Text = "Change Password";
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
@@ -139,9 +130,17 @@
             // 
             this.logOutToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.sign_out_32__2;
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(260, 66);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(216, 28);
             this.logOutToolStripMenuItem.Text = "Log out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
+            // 
+            // applicationTypesToolStripMenuItem
+            // 
+            this.applicationTypesToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Application_Types_64;
+            this.applicationTypesToolStripMenuItem.Name = "applicationTypesToolStripMenuItem";
+            this.applicationTypesToolStripMenuItem.Size = new System.Drawing.Size(282, 66);
+            this.applicationTypesToolStripMenuItem.Text = "Application Types";
+            this.applicationTypesToolStripMenuItem.Click += new System.EventHandler(this.applicationTypesToolStripMenuItem_Click);
             // 
             // MainMenu
             // 
@@ -167,13 +166,13 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem applicationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manageApplicationsTypeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem managePeopleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageUsersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem currentInfosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem applicationTypesToolStripMenuItem;
     }
 }
 
