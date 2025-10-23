@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.cbIsActive = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtSearchFilter = new System.Windows.Forms.TextBox();
@@ -45,25 +44,11 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbIsActive = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.cmsPeopleOpetions.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // cbIsActive
-            // 
-            this.cbIsActive.AllowDrop = true;
-            this.cbIsActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbIsActive.FormattingEnabled = true;
-            this.cbIsActive.Items.AddRange(new object[] {
-            "All",
-            "UnActive",
-            "Active"});
-            this.cbIsActive.Location = new System.Drawing.Point(245, 268);
-            this.cbIsActive.Name = "cbIsActive";
-            this.cbIsActive.Size = new System.Drawing.Size(142, 28);
-            this.cbIsActive.TabIndex = 43;
-            this.cbIsActive.SelectedIndexChanged += new System.EventHandler(this.cbSearchFilter_SelectedIndexChanged);
             // 
             // btnSearch
             // 
@@ -148,7 +133,7 @@
             this.btnAddUpdate.Size = new System.Drawing.Size(87, 75);
             this.btnAddUpdate.TabIndex = 34;
             this.btnAddUpdate.UseVisualStyleBackColor = true;
-            this.btnAddUpdate.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnAddUpdate.Click += new System.EventHandler(this.btnAddUpdate_Click);
             // 
             // dgvUsers
             // 
@@ -217,6 +202,19 @@
             this.changePasswordToolStripMenuItem.Text = "Change Password";
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
+            // cbIsActive
+            // 
+            this.cbIsActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbIsActive.FormattingEnabled = true;
+            this.cbIsActive.Items.AddRange(new object[] {
+            "All",
+            "UnActive",
+            "Active"});
+            this.cbIsActive.Location = new System.Drawing.Point(246, 268);
+            this.cbIsActive.Name = "cbIsActive";
+            this.cbIsActive.Size = new System.Drawing.Size(121, 28);
+            this.cbIsActive.TabIndex = 43;
+            // 
             // ManageUsersMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,6 +231,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAddUpdate);
             this.Controls.Add(this.dgvUsers);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ManageUsersMenu";
             this.Text = "ManageUsersMenu";
             this.Load += new System.EventHandler(this.ManageUsersMenu_Load);
@@ -246,8 +245,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cbIsActive;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtSearchFilter;
@@ -263,5 +260,6 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cbIsActive;
     }
 }

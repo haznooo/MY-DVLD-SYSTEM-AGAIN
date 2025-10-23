@@ -19,7 +19,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
             InitializeComponent();
         }
         static DataTable _dtAllUsers = clsUser.GetAllUsers();
-
+        int _totalRecords = _dtAllUsers.Rows.Count;
         private void _refreshList()
         {
 
@@ -96,6 +96,11 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            if ((txtSearchFilter.Visible)&& string.IsNullOrWhiteSpace(txtSearchFilter.Text)) { 
+
+                return;
+
+            }
 
             string FilterColumn = "";
             //Map Selected Filter to real Column name 
@@ -128,8 +133,16 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
             {
 
                 _dtAllUsers.DefaultView.RowFilter = "";
-                lbTotalRecords.Text = dgvUsers.Rows.Count.ToString();
+
+                if (dgvUsers.Rows.Count != _totalRecords ) { 
+                
+                    _refreshList();
+
+                    lbTotalRecords.Text = dgvUsers.Rows.Count.ToString();
+                }
+    
                 return;
+
 
             }
 
