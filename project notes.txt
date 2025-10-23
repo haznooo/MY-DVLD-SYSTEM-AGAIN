@@ -1,0 +1,8 @@
+searching for a person or a user by a their name is not working and it is very bad
+
+you should also know that most searches that use a text box requires the exact value that you are searching for other than this nothing will appear 
+so if you searched for the id 134 instead of 12345 then you are not going to find the results or suggestions and the same applies to names and emails
+ 
+there is no update for login credentials after you change the current logged in user's password
+
+there are no checks that you are not deleting the current logged in users
