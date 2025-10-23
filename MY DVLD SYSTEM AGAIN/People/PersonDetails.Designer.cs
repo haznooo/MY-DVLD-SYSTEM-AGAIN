@@ -57,6 +57,7 @@
             this.ClientSize = new System.Drawing.Size(849, 419);
             this.Controls.Add(this.ctrlPersonCard1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "PersonDetails";
             this.Text = "PersonDetails";
             this.ResumeLayout(false);

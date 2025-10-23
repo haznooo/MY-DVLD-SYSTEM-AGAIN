@@ -48,13 +48,14 @@
             // cbRememberMe
             // 
             this.cbRememberMe.AutoSize = true;
+            this.cbRememberMe.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.cbRememberMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbRememberMe.Location = new System.Drawing.Point(642, 283);
             this.cbRememberMe.Name = "cbRememberMe";
             this.cbRememberMe.Size = new System.Drawing.Size(144, 24);
-            this.cbRememberMe.TabIndex = 28;
+            this.cbRememberMe.TabIndex = 3;
             this.cbRememberMe.Text = "Remember me";
-            this.cbRememberMe.UseVisualStyleBackColor = true;
+            this.cbRememberMe.UseVisualStyleBackColor = false;
             // 
             // label4
             // 
@@ -72,7 +73,7 @@
             this.btnClose.Location = new System.Drawing.Point(815, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(40, 40);
-            this.btnClose.TabIndex = 23;
+            this.btnClose.TabIndex = 5;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -92,7 +93,7 @@
             this.btnLogin.Location = new System.Drawing.Point(642, 356);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 77);
-            this.btnLogin.TabIndex = 21;
+            this.btnLogin.TabIndex = 4;
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
@@ -112,7 +113,7 @@
             this.txtPassword.Location = new System.Drawing.Point(642, 240);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(202, 26);
-            this.txtPassword.TabIndex = 19;
+            this.txtPassword.TabIndex = 2;
             // 
             // txtUsername
             // 
@@ -120,7 +121,7 @@
             this.txtUsername.Location = new System.Drawing.Point(642, 188);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(202, 26);
-            this.txtUsername.TabIndex = 18;
+            this.txtUsername.TabIndex = 0;
             // 
             // label1
             // 
@@ -182,7 +183,9 @@
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoginMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginMenu";
             this.Load += new System.EventHandler(this.LoginMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

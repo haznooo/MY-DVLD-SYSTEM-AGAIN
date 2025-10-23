@@ -254,6 +254,7 @@
             this.txtAdress.Name = "txtAdress";
             this.txtAdress.Size = new System.Drawing.Size(349, 69);
             this.txtAdress.TabIndex = 96;
+            this.txtAdress.Validating += new System.ComponentModel.CancelEventHandler(this.emptyTxtBox_Validating);
             // 
             // txtFirstName
             // 
@@ -463,6 +464,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lbCurrentMode);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddUpdatePeopleMenu";
             this.Text = "AddUpdatePeopleMenu";
             this.Load += new System.EventHandler(this._AddUpdatePeopleMenu_Load);

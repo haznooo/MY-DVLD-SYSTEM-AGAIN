@@ -24,10 +24,7 @@ namespace MY_DVLD_SYSTEM_AGAIN
            _loginMenu = loginMenu;
         }
 
-        private void MainMenu_Load(object sender, EventArgs e)
-        {
-
-        }
+    
 
         private void managePeopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -40,7 +37,6 @@ namespace MY_DVLD_SYSTEM_AGAIN
         private void manageUsersToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-
            ManageUsersMenu frm = new ManageUsersMenu();
             frm.ShowDialog();
         }
@@ -52,15 +48,16 @@ namespace MY_DVLD_SYSTEM_AGAIN
 
         private void currentInfosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        //    UserDetails frm = new UserDetails(clsGlobal.CurrentUser.UserID);
-        //    frm.ShowDialog();
+
+            UserDetails frm = new UserDetails(clsGlobal.CurrentUser.UserID);
+            frm.ShowDialog();
 
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        //    ChangePasswordMenu frm = new ChangePasswordMenu(clsGlobal.CurrentUser.UserID);
-       //     frm.ShowDialog();
+           ChangePasswordMenu frm = new ChangePasswordMenu(clsGlobal.CurrentUser.UserID);
+            frm.ShowDialog();
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)

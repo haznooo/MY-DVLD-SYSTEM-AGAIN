@@ -58,17 +58,19 @@ namespace MY_DVLD_SYSTEM_AGAIN
             }
             else
             {
-                if (!clsGlobal.ClearSavedLoginCredentials())
-                {
-
-                    MessageBox.Show("Faild to save Credentails", "internal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                clsGlobal.ClearSavedLoginCredentials();
+            
 
             }
 
             MainMenu mainMenu = new MainMenu(this);
             this.Hide();
+
+            if (!cbRememberMe.Checked)
+            {
+                this._ResetForm();
+            }
+
             mainMenu.ShowDialog();
 
         }
@@ -88,6 +90,7 @@ namespace MY_DVLD_SYSTEM_AGAIN
                 txtPassword.Text = Password;
                 cbRememberMe.Checked = true;
             }
+
 
         }
 

@@ -111,14 +111,14 @@
             "None",
             "Person ID",
             "National Number",
+            "Phone",
             "First Name",
             "Second Name",
             "Third Name",
             "Last Name",
             "Gender",
             "Address",
-            "Email",
-            "Phone"});
+            "Email"});
             this.cbSearchFilter.Location = new System.Drawing.Point(77, 261);
             this.cbSearchFilter.Name = "cbSearchFilter";
             this.cbSearchFilter.Size = new System.Drawing.Size(121, 28);
@@ -241,6 +241,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAddUpdate);
             this.Controls.Add(this.dgvPeople);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ManagePeopleMenu";
             this.Text = "ManagePeopleMenu";
             this.Load += new System.EventHandler(this.ManagePeopleMenu_Load);

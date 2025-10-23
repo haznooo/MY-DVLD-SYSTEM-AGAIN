@@ -101,7 +101,7 @@ namespace MY_DVLD_SYSTEM.Global
         
         }
 
-        public static bool ClearSavedLoginCredentials() {
+        public static void ClearSavedLoginCredentials() {
 
             string CurrentDirectory = System.IO.Directory.GetCurrentDirectory();
 
@@ -111,18 +111,10 @@ namespace MY_DVLD_SYSTEM.Global
             {
 
                 File.Delete(FilePath);
-                return true;
-
-            }
-            else { 
-            
-                MessageBox.Show("No saved credentials found to clear.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return false;
-
+     
             }
 
-               
-
+   
         }
 
 

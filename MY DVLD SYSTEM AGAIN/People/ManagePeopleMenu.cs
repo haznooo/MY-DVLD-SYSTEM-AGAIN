@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using DVLD.Classes;
 using MY_DVLD_SYSTEM_AGAIN.People;
 using System;
 using System.Collections.Generic;
@@ -93,7 +94,7 @@ namespace MY_DVLD_SYSTEM_AGAIN
 
         private void cbSearchFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtSearchFilter.Visible = (cbSearchFilter.SelectedIndex != 0 && cbSearchFilter.SelectedIndex != 7);
+            txtSearchFilter.Visible = (cbSearchFilter.Text != "None" && cbSearchFilter.Text != "Gender");
 
 
             if (txtSearchFilter.Visible)
@@ -106,9 +107,8 @@ namespace MY_DVLD_SYSTEM_AGAIN
             }
 
 
-            if (cbSearchFilter.SelectedIndex == 7)
+            if (cbSearchFilter.Text == "Gender")
             {
-
                 txtSearchFilter.Visible = false;
                 rdFemale.Visible = true;
                 rdMale.Visible = true;
@@ -123,7 +123,7 @@ namespace MY_DVLD_SYSTEM_AGAIN
         }
         private void txtSearchFilter_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (cbSearchFilter.SelectedIndex == 1 || cbSearchFilter.SelectedIndex == 11)
+            if (cbSearchFilter.SelectedIndex == 1 || cbSearchFilter.SelectedIndex == 2 || cbSearchFilter.SelectedIndex == 3)
             {
 
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
@@ -202,11 +202,24 @@ namespace MY_DVLD_SYSTEM_AGAIN
                 if (rdMale.Checked) { _dtPeople.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, "Male"); }
                 else { _dtPeople.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, "Female"); }
             }
+
             else
+            {
+
+                if ((FilterColumn == "Email") && !clsValidatoin.ValidateEmail(txtSearchFilter.Text.Trim()))
+                {
+                    MessageBox.Show("Please enter a valid email", "Invalid email format");
+                    txtSearchFilter.Text = "";
+                    return;
+                }
+
                 _dtPeople.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtSearchFilter.Text.Trim());
 
 
+            }
+
             lbTotalRecords.Text = dgvPeople.Rows.Count.ToString();
+
         }
 
         private void btnAddUpdate_Click(object sender, EventArgs e)
