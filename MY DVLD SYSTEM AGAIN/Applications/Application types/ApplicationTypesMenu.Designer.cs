@@ -64,7 +64,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Application_Types_512;
-            this.pictureBox1.Location = new System.Drawing.Point(176, -3);
+            this.pictureBox1.Location = new System.Drawing.Point(236, -1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(284, 197);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -77,7 +77,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Constantia", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(62, 213);
+            this.label1.Location = new System.Drawing.Point(107, 213);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(527, 66);
             this.label1.TabIndex = 33;
@@ -93,7 +93,7 @@
             this.dgvApplications.Location = new System.Drawing.Point(12, 282);
             this.dgvApplications.Name = "dgvApplications";
             this.dgvApplications.ReadOnly = true;
-            this.dgvApplications.Size = new System.Drawing.Size(659, 387);
+            this.dgvApplications.Size = new System.Drawing.Size(724, 387);
             this.dgvApplications.TabIndex = 32;
             // 
             // contextMenuStrip1
@@ -117,7 +117,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 720);
+            this.ClientSize = new System.Drawing.Size(745, 720);
             this.Controls.Add(this.lbTotalRecords);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);

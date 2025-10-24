@@ -11,6 +11,27 @@ namespace BusinessLayer
     public class clsApplicationTypes
     {
 
+        enum enMode { Add, Edit }
+
+        enMode CurrentMode;
+
+        public int ApplicationTypeID;
+        public string ApplicationTypeTitle;
+        public decimal ApplicationTypeFee;
+
+
+
+        public clsApplicationTypes(int ApplicationTypeID, string newTitle, decimal newFees)
+        {
+
+            this.ApplicationTypeID = ApplicationTypeID;
+            this.ApplicationTypeTitle = newTitle;
+            this.ApplicationTypeFee = newFees;
+
+            CurrentMode = enMode.Edit;
+
+        }
+
         static public DataTable GetAllApplicationTypes()
         {
 
@@ -18,16 +39,37 @@ namespace BusinessLayer
 
         }
 
-        static public bool UpdateApplicationType(int ApplicationTypeID,string newTitle,float newFees) {
+        static public bool UpdateApplicationType(int ApplicationTypeID, string newTitle, decimal newFees)
+        {
 
-            return clsApplicationTypesDataAccess.UpdateApplicationType(ApplicationTypeID,newTitle,newFees);
+            return clsApplicationTypesDataAccess.UpdateApplicationType(ApplicationTypeID, newTitle, newFees);
 
         }
 
-        static public void GetApplicationTypeByID(int ApplicationTypeID,ref string ApplicationTypeTitle, ref decimal ApplicationTypeFee)
+        static public clsApplicationTypes GetApplicationTypeByID(int ApplicationTypeID)
+        {
+            string ApplicationTypeTitle = "";
+            decimal ApplicationTypeFee = 0;
+
+            if (clsApplicationTypesDataAccess.GetApplicationTypeInfoByID(ApplicationTypeID, ref ApplicationTypeTitle, ref ApplicationTypeFee))
+            {
+
+                return new clsApplicationTypes(ApplicationTypeID, ApplicationTypeTitle, ApplicationTypeFee);
+
+            }
+            else
+            {
+                return null;
+
+            }
+        }
+
+
+        public bool SaveApplicationType()
         {
 
-            clsApplicationTypesDataAccess.GetApplicationTypeInfoByID(ApplicationTypeID, ref ApplicationTypeTitle, ref ApplicationTypeFee);
+            return clsApplicationTypesDataAccess.UpdateApplicationType(this.ApplicationTypeID, this.ApplicationTypeTitle, this.ApplicationTypeFee);
+
         }
     }
 }

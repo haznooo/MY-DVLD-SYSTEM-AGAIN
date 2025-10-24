@@ -15,6 +15,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
     {
 
         int _appTypeID;
+
+        clsApplicationTypes appType = null;
         public UpdateApplicationTypeMenu(int appType)
         {
             InitializeComponent();
@@ -30,13 +32,47 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
         private void UpdateApplicationTypeMenu_Load(object sender, EventArgs e)
         {
 
-            string appTypeName = "";
-            decimal appTypeFee = 0;
+          appType =  clsApplicationTypes.GetApplicationTypeByID(_appTypeID);
 
-            clsApplicationTypes.GetApplicationTypeByID(_appTypeID,ref appTypeName,ref appTypeFee);
+            txtApplicationName.Text = appType.ApplicationTypeTitle;
+            txtApplicationFee.Text = appType.ApplicationTypeFee.ToString();
+        }
 
-            txtApplicationName.Text = appTypeName;
-            txtApplicationFee.Text = appTypeFee.ToString();
+        private void btnChange_Click(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(txtApplicationName.Text))
+            {
+                MessageBox.Show("Application type name is required", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if(!decimal.TryParse(txtApplicationFee.Text, out decimal fee) || fee < 0)
+            {
+                MessageBox.Show("Application fee must be a valid non-negative number", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            appType.ApplicationTypeTitle = txtApplicationName.Text;
+            appType.ApplicationTypeFee = Convert.ToDecimal(txtApplicationFee.Text);
+
+            if (clsApplicationTypes.UpdateApplicationType(_appTypeID, appType.ApplicationTypeTitle, appType.ApplicationTypeFee))
+            {
+
+                MessageBox.Show("Application type updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            else
+            {
+
+                MessageBox.Show("Failed to update application type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

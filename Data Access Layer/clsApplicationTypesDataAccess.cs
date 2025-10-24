@@ -51,7 +51,7 @@ namespace Data_Access_Layer
         }
 
 
-        public static bool UpdateApplicationType(int ApplicationTypeID,string ApplicationTypeTitle,float ApplicationTYpeFee)
+        public static bool UpdateApplicationType(int ApplicationTypeID,string ApplicationTypeTitle,decimal ApplicationTYpeFee)
         {
 
 
@@ -62,16 +62,18 @@ namespace Data_Access_Layer
 
             string query = @"Update ApplicationTypes 
 
-                            set  ApplicationTypesTitle = @ApplicationTypesTitle, 
+                            set  ApplicationTypeTitle = @ApplicationTypeTitle, 
                                  ApplicationFees = @ApplicationFees
 
-                                where ApplicationTypesID = @ApplicationTypesID";
+                                where ApplicationTypeID = @ApplicationTypesID";
 
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@ApplicationTypesTitle", ApplicationTypeTitle);
+            command.Parameters.AddWithValue("@ApplicationTypeTitle", ApplicationTypeTitle);
             command.Parameters.AddWithValue("@ApplicationFees", ApplicationTYpeFee);
+            command.Parameters.AddWithValue("@ApplicationTypesID", ApplicationTypeID);
+
 
 
             try

@@ -18,17 +18,14 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
             InitializeComponent();
         }
 
-        static DataTable _dtAllApplicationTYpes = clsApplicationTypes.GetAllApplicationTypes();
+        static DataTable _dtApplicationTypes = clsApplicationTypes.GetAllApplicationTypes();
 
-        DataTable _dtApplicationTypes = _dtAllApplicationTYpes.DefaultView.ToTable(false, "ApplicationTypeID", "ApplicationTypeTitle", "ApplicationFees");
 
 
         private void _refreshList()
         {
 
-            _dtAllApplicationTYpes = clsApplicationTypes.GetAllApplicationTypes();
-
-            DataTable _dtApplicationTypes = _dtAllApplicationTYpes.DefaultView.ToTable(false, "ApplicationTypeID", "ApplicationTypeTitle", "ApplicationFees");
+            _dtApplicationTypes = clsApplicationTypes.GetAllApplicationTypes();
 
 
             dgvApplications.DataSource = _dtApplicationTypes;
@@ -47,13 +44,13 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
 
 
                 dgvApplications.Columns[0].HeaderText = "Application type id";
-                dgvApplications.Columns[0].Width = 110;
+                dgvApplications.Columns[0].Width = 140;
 
                 dgvApplications.Columns[1].HeaderText = "Application type title";
                 dgvApplications.Columns[1].Width = 400;
 
                 dgvApplications.Columns[2].HeaderText = "Application type fees";
-                dgvApplications.Columns[2].Width = 110;
+                dgvApplications.Columns[2].Width = 140;
 
 
 
@@ -64,6 +61,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
         {
             UpdateApplicationTypeMenu frm = new UpdateApplicationTypeMenu((int)dgvApplications.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
+
+            _refreshList();
         }
     }
 }
