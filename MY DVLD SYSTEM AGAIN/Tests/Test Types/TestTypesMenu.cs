@@ -57,9 +57,11 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types
 
         private void editApplicationTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("You are about to edit a test type.", "Edit Test Type", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            EditTestTypeMenu frm = new EditTestTypeMenu((int)dgvTestTypes.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
 
+            _refreshList();
 
         }
     }

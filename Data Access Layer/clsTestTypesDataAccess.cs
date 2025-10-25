@@ -50,24 +50,27 @@ namespace Data_Access_Layer
 
         }
 
-        public static bool UpdateTestType(int ApplicationTypeID, string ApplicationTypeTitle, decimal ApplicationTYpeFee)
+        public static bool UpdateTestType(int TestTypeID, string TestTypeTitle,string TestTypeDesription, decimal TestTypeFee)
         {
 
             int rowsEffected = 0;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = @"Update ApplicationTypes 
+            string query = @"Update TestTypes 
              
-                                      set  ApplicationTypeTitle = @ApplicationTypeTitle, 
-                                           ApplicationFees = @ApplicationFees
+                                      set  TestTypeTitle = @TestTypeTitle, 
+                                           TestTypeFees = @TestFees,
+                                             TestTypeDescription = @TestTypeDescription
              
-                                          where ApplicationTypeID = @ApplicationTypesID";
+                                          where TestTypeID = @TestTypesID";
 
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@ApplicationTypeTitle", ApplicationTypeTitle);
-            command.Parameters.AddWithValue("@ApplicationFees", ApplicationTYpeFee);
-            command.Parameters.AddWithValue("@ApplicationTypesID", ApplicationTypeID);
+            command.Parameters.AddWithValue("@TestTypeTitle", TestTypeTitle);
+            command.Parameters.AddWithValue("@TestFees", TestTypeFee);
+            command.Parameters.AddWithValue("@TestTypesID", TestTypeID);
+            command.Parameters.AddWithValue("@TestTypeDescription",TestTypeDesription);
+
 
 
 
@@ -91,7 +94,7 @@ namespace Data_Access_Layer
             return (rowsEffected > 0);
         }
 
-        public static bool GetTestTypeInfoByID(int ApplicationTypeID, ref string ApplicationTypeTitle, ref decimal ApplicationTYpeFee)
+        public static bool GetTestTypeInfoByID(int TestTypeID, ref string TestTypeTitle,ref string TestTypeDesrcription, ref decimal TestTypeFee)
 
         {
             bool isFound = false;
@@ -99,11 +102,11 @@ namespace Data_Access_Layer
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
 
-            string query = @"select * FROM ApplicationTypes   where ApplicationTypeID = @applicationTypeID";
+            string query = @"select * FROM TestTypes   where TestTypeID = @TestTypeID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("applicationTypeID", ApplicationTypeID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
 
 
             try
@@ -119,8 +122,9 @@ namespace Data_Access_Layer
 
                     isFound = true;
 
-                    ApplicationTypeTitle = (string)reader["ApplicationTypeTitle"];
-                    ApplicationTYpeFee = (decimal)reader["ApplicationFees"];
+                    TestTypeTitle = (string)reader["TestTypeTitle"];
+                    TestTypeFee = (decimal)reader["TestTypeFees"];
+                    TestTypeDesrcription = (string)reader["TestTypeDescription"];
 
                 }
 

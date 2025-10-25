@@ -18,7 +18,7 @@ namespace BusinessLayer
 
         public int TestTypeID;
         public string TestTypeTitle;
-        string TestTypeDescription;
+        public string TestTypeDescription;
         public decimal TestTypeFee;
 
 
@@ -42,22 +42,22 @@ namespace BusinessLayer
 
         }
 
-        static public bool UpdateApplicationType(int ApplicationTypeID, string newTitle, decimal newFees)
+        static public bool UpdateApplicationType(int ApplicationTypeID,string newDescription,string newTitle, decimal newFees)
         {
 
-            return clsApplicationTypesDataAccess.UpdateApplicationType(ApplicationTypeID, newTitle, newFees);
+            return clsTestTypesDataAccess.UpdateTestType(ApplicationTypeID, newTitle,newDescription,newFees);
 
         }
 
-        static public clsApplicationTypes GetApplicationTypeByID(int ApplicationTypeID)
+        static public clsTestTypes GetTestTypeByID(int TestTypeID)
         {
-            string ApplicationTypeTitle = "";
-            decimal ApplicationTypeFee = 0;
+            string TestTypeTitle = "",TestTypeDescription = "";
+            decimal TestTypeFee = 0;
 
-            if (clsApplicationTypesDataAccess.GetApplicationTypeInfoByID(ApplicationTypeID, ref ApplicationTypeTitle, ref ApplicationTypeFee))
+            if (clsTestTypesDataAccess.GetTestTypeInfoByID(TestTypeID, ref TestTypeTitle,ref TestTypeDescription, ref TestTypeFee))
             {
 
-                return new clsApplicationTypes(ApplicationTypeID, ApplicationTypeTitle, ApplicationTypeFee);
+                return new clsTestTypes(TestTypeID, TestTypeTitle, TestTypeDescription,TestTypeFee);
 
             }
             else
