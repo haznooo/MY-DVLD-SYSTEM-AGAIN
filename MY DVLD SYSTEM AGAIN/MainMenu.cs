@@ -1,5 +1,6 @@
 ﻿using MY_DVLD_SYSTEM.Global;
 using MY_DVLD_SYSTEM_AGAIN.Applications.Application_types;
+using MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types;
 using MY_DVLD_SYSTEM_AGAIN.Users;
 using System;
 using System.Collections.Generic;
@@ -75,6 +76,12 @@ namespace MY_DVLD_SYSTEM_AGAIN
             ApplicationTypesMenu frm = new ApplicationTypesMenu();
             frm.ShowDialog();
 
+        }
+
+        private void testTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TestTypesMenu frm = new TestTypesMenu();
+            frm.ShowDialog();
         }
     }
 }

@@ -111,6 +111,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\Test Types\TestTypesMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tests\Test Types\TestTypesMenu.Designer.cs">
+      <DependentUpon>TestTypesMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\AddUpdateUsersMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Tests\Test Types\TestTypesMenu.resx">
+      <DependentUpon>TestTypesMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\AddUpdateUsersMenu.resx">
       <DependentUpon>AddUpdateUsersMenu.cs</DependentUpon>
     </EmbeddedResource>

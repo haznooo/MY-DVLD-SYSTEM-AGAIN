@@ -37,7 +37,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
         {
             _refreshList();
 
-            dgvApplications.DataSource = _dtApplicationTypes;
+  
 
             if (dgvApplications.Rows.Count > 0)
             {
