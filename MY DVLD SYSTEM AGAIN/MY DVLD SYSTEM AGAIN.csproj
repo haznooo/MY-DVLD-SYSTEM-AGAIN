@@ -58,6 +58,12 @@
     <Compile Include="Applications\Application types\UpdateApplicationTypeMenu.Designer.cs">
       <DependentUpon>UpdateApplicationTypeMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\Local_Driving_licens\AddUpdateLicensApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Local_Driving_licens\AddUpdateLicensApplication.Designer.cs">
+      <DependentUpon>AddUpdateLicensApplication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global\clsGlobal.cs" />
     <Compile Include="Global\clsValidatoin.cs" />
     <Compile Include="Global\util.cs" />
@@ -158,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Application types\UpdateApplicationTypeMenu.resx">
       <DependentUpon>UpdateApplicationTypeMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Local_Driving_licens\AddUpdateLicensApplication.resx">
+      <DependentUpon>AddUpdateLicensApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginMenu.resx">
       <DependentUpon>LoginMenu.cs</DependentUpon>

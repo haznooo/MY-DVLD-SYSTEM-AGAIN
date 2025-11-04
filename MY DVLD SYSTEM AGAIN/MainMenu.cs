@@ -1,5 +1,6 @@
 ﻿using MY_DVLD_SYSTEM.Global;
 using MY_DVLD_SYSTEM_AGAIN.Applications.Application_types;
+using MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens;
 using MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types;
 using MY_DVLD_SYSTEM_AGAIN.Users;
 using System;
@@ -81,6 +82,12 @@ namespace MY_DVLD_SYSTEM_AGAIN
         private void testTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TestTypesMenu frm = new TestTypesMenu();
+            frm.ShowDialog();
+        }
+
+        private void localLicensToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddUpdateLocalLicensApplication frm = new AddUpdateLocalLicensApplication();
             frm.ShowDialog();
         }
     }
