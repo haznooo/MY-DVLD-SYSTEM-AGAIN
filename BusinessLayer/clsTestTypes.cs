@@ -11,19 +11,19 @@ namespace BusinessLayer
     public class clsTestTypes
     {
 
+        public enum enMode { Add, Edit }
 
-        enum enMode { Add, Edit }
+         enMode CurrentMode = enMode.Edit;
+        public enum enTestType { vissionTest = 1, writtenTest = 2, streetTest = 3 }
 
-        enMode CurrentMode;
-
-        public int TestTypeID;
+        clsTestTypes.enTestType TestTypeID { get; set; }
         public string TestTypeTitle;
         public string TestTypeDescription;
         public decimal TestTypeFee;
 
 
 
-        public clsTestTypes(int TestTypeID, string newTitle,string newDescription,decimal newFees)
+        public clsTestTypes(clsTestTypes.enTestType TestTypeID, string newTitle,string newDescription,decimal newFees)
         {
 
             this.TestTypeID = TestTypeID;
@@ -49,12 +49,12 @@ namespace BusinessLayer
 
         }
 
-        static public clsTestTypes GetTestTypeByID(int TestTypeID)
+        static public clsTestTypes GetTestTypeByID(clsTestTypes.enTestType TestTypeID)
         {
             string TestTypeTitle = "",TestTypeDescription = "";
             decimal TestTypeFee = 0;
 
-            if (clsTestTypesDataAccess.GetTestTypeInfoByID(TestTypeID, ref TestTypeTitle,ref TestTypeDescription, ref TestTypeFee))
+            if (clsTestTypesDataAccess.GetTestTypeInfoByID((int)TestTypeID, ref TestTypeTitle,ref TestTypeDescription, ref TestTypeFee))
             {
 
                 return new clsTestTypes(TestTypeID, TestTypeTitle, TestTypeDescription,TestTypeFee);
@@ -71,7 +71,7 @@ namespace BusinessLayer
         public bool SaveApplicationType()
         {
 
-            return clsApplicationTypesDataAccess.UpdateApplicationType(this.TestTypeID, this.TestTypeTitle, this.TestTypeFee);
+            return clsApplicationTypesDataAccess.UpdateApplicationType((int)this.TestTypeID, this.TestTypeTitle, this.TestTypeFee);
 
         }
 

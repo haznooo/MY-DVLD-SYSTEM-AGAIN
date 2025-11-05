@@ -34,7 +34,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types
         private void UpdateTestTypeMenu_Load(object sender, EventArgs e)
         {
 
-            _TestType = clsTestTypes.GetTestTypeByID(_TestTypeID);
+            _TestType = clsTestTypes.GetTestTypeByID((clsTestTypes.enTestType)_TestTypeID);
 
             txtTestTypeTitle.Text = _TestType.TestTypeTitle;
             txtTestTypeFee.Text = _TestType.TestTypeFee.ToString();
