@@ -1,0 +1,189 @@
+﻿using DataAccessLayer;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Net;
+using System.Security.Policy;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Data_Access_Layer
+{
+    public class clsApplicationDataAccess
+    {
+
+
+        public static bool GetApplicationInfoByID(int ApplicationID,ref int ApplicantID,ref DateTime ApplicationDate,
+           ref byte ApplicationType,ref byte ApplicationStatus,ref DateTime LastStatusDate,
+           ref decimal paidFee,ref int CreatedByUserID) {
+
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+
+            string query = @"select * FROM Applications  where ApplicationID = @applicationID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@applicationID", ApplicationID);
+
+
+            try
+            {
+
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+
+                while (reader.Read())
+                {
+
+                    isFound = true;
+
+                    ApplicantID = (int)reader["ApplicantPersonID"];
+                    ApplicationDate = (DateTime)reader["ApplicationDate"];
+                    ApplicationType = Convert.ToByte(reader["ApplicationTypeID"]);
+                    ApplicationStatus = Convert.ToByte(reader["ApplicationStatus"]);
+                    LastStatusDate = (DateTime)reader["LastStatusDate"];
+                    paidFee = (decimal)reader["PaidFees"];
+                    CreatedByUserID = (int)reader["CreatedByUserID"];
+
+
+                }
+
+
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+
+                connection.Close();
+            }
+
+            return isFound;
+
+        }
+
+        public static int AddNewApplication(int ApplicantID,DateTime ApplicationDate,
+           byte ApplicationType,byte ApplicationStatus,DateTime LastStatusDate,
+           decimal paidFee,int CreatedByUserID) {
+        
+
+            int newApplicationID = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"INSERT INTO Applications (ApplicantPersonID,ApplicationDate,
+                             ApplicationTypeID,ApplicationStatus,LastStatusDate,PaidFees,CreatedByUserID)
+                             VALUES (@ApplicantPersonID,@ApplicationDate,
+                             @ApplicationTypeID,@ApplicationStatus,@LastStatusDate,@PaidFees,@CreatedByUserID);
+                             SELECT SCOPE_IDENTITY();";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantID);
+            command.Parameters.AddWithValue("@ApplicationDate", ApplicationDate);
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationType);
+            command.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
+            command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);
+            command.Parameters.AddWithValue("@PaidFees", paidFee);
+            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    newApplicationID = Convert.ToInt32(result);
+                }
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+                newApplicationID = -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return newApplicationID;
+
+        }
+
+
+        public static bool UpdateApplicationInfoByID(int applicationID,int ApplicantID, DateTime ApplicationDate,
+           byte ApplicationType, byte ApplicationStatus, DateTime LastStatusDate,
+           decimal paidFee, int CreatedByUserID) {
+
+
+            int newApplicationID = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"Update Applications set ApplicantPersonID =@ApplicantPersonID,
+                             ApplicationDate = @ApplicationDate,
+                             ApplicationTypeID = @ApplicationTypeID,
+                             ApplicationStatus = @ApplicationStatus,
+                             LastStatusDate = ,@LastStatusDate,
+                              PaidFees = @PaidFees ,
+                              CreatedByUserID = @CreatedByUserID )
+                            where ApplicationID = @applicationID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@applicationID", applicationID);
+
+            command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantID);
+            command.Parameters.AddWithValue("@ApplicationDate", ApplicationDate);
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationType);
+            command.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
+            command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);
+            command.Parameters.AddWithValue("@PaidFees", paidFee);
+            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    newApplicationID = Convert.ToInt32(result);
+                }
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+                newApplicationID = -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return (newApplicationID > 0);
+
+        }
+
+           
+
+        public static void DeleteApplicationInfoByID(int applicationID) { }
+
+      //  public static DataTable GetApplicationInfoDataTable() {  }
+
+
+        public static bool isApplicationExist(int applicationID) { return false; }
+
+        public static bool DoesPersonHaveActiveApplication(int personID) { return false; }
+
+        public static void GetActiveApplicationID(int personID, int applicationType) { }
+    }
+}

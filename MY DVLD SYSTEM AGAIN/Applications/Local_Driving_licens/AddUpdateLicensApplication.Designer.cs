@@ -30,6 +30,7 @@
         {
             this.tcAddUpdateLocalLicensApplication = new System.Windows.Forms.TabControl();
             this.tpLinkPerson = new System.Windows.Forms.TabPage();
+            this.ctrlPersonCardWithFilter1 = new MY_DVLD_SYSTEM.People.Controls.ctrlPersonCardWithFilter();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
@@ -56,7 +57,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.ctrlPersonCardWithFilter1 = new MY_DVLD_SYSTEM.People.Controls.ctrlPersonCardWithFilter();
             this.tcAddUpdateLocalLicensApplication.SuspendLayout();
             this.tpLinkPerson.SuspendLayout();
             this.tpAddLocalLicensApplication.SuspendLayout();
@@ -93,6 +93,16 @@
             this.tpLinkPerson.TabIndex = 0;
             this.tpLinkPerson.Text = "Link a Person";
             this.tpLinkPerson.UseVisualStyleBackColor = true;
+            // 
+            // ctrlPersonCardWithFilter1
+            // 
+            this.ctrlPersonCardWithFilter1.EnableAddButton = true;
+            this.ctrlPersonCardWithFilter1.FilterEnabled = true;
+            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(15, 51);
+            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
+            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(850, 431);
+            this.ctrlPersonCardWithFilter1.TabIndex = 14;
+            this.ctrlPersonCardWithFilter1.OnPersonSelected += new System.Action<int>(this.ctrlPersonCardWithFilter1_OnPersonSelected);
             // 
             // label3
             // 
@@ -336,6 +346,7 @@
             this.btnSave.Size = new System.Drawing.Size(54, 43);
             this.btnSave.TabIndex = 14;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lbAddUserMessage
             // 
@@ -377,16 +388,6 @@
             this.label1.Size = new System.Drawing.Size(160, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "D.L application ID:";
-            // 
-            // ctrlPersonCardWithFilter1
-            // 
-            this.ctrlPersonCardWithFilter1.EnableAddButton = true;
-            this.ctrlPersonCardWithFilter1.FilterEnabled = true;
-            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(15, 51);
-            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
-            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(850, 431);
-            this.ctrlPersonCardWithFilter1.TabIndex = 14;
-            this.ctrlPersonCardWithFilter1.OnPersonSelected += new System.Action<int>(this.ctrlPersonCardWithFilter1_OnPersonSelected);
             // 
             // AddUpdateLocalLicensApplication
             // 

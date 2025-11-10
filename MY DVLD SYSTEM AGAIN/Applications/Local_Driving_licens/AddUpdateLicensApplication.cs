@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using MY_DVLD_SYSTEM.Global;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 {
@@ -16,14 +18,14 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         public AddUpdateLocalLicensApplication()
         {
             InitializeComponent();
-            _Mode = enMode.AddUser;
+            _Mode = enMode.AddApplication;
         }
      
 
         public AddUpdateLocalLicensApplication(int UserID)
         {
             InitializeComponent();
-            _Mode = enMode.UpdateUser;
+            _Mode = enMode.UpdateApplication;
             _UserID = UserID;
 
         }
@@ -31,8 +33,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
         enum enMode
         {
-            AddUser = 0,
-            UpdateUser = 1
+            AddApplication = 0,
+            UpdateApplication = 1
         }
 
         enMode _Mode;
@@ -40,46 +42,23 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
         int _UserID = -1;
         int _PersonID = -1;
-        clsUser _User = null;
+        clsApplication _LocalDrivingLicenceApplication = null;
 
 
         private void _LoadLocalLicensApplicationinfos(int UserID)
         {
 
-            // this method is used to load the form with user infos during update mode
+            // this method is used to load the form with application infos during update mode
 
-            _User = clsUser.GetUserByID(UserID);
-
-
-            if (_User != null)
-            {
-
-      
-
-                ctrlPersonCardWithFilter1.LoadAndShowPersonInfo(_User.PersonID);
-                tpAddLocalLicensApplication.Enabled = true;
-                btnNext.Enabled = true;
-                tcAddUpdateLocalLicensApplication.SelectedTab = tpAddLocalLicensApplication;
-                _HandelFormLabels();
-
-
-            }
-            else
-            {
-
-                MessageBox.Show("User Not Found");
-                Close();
-
-            }
-
+     
         }
 
         private void _ResetForm()
         {
-            if (_Mode == enMode.AddUser)
+            if (_Mode == enMode.AddApplication)
             {
 
-                _User = new clsUser();
+                _LocalDrivingLicenceApplication = new clsApplication();
                 tpAddLocalLicensApplication.Enabled = false;
                 btnNext.Enabled = false;
                 _HandelFormLabels();
@@ -102,30 +81,27 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         private void _HandelFormLabels()
         {
             //change form labels according to the mode
-            if (_Mode == enMode.AddUser)
+            if (_Mode == enMode.AddApplication)
             {
                 lbLinkPersonMessage.Text = "Link A Person For The New Licens";
                 lbAddUserMessage.Text = "Link A Person With The New Licens First";
             }
-            else if (_Mode == enMode.UpdateUser)
+            else if (_Mode == enMode.UpdateApplication)
             {
                 lbLinkPersonMessage.Text = "change linked Person";
                 lbAddUserMessage.Text = "Update Application infos";
             }
         }
-        private void _AddUpdateUsersMenu_Load(object sender, EventArgs e)
-        {
-
-        }
+    
 
         private void _FillLicensType()
         {
 
-            DataTable dt = clsApplicationTypes.GetAllApplicationTypes();
+           DataTable  dt = clsLicenceClasses.GetAllLicencesClasses();
 
             foreach (DataRow dr in dt.Rows)
             {
-                cbLicensClass.Items.Add(dr["ApplicationTypeTitle"].ToString());
+                cbLicensClass.Items.Add(dr["ClassName"].ToString());
             }
 
         }
@@ -133,7 +109,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
         private void ctrlPersonCardWithFilter1_OnPersonSelected(int obj)
         {
-
 
             lbLinkPersonMessage.Text = "You can now add a new local Licens Application";
             tpAddLocalLicensApplication.Enabled = true;
@@ -159,24 +134,32 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         private void btnSave_Click(object sender, EventArgs e)
         {
 
-            MessageBox.Show("Save button clicked");
+
+            MessageBox.Show("im about to bust");
             return;
 
             if (ctrlPersonCardWithFilter1.SelectedPerson != null && this.ValidateChildren())
             {
 
 
-                if (_Mode == enMode.AddUser)
+                if (_Mode == enMode.AddApplication)
                 {
-                    _User = new clsUser();
+                    _LocalDrivingLicenceApplication = new clsApplication();
 
-           
-                    _User.PersonID = ctrlPersonCardWithFilter1.PersonID;
+                    _LocalDrivingLicenceApplication.applicationID = ctrlPersonCardWithFilter1.PersonID;
+                    _LocalDrivingLicenceApplication.applicationDate = DateTime.Now;
+                    _LocalDrivingLicenceApplication.applicationType = (byte)(cbLicensClass.SelectedIndex + 1);
+                    _LocalDrivingLicenceApplication.applicationStatus = (byte)1; // submitted
+                    _LocalDrivingLicenceApplication.lastStatusDate = DateTime.Now;
+                    _LocalDrivingLicenceApplication.paidFee = decimal.Parse(lbApplicationFee.Text);
+                    _LocalDrivingLicenceApplication.createdByUserID = clsGlobal.CurrentUser.UserID;
 
-                    if (_User.Save())
+
+                    if (_LocalDrivingLicenceApplication.SaveApplication())
                     {
-                        MessageBox.Show($"New person added with the id {_User.UserID}");
-                        _Mode = enMode.UpdateUser;
+                        MessageBox.Show($"New application added with the id {_LocalDrivingLicenceApplication.applicationID}");
+                        _Mode = enMode.UpdateApplication;
+                        lbApplicationID.Text = _LocalDrivingLicenceApplication.applicationID.ToString();
                         _HandelFormLabels();
 
                     }
@@ -188,37 +171,26 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
 
                 }
-                else
-                {
-                    _User.PersonID = _PersonID;
-                   
-                    _User.PersonID = ctrlPersonCardWithFilter1.PersonID;
-
-                    if (_User.Save())
-                    {
-                        MessageBox.Show($"Updated person with the ID {_User.UserID}");
-                        _Mode = enMode.UpdateUser;
-                        _HandelFormLabels();
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to add new user");
-                    }
 
 
 
-                }
+
             }
+           }
+        
 
-        }
+   
         private void _AddUpdateLocalLicensApplication_Load(object sender, EventArgs e)
         {
             lbApplicationDate.Text = DateTime.Now.ToShortDateString();
-
+            tpAddLocalLicensApplication.Enabled = false;
             _FillLicensType();
 
             cbLicensClass.SelectedIndex = 0;
+            cbLicensClass.DropDownStyle = ComboBoxStyle.DropDownList;
         }
+
+
     }
 }
+
