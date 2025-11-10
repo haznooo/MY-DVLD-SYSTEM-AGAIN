@@ -173,12 +173,84 @@ namespace Data_Access_Layer
 
         }
 
+        public static DataTable GetAllApplications() {
+
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select ApplicationID,ApplicantPersonID,ApplicationDate,CreatedByUserID,ApplicationTypeTitle,
+                    case when ApplicationStatus = 1 then 'new'
+                         when ApplicationStatus = 2 then 'in proccess'
+                        else 'complete'
+                        end as applicationStatus,
+                        LastStatusDate,PaidFees
+           from Applications
+           inner join ApplicationTypes on ApplicationTypes.ApplicationTypeID = Applications.ApplicationTypeID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+
+
+            }
+
+            catch (Exception ex)
+            {
+                // Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dt;
+
+
+        }
+
+        public static bool DeleteApplicationInfoByID(int applicationID) 
+        {
            
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-        public static void DeleteApplicationInfoByID(int applicationID) { }
+            string query = @"Delete from Applications where ApplicationID = @applicationID ";
 
-      //  public static DataTable GetApplicationInfoDataTable() {  }
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@applicationID", applicationID);
 
+            int effectedRows = 0;
+
+            try
+            {
+                connection.Open();
+                effectedRows = command.ExecuteNonQuery();
+               
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+              
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return (effectedRows > 0);
+
+        }
 
         public static bool isApplicationExist(int applicationID) { return false; }
 

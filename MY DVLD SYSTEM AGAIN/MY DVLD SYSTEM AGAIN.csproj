@@ -64,6 +64,12 @@
     <Compile Include="Applications\Local_Driving_licens\AddUpdateLicensApplication.Designer.cs">
       <DependentUpon>AddUpdateLicensApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\Local_Driving_licens\ManageLocalDrivingLicenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Local_Driving_licens\ManageLocalDrivingLicenses.Designer.cs">
+      <DependentUpon>ManageLocalDrivingLicenses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global\clsGlobal.cs" />
     <Compile Include="Global\clsValidatoin.cs" />
     <Compile Include="Global\util.cs" />
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Local_Driving_licens\AddUpdateLicensApplication.resx">
       <DependentUpon>AddUpdateLicensApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Local_Driving_licens\ManageLocalDrivingLicenses.resx">
+      <DependentUpon>ManageLocalDrivingLicenses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginMenu.resx">
       <DependentUpon>LoginMenu.cs</DependentUpon>

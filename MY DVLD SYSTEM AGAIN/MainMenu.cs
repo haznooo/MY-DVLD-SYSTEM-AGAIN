@@ -90,5 +90,11 @@ namespace MY_DVLD_SYSTEM_AGAIN
             AddUpdateLocalLicensApplication frm = new AddUpdateLocalLicensApplication();
             frm.ShowDialog();
         }
+
+        private void localLicenseAppllicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManageLocalDrivingLicenses frm = new ManageLocalDrivingLicenses();
+            frm.ShowDialog();
+        }
     }
 }

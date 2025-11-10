@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,12 +26,12 @@ namespace BusinessLayer
             Rejected = 4
         }
 
-        enum enMode {AddNew,Update }
+        enum enMode { AddNew, Update }
 
         enMode CurrentMode;
 
         public int applicationID { get; set; }
-        public  int applicantID { get; set; }
+        public int applicantID { get; set; }
         public DateTime applicationDate { get; set; }
         public byte applicationType { get; set; }
         public byte applicationStatus { get; set; }
@@ -39,8 +40,9 @@ namespace BusinessLayer
         public int createdByUserID { get; set; }
 
 
-        public clsApplication() { 
-        
+        public clsApplication()
+        {
+
             applicationID = -1;
             applicantID = -1;
             applicationDate = DateTime.MinValue;
@@ -56,7 +58,7 @@ namespace BusinessLayer
         public clsApplication(int applicationID, int applicantID, DateTime applicationDate, byte applicationType,
             byte applicationStatus, DateTime lastStatusDate, decimal paidFee, int createdByUserID)
         {
-            
+
             this.applicationID = applicationID;
             this.applicantID = applicantID;
             this.applicationDate = applicationDate;
@@ -74,7 +76,7 @@ namespace BusinessLayer
                 applicationType, applicationStatus, lastStatusDate, paidFee, createdByUserID);
             if (newApplicationID > 0)
             {
-                return true;        
+                return true;
             }
             else
             {
@@ -84,9 +86,9 @@ namespace BusinessLayer
 
         private bool _UpdateApplication()
         {
-            
-          return  clsApplicationDataAccess.UpdateApplicationInfoByID(applicationID, applicantID, applicationDate,
-                applicationType, applicationStatus, lastStatusDate, paidFee, createdByUserID);
+
+            return clsApplicationDataAccess.UpdateApplicationInfoByID(applicationID, applicantID, applicationDate,
+                  applicationType, applicationStatus, lastStatusDate, paidFee, createdByUserID);
         }
 
         public static bool GetApplicationInfoByID(int ApplicationID, ref int ApplicantID, ref DateTime ApplicationDate,
@@ -97,8 +99,8 @@ namespace BusinessLayer
             if (clsApplicationDataAccess.GetApplicationInfoByID(ApplicationID, ref ApplicantID, ref ApplicationDate,
                   ref ApplicationType, ref ApplicationStatus, ref LastStatusDate, ref paidFee, ref CreatedByUserID))
 
-            { 
-                return true; 
+            {
+                return true;
             }
 
             else
@@ -113,10 +115,10 @@ namespace BusinessLayer
 
         public bool SaveApplication()
         {
-            if (CurrentMode == enMode.AddNew) 
+            if (CurrentMode == enMode.AddNew)
             {
-             
-              
+
+
                 if (_addNewApplication())
                 {
                     return true;
@@ -126,7 +128,7 @@ namespace BusinessLayer
                     return false;
                 }
             }
-            else if (CurrentMode == enMode.Update) 
+            else if (CurrentMode == enMode.Update)
             {
 
                 if (_UpdateApplication())
@@ -139,9 +141,14 @@ namespace BusinessLayer
                 }
 
             }
-       
+
             return true;
         }
 
+
+        public static DataTable GetAllApplications()
+        {
+            return clsApplicationDataAccess.GetAllApplications();
+        }
     }
 }
