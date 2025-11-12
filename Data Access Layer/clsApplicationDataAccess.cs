@@ -8,6 +8,7 @@ using System.Net;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Data_Access_Layer
 {
@@ -15,9 +16,10 @@ namespace Data_Access_Layer
     {
 
 
-        public static bool GetApplicationInfoByID(int ApplicationID,ref int ApplicantID,ref DateTime ApplicationDate,
-           ref byte ApplicationType,ref byte ApplicationStatus,ref DateTime LastStatusDate,
-           ref decimal paidFee,ref int CreatedByUserID) {
+        public static bool GetApplicationInfoByID(int ApplicationID, ref int ApplicantID, ref DateTime ApplicationDate,
+           ref byte ApplicationType, ref byte ApplicationStatus, ref DateTime LastStatusDate,
+           ref decimal paidFee, ref int CreatedByUserID)
+        {
 
             bool isFound = false;
 
@@ -71,10 +73,11 @@ namespace Data_Access_Layer
 
         }
 
-        public static int AddNewApplication(int ApplicantID,DateTime ApplicationDate,
-           byte ApplicationType,byte ApplicationStatus,DateTime LastStatusDate,
-           decimal paidFee,int CreatedByUserID) {
-        
+        public static int AddNewApplication(int ApplicantID, DateTime ApplicationDate,
+           byte ApplicationType, byte ApplicationStatus, DateTime LastStatusDate,
+           decimal paidFee, int CreatedByUserID)
+        {
+
 
             int newApplicationID = -1;
 
@@ -119,10 +122,10 @@ namespace Data_Access_Layer
 
         }
 
-
-        public static bool UpdateApplicationInfoByID(int applicationID,int ApplicantID, DateTime ApplicationDate,
+        public static bool UpdateApplicationInfoByID(int applicationID, int ApplicantID, DateTime ApplicationDate,
            byte ApplicationType, byte ApplicationStatus, DateTime LastStatusDate,
-           decimal paidFee, int CreatedByUserID) {
+           decimal paidFee, int CreatedByUserID)
+        {
 
 
             int newApplicationID = -1;
@@ -173,7 +176,8 @@ namespace Data_Access_Layer
 
         }
 
-        public static DataTable GetAllApplications() {
+        public static DataTable GetAllApplications()
+        {
 
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -220,9 +224,9 @@ namespace Data_Access_Layer
 
         }
 
-        public static bool DeleteApplicationInfoByID(int applicationID) 
+        public static bool DeleteApplicationInfoByID(int applicationID)
         {
-           
+
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"Delete from Applications where ApplicationID = @applicationID ";
@@ -236,12 +240,12 @@ namespace Data_Access_Layer
             {
                 connection.Open();
                 effectedRows = command.ExecuteNonQuery();
-               
+
             }
             catch (Exception e)
             {
                 // Handle exception (e.g., log the error)
-              
+
             }
             finally
             {
@@ -252,10 +256,120 @@ namespace Data_Access_Layer
 
         }
 
-        public static bool isApplicationExist(int applicationID) { return false; }
+        public static bool isApplicationExist(int applicationID)
+        {
 
-        public static bool DoesPersonHaveActiveApplication(int personID) { return false; }
+            bool isFound = false;
 
-        public static void GetActiveApplicationID(int personID, int applicationType) { }
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select found=1 from Applications where ApplicationID = @applicationID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@applicationID", applicationID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    isFound = true;
+                }
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+
+        }
+
+        public static bool DoesPersonHaveActiveApplication(int personID, byte applicationType)
+        {
+
+            return GetActiveApplicationID(personID, applicationType) != -1;
+
+        }
+
+        public static int GetActiveApplicationID(int personID, int applicationType)
+        {
+
+            int ActiveApplicationID = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+
+            string query = @"Select ActiveApplicationID = ApplicationID from Applications
+                        where ApplicantPersonID = @applicantPersonID and ApplicationTypeID = @applicationTypeID and ApplicationStatus = 1 ";
+
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@applicantPersonID", personID);
+            command.Parameters.AddWithValue("@applicationTypeID", applicationType);
+
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    ActiveApplicationID = Convert.ToInt32(result);
+                }
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+                ActiveApplicationID = -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return ActiveApplicationID;
+        }
+
+        public static bool UpdateApplicationStatusByID(int applicationID, byte ApplicationStatus)
+        {
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"Update Applications set ApplicationStatus = @ApplicationStatus,
+                             LastStatusDate = @LastStatusDate
+                            where ApplicationID = @applicationID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@applicationID", applicationID);
+            command.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
+            command.Parameters.AddWithValue("@LastStatusDate", DateTime.Now);
+
+            int effectedRows = 0;
+
+            try
+            {
+                connection.Open();
+                effectedRows = command.ExecuteNonQuery();
+                
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+
+            }
+            return (effectedRows > 0);
+
+        }
     }
 }

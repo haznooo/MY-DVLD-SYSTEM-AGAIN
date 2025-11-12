@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label3 = new System.Windows.Forms.Label();
             this.cbSearchFilter = new System.Windows.Forms.ComboBox();
             this.lbTotalRecords = new System.Windows.Forms.Label();
@@ -36,8 +37,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddUpdate = new System.Windows.Forms.Button();
             this.dgvApplications = new System.Windows.Forms.DataGridView();
+            this.cmsApplicationOpetions = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.detailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplications)).BeginInit();
+            this.cmsApplicationOpetions.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -119,11 +125,44 @@
             this.dgvApplications.AllowUserToDeleteRows = false;
             this.dgvApplications.AllowUserToOrderColumns = true;
             this.dgvApplications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvApplications.ContextMenuStrip = this.cmsApplicationOpetions;
             this.dgvApplications.Location = new System.Drawing.Point(2, 299);
             this.dgvApplications.Name = "dgvApplications";
             this.dgvApplications.ReadOnly = true;
             this.dgvApplications.Size = new System.Drawing.Size(1375, 387);
             this.dgvApplications.TabIndex = 32;
+            // 
+            // cmsApplicationOpetions
+            // 
+            this.cmsApplicationOpetions.ImageScalingSize = new System.Drawing.Size(30, 30);
+            this.cmsApplicationOpetions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.detailsToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.cmsApplicationOpetions.Name = "cmsPeopleOpetions";
+            this.cmsApplicationOpetions.Size = new System.Drawing.Size(195, 134);
+            // 
+            // detailsToolStripMenuItem
+            // 
+            this.detailsToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.PersonDetails_32;
+            this.detailsToolStripMenuItem.Name = "detailsToolStripMenuItem";
+            this.detailsToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.detailsToolStripMenuItem.Text = "Details";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.edit_32;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Delete_32_2;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // ManageLocalDrivingLicenses
             // 
@@ -143,6 +182,7 @@
             this.Load += new System.EventHandler(this.ManagePeopleMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplications)).EndInit();
+            this.cmsApplicationOpetions.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,5 +197,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddUpdate;
         private System.Windows.Forms.DataGridView dgvApplications;
+        private System.Windows.Forms.ContextMenuStrip cmsApplicationOpetions;
+        private System.Windows.Forms.ToolStripMenuItem detailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

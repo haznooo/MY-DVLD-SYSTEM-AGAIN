@@ -68,7 +68,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
                 dgvApplications.Columns[6].Width = 150;
 
                 dgvApplications.Columns[7].HeaderText = "paid fee";
-               dgvApplications.Columns[7].Width = 110;
+                dgvApplications.Columns[7].Width = 110;
 
             }
 
@@ -78,6 +78,20 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         {
             AddUpdateLocalLicensApplication frm = new AddUpdateLocalLicensApplication();
             frm.ShowDialog();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (clsApplication.DeleteApplicationByID(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value)))
+            {
+                MessageBox.Show("Application deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _refreshList();
+            }
+            else
+            {
+                MessageBox.Show("Failed to delete application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

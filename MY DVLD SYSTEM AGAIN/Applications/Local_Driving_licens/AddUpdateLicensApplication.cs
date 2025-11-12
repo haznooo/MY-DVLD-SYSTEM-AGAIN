@@ -135,10 +135,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         {
 
 
-            MessageBox.Show("im about to bust");
-            return;
-
-            if (ctrlPersonCardWithFilter1.SelectedPerson != null && this.ValidateChildren())
+ 
+            if (ctrlPersonCardWithFilter1.SelectedPerson != null)
             {
 
 
@@ -146,10 +144,10 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
                 {
                     _LocalDrivingLicenceApplication = new clsApplication();
 
-                    _LocalDrivingLicenceApplication.applicationID = ctrlPersonCardWithFilter1.PersonID;
+                    _LocalDrivingLicenceApplication.applicantID = ctrlPersonCardWithFilter1.PersonID;
                     _LocalDrivingLicenceApplication.applicationDate = DateTime.Now;
                     _LocalDrivingLicenceApplication.applicationType = (byte)(cbLicensClass.SelectedIndex + 1);
-                    _LocalDrivingLicenceApplication.applicationStatus = (byte)1; // submitted
+                    _LocalDrivingLicenceApplication.applicationStatus = (byte)1; //new
                     _LocalDrivingLicenceApplication.lastStatusDate = DateTime.Now;
                     _LocalDrivingLicenceApplication.paidFee = decimal.Parse(lbApplicationFee.Text);
                     _LocalDrivingLicenceApplication.createdByUserID = clsGlobal.CurrentUser.UserID;
@@ -185,6 +183,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             lbApplicationDate.Text = DateTime.Now.ToShortDateString();
             tpAddLocalLicensApplication.Enabled = false;
             _FillLicensType();
+
+            lbCreatedBy.Text = clsGlobal.CurrentUser.UserName;
+            lbApplicationFee.Text = clsApplicationTypes.GetApplicationTypeByID(1).ApplicationTypeFee.ToString();//default fee for class 1 (new driving licens)
 
             cbLicensClass.SelectedIndex = 0;
             cbLicensClass.DropDownStyle = ComboBoxStyle.DropDownList;

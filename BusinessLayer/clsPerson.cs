@@ -14,6 +14,14 @@ namespace BusinessLayer
     {
         public int _PersonID { get;private set; }
         public string _NationalNUmber {  get; set; }
+
+        public string _FullName
+        {
+            get
+            {
+                return string.Format("{0} {1} {2} {3}", _FirstName, _SecondName, _ThirdName, _LastName);
+            }
+        }
         public string _FirstName { get; set; }
         public string _SecondName { get; set; }
         public string _ThirdName { get; set; }

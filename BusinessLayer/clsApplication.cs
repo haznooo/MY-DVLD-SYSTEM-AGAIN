@@ -14,40 +14,80 @@ namespace BusinessLayer
 
         enum enApplicationType : byte
         {
-            New = 1,
-            Renewal = 2,
-            Update = 3
-        }
-        enum enApplicationStatus : byte
-        {
-            Submitted = 1,
-            InReview = 2,
-            Approved = 3,
-            Rejected = 4
-        }
+            NewDrivingLicens = 1,
+            RenewDrivingLicens = 2,
+            ReplaceLostLicens = 3,
+            ReplaceDamagedLicens = 4,
+            ReleaseDetainedLicens = 5,
+            NewInternationalLicens = 6,
+            RetakeDrivingTest = 7
 
-        enum enMode { AddNew, Update }
+        }
+        public enum enApplicationStatus : byte
+        {
+            New = 1,
+            canceled = 2,
+            complete = 3,
+
+        }
+        enum enMode { AddNew = 0, Update = 1 }
 
         enMode CurrentMode;
 
+
         public int applicationID { get; set; }
         public int applicantID { get; set; }
+        public string applicantName
+        {
+
+            get { return clsPerson.GetPersonByID(applicantID)._FullName; }
+            set { }
+
+        }
         public DateTime applicationDate { get; set; }
-        public byte applicationType { get; set; }
-        public byte applicationStatus { get; set; }
+        public byte applicationTypeID { get; set; }
+        public enApplicationStatus applicationStatus { get; set; }
+        public string ApplicationStatusText
+        {
+            get
+            {
+                switch (applicationStatus)
+                {
+                    case enApplicationStatus.New:
+                        return "New";
+                    case enApplicationStatus.canceled:
+                        return "Canceled";
+                    case enApplicationStatus.complete:
+                        return "Complete";
+                    default:
+                        return "Unknown";
+                }
+            }
+        }
         public DateTime lastStatusDate { get; set; }
         public decimal paidFee { get; set; }
         public int createdByUserID { get; set; }
 
+        public clsApplicationTypes ApplicationType { get; set; }
+        public clsUser CreatedByUser
+        {
+            get
+            {
+                return clsUser.GetUserByID(createdByUserID);
+            }
+            set { }
+        }
 
+        public clsPerson ApplicantInfo { get;set; }
+        
         public clsApplication()
         {
 
             applicationID = -1;
             applicantID = -1;
             applicationDate = DateTime.MinValue;
-            applicationType = 0;
-            applicationStatus = 0;
+            applicationTypeID = 0;
+            applicationStatus = enApplicationStatus.New;
             lastStatusDate = DateTime.MinValue;
             paidFee = 0;
             createdByUserID = -1;
@@ -61,21 +101,27 @@ namespace BusinessLayer
 
             this.applicationID = applicationID;
             this.applicantID = applicantID;
+            this.applicantName = clsPerson.GetPersonByID(applicantID)._FullName;
             this.applicationDate = applicationDate;
-            this.applicationType = applicationType;
-            this.applicationStatus = applicationStatus;
+            this.ApplicationType = clsApplicationTypes.GetApplicationTypeByID(applicationType);
+            this.applicationTypeID = applicationType;
+            this.applicationStatus = (enApplicationStatus)applicationStatus;
             this.lastStatusDate = lastStatusDate;
             this.paidFee = paidFee;
             this.createdByUserID = createdByUserID;
+            this.CreatedByUser = clsUser.GetUserByID(createdByUserID);
+            this.ApplicantInfo = clsPerson.GetPersonByID(applicantID);
             CurrentMode = enMode.Update;
         }
 
         private bool _addNewApplication()
         {
             int newApplicationID = clsApplicationDataAccess.AddNewApplication(applicantID, applicationDate,
-                applicationType, applicationStatus, lastStatusDate, paidFee, createdByUserID);
+                applicationTypeID, (byte)applicationStatus, lastStatusDate, paidFee, createdByUserID);
             if (newApplicationID > 0)
             {
+
+                applicationID = newApplicationID;
                 return true;
             }
             else
@@ -88,7 +134,20 @@ namespace BusinessLayer
         {
 
             return clsApplicationDataAccess.UpdateApplicationInfoByID(applicationID, applicantID, applicationDate,
-                  applicationType, applicationStatus, lastStatusDate, paidFee, createdByUserID);
+                  applicationTypeID, (byte)applicationStatus, lastStatusDate, paidFee, createdByUserID);
+        }
+
+        public bool Cancel()
+        {
+
+            return clsApplicationDataAccess.UpdateApplicationStatusByID(applicationID, (byte)enApplicationStatus.canceled);
+
+        }
+
+        public bool SetComplete()
+        {
+            return clsApplicationDataAccess.UpdateApplicationStatusByID(applicationID, (byte)enApplicationStatus.complete);
+
         }
 
         public static bool GetApplicationInfoByID(int ApplicationID, ref int ApplicantID, ref DateTime ApplicationDate,
@@ -150,5 +209,28 @@ namespace BusinessLayer
         {
             return clsApplicationDataAccess.GetAllApplications();
         }
+
+        public static bool DeleteApplicationByID(int applicationID)
+        {
+            return clsApplicationDataAccess.DeleteApplicationInfoByID(applicationID);
+        }
+
+        public static bool isApplicationExists(int applicationID)
+        {
+            return clsApplicationDataAccess.isApplicationExist(applicationID);
+
+        }
+
+        public static bool DoesPersonHaveActiveApplication(int personID,byte ApplicationType)
+        {
+            return clsApplicationDataAccess.DoesPersonHaveActiveApplication(personID,ApplicationType);
+        }
+
+        public static int GetActiveApplicationID(int personID, byte ApplicationType)
+        {
+            return clsApplicationDataAccess.GetActiveApplicationID(personID, ApplicationType);
+        }
+
+
     }
 }
