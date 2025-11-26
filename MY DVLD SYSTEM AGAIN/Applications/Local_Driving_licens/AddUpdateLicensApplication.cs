@@ -146,8 +146,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
                     _LocalDrivingLicenceApplication.applicantID = ctrlPersonCardWithFilter1.PersonID;
                     _LocalDrivingLicenceApplication.applicationDate = DateTime.Now;
-                    _LocalDrivingLicenceApplication.applicationType = (byte)(cbLicensClass.SelectedIndex + 1);
-                    _LocalDrivingLicenceApplication.applicationStatus = (byte)1; //new
+                   // _LocalDrivingLicenceApplication.applicationType = (byte)(cbLicensClass.SelectedIndex + 1);
+                   // _LocalDrivingLicenceApplication.applicationStatus = (byte)1; //new
                     _LocalDrivingLicenceApplication.lastStatusDate = DateTime.Now;
                     _LocalDrivingLicenceApplication.paidFee = decimal.Parse(lbApplicationFee.Text);
                     _LocalDrivingLicenceApplication.createdByUserID = clsGlobal.CurrentUser.UserID;

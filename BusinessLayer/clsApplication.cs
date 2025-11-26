@@ -30,9 +30,9 @@ namespace BusinessLayer
             complete = 3,
 
         }
-        enum enMode { AddNew = 0, Update = 1 }
+       protected enum enMode { AddNew = 0, Update = 1 }
 
-        enMode CurrentMode;
+       protected enMode CurrentMode;
 
 
         public int applicationID { get; set; }
@@ -170,6 +170,32 @@ namespace BusinessLayer
             }
 
         }
+
+        public static clsApplication GetApplicationInfoByID(int ApplicationID)
+        {
+            int ApplicantID = -1;
+            DateTime ApplicationDate = DateTime.MinValue;
+            byte ApplicationType = 0;
+            byte ApplicationStatus = 0;
+            DateTime LastStatusDate = DateTime.MinValue;
+            decimal paidFee = 0m;
+            int CreatedByUserID = -1;
+
+            if (clsApplicationDataAccess.GetApplicationInfoByID(ApplicationID, ref ApplicantID, ref ApplicationDate,
+                  ref ApplicationType, ref ApplicationStatus, ref LastStatusDate, ref paidFee, ref CreatedByUserID))
+            {
+                return new clsApplication(ApplicationID, ApplicantID, ApplicationDate, ApplicationType,
+                    ApplicationStatus, LastStatusDate, paidFee, CreatedByUserID);
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+      
+
+        
 
 
         public bool SaveApplication()
