@@ -24,7 +24,7 @@ namespace BusinessLayer
             get { return base.ApplicantInfo._FullName; }
         }
 
-        clsLocalDrivingLicensApplication()
+        public clsLocalDrivingLicensApplication()
         {
 
             LocalDrivingLicensApplicationID = -1;

@@ -42,26 +42,36 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
         int _UserID = -1;
         int _PersonID = -1;
-        clsApplication _LocalDrivingLicenceApplication = null;
+        clsLocalDrivingLicensApplication _LocalDrivingLicenceApplication = null;
 
 
-        private void _LoadLocalLicensApplicationinfos(int UserID)
+        private void _LoadLocalLicensApplicationinfos(int LocalDrivingLicensApplicationID)
         {
+
 
             // this method is used to load the form with application infos during update mode
 
-     
+
         }
 
         private void _ResetForm()
         {
+            _HandelFormLabels();
+            _FillLicensType();
+
+            cbLicensClass.SelectedIndex = 2;
+            lbApplicationDate.Text = DateTime.Now.ToShortDateString();
+            lbCreatedBy.Text = clsGlobal.CurrentUser.UserName;
+            lbApplicationFee.Text = 40.ToString();
+
             if (_Mode == enMode.AddApplication)
             {
 
-                _LocalDrivingLicenceApplication = new clsApplication();
+                _LocalDrivingLicenceApplication = new clsLocalDrivingLicensApplication();
                 tpAddLocalLicensApplication.Enabled = false;
                 btnNext.Enabled = false;
                 _HandelFormLabels();
+                ctrlPersonCardWithFilter1.Focus();
 
             }
             else
@@ -72,7 +82,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
                 tpAddLocalLicensApplication.Enabled = true;
                 btnNext.Enabled = true;
-                _HandelFormLabels();
+              
 
             }
 
@@ -83,8 +93,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             //change form labels according to the mode
             if (_Mode == enMode.AddApplication)
             {
-                lbLinkPersonMessage.Text = "Link A Person For The New Licens";
-                lbAddUserMessage.Text = "Link A Person With The New Licens First";
+                lbLinkPersonMessage.Text = "Link A Person For The New application";
+                lbAddUserMessage.Text = "Link A Person With The New Application First";
             }
             else if (_Mode == enMode.UpdateApplication)
             {
@@ -142,7 +152,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
                 if (_Mode == enMode.AddApplication)
                 {
-                    _LocalDrivingLicenceApplication = new clsApplication();
+                    _LocalDrivingLicenceApplication = new clsLocalDrivingLicensApplication();
+
+                    _LocalDrivingLicenceApplication.applicantID = 
 
                     _LocalDrivingLicenceApplication.applicantID = ctrlPersonCardWithFilter1.PersonID;
                     _LocalDrivingLicenceApplication.applicationDate = DateTime.Now;
@@ -180,15 +192,13 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
    
         private void _AddUpdateLocalLicensApplication_Load(object sender, EventArgs e)
         {
-            lbApplicationDate.Text = DateTime.Now.ToShortDateString();
-            tpAddLocalLicensApplication.Enabled = false;
-            _FillLicensType();
+            _ResetForm();
 
-            lbCreatedBy.Text = clsGlobal.CurrentUser.UserName;
-            lbApplicationFee.Text = clsApplicationTypes.GetApplicationTypeByID(1).ApplicationTypeFee.ToString();//default fee for class 1 (new driving licens)
+            if (_Mode == enMode.UpdateApplication)
+            {
+                _LoadLocalLicensApplicationinfos(45);
+            }
 
-            cbLicensClass.SelectedIndex = 0;
-            cbLicensClass.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
 
