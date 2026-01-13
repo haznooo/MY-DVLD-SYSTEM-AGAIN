@@ -12,6 +12,7 @@ namespace BusinessLayer
 
 
         enMode _mode;
+        enApplicationStatus applicationStatus;
 
         public int ApplicationID { get; set; }
         public int LocalDrivingLicensApplicationID { get; set; }

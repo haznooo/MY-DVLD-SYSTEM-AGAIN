@@ -37,7 +37,7 @@ namespace BusinessLayer
 
         public int applicationID { get; set; }
         public int applicantID { get; set; }
-        public string applicantName
+        public string applicantFullName
         {
 
             get { return clsPerson.GetPersonByID(applicantID)._FullName; }
@@ -101,7 +101,7 @@ namespace BusinessLayer
 
             this.applicationID = applicationID;
             this.applicantID = applicantID;
-            this.applicantName = clsPerson.GetPersonByID(applicantID)._FullName;
+            this.applicantFullName = clsPerson.GetPersonByID(applicantID)._FullName;
             this.applicationDate = applicationDate;
             this.ApplicationType = clsApplicationTypes.GetApplicationTypeByID(applicationType);
             this.applicationTypeID = applicationType;

@@ -356,7 +356,7 @@ namespace Data_Access_Layer
             {
                 connection.Open();
                 effectedRows = command.ExecuteNonQuery();
-                
+
             }
             catch (Exception e)
             {
@@ -370,6 +370,11 @@ namespace Data_Access_Layer
             }
             return (effectedRows > 0);
 
+        }
+
+        public static int GetActiveApplicationIDOrLicenseClass(int personID, int applicationTypeID, int licenseClassID)
+        {
+            return 0;
         }
     }
 }
