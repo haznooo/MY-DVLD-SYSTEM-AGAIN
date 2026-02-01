@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens;
+using MY_DVLD_SYSTEM_AGAIN.People;
 namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 {
     public partial class ctrlLocalDrivingLicensInfo : UserControl
@@ -28,7 +29,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         public void loadApplicationInfoByLocalDrivingAppID(int localDrivingAppID)
         {
 
-            throw new NotImplementedException("control not ready yet");
+            MessageBox.Show("Loading Local Driving License Application Info is not finished");
+            return;
 
             _localDrivingLicensApp = clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(localDrivingAppID);
 
@@ -37,11 +39,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
                 _resetControl();
                 MessageBox.Show("Local Driving License Application not found.");
                 return;
-
             }
+
             _FillLocalDrivingLicensInfoToControl();
-
-
         }
         private void _resetControl()
         {
@@ -78,7 +78,16 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
         }
 
-      
+        private void llPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            PersonDetails frm = new PersonDetails(_localDrivingLicensApp.applicantID);
+            frm.ShowDialog();
+        }
+
+        private void llLicensClass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show("Viewing License Class details is not implemented yet");
+        }
     }
 
 }

@@ -63,6 +63,8 @@
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.llPersonInfo = new System.Windows.Forms.LinkLabel();
+            this.llLicensClass = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -240,7 +242,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.TestType_32;
+            this.pictureBox2.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.ApplicationType;
             this.pictureBox2.Location = new System.Drawing.Point(404, 125);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 29);
@@ -258,7 +260,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.PersonLicenseHistory_32;
+            this.pictureBox4.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.ApplicationTitle;
             this.pictureBox4.Location = new System.Drawing.Point(404, 71);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(30, 29);
@@ -381,7 +383,6 @@
             // 
             // pictureBox10
             // 
-            this.pictureBox10.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.PassedTests_32;
             this.pictureBox10.Location = new System.Drawing.Point(122, 61);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(30, 29);
@@ -399,6 +400,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.llLicensClass);
             this.groupBox1.Controls.Add(this.pictureBox11);
             this.groupBox1.Controls.Add(this.pictureBox10);
             this.groupBox1.Controls.Add(this.pictureBox1);
@@ -418,6 +420,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.llPersonInfo);
             this.groupBox2.Controls.Add(this.pictureBox9);
             this.groupBox2.Controls.Add(this.pictureBox8);
             this.groupBox2.Controls.Add(this.pictureBox7);
@@ -449,6 +452,30 @@
             this.groupBox2.TabIndex = 41;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "application info";
+            // 
+            // llPersonInfo
+            // 
+            this.llPersonInfo.AutoSize = true;
+            this.llPersonInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llPersonInfo.Location = new System.Drawing.Point(400, 200);
+            this.llPersonInfo.Name = "llPersonInfo";
+            this.llPersonInfo.Size = new System.Drawing.Size(88, 20);
+            this.llPersonInfo.TabIndex = 38;
+            this.llPersonInfo.TabStop = true;
+            this.llPersonInfo.Text = "person info";
+            this.llPersonInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llPersonInfo_LinkClicked);
+            // 
+            // llLicensClass
+            // 
+            this.llLicensClass.AutoSize = true;
+            this.llLicensClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llLicensClass.Location = new System.Drawing.Point(311, 70);
+            this.llLicensClass.Name = "llLicensClass";
+            this.llLicensClass.Size = new System.Drawing.Size(95, 20);
+            this.llLicensClass.TabIndex = 40;
+            this.llLicensClass.TabStop = true;
+            this.llLicensClass.Text = "Licnes class";
+            this.llLicensClass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llLicensClass_LinkClicked);
             // 
             // ctrlLocalDrivingLicensInfo
             // 
@@ -513,5 +540,7 @@
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.LinkLabel llPersonInfo;
+        private System.Windows.Forms.LinkLabel llLicensClass;
     }
 }
