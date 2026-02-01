@@ -1,6 +1,7 @@
 ﻿using Data_Access_Layer;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,16 +10,11 @@ namespace BusinessLayer
 {
     public class clsLocalDrivingLicensApplication : clsApplication
     {
-
-
         enMode _mode;
         enApplicationStatus applicationStatus;
-
         public int ApplicationID { get; set; }
         public int LocalDrivingLicensApplicationID { get; set; }
-
         public int LicensClassId { get; set; }
-
         public string PersonFullName
         {
 
@@ -105,7 +101,6 @@ namespace BusinessLayer
 
                 if (!isFound) { return null; }
 
-
                 clsApplication application = clsApplication.GetApplicationInfoByID(applicationID);
 
            if (application == null) { return null; };
@@ -123,6 +118,20 @@ namespace BusinessLayer
             bool isFound = false;
             int localDrivingLicensApplicationID = -1, licensClassID = -1;
 
+            isFound = clsLocalDrivingLicensApplicationDataAccess.GetLocalDrivingLicensApplicationInfoByApplicationID(applicationID, ref localDrivingLicensApplicationID, ref licensClassID);
+
+
+            if (!isFound) { return null; }
+
+            clsApplication application = clsApplication.GetApplicationInfoByID(applicationID);
+
+            if (application == null) { return null; }
+            ;
+
+            return new clsLocalDrivingLicensApplication(localDrivingLicensApplicationID, licensClassID, application.applicationID,
+                application.applicantID, application.applicationTypeID, application.applicationDate, application.paidFee,
+                application.createdByUserID, application.applicationStatus, application.lastStatusDate, licensClassID);
+
 
             return null;
         }
@@ -134,7 +143,10 @@ namespace BusinessLayer
 
 
         }
-
+        public DataTable GetAllLocalDrivingLicensApplications()
+        {
+            return clsLocalDrivingLicensApplicationDataAccess.GetAllLocalDrivingLicensApplications();
+        }
 
 
 

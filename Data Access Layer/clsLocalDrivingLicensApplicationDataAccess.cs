@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Data_Access_Layer
 {
@@ -91,7 +92,6 @@ namespace Data_Access_Layer
             }
 
             return isFound;
-            return true; // Placeholder return value
         }
         public static int AddLocalDrivingLicensApplication(int ApplicationID,
             int LicenseClassID)
@@ -184,10 +184,41 @@ namespace Data_Access_Layer
         }
 
         public static DataTable GetAllLocalDrivingLicensApplications()
-        {
-            // This method is used to get all local driving license applications
-            // Implement database access logic here
-            return new DataTable(); // Placeholder return value
+        {   
+            throw new NotImplementedException("Data access logic for Local Driving License Applications is still under development");
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            //the query for this method is still not ready to be used
+            // this query returnes all records from the table LocalDrivingLicenseApplications
+            string query = "";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            DataTable localDrivingLicensApplications = new DataTable();
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    localDrivingLicensApplications.Load(reader);   
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+             //  localDrivingLicensApplications = null;
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return localDrivingLicensApplications;
+         
         }
 
 

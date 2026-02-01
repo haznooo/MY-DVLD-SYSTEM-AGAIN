@@ -15,21 +15,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 {
     public partial class AddUpdateLocalLicensApplication : Form
     {
-        public AddUpdateLocalLicensApplication()
-        {
-            InitializeComponent();
-            _Mode = enMode.AddApplication;
-        }
-     
-
-        public AddUpdateLocalLicensApplication(int LocalDrivingLicensApplicationID)
-        {
-            InitializeComponent();
-            _Mode = enMode.UpdateApplication;
-            _LocalDrivingLicensApplicationID = LocalDrivingLicensApplicationID;
-
-        }
-
 
         enum enMode
         {
@@ -38,19 +23,30 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         }
 
         enMode _Mode;
-
-
         int _LocalDrivingLicensApplicationID = -1;
         int _PersonID = -1;
         clsLocalDrivingLicensApplication _LocalDrivingLicenseApplicationInfo = null;
 
 
+        public AddUpdateLocalLicensApplication()
+        {
+            InitializeComponent();
+            _Mode = enMode.AddApplication;
+        }
+        public AddUpdateLocalLicensApplication(int LocalDrivingLicensApplicationID)
+        {
+            InitializeComponent();
+            _Mode = enMode.UpdateApplication;
+            _LocalDrivingLicensApplicationID = LocalDrivingLicensApplicationID;
+
+        }
+
         public void LoadLocalLicensApplicationinfos(int LocalDrivingLicensApplicationID)
         {
 
-
+            ctrlPersonCardWithFilter1.LoadAndShowPersonInfo(LocalDrivingLicensApplicationID); 
+            cbLicensClass.SelectedIndex = _LocalDrivingLicenseApplicationInfo.LicensClassId;
             // this method is used to load the form with application infos during update mode
-
 
         }
 
@@ -196,7 +192,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
             if (_Mode == enMode.UpdateApplication)
             {
-                LoadLocalLicensApplicationinfos(45);
+                LoadLocalLicensApplicationinfos(_LocalDrivingLicensApplicationID);
             }
 
         }

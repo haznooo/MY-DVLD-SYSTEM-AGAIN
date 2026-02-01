@@ -16,7 +16,8 @@ namespace Data_Access_Layer
     {
 
 
-        public static bool GetApplicationInfoByID(int ApplicationID, ref int ApplicantID, ref DateTime ApplicationDate,
+        public static bool GetApplicationInfoByID
+            (int ApplicationID, ref int ApplicantID, ref DateTime ApplicationDate,
            ref byte ApplicationType, ref byte ApplicationStatus, ref DateTime LastStatusDate,
            ref decimal paidFee, ref int CreatedByUserID)
         {
@@ -153,24 +154,6 @@ namespace Data_Access_Layer
             command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
 
 
-            try
-            {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null)
-                {
-                    newApplicationID = Convert.ToInt32(result);
-                }
-            }
-            catch (Exception e)
-            {
-                // Handle exception (e.g., log the error)
-                newApplicationID = -1;
-            }
-            finally
-            {
-                connection.Close();
-            }
 
             return (newApplicationID > 0);
 
