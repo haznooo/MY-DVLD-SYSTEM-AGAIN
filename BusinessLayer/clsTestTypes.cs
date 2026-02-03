@@ -16,7 +16,7 @@ namespace BusinessLayer
          enMode CurrentMode = enMode.Edit;
         public enum enTestType { vissionTest = 1, writtenTest = 2, streetTest = 3 }
 
-        clsTestTypes.enTestType TestTypeID { get; set; }
+        public clsTestTypes.enTestType TestTypeID { get; set; }
         public string TestTypeTitle;
         public string TestTypeDescription;
         public decimal TestTypeFee;

@@ -101,7 +101,7 @@ namespace Data_Access_Layer
 
         }
 
-        public static DataTable GetAllTestAppointments(int patientID)
+        public static DataTable GetAllTestAppointments()
         {
             string query = "select * from TestAppointments_View order by AppointmentDate desc ";
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
