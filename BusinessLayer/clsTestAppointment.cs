@@ -54,11 +54,11 @@ namespace BusinessLayer
 
         private bool _AddNewTestAppointment() {
             
-        return clsTestAppointmentDataAccess.addTestAppointment((int)TestType.TestTypeID, localDrivingLicensesApplicantID, AppointmentDate, paidFees, createdByUserID, isLocked);
+        return clsTestAppointmentDataAccess.addTestAppointment((int)TestType.TestType, localDrivingLicensesApplicantID, AppointmentDate, paidFees, createdByUserID, isLocked);
         }
         private bool _UpdateTestAppointment() {
         
-            return clsTestAppointmentDataAccess.updateTestAppointment(TestAppointmentID, (int)TestType.TestTypeID, localDrivingLicensesApplicantID, AppointmentDate, paidFees, createdByUserID, isLocked);
+            return clsTestAppointmentDataAccess.updateTestAppointment(TestAppointmentID, (int)TestType.TestType, localDrivingLicensesApplicantID, AppointmentDate, paidFees, createdByUserID, isLocked);
 
         }
 

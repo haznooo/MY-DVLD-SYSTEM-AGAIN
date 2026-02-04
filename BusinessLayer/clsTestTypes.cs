@@ -15,8 +15,8 @@ namespace BusinessLayer
 
          enMode CurrentMode = enMode.Edit;
         public enum enTestType { vissionTest = 1, writtenTest = 2, streetTest = 3 }
-
-        public clsTestTypes.enTestType TestTypeID { get; set; }
+        
+        public clsTestTypes.enTestType TestType { get; set; }
         public string TestTypeTitle;
         public string TestTypeDescription;
         public decimal TestTypeFee;
@@ -26,7 +26,7 @@ namespace BusinessLayer
         public clsTestTypes(clsTestTypes.enTestType TestTypeID, string newTitle,string newDescription,decimal newFees)
         {
 
-            this.TestTypeID = TestTypeID;
+            this.TestType = TestTypeID;
             this.TestTypeTitle = newTitle;
             this.TestTypeDescription = newDescription;
             this.TestTypeFee = newFees;
@@ -71,7 +71,7 @@ namespace BusinessLayer
         public bool SaveApplicationType()
         {
 
-            return clsApplicationTypesDataAccess.UpdateApplicationType((int)this.TestTypeID, this.TestTypeTitle, this.TestTypeFee);
+            return clsApplicationTypesDataAccess.UpdateApplicationType((int)this.TestType, this.TestTypeTitle, this.TestTypeFee);
 
         }
 

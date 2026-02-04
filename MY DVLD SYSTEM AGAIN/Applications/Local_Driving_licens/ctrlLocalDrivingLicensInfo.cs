@@ -21,7 +21,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
         private clsLocalDrivingLicensApplication _localDrivingLicensApp;
 
-        private int _localDrivingLicensAppID;
+        private int _localDrivingLicensAppID = 0;
         public int LocalDrivingLicensAppID
         {
             get { return _localDrivingLicensAppID; }
