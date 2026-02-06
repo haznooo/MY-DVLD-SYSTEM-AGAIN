@@ -24,11 +24,12 @@ namespace BusinessLayer
         public int TestAppointmentID { get; set; }
         public int applicantID { get; set; }
         public clsTestTypes TestType { get; set; }
+        public int TestTypeID { get; set; }
         public DateTime AppointmentDate { get; set; }
-        float paidFees { get; set; }
-        int createdByUserID;
-        int localDrivingLicensesApplicantID { get; set; }
-        bool isLocked;
+        public float paidFees { get; set; }
+        public int createdByUserID;
+        public int localDrivingLicensesApplicantID { get; set; }
+        public bool isLocked;
         public int RetakeTestApplicationID { get; set; }
         public clsApplication RetakeTestApplication { get; set; }
 

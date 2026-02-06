@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -99,11 +100,12 @@ namespace BusinessLayer
             isFound = clsLocalDrivingLicensApplicationDataAccess.GetLocalDrivingLicensApplicationInfoByID(LocalDrivingapplicationID, ref applicationID, ref licensClassID);
 
 
-                if (!isFound) { return null; }
+            if (!isFound) { return null; }
 
-                clsApplication application = clsApplication.GetApplicationInfoByID(applicationID);
+            clsApplication application = clsApplication.GetApplicationInfoByID(applicationID);
 
-           if (application == null) { return null; };
+            if (application == null) { return null; }
+            ;
 
             return new clsLocalDrivingLicensApplication(LocalDrivingapplicationID, licensClassID, application.applicationID,
                 application.applicantID, application.applicationTypeID, application.applicationDate, application.paidFee,
@@ -148,6 +150,24 @@ namespace BusinessLayer
             return clsLocalDrivingLicensApplicationDataAccess.GetAllLocalDrivingLicensApplications();
         }
 
+        public bool DoesAttendTestType(int testTypeID)
+        {
+            return clsLocalDrivingLicensApplicationDataAccess.DoesAttendTestType(this.LocalDrivingLicensApplicationID, testTypeID);
+        }
+
+        public bool DoesPassTestType(int testTypeID)
+        {
+            return clsLocalDrivingLicensApplicationDataAccess.DoesPassTestType(this.LocalDrivingLicensApplicationID, testTypeID);
+        }
+        public int TotalTrialsForTestType(int testTypeID)
+        {
+            return clsLocalDrivingLicensApplicationDataAccess.TotalTrailsPerTestType(this.LocalDrivingLicensApplicationID, testTypeID);
+        }
+
+        public bool isthereActiveScheduledTest(int testTYpe)
+        {
+            return clsLocalDrivingLicensApplicationDataAccess.isthereActiveScheduledTest(this.LocalDrivingLicensApplicationID, testTYpe);
+        }
 
 
     }

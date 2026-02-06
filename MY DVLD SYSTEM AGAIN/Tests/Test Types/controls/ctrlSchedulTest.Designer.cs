@@ -38,11 +38,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.gbTestType = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
+            this.lbDrivingClass = new System.Windows.Forms.Label();
+            this.lbFullName = new System.Windows.Forms.Label();
+            this.lbTotalTrails = new System.Windows.Forms.Label();
+            this.lbFees = new System.Windows.Forms.Label();
             this.DLAppID = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
@@ -55,12 +55,12 @@
             this.gbRetakeTest = new System.Windows.Forms.GroupBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.lbRetakeTestAppID = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lbTotalFees = new System.Windows.Forms.Label();
             this.lbRetakeTestFees = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.btnSave = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
             this.gbTestType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
@@ -167,11 +167,11 @@
             // 
             // gbTestType
             // 
-            this.gbTestType.Controls.Add(this.dateTimePicker1);
-            this.gbTestType.Controls.Add(this.label20);
-            this.gbTestType.Controls.Add(this.label19);
-            this.gbTestType.Controls.Add(this.label18);
-            this.gbTestType.Controls.Add(this.label17);
+            this.gbTestType.Controls.Add(this.dtpDate);
+            this.gbTestType.Controls.Add(this.lbDrivingClass);
+            this.gbTestType.Controls.Add(this.lbFullName);
+            this.gbTestType.Controls.Add(this.lbTotalTrails);
+            this.gbTestType.Controls.Add(this.lbFees);
             this.gbTestType.Controls.Add(this.DLAppID);
             this.gbTestType.Controls.Add(this.pictureBox3);
             this.gbTestType.Controls.Add(this.pictureBox10);
@@ -195,50 +195,50 @@
             this.gbTestType.TabStop = false;
             this.gbTestType.Text = "TestType";
             // 
-            // dateTimePicker1
+            // dtpDate
             // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(161, 459);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(248, 24);
-            this.dateTimePicker1.TabIndex = 36;
+            this.dtpDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDate.Location = new System.Drawing.Point(161, 459);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(248, 24);
+            this.dtpDate.TabIndex = 36;
             // 
-            // label20
+            // lbDrivingClass
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(156, 335);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(54, 20);
-            this.label20.TabIndex = 35;
-            this.label20.Text = "?????";
+            this.lbDrivingClass.AutoSize = true;
+            this.lbDrivingClass.Location = new System.Drawing.Point(156, 335);
+            this.lbDrivingClass.Name = "lbDrivingClass";
+            this.lbDrivingClass.Size = new System.Drawing.Size(54, 20);
+            this.lbDrivingClass.TabIndex = 35;
+            this.lbDrivingClass.Text = "?????";
             // 
-            // label19
+            // lbFullName
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(156, 372);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(54, 20);
-            this.label19.TabIndex = 34;
-            this.label19.Text = "?????";
+            this.lbFullName.AutoSize = true;
+            this.lbFullName.Location = new System.Drawing.Point(156, 372);
+            this.lbFullName.Name = "lbFullName";
+            this.lbFullName.Size = new System.Drawing.Size(54, 20);
+            this.lbFullName.TabIndex = 34;
+            this.lbFullName.Text = "?????";
             // 
-            // label18
+            // lbTotalTrails
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(156, 418);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(54, 20);
-            this.label18.TabIndex = 33;
-            this.label18.Text = "?????";
+            this.lbTotalTrails.AutoSize = true;
+            this.lbTotalTrails.Location = new System.Drawing.Point(156, 418);
+            this.lbTotalTrails.Name = "lbTotalTrails";
+            this.lbTotalTrails.Size = new System.Drawing.Size(54, 20);
+            this.lbTotalTrails.TabIndex = 33;
+            this.lbTotalTrails.Text = "?????";
             // 
-            // label17
+            // lbFees
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(156, 502);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(54, 20);
-            this.label17.TabIndex = 32;
-            this.label17.Text = "?????";
+            this.lbFees.AutoSize = true;
+            this.lbFees.Location = new System.Drawing.Point(156, 502);
+            this.lbFees.Name = "lbFees";
+            this.lbFees.Size = new System.Drawing.Size(54, 20);
+            this.lbFees.TabIndex = 32;
+            this.lbFees.Text = "?????";
             // 
             // DLAppID
             // 
@@ -316,9 +316,11 @@
             // 
             // pbTestType
             // 
+            this.pbTestType.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.street_test;
             this.pbTestType.Location = new System.Drawing.Point(179, 12);
             this.pbTestType.Name = "pbTestType";
             this.pbTestType.Size = new System.Drawing.Size(230, 217);
+            this.pbTestType.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTestType.TabIndex = 13;
             this.pbTestType.TabStop = false;
             // 
@@ -329,7 +331,7 @@
             this.gbRetakeTest.Controls.Add(this.label8);
             this.gbRetakeTest.Controls.Add(this.pictureBox5);
             this.gbRetakeTest.Controls.Add(this.lbRetakeTestAppID);
-            this.gbRetakeTest.Controls.Add(this.label15);
+            this.gbRetakeTest.Controls.Add(this.lbTotalFees);
             this.gbRetakeTest.Controls.Add(this.lbRetakeTestFees);
             this.gbRetakeTest.Controls.Add(this.pictureBox6);
             this.gbRetakeTest.Controls.Add(this.pictureBox4);
@@ -359,14 +361,14 @@
             this.lbRetakeTestAppID.TabIndex = 29;
             this.lbRetakeTestAppID.Text = "?????";
             // 
-            // label15
+            // lbTotalFees
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(455, 38);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(48, 18);
-            this.label15.TabIndex = 30;
-            this.label15.Text = "?????";
+            this.lbTotalFees.AutoSize = true;
+            this.lbTotalFees.Location = new System.Drawing.Point(455, 38);
+            this.lbTotalFees.Name = "lbTotalFees";
+            this.lbTotalFees.Size = new System.Drawing.Size(48, 18);
+            this.lbTotalFees.TabIndex = 30;
+            this.lbTotalFees.Text = "?????";
             // 
             // lbRetakeTestFees
             // 
@@ -395,15 +397,6 @@
             this.pictureBox4.TabIndex = 17;
             this.pictureBox4.TabStop = false;
             // 
-            // btnSave
-            // 
-            this.btnSave.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Save_32;
-            this.btnSave.Location = new System.Drawing.Point(511, 655);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(50, 38);
-            this.btnSave.TabIndex = 15;
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -413,6 +406,16 @@
             this.label3.Size = new System.Drawing.Size(42, 20);
             this.label3.TabIndex = 16;
             this.label3.Text = "save";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Save_32;
+            this.btnSave.Location = new System.Drawing.Point(511, 655);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(50, 38);
+            this.btnSave.TabIndex = 15;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // ctrlSchedulTest
             // 
@@ -453,7 +456,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.GroupBox gbTestType;
         private System.Windows.Forms.PictureBox pbTestType;
         private System.Windows.Forms.GroupBox gbRetakeTest;
         private System.Windows.Forms.PictureBox pictureBox10;
@@ -467,15 +469,16 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label DLAppID;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lbDrivingClass;
+        private System.Windows.Forms.Label lbFullName;
+        private System.Windows.Forms.Label lbTotalTrails;
+        private System.Windows.Forms.Label lbFees;
+        private System.Windows.Forms.Label lbTotalFees;
         private System.Windows.Forms.Label lbRetakeTestAppID;
         private System.Windows.Forms.Label lbRetakeTestFees;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.GroupBox gbTestType;
     }
 }
