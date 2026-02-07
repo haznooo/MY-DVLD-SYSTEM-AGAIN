@@ -1,0 +1,112 @@
+﻿using Data_Access_Layer;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BusinessLayer
+{
+    public class clsTest
+    {
+
+        public enum enMode { Add, Update }
+        public enMode Mode { get; set; }
+        public int TestID { get; set; }
+        public int TestAppointmentID { get; set; }
+        public bool TestResults { get; set; }
+        public string Notes { get; set; }
+        public int CreatedByUserID { get; set; }
+        clsTestAppointment testAppointmentInfo = new clsTestAppointment();
+
+        clsTest()
+        {
+            TestID = -1;
+            TestAppointmentID = -1;
+            TestResults = false;
+            Notes = "";
+            CreatedByUserID = -1;
+            Mode = enMode.Add;
+
+        }
+        clsTest(int testID, int testAppointment, bool TestResuls, string notes, int createdByUserID)
+        {
+            TestID = testID;
+            TestAppointmentID = testAppointment;
+            TestResults = TestResuls;
+            Notes = notes;
+            CreatedByUserID = createdByUserID;
+            testAppointmentInfo = clsTestAppointment.Find(testAppointment);
+            Mode = enMode.Update;
+
+        }
+
+        private bool _addNewTest()
+        {
+            int newTestID = -1, TestAppointment = -1, createdByUserID = -1;
+            bool TestResults = false;
+            string Notes = "";
+            return testDataAccess.addTest(TestAppointment, TestResults, Notes, createdByUserID, out newTestID);
+        }
+        private bool _updateTest()
+        {
+            return testDataAccess.UpdateTest(TestID, TestAppointmentID, TestResults, Notes, CreatedByUserID);
+        }
+        public bool Save()
+        {
+            if (Mode == enMode.Add)
+            {
+                return _addNewTest();
+            }
+            else if (Mode == enMode.Update)
+            {
+                return _updateTest();
+            }
+            return false;
+
+
+        }
+
+        public DataTable GetAllTest()
+        {
+
+            return testDataAccess.GetAllTests();
+
+
+        }
+
+        public int GetPassedTestsCount(int LocalDrivingLicenseApplicationID)
+        {
+            return testDataAccess.GetPassedTestsCount(LocalDrivingLicenseApplicationID);
+        }
+
+        public bool DoesPassedAllTest(int LocalDrivingLicenseApplicationID) {
+
+            return testDataAccess.GetPassedTestsCount(LocalDrivingLicenseApplicationID) == 3;
+
+
+        }
+
+           public static clsTest Find(int id)
+            {
+            int TestID = -1, TestAppointment = -1, createdByUserID = -1;
+            bool TestResults = false;
+            string Notes = "";
+
+            if (testDataAccess.GetTestInfoByID(TestID,ref TestAppointment,ref TestResults,ref Notes,ref createdByUserID))
+                {
+                return new clsTest(TestID, TestAppointment, TestResults, Notes, createdByUserID);
+               }
+
+            return null;
+
+        }
+                
+
+
+
+        }
+
+
+}
