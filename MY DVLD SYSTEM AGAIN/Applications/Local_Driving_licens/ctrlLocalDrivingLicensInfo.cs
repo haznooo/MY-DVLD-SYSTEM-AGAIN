@@ -74,7 +74,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             lbStatusDate.Text = _localDrivingLicensApp.lastStatusDate.ToShortDateString();
             lbFees.Text = _localDrivingLicensApp.paidFee.ToString();
             lbStatus.Text = _localDrivingLicensApp.ApplicationStatusText.ToString();
-            lbType.Text = _localDrivingLicensApp.ApplicationType.ToString();
+            lbType.Text = _localDrivingLicensApp.ApplicationTypeInfo.ToString();
 
         }
 

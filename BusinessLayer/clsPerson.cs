@@ -90,7 +90,7 @@ namespace BusinessLayer
 
         }
             
-            private bool _AddNewPerson()
+         private bool _AddNewPerson()
         {
 
             this.PersonID = clsPersonDataAccess.AddNewPerson(this.NationalNUmber,this.FirstName,this.SecondName,this.ThirdName,this.LastName,

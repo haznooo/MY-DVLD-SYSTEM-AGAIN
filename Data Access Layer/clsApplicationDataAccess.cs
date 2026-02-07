@@ -55,7 +55,6 @@ namespace Data_Access_Layer
                     paidFee = (decimal)reader["PaidFees"];
                     CreatedByUserID = (int)reader["CreatedByUserID"];
 
-
                 }
 
 
@@ -320,7 +319,7 @@ namespace Data_Access_Layer
             return ActiveApplicationID;
         }
 
-        public static bool UpdateApplicationStatusByID(int applicationID, byte ApplicationStatus)
+        public static bool UpdateApplicationStatus(int applicationID, byte ApplicationStatus)
         {
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -355,9 +354,42 @@ namespace Data_Access_Layer
 
         }
 
-        public static int GetActiveApplicationIDOrLicenseClass(int personID, int applicationTypeID, int licenseClassID)
+        public static int GetActiveApplicationIDForLicenseClass(int personID, int applicationTypeID, int licenseClassID)
         {
-            return 0;
+            string query = @"SELECT  Applications.ApplicationID
+                         FROM Applications INNER JOIN
+                         LocalDrivingLicenseApplications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID INNER JOIN
+                         LicenseClasses ON LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID
+						 where LicenseClasses.LicenseClassID = @LicenseClasses and ApplicantPersonID = @ApplicantPersonID 
+                         and ApplicationTypeID = @ApplicationTypeID and ApplicationStatus = 1;";
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ApplicantPersonID", personID);
+            command.Parameters.AddWithValue("@ApplicationTypeID", applicationTypeID);
+            command.Parameters.AddWithValue("@LicenseClasses", licenseClassID);
+            int ActiveApplicationID = -1;
+            try 
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    ActiveApplicationID =  Convert.ToInt32(result);
+                }
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+                return -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return ActiveApplicationID;
+
+
         }
     }
 }

@@ -41,7 +41,7 @@ namespace BusinessLayer
         {
 
             get { return clsPerson.GetPersonInfoByID(applicantID).FullName; }
-            set { }
+           private set { }
 
         }
         public DateTime applicationDate { get; set; }
@@ -67,8 +67,7 @@ namespace BusinessLayer
         public DateTime lastStatusDate { get; set; }
         public decimal paidFee { get; set; }
         public int createdByUserID { get; set; }
-
-        public clsApplicationTypes ApplicationType { get; set; }
+        public clsApplicationTypes ApplicationTypeInfo { get; set; }
         public clsUser CreatedByUser
         {
             get
@@ -78,7 +77,7 @@ namespace BusinessLayer
             set { }
         }
 
-        public clsPerson ApplicantInfo { get;set; }
+        public clsPerson ApplicantInfo { get; }
         
         public clsApplication()
         {
@@ -91,26 +90,36 @@ namespace BusinessLayer
             lastStatusDate = DateTime.MinValue;
             paidFee = 0;
             createdByUserID = -1;
+            ApplicationTypeInfo = null;
 
             CurrentMode = enMode.AddNew;
         }
 
-        public clsApplication(int applicationID, int applicantID, DateTime applicationDate, byte applicationType,
+        private clsApplication(int applicationID, int applicantID, DateTime applicationDate, byte applicationType,
             byte applicationStatus, DateTime lastStatusDate, decimal paidFee, int createdByUserID)
         {
 
             this.applicationID = applicationID;
             this.applicantID = applicantID;
-            this.applicantFullName = clsPerson.GetPersonInfoByID(applicantID).FullName;
             this.applicationDate = applicationDate;
-            this.ApplicationType = clsApplicationTypes.GetApplicationTypeByID(applicationType);
             this.applicationTypeID = applicationType;
             this.applicationStatus = (enApplicationStatus)applicationStatus;
             this.lastStatusDate = lastStatusDate;
             this.paidFee = paidFee;
             this.createdByUserID = createdByUserID;
+
             this.CreatedByUser = clsUser.GetUserByID(createdByUserID);
             this.ApplicantInfo = clsPerson.GetPersonInfoByID(applicantID);
+            this.ApplicationTypeInfo = clsApplicationTypes.GetApplicationTypeByID(applicationType);
+
+            if (this.ApplicantInfo == null || CreatedByUser == null || ApplicationTypeInfo == null)
+            {
+                throw new Exception("failed to load data for clsApplication initialization");
+               
+            }
+
+          this.applicantFullName = ApplicantInfo.FullName; 
+       
             CurrentMode = enMode.Update;
         }
 
@@ -140,38 +149,16 @@ namespace BusinessLayer
         public bool Cancel()
         {
 
-            return clsApplicationDataAccess.UpdateApplicationStatusByID(applicationID, (byte)enApplicationStatus.canceled);
+            return clsApplicationDataAccess.UpdateApplicationStatus(applicationID, (byte)enApplicationStatus.canceled);
 
         }
 
         public bool SetComplete()
         {
-            return clsApplicationDataAccess.UpdateApplicationStatusByID(applicationID, (byte)enApplicationStatus.complete);
+            return clsApplicationDataAccess.UpdateApplicationStatus(applicationID, (byte)enApplicationStatus.complete);
 
         }
-
-        public static bool GetApplicationInfoByID(int ApplicationID, ref int ApplicantID, ref DateTime ApplicationDate,
-           ref byte ApplicationType, ref byte ApplicationStatus, ref DateTime LastStatusDate,
-           ref decimal paidFee, ref int CreatedByUserID)
-        {
-
-            if (clsApplicationDataAccess.GetApplicationInfoByID(ApplicationID, ref ApplicantID, ref ApplicationDate,
-                  ref ApplicationType, ref ApplicationStatus, ref LastStatusDate, ref paidFee, ref CreatedByUserID))
-
-            {
-                return true;
-            }
-
-            else
-            {
-                return false;
-
-
-            }
-
-        }
-
-        public static clsApplication GetApplicationInfoByID(int ApplicationID)
+        public static clsApplication GetBaseApplicationInfoByID(int ApplicationID)
         {
             int ApplicantID = -1;
             DateTime ApplicationDate = DateTime.MinValue;
@@ -193,11 +180,7 @@ namespace BusinessLayer
                 return null;
             }
         }
-      
-
-        
-
-
+     
         public bool SaveApplication()
         {
             if (CurrentMode == enMode.AddNew)
@@ -247,9 +230,9 @@ namespace BusinessLayer
 
         }
 
-        public static bool DoesPersonHaveActiveApplication(int personID,byte ApplicationType)
+        public bool DoesPersonHaveActiveApplication(byte ApplicationType)
         {
-            return clsApplicationDataAccess.DoesPersonHaveActiveApplication(personID,ApplicationType);
+            return clsApplicationDataAccess.DoesPersonHaveActiveApplication(this.applicantID,ApplicationType);
         }
 
         public static int GetActiveApplicationID(int personID, byte ApplicationType)
@@ -257,6 +240,9 @@ namespace BusinessLayer
             return clsApplicationDataAccess.GetActiveApplicationID(personID, ApplicationType);
         }
 
+        public static int GetActiveApplicationIDForLicensClass(int PersonID,byte ApplicationType,int LicenseClassID) { 
+        return clsApplicationDataAccess.GetActiveApplicationIDForLicenseClass(PersonID, ApplicationType, LicenseClassID);
+        }
 
     }
 }

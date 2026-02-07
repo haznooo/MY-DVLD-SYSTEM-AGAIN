@@ -16,6 +16,7 @@ namespace BusinessLayer
         public int ApplicationID { get; set; }
         public int LocalDrivingLicensApplicationID { get; set; }
         public int LicensClassId { get; set; }
+        clsLicenceClasses LicensClassInfo = null;
         public string PersonFullName
         {
 
@@ -33,7 +34,7 @@ namespace BusinessLayer
 
         clsLocalDrivingLicensApplication(int LocalDrivingLicensApplicationID, int LicensClsasID, int applicationID, int applicantID,
            byte applicationTypeID, DateTime applicationDate, decimal paidFee, int createdByUserID, enApplicationStatus applicationStatus,
-           DateTime lastStatusDate, int licensClassID)
+           DateTime lastStatusDate)
         {
 
             this.LocalDrivingLicensApplicationID = LocalDrivingLicensApplicationID;
@@ -45,9 +46,8 @@ namespace BusinessLayer
             this.applicationStatus = applicationStatus;
             this.lastStatusDate = lastStatusDate;
             this.paidFee = paidFee;
-            this.createdByUserID = createdByUserID;
-            this.LicensClassId = licensClassID;
-            // this.LicensClassInfo = ;
+            this.createdByUserID = createdByUserID;  
+             this.LicensClassInfo = clsLicenceClasses.Find(LicensClsasID);
 
             _mode = enMode.Update;
         }
@@ -102,14 +102,14 @@ namespace BusinessLayer
 
             if (!isFound) { return null; }
 
-            clsApplication application = clsApplication.GetApplicationInfoByID(applicationID);
+            clsApplication application = clsApplication.GetBaseApplicationInfoByID(applicationID);
 
             if (application == null) { return null; }
             ;
 
             return new clsLocalDrivingLicensApplication(LocalDrivingapplicationID, licensClassID, application.applicationID,
                 application.applicantID, application.applicationTypeID, application.applicationDate, application.paidFee,
-                application.createdByUserID, application.applicationStatus, application.lastStatusDate, licensClassID);
+                application.createdByUserID, application.applicationStatus, application.lastStatusDate);
 
 
         }
@@ -125,14 +125,14 @@ namespace BusinessLayer
 
             if (!isFound) { return null; }
 
-            clsApplication application = clsApplication.GetApplicationInfoByID(applicationID);
+            clsApplication application = clsApplication.GetBaseApplicationInfoByID(applicationID);
 
             if (application == null) { return null; }
             ;
 
             return new clsLocalDrivingLicensApplication(localDrivingLicensApplicationID, licensClassID, application.applicationID,
                 application.applicantID, application.applicationTypeID, application.applicationDate, application.paidFee,
-                application.createdByUserID, application.applicationStatus, application.lastStatusDate, licensClassID);
+                application.createdByUserID, application.applicationStatus, application.lastStatusDate);
 
 
             return null;

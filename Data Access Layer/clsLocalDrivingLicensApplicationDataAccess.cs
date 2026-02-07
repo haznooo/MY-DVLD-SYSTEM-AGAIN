@@ -53,7 +53,6 @@ namespace Data_Access_Layer
 
             return isFound; 
         }
-
         public static bool GetLocalDrivingLicensApplicationInfoByApplicationID(int ApplicationID, ref int LocalDrivingLicenseApplicationID,
             ref int LicenseClassID)
         {
@@ -125,7 +124,6 @@ namespace Data_Access_Layer
 
             return insertedId;
         }
-
         public static bool UpdateLocalDrivingLicensApplicationByID(int LocalDrivingLicenseApplicationID,
             int ApplicationID, int LicenseClassID)
         {
@@ -155,7 +153,6 @@ namespace Data_Access_Layer
             }
             return (rowsAffected > 0); 
         }
-
         public static bool DeleteLocalDrivingLicensApplication(int LocalDrivingLicenseApplicationID)
         {
           
@@ -185,16 +182,15 @@ namespace Data_Access_Layer
 
         public static DataTable GetAllLocalDrivingLicensApplications()
         {   
-            throw new NotImplementedException("Data access logic for Local Driving License Applications is still under development");
+    
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            //the query for this method is still not ready to be used
-            // this query returnes all records from the table LocalDrivingLicenseApplications
-            string query = "";
+            string query = "select * from LocalDrivingLicenseApplications_View";
 
             SqlCommand command = new SqlCommand(query, connection);
 
             DataTable localDrivingLicensApplications = new DataTable();
+            localDrivingLicensApplications = null;
 
             try
             {
@@ -209,7 +205,7 @@ namespace Data_Access_Layer
             }
             catch (Exception ex)
             {
-             //  localDrivingLicensApplications = null;
+            
 
             }
             finally
@@ -220,7 +216,6 @@ namespace Data_Access_Layer
             return localDrivingLicensApplications;
          
         }
-
 
         public static bool DoesPassTestType(int localDrivingLicensApplicationID, int testTYpe) {
 
@@ -302,7 +297,6 @@ namespace Data_Access_Layer
             }
             return isfound; 
         }
-
         public static int TotalTrailsPerTestType(int localDrivingLicensApplicationID, int testTYpe) {
 
             string query = @"	 SELECT count(*)
@@ -337,7 +331,6 @@ namespace Data_Access_Layer
 
 
         }
-
         public static bool isthereActiveScheduledTest(int localDrivingLicensApplicationID, int testTYpe)
         {
             string query = @" SELECT top 1 Found=1
