@@ -35,7 +35,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
         private void _LoadPersonInfosToForm(int PersonID)
         {
 
-            _Person = clsPerson.GetPersonByID(PersonID);
+            _Person = clsPerson.GetPersonInfoByID(PersonID);
 
             if (_Person == null)
             {
@@ -44,21 +44,21 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
                 return;
             }
 
-            txtNationalNumber.Text = _Person._NationalNUmber;
-            txtFirstName.Text = _Person._FirstName;
-            txtSecondName.Text = _Person._SecondName;
-            txtThirdName.Text = _Person._ThirdName;
-            txtLastName.Text = _Person._LastName;
-            txtAdress.Text = _Person._Address;
-            txtEmail.Text = _Person._Email;
-            txtPhone.Text = _Person._Phone;
-            dtpDateOfBirth.Value = _Person._DateOfBirth;
-            txtNationalNumber.Text = _Person._NationalNUmber;
-            cbCountries.SelectedIndex = cbCountries.FindString(_Person._CountryInfo._CountryName);
+            txtNationalNumber.Text = _Person.NationalNUmber;
+            txtFirstName.Text = _Person.FirstName;
+            txtSecondName.Text = _Person.SecondName;
+            txtThirdName.Text = _Person.ThirdName;
+            txtLastName.Text = _Person.LastName;
+            txtAdress.Text = _Person.Address;
+            txtEmail.Text = _Person.Email;
+            txtPhone.Text = _Person.Phone;
+            dtpDateOfBirth.Value = _Person.DateOfBirth;
+            txtNationalNumber.Text = _Person.NationalNUmber;
+            cbCountries.SelectedIndex = cbCountries.FindString(_Person.CountryInfo._CountryName);
 
-            bool isNoImage = (string.IsNullOrEmpty(_Person._ImagePath));
+            bool isNoImage = (string.IsNullOrEmpty(_Person.ImagePath));
 
-            if (_Person._Gender == 0)
+            if (_Person.Gender == 0)
             {
                 rdMale.Checked = true;
                 rdFemale.Checked = false;
@@ -67,7 +67,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
                 {
                     pbPersonImage.Image = Properties.Resources.Male_512;
                     
-                    _Person._ImagePath = null;
+                    _Person.ImagePath = null;
                 }
 
             }
@@ -79,14 +79,14 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
                 if (isNoImage)
                 {
                     pbPersonImage.Image = Properties.Resources.Female_512;
-                    _Person._ImagePath = null;
+                    _Person.ImagePath = null;
                 }
             }
 
             if (!isNoImage)
             {
 
-                pbPersonImage.ImageLocation = _Person._ImagePath;
+                pbPersonImage.ImageLocation = _Person.ImagePath;
 
                 llRemoveImage.Visible = (pbPersonImage.ImageLocation != null);
 
@@ -97,20 +97,20 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
         private void _LoadFormInfosToPerson()
         {
 
-            _Person._NationalNUmber = txtNationalNumber.Text;
-            _Person._FirstName = txtFirstName.Text;
-            _Person._SecondName = txtSecondName.Text;
-            _Person._ThirdName = txtThirdName.Text;
-            _Person._LastName = txtLastName.Text;
-            _Person._Email = txtEmail.Text;
-            _Person._Phone = txtPhone.Text;
-            _Person._Address = txtAdress.Text;
-            _Person._DateOfBirth = dtpDateOfBirth.Value;
+            _Person.NationalNUmber = txtNationalNumber.Text;
+            _Person.FirstName = txtFirstName.Text;
+            _Person.SecondName = txtSecondName.Text;
+            _Person.ThirdName = txtThirdName.Text;
+            _Person.LastName = txtLastName.Text;
+            _Person.Email = txtEmail.Text;
+            _Person.Phone = txtPhone.Text;
+            _Person.Address = txtAdress.Text;
+            _Person.DateOfBirth = dtpDateOfBirth.Value;
             // combo box starts with the index 0 but in the database everything starts with the index 1
-            _Person._CountryID = cbCountries.SelectedIndex + 1;
+            _Person.CountryID = cbCountries.SelectedIndex + 1;
 
-            if (rdMale.Checked == true) { _Person._Gender = 0; }
-            else { _Person._Gender = 1; }
+            if (rdMale.Checked == true) { _Person.Gender = 0; }
+            else { _Person.Gender = 1; }
 
 
 
@@ -207,7 +207,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
             // if person's image path and the picture box are the same then this means that there is not changes happend to
             //the picture box and it is loading rn the path that the person have when loaded from the database
 
-            if (pbPersonImage.ImageLocation != _Person._ImagePath)
+            if (pbPersonImage.ImageLocation != _Person.ImagePath)
             {
 
                 // if the user changed the image of the picture box then we have to update the image of the person (the path in database and the actuall place we store images in  )
@@ -215,10 +215,10 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
                 if (pbPersonImage.ImageLocation != null)
                 {
 
-                    if (!string.IsNullOrEmpty(_Person._ImagePath))
+                    if (!string.IsNullOrEmpty(_Person.ImagePath))
                     {
-                        File.Delete(_Person._ImagePath);
-                        _Person._ImagePath = null;
+                        File.Delete(_Person.ImagePath);
+                        _Person.ImagePath = null;
                     }
 
 
@@ -227,7 +227,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
                     if (clsUtil.CopyImageToProjectImagesFolder(ref sourceFile))
                     {
 
-                        _Person._ImagePath = sourceFile;
+                        _Person.ImagePath = sourceFile;
                         pbPersonImage.ImageLocation = sourceFile;
 
 
@@ -238,10 +238,10 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
                     // if there is no image in the picture box then we just check
                     // if there is an image in the database and we remove it  and remove it from the folder
 
-                    if (!string.IsNullOrEmpty(_Person._ImagePath))
+                    if (!string.IsNullOrEmpty(_Person.ImagePath))
                     {
-                        File.Delete(_Person._ImagePath);
-                        _Person._ImagePath = null;
+                        File.Delete(_Person.ImagePath);
+                        _Person.ImagePath = null;
 
                     }
 
@@ -275,13 +275,13 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
             if (_Person.Save())
             {
 
-                DataBack?.Invoke(this, _Person._PersonID);
+                DataBack?.Invoke(this, _Person.PersonID);
 
                 MessageBox.Show("Person Saved succesfully", "confirmed", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
                 _FormMode = enMode.update;
-                lbCurrentMode.Text = $"Update the person with the ID [ {_Person._PersonID} ] ";
+                lbCurrentMode.Text = $"Update the person with the ID [ {_Person.PersonID} ] ";
 
 
             }

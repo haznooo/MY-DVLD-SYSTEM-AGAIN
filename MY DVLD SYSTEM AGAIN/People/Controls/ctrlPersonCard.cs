@@ -69,25 +69,25 @@ namespace MY_DVLD_SYSTEM.People.Controls
 
             if (Person != null)
             {
-                lbPersonID.Text = Person._PersonID.ToString();
+                lbPersonID.Text = Person.PersonID.ToString();
 
-                lbAddress.Text = Person._Address;
+                lbAddress.Text = Person.Address;
 
-                string FullName = Person._FirstName + " " + Person._SecondName + " " + Person._ThirdName + " " + Person._LastName;
+                string FullName = Person.FirstName + " " + Person.SecondName + " " + Person.ThirdName + " " + Person.LastName;
                 lbFullName.Text = FullName;
 
-                lbDateOfBirth.Text = Person._DateOfBirth.ToString("yyyy-MM-dd");
+                lbDateOfBirth.Text = Person.DateOfBirth.ToString("yyyy-MM-dd");
 
-                lbEmail.Text = string.IsNullOrEmpty(Person._Email) ? "No Email Yet" : Person._Email;
+                lbEmail.Text = string.IsNullOrEmpty(Person.Email) ? "No Email Yet" : Person.Email;
 
-                lbPhoneNumber.Text = Person._Phone.ToString();
+                lbPhoneNumber.Text = Person.Phone.ToString();
 
-                lbNationalNumber.Text = Person._NationalNUmber;
+                lbNationalNumber.Text = Person.NationalNUmber;
 
-                lbCountry.Text = Person._CountryInfo != null ? Person._CountryInfo._CountryName : "Erro Country";
+                lbCountry.Text = Person.CountryInfo != null ? Person.CountryInfo._CountryName : "Erro Country";
 
 
-                if (Person._Gender == 0)
+                if (Person.Gender == 0)
                 {
                     lbGender.Text = "Male";
                 }
@@ -98,24 +98,24 @@ namespace MY_DVLD_SYSTEM.People.Controls
                 }
 
 
-                bool hasNotImage = string.IsNullOrEmpty(Person._ImagePath);
+                bool hasNotImage = string.IsNullOrEmpty(Person.ImagePath);
 
-                if (Person._Gender == 0 && hasNotImage)
+                if (Person.Gender == 0 && hasNotImage)
                 {
 
                     pbPersonImage.Image = Resources.Male_512;
 
                 }
-                else if (Person._Gender == 1 && hasNotImage)
+                else if (Person.Gender == 1 && hasNotImage)
                 {
 
                     pbPersonImage.Image = Resources.Female_512;
-                    Person._ImagePath = null;
+                    Person.ImagePath = null;
                 }
                 else
                 {
 
-                    pbPersonImage.ImageLocation = Person._ImagePath;
+                    pbPersonImage.ImageLocation = Person.ImagePath;
 
                 }
 
@@ -139,12 +139,12 @@ namespace MY_DVLD_SYSTEM.People.Controls
             }
             ResetControl();
             _PersonID = personID;
-            _Person = clsPerson.GetPersonByID(personID);
+            _Person = clsPerson.GetPersonInfoByID(personID);
 
 
             if (_Person != null)
             {
-                _PersonID = _Person._PersonID;
+                _PersonID = _Person.PersonID;
                 _FillPersonInfo(_Person);
             }
 
@@ -168,12 +168,12 @@ namespace MY_DVLD_SYSTEM.People.Controls
             }
             ResetControl();
 
-            _Person = clsPerson.GetPersonByNationalNumber(NationalNumber);
+            _Person = clsPerson.GetPersonInfoByNationalNumber(NationalNumber);
 
 
             if (_Person != null)
             {
-                _PersonID = _Person._PersonID;
+                _PersonID = _Person.PersonID;
                 _FillPersonInfo(_Person);
             }
 

@@ -28,27 +28,22 @@ namespace MY_DVLD_SYSTEM_AGAIN
         }
 
     
-
         private void managePeopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             ManagePeopleMenu frm = new ManagePeopleMenu();
             frm.ShowDialog();
         }
-
-
         private void manageUsersToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
            ManageUsersMenu frm = new ManageUsersMenu();
             frm.ShowDialog();
         }
-
         private void applicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
-
         private void currentInfosToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -56,21 +51,17 @@ namespace MY_DVLD_SYSTEM_AGAIN
             frm.ShowDialog();
 
         }
-
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
            ChangePasswordMenu frm = new ChangePasswordMenu(clsGlobal.CurrentUser.UserID);
             frm.ShowDialog();
         }
-
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             clsGlobal.CurrentUser = null;
             _loginMenu.Show();
            this.Close();
         }
-
-      
         private void applicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -78,23 +69,22 @@ namespace MY_DVLD_SYSTEM_AGAIN
             frm.ShowDialog();
 
         }
-
         private void testTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TestTypesMenu frm = new TestTypesMenu();
             frm.ShowDialog();
         }
-
         private void localLicensToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddUpdateLocalLicensApplication frm = new AddUpdateLocalLicensApplication();
             frm.ShowDialog();
         }
-
         private void localLicenseAppllicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ManageLocalDrivingLicenses frm = new ManageLocalDrivingLicenses();
             frm.ShowDialog();
         }
+
+   
     }
 }

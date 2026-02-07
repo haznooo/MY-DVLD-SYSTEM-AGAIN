@@ -19,7 +19,7 @@ namespace BusinessLayer
         public string PersonFullName
         {
 
-            get { return base.ApplicantInfo._FullName; }
+            get { return base.ApplicantInfo.FullName; }
         }
 
         public clsLocalDrivingLicensApplication()

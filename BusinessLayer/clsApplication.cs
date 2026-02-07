@@ -40,7 +40,7 @@ namespace BusinessLayer
         public string applicantFullName
         {
 
-            get { return clsPerson.GetPersonByID(applicantID)._FullName; }
+            get { return clsPerson.GetPersonInfoByID(applicantID).FullName; }
             set { }
 
         }
@@ -101,7 +101,7 @@ namespace BusinessLayer
 
             this.applicationID = applicationID;
             this.applicantID = applicantID;
-            this.applicantFullName = clsPerson.GetPersonByID(applicantID)._FullName;
+            this.applicantFullName = clsPerson.GetPersonInfoByID(applicantID).FullName;
             this.applicationDate = applicationDate;
             this.ApplicationType = clsApplicationTypes.GetApplicationTypeByID(applicationType);
             this.applicationTypeID = applicationType;
@@ -110,7 +110,7 @@ namespace BusinessLayer
             this.paidFee = paidFee;
             this.createdByUserID = createdByUserID;
             this.CreatedByUser = clsUser.GetUserByID(createdByUserID);
-            this.ApplicantInfo = clsPerson.GetPersonByID(applicantID);
+            this.ApplicantInfo = clsPerson.GetPersonInfoByID(applicantID);
             CurrentMode = enMode.Update;
         }
 

@@ -45,7 +45,7 @@ namespace BusinessLayer
             this.UserName = userName;
             this.Password = Password;
             this.isActive = isActive;
-            PersonInfo = clsPerson.GetPersonByID(PersonID);
+            PersonInfo = clsPerson.GetPersonInfoByID(PersonID);
    
             _Mode = enMode.Update;
 
