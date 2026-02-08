@@ -62,9 +62,9 @@
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.llLicensClass = new System.Windows.Forms.LinkLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.llPersonInfo = new System.Windows.Forms.LinkLabel();
-            this.llLicensClass = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -383,6 +383,7 @@
             // 
             // pictureBox10
             // 
+            this.pictureBox10.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.PassedTests_32;
             this.pictureBox10.Location = new System.Drawing.Point(122, 61);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(30, 29);
@@ -417,6 +418,18 @@
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "application basic info";
+            // 
+            // llLicensClass
+            // 
+            this.llLicensClass.AutoSize = true;
+            this.llLicensClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llLicensClass.Location = new System.Drawing.Point(311, 70);
+            this.llLicensClass.Name = "llLicensClass";
+            this.llLicensClass.Size = new System.Drawing.Size(95, 20);
+            this.llLicensClass.TabIndex = 40;
+            this.llLicensClass.TabStop = true;
+            this.llLicensClass.Text = "Licnes class";
+            this.llLicensClass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llLicensClass_LinkClicked);
             // 
             // groupBox2
             // 
@@ -459,23 +472,11 @@
             this.llPersonInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llPersonInfo.Location = new System.Drawing.Point(400, 200);
             this.llPersonInfo.Name = "llPersonInfo";
-            this.llPersonInfo.Size = new System.Drawing.Size(88, 20);
+            this.llPersonInfo.Size = new System.Drawing.Size(122, 20);
             this.llPersonInfo.TabIndex = 38;
             this.llPersonInfo.TabStop = true;
-            this.llPersonInfo.Text = "person info";
+            this.llPersonInfo.Text = "view person info";
             this.llPersonInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llPersonInfo_LinkClicked);
-            // 
-            // llLicensClass
-            // 
-            this.llLicensClass.AutoSize = true;
-            this.llLicensClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llLicensClass.Location = new System.Drawing.Point(311, 70);
-            this.llLicensClass.Name = "llLicensClass";
-            this.llLicensClass.Size = new System.Drawing.Size(95, 20);
-            this.llLicensClass.TabIndex = 40;
-            this.llLicensClass.TabStop = true;
-            this.llLicensClass.Text = "Licnes class";
-            this.llLicensClass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llLicensClass_LinkClicked);
             // 
             // ctrlLocalDrivingLicensInfo
             // 
@@ -484,7 +485,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "ctrlLocalDrivingLicensInfo";
-            this.Size = new System.Drawing.Size(642, 383);
+            this.Size = new System.Drawing.Size(620, 374);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();

@@ -26,11 +26,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         {
             get { return _localDrivingLicensAppID; }
         }
-        public void loadApplicationInfoByLocalDrivingAppID(int localDrivingAppID)
+        private int  LicenseID = -1;
+        public void loadApplicationInfoByLocalDrivingLicenseAppID(int localDrivingAppID)
         {
-
-            MessageBox.Show("Loading Local Driving License Application Info is not finished");
-            return;
 
             _localDrivingLicensApp = clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(localDrivingAppID);
 
@@ -41,7 +39,22 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
                 return;
             }
 
-            _FillLocalDrivingLicensInfoToControl();
+                  _FillLocalDrivingLicensInfo();
+        }
+        public void LoaddApplicationInfoByApplicationAppID(int applicationID) 
+        {
+            _localDrivingLicensApp = clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByApplicationID(applicationID);  
+
+               if (_localDrivingLicensApp == null)
+            {
+                _resetControl();
+                MessageBox.Show("Local Driving License Application not found.");
+                return;
+            }
+
+            _FillLocalDrivingLicensInfo();
+
+
         }
         private void _resetControl()
         {
@@ -61,11 +74,14 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
         }
 
-        private void _FillLocalDrivingLicensInfoToControl()
+        private void _FillLocalDrivingLicensInfo()
         {
             lbDLappID.Text = _localDrivingLicensApp.LocalDrivingLicensApplicationID.ToString();
-            lbLicensClass.Text = "not implemented yet";
+            lbLicensClass.Text = clsLicenceClasses.Find(_localDrivingLicensApp.LicensClassId).ClassName;
             lbPassedTests.Text = "not implemented yet";
+
+            if (LicenseID == -1)
+            llLicensClass.Enabled = false;
 
             lbAppID.Text = _localDrivingLicensApp.applicantID.ToString();
             lbApplicantName.Text = _localDrivingLicensApp.applicantFullName;
@@ -88,6 +104,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         {
             MessageBox.Show("Viewing License Class details is not implemented yet");
         }
+
+       
     }
 
 }

@@ -73,6 +73,7 @@
             this.Controls.Add(this.button1);
             this.Name = "localDrivingLicensInfo";
             this.Text = "localDrivingLicensInfo";
+            this.Load += new System.EventHandler(this.localDrivingLicensInfo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

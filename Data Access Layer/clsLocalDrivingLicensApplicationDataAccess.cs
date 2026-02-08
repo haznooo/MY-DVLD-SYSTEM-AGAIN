@@ -190,7 +190,7 @@ namespace Data_Access_Layer
             SqlCommand command = new SqlCommand(query, connection);
 
             DataTable localDrivingLicensApplications = new DataTable();
-            localDrivingLicensApplications = null;
+        
 
             try
             {

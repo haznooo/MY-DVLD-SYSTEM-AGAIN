@@ -145,7 +145,7 @@ namespace BusinessLayer
 
 
         }
-        public DataTable GetAllLocalDrivingLicensApplications()
+        public static DataTable GetAllLocalDrivingLicensApplications()
         {
             return clsLocalDrivingLicensApplicationDataAccess.GetAllLocalDrivingLicensApplications();
         }

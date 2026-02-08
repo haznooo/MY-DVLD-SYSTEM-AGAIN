@@ -26,7 +26,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             cbSearchFilter.SelectedIndex = 0;
 
 
-            _dtAllLocalDrivingLicensApplications = clsLocalDrivingLicensApplication.GetAllApplications();
+            _dtAllLocalDrivingLicensApplications = clsLocalDrivingLicensApplication.GetAllLocalDrivingLicensApplications();
 
 
             dgvApplications.DataSource = _dtAllLocalDrivingLicensApplications;
@@ -44,13 +44,14 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             {
 
 
-                dgvApplications.Columns[0].HeaderText = "application ID";
+                dgvApplications.Columns[0].HeaderText = "L.D License app ID";
                 dgvApplications.Columns[0].Width = 110;
 
-                dgvApplications.Columns[1].HeaderText = "national number";
+
+                dgvApplications.Columns[1].HeaderText = "driving class";
                 dgvApplications.Columns[1].Width = 110;
 
-                dgvApplications.Columns[2].HeaderText = "driving class";
+                dgvApplications.Columns[2].HeaderText = "national number";
                 dgvApplications.Columns[2].Width = 110;
 
                 dgvApplications.Columns[3].HeaderText = "full name";
@@ -74,6 +75,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         {
             AddUpdateLocalDrivingLicensApplication frm = new AddUpdateLocalDrivingLicensApplication();
             frm.ShowDialog();
+            _refreshList();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)

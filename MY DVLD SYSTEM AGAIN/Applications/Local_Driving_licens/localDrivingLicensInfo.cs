@@ -15,18 +15,34 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
     public partial class localDrivingLicensInfo : Form
     {
 
-        int applicationID;
-        public localDrivingLicensInfo(int applicationID)
+        int _applicationID = -1;
+        int _localDrivingLicenseAppID = -1;
+        bool _isLocalDrivingLicenseAppInfoLoaded = false;
+        public localDrivingLicensInfo(int applicationID, bool loadByLocalDrivingLicenseApplicationID = true)
         {
             InitializeComponent();
-            this.applicationID = applicationID;
+            this._localDrivingLicenseAppID = applicationID;
+            _isLocalDrivingLicenseAppInfoLoaded = loadByLocalDrivingLicenseApplicationID;
 
-            ctrlLocalDrivingLicensInfo1.loadApplicationInfoByLocalDrivingAppID(applicationID);
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        private void localDrivingLicensInfo_Load(object sender, EventArgs e)
+        {
+            if (_isLocalDrivingLicenseAppInfoLoaded)
+            {
+                ctrlLocalDrivingLicensInfo1.loadApplicationInfoByLocalDrivingLicenseAppID(_localDrivingLicenseAppID);
+            }
+            else
+            {
+                ctrlLocalDrivingLicensInfo1.LoaddApplicationInfoByApplicationAppID(_applicationID);
+            }
+        }
+
     }
 }
