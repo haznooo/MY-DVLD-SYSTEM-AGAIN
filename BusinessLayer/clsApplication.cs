@@ -12,7 +12,7 @@ namespace BusinessLayer
     public class clsApplication
     {
 
-        enum enApplicationType : byte
+       public enum enApplicationType : byte
         {
             NewDrivingLicens = 1,
             RenewDrivingLicens = 2,
@@ -110,7 +110,7 @@ namespace BusinessLayer
 
             this.CreatedByUser = clsUser.GetUserByID(createdByUserID);
             this.ApplicantInfo = clsPerson.GetPersonInfoByID(applicantID);
-            this.ApplicationTypeInfo = clsApplicationTypes.GetApplicationTypeByID(applicationType);
+            this.ApplicationTypeInfo = clsApplicationTypes.Find(applicationType);
 
             if (this.ApplicantInfo == null || CreatedByUser == null || ApplicationTypeInfo == null)
             {
@@ -123,19 +123,19 @@ namespace BusinessLayer
             CurrentMode = enMode.Update;
         }
 
-        private bool _addNewApplication()
+        private int _addNewApplication()
         {
-            int newApplicationID = clsApplicationDataAccess.AddNewApplication(applicantID, applicationDate,
+            this.applicationID = clsApplicationDataAccess.AddNewApplication(applicantID, applicationDate,
                 applicationTypeID, (byte)applicationStatus, lastStatusDate, paidFee, createdByUserID);
-            if (newApplicationID > 0)
+            if (this.applicationID > 0)
             {
 
-                applicationID = newApplicationID;
-                return true;
+                return this.applicationID;
             }
             else
             {
-                return false;
+           
+                return -1;
             }
         }
 
@@ -181,36 +181,39 @@ namespace BusinessLayer
             }
         }
      
-        public bool SaveApplication()
+        protected bool SaveApplication(out int ApplicationID )
         {
             if (CurrentMode == enMode.AddNew)
             {
 
 
-                if (_addNewApplication())
+                if (_addNewApplication() > 0)
                 {
+                    ApplicationID = this.applicationID;
                     return true;
                 }
                 else
                 {
+                    ApplicationID = -1;
                     return false;
                 }
             }
-            else if (CurrentMode == enMode.Update)
+            else
             {
 
                 if (_UpdateApplication())
                 {
+                    ApplicationID = this.applicationID;
                     return true;
                 }
                 else
                 {
+                    ApplicationID = this.applicationID;
                     return false;
+               
                 }
-
             }
 
-            return true;
         }
 
 

@@ -72,7 +72,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
         private void btnAddUpdate_Click(object sender, EventArgs e)
         {
-            AddUpdateLocalLicensApplication frm = new AddUpdateLocalLicensApplication();
+            AddUpdateLocalDrivingLicensApplication frm = new AddUpdateLocalDrivingLicensApplication();
             frm.ShowDialog();
         }
 

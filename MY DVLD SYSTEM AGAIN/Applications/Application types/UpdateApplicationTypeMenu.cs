@@ -32,7 +32,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
         private void UpdateApplicationTypeMenu_Load(object sender, EventArgs e)
         {
 
-          appType =  clsApplicationTypes.GetApplicationTypeByID(_appTypeID);
+          appType =  clsApplicationTypes.Find(_appTypeID);
 
             txtApplicationName.Text = appType.ApplicationTypeTitle;
             txtApplicationFee.Text = appType.ApplicationTypeFee.ToString();

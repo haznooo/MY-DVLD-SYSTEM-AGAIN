@@ -76,7 +76,7 @@ namespace MY_DVLD_SYSTEM_AGAIN
         }
         private void localLicensToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddUpdateLocalLicensApplication frm = new AddUpdateLocalLicensApplication();
+            AddUpdateLocalDrivingLicensApplication frm = new AddUpdateLocalDrivingLicensApplication();
             frm.ShowDialog();
         }
         private void localLicenseAppllicationsToolStripMenuItem_Click(object sender, EventArgs e)

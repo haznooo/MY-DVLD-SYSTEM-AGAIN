@@ -110,7 +110,7 @@ namespace Data_Access_Layer
             {
                 connection.Open();
                 // Execute the command and get the inserted ID if needed
-                 insertedId = (int)command.ExecuteScalar();
+                 insertedId = Convert.ToInt32(command.ExecuteScalar());
             }
             catch (Exception ex)
             {

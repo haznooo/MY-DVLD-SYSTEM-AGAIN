@@ -13,7 +13,6 @@ namespace BusinessLayer
     {
         enMode _mode;
         enApplicationStatus applicationStatus;
-        public int ApplicationID { get; set; }
         public int LocalDrivingLicensApplicationID { get; set; }
         public int LicensClassId { get; set; }
         clsLicenceClasses LicensClassInfo = null;
@@ -42,7 +41,7 @@ namespace BusinessLayer
             this.applicationDate = applicationDate;
             this.applicationTypeID = applicationTypeID;
             this.LicensClassId = LicensClsasID;
-            this.ApplicationID = applicationID;
+            this.applicationID = applicationID;
             this.applicationStatus = applicationStatus;
             this.lastStatusDate = lastStatusDate;
             this.paidFee = paidFee;
@@ -56,7 +55,7 @@ namespace BusinessLayer
         private bool _addNewLocalDrivingLicensApplication()
         {
 
-            this.LocalDrivingLicensApplicationID = clsLocalDrivingLicensApplicationDataAccess.AddLocalDrivingLicensApplication(this.ApplicationID, this.LicensClassId);
+            this.LocalDrivingLicensApplicationID = clsLocalDrivingLicensApplicationDataAccess.AddLocalDrivingLicensApplication(this.applicationID, this.LicensClassId);
 
             return (this.LocalDrivingLicensApplicationID != -1);
 
@@ -65,15 +64,16 @@ namespace BusinessLayer
         private bool _updateLocalDrivingLicensApplication()
         {
             return clsLocalDrivingLicensApplicationDataAccess.UpdateLocalDrivingLicensApplicationByID(this.LocalDrivingLicensApplicationID,
-                this.ApplicationID, this.LicensClassId);
+                this.applicationID, this.LicensClassId);
         }
 
         public bool save()
         {
 
             base.CurrentMode = this._mode;
-            if (!base.SaveApplication()) { return false; }
+            if (!base.SaveApplication(out int ApplicationID)) { return false; }
 
+            this.applicationID = ApplicationID;
             switch (this._mode)
             {
 
@@ -141,7 +141,7 @@ namespace BusinessLayer
         public bool DeleteLocalDrivingLicensApplicationByID()
         {
             return clsLocalDrivingLicensApplicationDataAccess.DeleteLocalDrivingLicensApplication(this.LocalDrivingLicensApplicationID)
-                && clsApplication.DeleteApplicationByID(this.ApplicationID);
+                && clsApplication.DeleteApplicationByID(this.applicationID);
 
 
         }

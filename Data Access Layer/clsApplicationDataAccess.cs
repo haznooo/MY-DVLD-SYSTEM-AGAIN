@@ -97,6 +97,7 @@ namespace Data_Access_Layer
             command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);
             command.Parameters.AddWithValue("@PaidFees", paidFee);
             command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+           
 
 
             try
@@ -138,8 +139,11 @@ namespace Data_Access_Layer
                              ApplicationStatus = @ApplicationStatus,
                              LastStatusDate = ,@LastStatusDate,
                               PaidFees = @PaidFees ,
-                              CreatedByUserID = @CreatedByUserID )
-                            where ApplicationID = @applicationID";
+                              CreatedByUserID = @CreatedByUserID 
+                            where ApplicationID = @applicationID;
+                             Update LocalDrivingLicenseAppliaction set 
+                             ApplicationID  = @applicationID
+                        ";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@applicationID", applicationID);

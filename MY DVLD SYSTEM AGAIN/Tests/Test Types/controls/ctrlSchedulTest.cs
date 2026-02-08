@@ -149,21 +149,21 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
             if (_mode == enMode.add && _creationMode == createionMode.retakeTest)
             {
 
-                clsApplication application = new clsApplication();
-                application.applicantID = _localDrivingLicensApplication.applicantID;
-                application.applicationDate = DateTime.Now;
-                application.applicationStatus = clsApplication.enApplicationStatus.New;
-                application.applicationTypeID = (byte)TestType;
-                application.createdByUserID = clsGlobal.CurrentUser.UserID;
-                application.lastStatusDate = DateTime.Now;
-                //  application.paidFee = clsApplicationTypes.GetApplicationTypeByID(clsApplicationTypes.GetApplicationTypeByID())
+                //clsApplication application = new clsApplication();
+                //application.applicantID = _localDrivingLicensApplication.applicantID;
+                //application.applicationDate = DateTime.Now;
+                //application.applicationStatus = clsApplication.enApplicationStatus.New;
+                //application.applicationTypeID = (byte)TestType;
+                //application.createdByUserID = clsGlobal.CurrentUser.UserID;
+                //application.lastStatusDate = DateTime.Now;
+                ////  application.paidFee = clsApplicationTypes.GetApplicationTypeByID(clsApplicationTypes.GetApplicationTypeByID())
 
-                if (!application.SaveApplication())
-                {
-                    MessageBox.Show("Error saving retake test application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-                _testAppointmentt.RetakeTestApplicationID = application.applicationID;
+                //if (!application.save())
+                //{
+                //    MessageBox.Show("Error saving retake test application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return false;
+                //}
+                //_testAppointmentt.RetakeTestApplicationID = application.applicationID;
 
             }
             return false;
@@ -209,7 +209,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
             {
 
                 lbRetakeTestAppID.Text = _testAppointmentt.RetakeTestApplicationID.ToString();
-                lbRetakeTestFees.Text = clsApplicationTypes.GetApplicationTypeByID((int)TestType).ApplicationTypeFee.ToString();
+                lbRetakeTestFees.Text = clsApplicationTypes.Find((int)TestType).ApplicationTypeFee.ToString();
                 gbRetakeTest.Enabled = true;
 
             }
@@ -261,7 +261,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
             else
             {
                 lbTestTitle.Text = "Retake Test";
-                lbRetakeTestFees.Text = clsApplicationTypes.GetApplicationTypeByID((int)TestType).ApplicationTypeFee.ToString();
+                lbRetakeTestFees.Text = clsApplicationTypes.Find((int)TestType).ApplicationTypeFee.ToString();
                 gbRetakeTest.Enabled = true;
                 lbRetakeTestAppID.Text = "0";
 
@@ -276,7 +276,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
 
             if (_mode == enMode.add)
             {
-                lbFees.Text = clsApplicationTypes.GetApplicationTypeByID((int)TestType).ApplicationTypeFee.ToString();
+                lbFees.Text = clsApplicationTypes.Find((int)TestType).ApplicationTypeFee.ToString();
                 dtpDate.MinDate = DateTime.Now;
                 lbRetakeTestAppID.Text = "N/A";
 

@@ -46,8 +46,40 @@ namespace Data_Access_Layer
 
         }
 
+        static public bool GetLicencesClassInfoByName(string ClassName, ref int LicenseClassID, ref string ClassDescription, ref byte minimumAge
+            , ref byte validityLength, ref Decimal CassFee)
+        { 
+        
+            string query = "Select * from LicenseClasses where ClassName = @ClassName";
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlCommand command = new SqlCommand(query, Connection);
+            command.Parameters.AddWithValue("@ClassName", ClassName);
+            bool isFound = false;
+            try
+            {
+                Connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    LicenseClassID = Convert.ToInt32(reader["LicenseClassID"]);
+                    ClassDescription = reader["ClassDescription"].ToString();
+                    minimumAge = Convert.ToByte(reader["MinimumAllowedAge"]);
+                    validityLength = Convert.ToByte(reader["DefaultValidityLength"]);
+                    CassFee = Convert.ToDecimal(reader["ClassFees"]);
+                    isFound = true;
+                }
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                Connection.Close();
+            }
+            return isFound;
 
-        static public DataTable GetLicencesClasses()
+        }
+
+            static public DataTable GetLicencesClasses()
         {
 
             DataTable dt = new DataTable();

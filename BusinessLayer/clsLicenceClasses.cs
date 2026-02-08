@@ -70,6 +70,26 @@ namespace BusinessLayer
             }
         }
 
+        public static clsLicenceClasses FindByClassName(string ClassName)
+        {
+            int LicnesClassID = -1;
+            string ClassDescription = string.Empty;
+            byte minimumAge = 0;
+            byte validityLength = 0;
+            decimal CassFee = 0;
+
+            if (clsLicencesClassesDataAccess.GetLicencesClassInfoByName(ClassName, ref LicnesClassID, ref ClassDescription, ref minimumAge, ref validityLength, ref CassFee))
+            {
+                return new clsLicenceClasses(LicnesClassID, ClassName, minimumAge, CassFee, validityLength, ClassDescription);
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+
 
         private int _addNewLicenceClass()
         {

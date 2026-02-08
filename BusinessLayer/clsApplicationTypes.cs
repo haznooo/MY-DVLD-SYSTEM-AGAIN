@@ -46,7 +46,7 @@ namespace BusinessLayer
 
         }
 
-        static public clsApplicationTypes GetApplicationTypeByID(int ApplicationTypeID)
+        static public clsApplicationTypes Find(int ApplicationTypeID)
         {
             string ApplicationTypeTitle = "";
             decimal ApplicationTypeFee = 0;
