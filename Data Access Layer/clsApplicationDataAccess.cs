@@ -129,20 +129,19 @@ namespace Data_Access_Layer
         {
 
 
-            int newApplicationID = -1;
+          
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"Update Applications set ApplicantPersonID =@ApplicantPersonID,
+            string query = @"Update Applications set
+                             ApplicantPersonID =@ApplicantPersonID,
                              ApplicationDate = @ApplicationDate,
                              ApplicationTypeID = @ApplicationTypeID,
                              ApplicationStatus = @ApplicationStatus,
-                             LastStatusDate = ,@LastStatusDate,
-                              PaidFees = @PaidFees ,
+                             LastStatusDate = @LastStatusDate,
+                              PaidFees = @PaidFees,
                               CreatedByUserID = @CreatedByUserID 
-                            where ApplicationID = @applicationID;
-                             Update LocalDrivingLicenseAppliaction set 
-                             ApplicationID  = @applicationID
+                            where ApplicationID = @applicationID;         
                         ";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -156,9 +155,24 @@ namespace Data_Access_Layer
             command.Parameters.AddWithValue("@PaidFees", paidFee);
             command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
 
+            int effectedRows = 0;
+            try
+                {
+                connection.Open();
+                effectedRows = command.ExecuteNonQuery();
+               
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+                effectedRows = -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
 
-
-            return (newApplicationID > 0);
+            return (effectedRows > 0);
 
         }
 

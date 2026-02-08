@@ -47,6 +47,8 @@ namespace BusinessLayer
             this.paidFee = paidFee;
             this.createdByUserID = createdByUserID;  
              this.LicensClassInfo = clsLicenceClasses.Find(LicensClsasID);
+            base.ApplicationTypeInfo = clsApplicationTypes.Find(applicationTypeID);
+            base.ApplicantInfo = clsPerson.GetPersonInfoByID(applicantID);
 
             _mode = enMode.Update;
         }

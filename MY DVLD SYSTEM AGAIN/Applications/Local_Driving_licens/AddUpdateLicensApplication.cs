@@ -53,7 +53,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
             _LocalDrivingLicensApplicationID = _LocalDrivingLicenseApplicationInfo.LocalDrivingLicensApplicationID;
 
-            ctrlPersonCardWithFilter1.LoadAndShowPersonInfo(LocalDrivingLicensApplicationID);
+            ctrlPersonCardWithFilter1.LoadAndShowPersonInfo(_LocalDrivingLicenseApplicationInfo.applicantID);
             cbLicensClass.SelectedIndex = _LocalDrivingLicenseApplicationInfo.LicensClassId;
             lbApplicationID.Text = _LocalDrivingLicenseApplicationInfo.applicationID.ToString();
             lbApplicationDate.Text = _LocalDrivingLicenseApplicationInfo.applicationDate.ToShortDateString();
@@ -67,9 +67,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         {
             _HandelFormLabels();
             _FillLicensType();
-
-            cbLicensClass.SelectedIndex = 2;
-           
+       
 
             if (_Mode == enMode.Add)
             {
@@ -170,32 +168,57 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
                     MessageBox.Show("This person already has an active application for this class, you can not add another one");
                     return;
             }
-   //soon i will make a check if the person already have a licens of this class or not
-   //and if he have one i will not allow him to add another application for the same class unless the first one is rejected or cancelled
+
+            //soon i will make a check if the person already have a licens of this class or not
+            //and if he have one i will not allow him to add another application for the same class unless the first one is rejected or cancelled
 
 
-         _LocalDrivingLicenseApplicationInfo = new clsLocalDrivingLicensApplication();
-         _LocalDrivingLicenseApplicationInfo.applicantID = ctrlPersonCardWithFilter1.PersonID;
-          _LocalDrivingLicenseApplicationInfo.applicationID = -1;
-         _LocalDrivingLicenseApplicationInfo.applicationDate = DateTime.Now;
-         _LocalDrivingLicenseApplicationInfo.applicationTypeID = (byte)clsApplication.enApplicationType.NewDrivingLicens;
-         _LocalDrivingLicenseApplicationInfo.lastStatusDate = DateTime.Now;
-         _LocalDrivingLicenseApplicationInfo.paidFee = decimal.Parse(lbApplicationFee.Text);
-         _LocalDrivingLicenseApplicationInfo.createdByUserID = clsGlobal.CurrentUser.UserID;
-          _LocalDrivingLicenseApplicationInfo.LicensClassId = licensClassID;
-
-             if (_LocalDrivingLicenseApplicationInfo.save())
+            if (_Mode == enMode.Add)
             {
-             MessageBox.Show($"New application added with the id {_LocalDrivingLicenseApplicationInfo.LocalDrivingLicensApplicationID}");
-             _Mode = enMode.Update;
-             lbApplicationID.Text = _LocalDrivingLicenseApplicationInfo.applicationID.ToString();
-             _HandelFormLabels();
- 
-             }
-             else
-               {
-             MessageBox.Show("Failed to add new application");
-                } 
+                _LocalDrivingLicenseApplicationInfo = new clsLocalDrivingLicensApplication();
+                _LocalDrivingLicenseApplicationInfo.applicantID = ctrlPersonCardWithFilter1.PersonID;
+                _LocalDrivingLicenseApplicationInfo.applicationID = -1;
+                _LocalDrivingLicenseApplicationInfo.applicationDate = DateTime.Now;
+                _LocalDrivingLicenseApplicationInfo.applicationTypeID = (byte)clsApplication.enApplicationType.NewDrivingLicens;
+                _LocalDrivingLicenseApplicationInfo.lastStatusDate = DateTime.Now;
+                _LocalDrivingLicenseApplicationInfo.paidFee = decimal.Parse(lbApplicationFee.Text);
+                _LocalDrivingLicenseApplicationInfo.createdByUserID = clsGlobal.CurrentUser.UserID;
+                _LocalDrivingLicenseApplicationInfo.LicensClassId = licensClassID;
+
+                if (_LocalDrivingLicenseApplicationInfo.save())
+                {
+                    MessageBox.Show($"New application added with the id {_LocalDrivingLicenseApplicationInfo.LocalDrivingLicensApplicationID}");
+                    _Mode = enMode.Update;
+                    lbApplicationID.Text = _LocalDrivingLicenseApplicationInfo.applicationID.ToString();
+                    _HandelFormLabels();
+
+                }
+                else
+                {
+                    MessageBox.Show("Failed to add new application");
+                }
+
+            }
+            else {
+
+                _LocalDrivingLicenseApplicationInfo.applicantID = ctrlPersonCardWithFilter1.PersonID;
+                _LocalDrivingLicenseApplicationInfo.LicensClassId = licensClassID;
+
+                if (_LocalDrivingLicenseApplicationInfo.save())
+                {
+                    MessageBox.Show($"application Update");
+              
+                    _HandelFormLabels();
+
+                }
+                else
+                {
+                    MessageBox.Show("Failed to Update application");
+                }
+
+            }
+
+      
            }
        
         private void _AddUpdateLocalLicensApplication_Load(object sender, EventArgs e)

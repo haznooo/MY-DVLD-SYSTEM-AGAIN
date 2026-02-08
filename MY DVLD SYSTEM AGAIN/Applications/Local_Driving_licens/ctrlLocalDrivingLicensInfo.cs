@@ -81,7 +81,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             lbPassedTests.Text = "not implemented yet";
 
             if (LicenseID == -1)
-            llLicensClass.Enabled = false;
+           llLicenseInfo.Visible = false;
+            else llLicenseInfo.Visible = true;
 
             lbAppID.Text = _localDrivingLicensApp.applicantID.ToString();
             lbApplicantName.Text = _localDrivingLicensApp.applicantFullName;
@@ -90,7 +91,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             lbStatusDate.Text = _localDrivingLicensApp.lastStatusDate.ToShortDateString();
             lbFees.Text = _localDrivingLicensApp.paidFee.ToString();
             lbStatus.Text = _localDrivingLicensApp.ApplicationStatusText.ToString();
-            lbType.Text = _localDrivingLicensApp.ApplicationTypeInfo.ToString();
+            lbType.Text = _localDrivingLicensApp.ApplicationTypeInfo.ApplicationTypeTitle;
 
         }
 
@@ -100,12 +101,11 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             frm.ShowDialog();
         }
 
-        private void llLicensClass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+      
+        private void llLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MessageBox.Show("Viewing License Class details is not implemented yet");
         }
-
-       
     }
 
 }

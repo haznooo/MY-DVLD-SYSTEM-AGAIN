@@ -62,9 +62,9 @@
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.llLicensClass = new System.Windows.Forms.LinkLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.llPersonInfo = new System.Windows.Forms.LinkLabel();
+            this.llLicenseInfo = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -233,17 +233,17 @@
             // lbType
             // 
             this.lbType.AutoSize = true;
-            this.lbType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbType.Location = new System.Drawing.Point(444, 134);
+            this.lbType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbType.Location = new System.Drawing.Point(400, 134);
             this.lbType.Name = "lbType";
-            this.lbType.Size = new System.Drawing.Size(63, 20);
+            this.lbType.Size = new System.Drawing.Size(49, 16);
             this.lbType.TabIndex = 28;
             this.lbType.Text = "??????";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.ApplicationType;
-            this.pictureBox2.Location = new System.Drawing.Point(404, 125);
+            this.pictureBox2.Location = new System.Drawing.Point(357, 125);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 29);
             this.pictureBox2.TabIndex = 30;
@@ -336,7 +336,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(304, 28);
+            this.label13.Location = new System.Drawing.Point(249, 28);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(95, 20);
             this.label13.TabIndex = 12;
@@ -355,10 +355,10 @@
             // lbLicensClass
             // 
             this.lbLicensClass.AutoSize = true;
-            this.lbLicensClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLicensClass.Location = new System.Drawing.Point(445, 28);
+            this.lbLicensClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLicensClass.Location = new System.Drawing.Point(401, 28);
             this.lbLicensClass.Name = "lbLicensClass";
-            this.lbLicensClass.Size = new System.Drawing.Size(63, 20);
+            this.lbLicensClass.Size = new System.Drawing.Size(49, 16);
             this.lbLicensClass.TabIndex = 18;
             this.lbLicensClass.Text = "??????";
             // 
@@ -393,7 +393,7 @@
             // pictureBox11
             // 
             this.pictureBox11.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.License_Type_32;
-            this.pictureBox11.Location = new System.Drawing.Point(405, 19);
+            this.pictureBox11.Location = new System.Drawing.Point(358, 19);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(30, 29);
             this.pictureBox11.TabIndex = 39;
@@ -401,7 +401,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.llLicensClass);
+            this.groupBox1.Controls.Add(this.llLicenseInfo);
             this.groupBox1.Controls.Add(this.pictureBox11);
             this.groupBox1.Controls.Add(this.pictureBox10);
             this.groupBox1.Controls.Add(this.pictureBox1);
@@ -414,22 +414,10 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(612, 110);
+            this.groupBox1.Size = new System.Drawing.Size(736, 110);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "application basic info";
-            // 
-            // llLicensClass
-            // 
-            this.llLicensClass.AutoSize = true;
-            this.llLicensClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llLicensClass.Location = new System.Drawing.Point(311, 70);
-            this.llLicensClass.Name = "llLicensClass";
-            this.llLicensClass.Size = new System.Drawing.Size(95, 20);
-            this.llLicensClass.TabIndex = 40;
-            this.llLicensClass.TabStop = true;
-            this.llLicensClass.Text = "Licnes class";
-            this.llLicensClass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llLicensClass_LinkClicked);
             // 
             // groupBox2
             // 
@@ -461,7 +449,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(4, 119);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(611, 247);
+            this.groupBox2.Size = new System.Drawing.Size(735, 247);
             this.groupBox2.TabIndex = 41;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "application info";
@@ -478,6 +466,18 @@
             this.llPersonInfo.Text = "view person info";
             this.llPersonInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llPersonInfo_LinkClicked);
             // 
+            // llLicenseInfo
+            // 
+            this.llLicenseInfo.AutoSize = true;
+            this.llLicenseInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llLicenseInfo.Location = new System.Drawing.Point(445, 87);
+            this.llLicenseInfo.Name = "llLicenseInfo";
+            this.llLicenseInfo.Size = new System.Drawing.Size(94, 20);
+            this.llLicenseInfo.TabIndex = 40;
+            this.llLicenseInfo.TabStop = true;
+            this.llLicenseInfo.Text = "Lincese info";
+            this.llLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llLicenseInfo_LinkClicked);
+            // 
             // ctrlLocalDrivingLicensInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -485,7 +485,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "ctrlLocalDrivingLicensInfo";
-            this.Size = new System.Drawing.Size(620, 374);
+            this.Size = new System.Drawing.Size(742, 374);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -542,6 +542,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.LinkLabel llPersonInfo;
-        private System.Windows.Forms.LinkLabel llLicensClass;
+        private System.Windows.Forms.LinkLabel llLicenseInfo;
     }
 }

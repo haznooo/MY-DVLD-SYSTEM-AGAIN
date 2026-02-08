@@ -77,7 +77,7 @@ namespace BusinessLayer
             set { }
         }
 
-        public clsPerson ApplicantInfo { get; }
+        public clsPerson ApplicantInfo { get; set; }
         
         public clsApplication()
         {

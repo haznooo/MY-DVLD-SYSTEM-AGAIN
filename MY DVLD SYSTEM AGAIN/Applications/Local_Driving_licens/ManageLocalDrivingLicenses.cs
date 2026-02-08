@@ -45,17 +45,17 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
 
                 dgvApplications.Columns[0].HeaderText = "L.D License app ID";
-                dgvApplications.Columns[0].Width = 110;
+                dgvApplications.Columns[0].Width = 130;
 
 
                 dgvApplications.Columns[1].HeaderText = "driving class";
-                dgvApplications.Columns[1].Width = 110;
+                dgvApplications.Columns[1].Width = 200;
 
                 dgvApplications.Columns[2].HeaderText = "national number";
                 dgvApplications.Columns[2].Width = 110;
 
                 dgvApplications.Columns[3].HeaderText = "full name";
-                dgvApplications.Columns[3].Width = 110;
+                dgvApplications.Columns[3].Width = 200;
 
                 dgvApplications.Columns[4].HeaderText = "application date";
                 dgvApplications.Columns[4].Width = 140;
@@ -90,6 +90,19 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             {
                 MessageBox.Show("Failed to delete application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            localDrivingLicensInfo frm = new localDrivingLicensInfo(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
+            frm.ShowDialog();
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddUpdateLocalDrivingLicensApplication frm = new AddUpdateLocalDrivingLicensApplication(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
+            frm.ShowDialog();
+             _refreshList();
         }
     }
 }

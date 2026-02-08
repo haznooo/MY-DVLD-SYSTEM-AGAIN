@@ -31,9 +31,9 @@ namespace Data_Access_Layer
                     reader.Read();
                     ClassName = reader["ClassName"].ToString();
                     ClassDescription = reader["ClassDescription"].ToString();
-                    minimumAge = Convert.ToByte(reader["MinimumAge"]);
-                    validityLength = Convert.ToByte(reader["ValidityLength"]);
-                    CassFee = Convert.ToDecimal(reader["CassFee"]);
+                    minimumAge = Convert.ToByte(reader["MinimumAllowedAge"]);
+                    validityLength = Convert.ToByte(reader["DefaultValidityLength"]);
+                    CassFee = Convert.ToDecimal(reader["ClassFees"]);
                     isFound = true;
                 }
             }
@@ -128,9 +128,9 @@ namespace Data_Access_Layer
             SqlCommand command = new SqlCommand(query, Connection);
             command.Parameters.AddWithValue("@ClassName", ClassName);
             command.Parameters.AddWithValue("@ClassDescription", ClassDescription);
-            command.Parameters.AddWithValue("@MinimumAge", minimumAge);
-            command.Parameters.AddWithValue("@ValidityLength", validityLength);
-            command.Parameters.AddWithValue("@CassFee", CassFee);
+            command.Parameters.AddWithValue("@MinimumAllowedAge", minimumAge);
+            command.Parameters.AddWithValue("@DefaultValidityLength", validityLength);
+            command.Parameters.AddWithValue("@ClassFees", CassFee);
             try
             {
                 Connection.Open();
@@ -154,9 +154,9 @@ namespace Data_Access_Layer
             command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
             command.Parameters.AddWithValue("@ClassName", ClassName);
             command.Parameters.AddWithValue("@ClassDescription", ClassDescription);
-            command.Parameters.AddWithValue("@MinimumAge", minimumAge);
-            command.Parameters.AddWithValue("@ValidityLength", validityLength);
-            command.Parameters.AddWithValue("@CassFee", CassFee);
+            command.Parameters.AddWithValue("@MinimumAllowedAge", minimumAge);
+            command.Parameters.AddWithValue("@DefaultValidityLength", validityLength);
+            command.Parameters.AddWithValue("@ClassFees", CassFee);
             try
             {
                 Connection.Open();
