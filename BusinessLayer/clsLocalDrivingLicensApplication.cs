@@ -15,7 +15,7 @@ namespace BusinessLayer
         enApplicationStatus applicationStatus;
         public int LocalDrivingLicensApplicationID { get; set; }
         public int LicensClassId { get; set; }
-        clsLicenceClasses LicensClassInfo = null;
+        public clsLicenceClasses LicensClassInfo = null;
         public string PersonFullName
         {
 

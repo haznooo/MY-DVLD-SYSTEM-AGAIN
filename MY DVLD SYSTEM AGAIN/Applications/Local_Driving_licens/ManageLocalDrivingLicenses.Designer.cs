@@ -205,6 +205,7 @@
             this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
             this.cancelToolStripMenuItem.Size = new System.Drawing.Size(245, 36);
             this.cancelToolStripMenuItem.Text = "Cancel";
+            this.cancelToolStripMenuItem.Click += new System.EventHandler(this.cancelToolStripMenuItem_Click);
             // 
             // sToolStripMenuItem
             // 
@@ -221,25 +222,28 @@
             // 
             this.visionTestToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Vision_Test_Schdule;
             this.visionTestToolStripMenuItem.Name = "visionTestToolStripMenuItem";
-            this.visionTestToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.visionTestToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
             this.visionTestToolStripMenuItem.Text = "vision test";
             // 
             // writtenTestToolStripMenuItem
             // 
+            this.writtenTestToolStripMenuItem.Enabled = false;
             this.writtenTestToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Written_Test_32_Sechdule;
             this.writtenTestToolStripMenuItem.Name = "writtenTestToolStripMenuItem";
-            this.writtenTestToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.writtenTestToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
             this.writtenTestToolStripMenuItem.Text = "written test";
             // 
             // streetTestToolStripMenuItem
             // 
+            this.streetTestToolStripMenuItem.Enabled = false;
             this.streetTestToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Street_Test_32;
             this.streetTestToolStripMenuItem.Name = "streetTestToolStripMenuItem";
-            this.streetTestToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.streetTestToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
             this.streetTestToolStripMenuItem.Text = "street test";
             // 
             // issueDrivingLicensfristTimeToolStripMenuItem
             // 
+            this.issueDrivingLicensfristTimeToolStripMenuItem.Enabled = false;
             this.issueDrivingLicensfristTimeToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.IssueDrivingLicense_32;
             this.issueDrivingLicensfristTimeToolStripMenuItem.Name = "issueDrivingLicensfristTimeToolStripMenuItem";
             this.issueDrivingLicensfristTimeToolStripMenuItem.Size = new System.Drawing.Size(245, 36);
@@ -247,6 +251,7 @@
             // 
             // showLicensToolStripMenuItem
             // 
+            this.showLicensToolStripMenuItem.Enabled = false;
             this.showLicensToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Driver_License_48;
             this.showLicensToolStripMenuItem.Name = "showLicensToolStripMenuItem";
             this.showLicensToolStripMenuItem.Size = new System.Drawing.Size(245, 36);

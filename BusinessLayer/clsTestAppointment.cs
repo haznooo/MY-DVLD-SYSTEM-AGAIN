@@ -31,11 +31,11 @@ namespace BusinessLayer
         public int localDrivingLicensesApplicantID { get; set; }
         public bool isLocked;
         public int RetakeTestApplicationID { get; set; }
-        public clsApplication RetakeTestApplication { get; set; }
+        public clsApplication RetakeTestApplicationInfo { get; set; }
 
         public int testID;
         public clsTestAppointment(int appointmentID,int applicantid,DateTime appointmentDate,
-            float paidFees,int createdByuserid,int localDrivinglicensesapplicationId,bool islooked)
+            float paidFees,int createdByuserid,int localDrivinglicensesapplicationId,bool islooked,int RetakeTestApplicationID)
         {
             TestAppointmentID = appointmentID;
             applicantID = applicantid;
@@ -44,6 +44,7 @@ namespace BusinessLayer
             createdByUserID = createdByuserid;
             localDrivingLicensesApplicantID = localDrivinglicensesapplicationId;
             this.isLocked = islooked;
+            RetakeTestApplicationInfo = clsApplication.GetBaseApplicationInfoByID(RetakeTestApplicationID);
             _mode = enMode.update;
 
         }
@@ -69,9 +70,10 @@ namespace BusinessLayer
             DateTime appointmentDate = DateTime.MinValue;
             float paidFees = 0;
              bool isLocked = false;
+            int retakeTestApplicationID = 0;
             if (clsTestAppointmentDataAccess.GetTestApppointmentByID(testAppointmentID, ref testTypeID, ref LocalDrivingLicensApplicationID, ref appointmentDate, ref paidFees, ref createdByUserID, ref isLocked))
             {
-                return new clsTestAppointment(testAppointmentID,applicantID, appointmentDate, paidFees, createdByUserID, LocalDrivingLicensApplicationID, isLocked);
+                return new clsTestAppointment(testAppointmentID,applicantID, appointmentDate, paidFees, createdByUserID, LocalDrivingLicensApplicationID, isLocked,retakeTestApplicationID);
             }
             else
             {
@@ -88,12 +90,13 @@ namespace BusinessLayer
             DateTime appointmentDate = DateTime.MinValue;
             float paidFees = 0;
             bool isLocked = false;
+            int retakeTestApplicationID = 0;
 
-            clsTestAppointmentDataAccess.GetLastTestAppointmentID
+            clsTestAppointmentDataAccess.GetLastTestAppointment
              (LocalDrivingLicensApplicationID,testType, ref testAppointmentID, ref appointmentDate, ref paidFees, ref createdByUserID, ref isLocked);
             if (testAppointmentID != 0)
             {
-                return new clsTestAppointment(testAppointmentID, applicantID, appointmentDate, paidFees, createdByUserID, LocalDrivingLicensApplicationID, isLocked);
+                return new clsTestAppointment(testAppointmentID, applicantID, appointmentDate, paidFees, createdByUserID, LocalDrivingLicensApplicationID, isLocked,retakeTestApplicationID);
             }
             else
             {

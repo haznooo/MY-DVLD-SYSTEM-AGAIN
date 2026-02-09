@@ -104,5 +104,19 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             frm.ShowDialog();
              _refreshList();
         }
+
+        private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value)).Cancel()) 
+            { 
+            MessageBox.Show("Application canceled successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Failed to cancel application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+             _refreshList();
+
+        }
     }
 }

@@ -256,6 +256,9 @@
     <EmbeddedResource Include="test.resx">
       <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tests\listTestAppointments.resx">
+      <DependentUpon>listTestAppointments.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tests\scheduleTest.resx">
       <DependentUpon>scheduleTest.cs</DependentUpon>
     </EmbeddedResource>

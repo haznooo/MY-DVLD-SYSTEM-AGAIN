@@ -54,7 +54,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             _LocalDrivingLicensApplicationID = _LocalDrivingLicenseApplicationInfo.LocalDrivingLicensApplicationID;
 
             ctrlPersonCardWithFilter1.LoadAndShowPersonInfo(_LocalDrivingLicenseApplicationInfo.applicantID);
-            cbLicensClass.SelectedIndex = _LocalDrivingLicenseApplicationInfo.LicensClassId;
+            // combobox start from 0 while the licens class id start from 1 so we need to subtract 1 from the licens class id to get the correct index in the combobox
+            cbLicensClass.SelectedIndex = _LocalDrivingLicenseApplicationInfo.LicensClassId - 1;
             lbApplicationID.Text = _LocalDrivingLicenseApplicationInfo.applicationID.ToString();
             lbApplicationDate.Text = _LocalDrivingLicenseApplicationInfo.applicationDate.ToShortDateString();
             lbCreatedBy.Text = _LocalDrivingLicenseApplicationInfo.CreatedByUser.ToString();
@@ -89,7 +90,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
                 // this method does not reset the form in update mode
                 // it only enables the add user tab and next button and changes the labels
-
+                ctrlPersonCardWithFilter1.Enabled = false;
                 tpAddLocalLicensApplication.Enabled = true;
                 btnNext.Enabled = true;
               

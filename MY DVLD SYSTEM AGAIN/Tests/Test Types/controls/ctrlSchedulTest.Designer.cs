@@ -61,6 +61,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.lbErrorMesseges = new System.Windows.Forms.Label();
             this.gbTestType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
@@ -79,7 +80,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 465);
+            this.label1.Location = new System.Drawing.Point(14, 477);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 20);
             this.label1.TabIndex = 1;
@@ -89,7 +90,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(14, 335);
+            this.label4.Location = new System.Drawing.Point(14, 347);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 20);
             this.label4.TabIndex = 4;
@@ -99,7 +100,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(14, 298);
+            this.label5.Location = new System.Drawing.Point(14, 310);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 20);
             this.label5.TabIndex = 5;
@@ -139,7 +140,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(13, 502);
+            this.label9.Location = new System.Drawing.Point(13, 514);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(45, 20);
             this.label9.TabIndex = 9;
@@ -149,7 +150,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(14, 418);
+            this.label11.Location = new System.Drawing.Point(14, 430);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(38, 20);
             this.label11.TabIndex = 11;
@@ -159,7 +160,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(14, 372);
+            this.label12.Location = new System.Drawing.Point(14, 384);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(51, 20);
             this.label12.TabIndex = 12;
@@ -167,6 +168,7 @@
             // 
             // gbTestType
             // 
+            this.gbTestType.Controls.Add(this.lbErrorMesseges);
             this.gbTestType.Controls.Add(this.dtpDate);
             this.gbTestType.Controls.Add(this.lbDrivingClass);
             this.gbTestType.Controls.Add(this.lbFullName);
@@ -190,7 +192,7 @@
             this.gbTestType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbTestType.Location = new System.Drawing.Point(3, 3);
             this.gbTestType.Name = "gbTestType";
-            this.gbTestType.Size = new System.Drawing.Size(582, 525);
+            this.gbTestType.Size = new System.Drawing.Size(582, 535);
             this.gbTestType.TabIndex = 13;
             this.gbTestType.TabStop = false;
             this.gbTestType.Text = "TestType";
@@ -199,7 +201,7 @@
             // 
             this.dtpDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDate.Location = new System.Drawing.Point(161, 459);
+            this.dtpDate.Location = new System.Drawing.Point(161, 471);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(248, 24);
             this.dtpDate.TabIndex = 36;
@@ -207,7 +209,7 @@
             // lbDrivingClass
             // 
             this.lbDrivingClass.AutoSize = true;
-            this.lbDrivingClass.Location = new System.Drawing.Point(156, 335);
+            this.lbDrivingClass.Location = new System.Drawing.Point(156, 347);
             this.lbDrivingClass.Name = "lbDrivingClass";
             this.lbDrivingClass.Size = new System.Drawing.Size(54, 20);
             this.lbDrivingClass.TabIndex = 35;
@@ -216,7 +218,7 @@
             // lbFullName
             // 
             this.lbFullName.AutoSize = true;
-            this.lbFullName.Location = new System.Drawing.Point(156, 372);
+            this.lbFullName.Location = new System.Drawing.Point(156, 384);
             this.lbFullName.Name = "lbFullName";
             this.lbFullName.Size = new System.Drawing.Size(54, 20);
             this.lbFullName.TabIndex = 34;
@@ -225,7 +227,7 @@
             // lbTotalTrails
             // 
             this.lbTotalTrails.AutoSize = true;
-            this.lbTotalTrails.Location = new System.Drawing.Point(156, 418);
+            this.lbTotalTrails.Location = new System.Drawing.Point(156, 430);
             this.lbTotalTrails.Name = "lbTotalTrails";
             this.lbTotalTrails.Size = new System.Drawing.Size(54, 20);
             this.lbTotalTrails.TabIndex = 33;
@@ -234,7 +236,7 @@
             // lbFees
             // 
             this.lbFees.AutoSize = true;
-            this.lbFees.Location = new System.Drawing.Point(156, 502);
+            this.lbFees.Location = new System.Drawing.Point(156, 514);
             this.lbFees.Name = "lbFees";
             this.lbFees.Size = new System.Drawing.Size(54, 20);
             this.lbFees.TabIndex = 32;
@@ -243,7 +245,7 @@
             // DLAppID
             // 
             this.DLAppID.AutoSize = true;
-            this.DLAppID.Location = new System.Drawing.Point(156, 298);
+            this.DLAppID.Location = new System.Drawing.Point(156, 310);
             this.DLAppID.Name = "DLAppID";
             this.DLAppID.Size = new System.Drawing.Size(54, 20);
             this.DLAppID.TabIndex = 25;
@@ -252,7 +254,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Calendar_32;
-            this.pictureBox3.Location = new System.Drawing.Point(104, 454);
+            this.pictureBox3.Location = new System.Drawing.Point(104, 466);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(34, 31);
             this.pictureBox3.TabIndex = 24;
@@ -261,7 +263,7 @@
             // pictureBox10
             // 
             this.pictureBox10.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.License_Type_32;
-            this.pictureBox10.Location = new System.Drawing.Point(104, 324);
+            this.pictureBox10.Location = new System.Drawing.Point(104, 336);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(34, 31);
             this.pictureBox10.TabIndex = 23;
@@ -270,7 +272,7 @@
             // pictureBox9
             // 
             this.pictureBox9.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Person_32;
-            this.pictureBox9.Location = new System.Drawing.Point(104, 361);
+            this.pictureBox9.Location = new System.Drawing.Point(104, 373);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(34, 31);
             this.pictureBox9.TabIndex = 22;
@@ -279,7 +281,7 @@
             // pictureBox8
             // 
             this.pictureBox8.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Count_32;
-            this.pictureBox8.Location = new System.Drawing.Point(104, 407);
+            this.pictureBox8.Location = new System.Drawing.Point(104, 419);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(34, 31);
             this.pictureBox8.TabIndex = 21;
@@ -288,7 +290,7 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.money_32;
-            this.pictureBox7.Location = new System.Drawing.Point(104, 494);
+            this.pictureBox7.Location = new System.Drawing.Point(104, 506);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(34, 31);
             this.pictureBox7.TabIndex = 20;
@@ -297,7 +299,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Number_32;
-            this.pictureBox2.Location = new System.Drawing.Point(104, 287);
+            this.pictureBox2.Location = new System.Drawing.Point(104, 299);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(34, 31);
             this.pictureBox2.TabIndex = 15;
@@ -308,7 +310,7 @@
             this.lbTestTitle.AutoSize = true;
             this.lbTestTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTestTitle.ForeColor = System.Drawing.Color.Red;
-            this.lbTestTitle.Location = new System.Drawing.Point(210, 242);
+            this.lbTestTitle.Location = new System.Drawing.Point(214, 232);
             this.lbTestTitle.Name = "lbTestTitle";
             this.lbTestTitle.Size = new System.Drawing.Size(140, 25);
             this.lbTestTitle.TabIndex = 14;
@@ -336,7 +338,7 @@
             this.gbRetakeTest.Controls.Add(this.pictureBox6);
             this.gbRetakeTest.Controls.Add(this.pictureBox4);
             this.gbRetakeTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbRetakeTest.Location = new System.Drawing.Point(3, 534);
+            this.gbRetakeTest.Location = new System.Drawing.Point(3, 544);
             this.gbRetakeTest.Name = "gbRetakeTest";
             this.gbRetakeTest.Size = new System.Drawing.Size(558, 115);
             this.gbRetakeTest.TabIndex = 14;
@@ -401,7 +403,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(463, 673);
+            this.label3.Location = new System.Drawing.Point(463, 683);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 20);
             this.label3.TabIndex = 16;
@@ -410,12 +412,23 @@
             // btnSave
             // 
             this.btnSave.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Save_32;
-            this.btnSave.Location = new System.Drawing.Point(511, 655);
+            this.btnSave.Location = new System.Drawing.Point(511, 665);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(50, 38);
             this.btnSave.TabIndex = 15;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // lbErrorMesseges
+            // 
+            this.lbErrorMesseges.AutoSize = true;
+            this.lbErrorMesseges.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrorMesseges.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorMesseges.Location = new System.Drawing.Point(125, 257);
+            this.lbErrorMesseges.Name = "lbErrorMesseges";
+            this.lbErrorMesseges.Size = new System.Drawing.Size(307, 25);
+            this.lbErrorMesseges.TabIndex = 37;
+            this.lbErrorMesseges.Text = "error messages will apear here";
             // 
             // ctrlSchedulTest
             // 
@@ -480,5 +493,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.GroupBox gbTestType;
+        private System.Windows.Forms.Label lbErrorMesseges;
     }
 }

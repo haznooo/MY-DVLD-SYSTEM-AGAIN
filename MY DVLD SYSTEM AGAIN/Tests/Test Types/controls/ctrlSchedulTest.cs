@@ -24,7 +24,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
         enum createionMode { FirstTimeTest = 0, retakeTest = 1 }
         enMode _mode;
         createionMode _creationMode;
-
+        private clsTestTypes.enTestType _testType = clsTestTypes.enTestType.vissionTest;
 
 
         private int _localDrivingLicnesApplicationID = 0;
@@ -34,7 +34,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
         private int _testAppointmentID = -1;
 
 
-        public clsTestTypes.enTestType _testType = clsTestTypes.enTestType.vissionTest;
+       
         public clsTestTypes.enTestType TestType
         {
 
@@ -67,10 +67,12 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
 
         private bool _handleActiveTestAppointment()
         {
+            // if we are adding a new appointment we check if there is an active appointment of the same type for this application, if there is we prevent the user from adding another one
             if (_mode == enMode.add && _localDrivingLicensApplication.isthereActiveScheduledTest((int)TestType))
             {
                 MessageBox.Show("There is already an active scheduled test of this type for this application", "Active Test Appointment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 btnSave.Enabled = false;
+                dtpDate.Enabled = false;
                 return false;
             }
             return true;
@@ -81,7 +83,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
 
             if (_testAppointmentt.isLocked)
             {
-                MessageBox.Show("This test appointment is locked and cannot be modified.", "Locked Appointment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                lbErrorMesseges.Visible = true;
+                lbErrorMesseges.Text = "This appointment is locked and cannot be edited.";
                 btnSave.Enabled = false;
                 dtpDate.Enabled = false;
 
@@ -96,20 +99,22 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
             {
 
                 case clsTestTypes.enTestType.vissionTest:
+                    lbErrorMesseges.Visible = false;
                     return true;
 
                 case clsTestTypes.enTestType.writtenTest:
                     {
                         if (!_localDrivingLicensApplication.DoesPassTestType((int)clsTestTypes.enTestType.vissionTest))
                         {
-                            MessageBox.Show("The applicant must pass the Vission Test before scheduling the Written Test.", "Test Prerequisite", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            lbErrorMesseges.Visible = true;
+                            lbErrorMesseges.Text = "The applicant must pass the Vission Test before scheduling the Written Test.";
                             btnSave.Enabled = false;
                             dtpDate.Enabled = false;
                             return false;
                         }
                         else
                         {
-
+                            lbErrorMesseges.Visible = false;
                             btnSave.Enabled = true;
                             dtpDate.Enabled = true;
                             return true;
@@ -122,13 +127,15 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
                     {
                         if (!_localDrivingLicensApplication.DoesPassTestType((int)clsTestTypes.enTestType.writtenTest))
                         {
-                            MessageBox.Show("The applicant must pass the Written Test before scheduling the Street Test.", "Test Prerequisite", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            lbErrorMesseges.Visible = true;
+                            lbErrorMesseges.Text = "The applicant must pass the Written Test before scheduling the Street Test.";
                             btnSave.Enabled = false;
                             dtpDate.Enabled = false;
                             return false;
                         }
                         else
                         {
+                            lbErrorMesseges.Visible = false;
                             btnSave.Enabled = true;
                             dtpDate.Enabled = true;
                             return true;
@@ -149,24 +156,24 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
             if (_mode == enMode.add && _creationMode == createionMode.retakeTest)
             {
 
-                //clsApplication application = new clsApplication();
-                //application.applicantID = _localDrivingLicensApplication.applicantID;
-                //application.applicationDate = DateTime.Now;
-                //application.applicationStatus = clsApplication.enApplicationStatus.New;
-                //application.applicationTypeID = (byte)TestType;
-                //application.createdByUserID = clsGlobal.CurrentUser.UserID;
-                //application.lastStatusDate = DateTime.Now;
-                ////  application.paidFee = clsApplicationTypes.GetApplicationTypeByID(clsApplicationTypes.GetApplicationTypeByID())
+                clsApplication application = new clsApplication();
+                application.applicantID = _localDrivingLicensApplication.applicantID;
+                application.applicationDate = DateTime.Now;
+               application.applicationStatus = clsApplication.enApplicationStatus.New;
+                application.applicationTypeID = (byte)clsApplication.enApplicationType.RetakeDrivingTest;
+                application.createdByUserID = clsGlobal.CurrentUser.UserID;
+                application.lastStatusDate = DateTime.Now;
+                application.paidFee = Convert.ToDecimal(clsApplicationTypes.Find(Convert.ToInt32(clsApplication.enApplicationType.RetakeDrivingTest)));
 
-                //if (!application.save())
-                //{
-                //    MessageBox.Show("Error saving retake test application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    return false;
-                //}
-                //_testAppointmentt.RetakeTestApplicationID = application.applicationID;
+                if (!application.SaveApplication(out int NewApplicationID))
+                {
+                   MessageBox.Show("Error saving retake test application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                _testAppointmentt.RetakeTestApplicationID = NewApplicationID;
 
             }
-            return false;
+            return true;
 
         }
         private bool _loadTestAppointmentData()
@@ -178,11 +185,12 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
                 btnSave.Enabled = false;
                 return false;
             }
-            dtpDate.Value = _testAppointmentt.AppointmentDate;
-            lbRetakeTestAppID.Text = _testAppointmentt.TestAppointmentID.ToString();
-            lbFullName.Text = _localDrivingLicensApplication.applicantFullName;
+
+         //   dtpDate.Value = _testAppointmentt.AppointmentDate;
+         //   lbRetakeTestAppID.Text = _testAppointmentt.TestAppointmentID.ToString();
+        //    lbFullName.Text = _localDrivingLicensApplication.applicantFullName;
             lbFees.Text = _testAppointmentt.paidFees.ToString();
-            lbTotalTrails.Text = _localDrivingLicensApplication.TotalTrialsForTestType((int)TestType).ToString();
+          //  lbTotalTrails.Text = _localDrivingLicensApplication.TotalTrialsForTestType((int)TestType).ToString();
 
             // im not sure why this logic is like that but,
             // in case we were updating an appointment and its due date is in the past, we update it to now
@@ -217,7 +225,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
 
             return true;
         }
-        public void LoadData(int localDrivingLicnesApplicationID, int testAppointmentID = -1)
+        public void LoadInfo(int localDrivingLicnesApplicationID, int testAppointmentID = -1)
         {
 
             if (testAppointmentID == -1)
@@ -242,7 +250,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
             }
 
             if (_localDrivingLicensApplication.DoesAttendTestType((int)TestType))
-
                 _creationMode = createionMode.retakeTest;
             else _creationMode = createionMode.FirstTimeTest;
 
@@ -261,22 +268,22 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
             else
             {
                 lbTestTitle.Text = "Retake Test";
-                lbRetakeTestFees.Text = clsApplicationTypes.Find((int)TestType).ApplicationTypeFee.ToString();
+                lbRetakeTestFees.Text = clsApplicationTypes.Find((int)clsApplication.enApplicationType.RetakeDrivingTest).ApplicationTypeFee.ToString();
                 gbRetakeTest.Enabled = true;
                 lbRetakeTestAppID.Text = "0";
 
 
             }
+
             DLAppID.Text = _localDrivingLicnesApplicationID.ToString();
-            // licenses are not implemented yet
-            //  lbDrivingClass.Text = _localDrivingLicensApplication.LicensClassInfo
+            lbDrivingClass.Text = _localDrivingLicensApplication.LicensClassInfo.ClassName;
             lbFullName.Text = _localDrivingLicensApplication.applicantFullName;
             lbTotalTrails.Text = _localDrivingLicensApplication.TotalTrialsForTestType((int)TestType).ToString();
 
 
             if (_mode == enMode.add)
             {
-                lbFees.Text = clsApplicationTypes.Find((int)TestType).ApplicationTypeFee.ToString();
+                lbFees.Text = clsTestTypes.GetTestTypeByID(TestType).TestTypeFee.ToString();
                 dtpDate.MinDate = DateTime.Now;
                 lbRetakeTestAppID.Text = "N/A";
 

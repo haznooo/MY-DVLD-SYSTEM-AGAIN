@@ -181,7 +181,7 @@ namespace BusinessLayer
             }
         }
      
-        protected bool SaveApplication(out int ApplicationID )
+        public bool SaveApplication(out int ApplicationID )
         {
             if (CurrentMode == enMode.AddNew)
             {

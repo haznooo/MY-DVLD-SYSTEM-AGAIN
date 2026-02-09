@@ -33,15 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // ctrlSchedulTest1
-            // 
-            this.ctrlSchedulTest1.Location = new System.Drawing.Point(1, -7);
-            this.ctrlSchedulTest1.Name = "ctrlSchedulTest1";
-            this.ctrlSchedulTest1.Size = new System.Drawing.Size(591, 706);
-            this.ctrlSchedulTest1.TabIndex = 0;
-            this.ctrlSchedulTest1.TestType = BusinessLayer.clsTestTypes.enTestType.vissionTest;
-            this.ctrlSchedulTest1.Load += new System.EventHandler(this.ctrlSchedulTest1_Load);
-            // 
+    
             // btnClose
             // 
             this.btnClose.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Close_32;

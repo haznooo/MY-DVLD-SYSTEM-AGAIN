@@ -15,7 +15,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
     {
 
         int _LocalDrivingLicenseApplicationID;
-        clsTestTypes.enTestType _testType;
+        clsTestTypes.enTestType _testType = clsTestTypes.enTestType.vissionTest;
         int _appointmentID;
 
         public scheduleTest(int LocalDrivingLicenseApplicationID,clsTestTypes.enTestType testType,int appointmentID =-1)
@@ -36,7 +36,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
         private void ctrlSchedulTest1_Load(object sender, EventArgs e)
         {
             ctrlSchedulTest1.TestType = this._testType;
-            ctrlSchedulTest1.LoadData(_LocalDrivingLicenseApplicationID);
+            ctrlSchedulTest1.LoadInfo(_LocalDrivingLicenseApplicationID);
         }
     }
 }

@@ -57,7 +57,7 @@ namespace Data_Access_Layer
 
         }
 
-        public static bool GetLastTestAppointmentID(int LocalDrivingLicensApplication, int testTypeID,
+        public static bool GetLastTestAppointment(int LocalDrivingLicensApplication, int testTypeID,
             ref int testAppointmentID, ref DateTime appointmentDate, ref float paidFees, ref int createdByUserID
             , ref bool isLocked)
         {
