@@ -22,6 +22,12 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
         {
             InitializeComponent();
 
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+            {
+                // Stop here! We are in the Visual Studio Designer.
+                return;
+            }
+            
             this._LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             this._testType = testType;
             this._appointmentID = appointmentID;
