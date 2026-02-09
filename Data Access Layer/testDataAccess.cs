@@ -74,13 +74,14 @@ namespace Data_Access_Layer
 
         }
 
-        public static bool addTest(int TestAppointment, bool testResults, string notes, int createdByUserID, out int NewTestID)
+        public static int addTest(int TestAppointment, bool testResults, string notes, int createdByUserID, out int NewTestID)
         {
             string query = @"Insert into Tests(TestAppointmentID, TestResults, Notes, CreatedByUserID)
-              values(@TestAppointment, @TestResults, @Notes, @CreatedByUserID);
-          Updaet TestAppointments set IsLocked =1 where TestAppointmentID = @TestAppointmentID;
+                             values(@TestAppointment, @TestResults, @Notes, @CreatedByUserID);
 
-SELECT SCOPE_IDENTITY();";
+                             Updaet TestAppointments set IsLocked =1 where TestAppointmentID = @TestAppointmentID;
+
+                             SELECT SCOPE_IDENTITY();";
 
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -91,7 +92,7 @@ SELECT SCOPE_IDENTITY();";
             command.Parameters.AddWithValue("@Notes", notes);
             command.Parameters.AddWithValue("@CreatedByUserID", createdByUserID);
 
-            bool isAdded = false;
+         
             NewTestID = -1;
             try
             {
@@ -100,7 +101,7 @@ SELECT SCOPE_IDENTITY();";
                 if (result != null && result != DBNull.Value)
                 {
                     NewTestID = Convert.ToInt32(result);
-                    isAdded = true;
+                   
                 }
             }
             catch (Exception ex)
@@ -110,7 +111,8 @@ SELECT SCOPE_IDENTITY();";
             {
                 connection.Close();
             }
-            return isAdded;
+            return NewTestID;
+            ;
 
 
 
@@ -149,7 +151,7 @@ SELECT SCOPE_IDENTITY();";
 
         public static int GetPassedTestsCount(int LocalDrivingLicenseApplicationID)
         {
-            string query = @"				SELECT PassedTestCount = count(TestTypeID)
+            string query = @"SELECT PassedTestCount = count(TestTypeID)
                          FROM Tests INNER JOIN
                          TestAppointments ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID
 						 where LocalDrivingLicenseApplicationID =@localDrivingApplicationID and TestResult=1";

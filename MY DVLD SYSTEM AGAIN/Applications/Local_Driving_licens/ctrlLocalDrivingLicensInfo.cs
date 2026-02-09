@@ -27,7 +27,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             get { return _localDrivingLicensAppID; }
         }
         private int  LicenseID = -1;
-        public void loadApplicationInfoByLocalDrivingLicenseAppID(int localDrivingAppID)
+        public bool loadApplicationInfoByLocalDrivingLicenseAppID(int localDrivingAppID)
         {
 
             _localDrivingLicensApp = clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(localDrivingAppID);
@@ -36,10 +36,11 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             {
                 _resetControl();
                 MessageBox.Show("Local Driving License Application not found.");
-                return;
+                return false;
             }
 
                   _FillLocalDrivingLicensInfo();
+            return true;
         }
         public void LoaddApplicationInfoByApplicationAppID(int applicationID) 
         {

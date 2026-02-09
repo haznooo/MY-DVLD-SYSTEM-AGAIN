@@ -38,31 +38,35 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.gbTestType = new System.Windows.Forms.GroupBox();
+            this.lbErrorMesseges = new System.Windows.Forms.Label();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.lbDrivingClass = new System.Windows.Forms.Label();
             this.lbFullName = new System.Windows.Forms.Label();
             this.lbTotalTrails = new System.Windows.Forms.Label();
             this.lbFees = new System.Windows.Forms.Label();
             this.DLAppID = new System.Windows.Forms.Label();
+            this.lbTestTitle = new System.Windows.Forms.Label();
+            this.gbRetakeTest = new System.Windows.Forms.GroupBox();
+            this.lbRetakeTestAppID = new System.Windows.Forms.Label();
+            this.lbTotalFees = new System.Windows.Forms.Label();
+            this.lbRetakeTestFees = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.lbTestTitle = new System.Windows.Forms.Label();
             this.pbTestType = new System.Windows.Forms.PictureBox();
-            this.gbRetakeTest = new System.Windows.Forms.GroupBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.lbRetakeTestAppID = new System.Windows.Forms.Label();
-            this.lbTotalFees = new System.Windows.Forms.Label();
-            this.lbRetakeTestFees = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.lbErrorMesseges = new System.Windows.Forms.Label();
             this.gbTestType.SuspendLayout();
+            this.gbRetakeTest.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
@@ -70,10 +74,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTestType)).BeginInit();
-            this.gbRetakeTest.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -197,6 +197,17 @@
             this.gbTestType.TabStop = false;
             this.gbTestType.Text = "TestType";
             // 
+            // lbErrorMesseges
+            // 
+            this.lbErrorMesseges.AutoSize = true;
+            this.lbErrorMesseges.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrorMesseges.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorMesseges.Location = new System.Drawing.Point(125, 257);
+            this.lbErrorMesseges.Name = "lbErrorMesseges";
+            this.lbErrorMesseges.Size = new System.Drawing.Size(307, 25);
+            this.lbErrorMesseges.TabIndex = 37;
+            this.lbErrorMesseges.Text = "error messages will apear here";
+            // 
             // dtpDate
             // 
             this.dtpDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -250,6 +261,110 @@
             this.DLAppID.Size = new System.Drawing.Size(54, 20);
             this.DLAppID.TabIndex = 25;
             this.DLAppID.Text = "?????";
+            // 
+            // lbTestTitle
+            // 
+            this.lbTestTitle.AutoSize = true;
+            this.lbTestTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTestTitle.ForeColor = System.Drawing.Color.Red;
+            this.lbTestTitle.Location = new System.Drawing.Point(214, 232);
+            this.lbTestTitle.Name = "lbTestTitle";
+            this.lbTestTitle.Size = new System.Drawing.Size(140, 25);
+            this.lbTestTitle.TabIndex = 14;
+            this.lbTestTitle.Text = "schedule test";
+            // 
+            // gbRetakeTest
+            // 
+            this.gbRetakeTest.Controls.Add(this.label6);
+            this.gbRetakeTest.Controls.Add(this.label7);
+            this.gbRetakeTest.Controls.Add(this.label8);
+            this.gbRetakeTest.Controls.Add(this.pictureBox5);
+            this.gbRetakeTest.Controls.Add(this.lbRetakeTestAppID);
+            this.gbRetakeTest.Controls.Add(this.lbTotalFees);
+            this.gbRetakeTest.Controls.Add(this.lbRetakeTestFees);
+            this.gbRetakeTest.Controls.Add(this.pictureBox6);
+            this.gbRetakeTest.Controls.Add(this.pictureBox4);
+            this.gbRetakeTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbRetakeTest.Location = new System.Drawing.Point(3, 544);
+            this.gbRetakeTest.Name = "gbRetakeTest";
+            this.gbRetakeTest.Size = new System.Drawing.Size(558, 115);
+            this.gbRetakeTest.TabIndex = 14;
+            this.gbRetakeTest.TabStop = false;
+            this.gbRetakeTest.Text = "Retake test info";
+            // 
+            // lbRetakeTestAppID
+            // 
+            this.lbRetakeTestAppID.AutoSize = true;
+            this.lbRetakeTestAppID.Location = new System.Drawing.Point(184, 80);
+            this.lbRetakeTestAppID.Name = "lbRetakeTestAppID";
+            this.lbRetakeTestAppID.Size = new System.Drawing.Size(48, 18);
+            this.lbRetakeTestAppID.TabIndex = 29;
+            this.lbRetakeTestAppID.Text = "?????";
+            // 
+            // lbTotalFees
+            // 
+            this.lbTotalFees.AutoSize = true;
+            this.lbTotalFees.Location = new System.Drawing.Point(455, 38);
+            this.lbTotalFees.Name = "lbTotalFees";
+            this.lbTotalFees.Size = new System.Drawing.Size(48, 18);
+            this.lbTotalFees.TabIndex = 30;
+            this.lbTotalFees.Text = "?????";
+            // 
+            // lbRetakeTestFees
+            // 
+            this.lbRetakeTestFees.AutoSize = true;
+            this.lbRetakeTestFees.Location = new System.Drawing.Point(175, 38);
+            this.lbRetakeTestFees.Name = "lbRetakeTestFees";
+            this.lbRetakeTestFees.Size = new System.Drawing.Size(48, 18);
+            this.lbRetakeTestFees.TabIndex = 31;
+            this.lbRetakeTestFees.Text = "?????";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(463, 683);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 20);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "save";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Save_32;
+            this.btnSave.Location = new System.Drawing.Point(511, 665);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(50, 38);
+            this.btnSave.TabIndex = 15;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.money_32;
+            this.pictureBox5.Location = new System.Drawing.Point(130, 27);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(34, 31);
+            this.pictureBox5.TabIndex = 18;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Number_32;
+            this.pictureBox6.Location = new System.Drawing.Point(144, 69);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(34, 31);
+            this.pictureBox6.TabIndex = 19;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.money_32;
+            this.pictureBox4.Location = new System.Drawing.Point(415, 27);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(34, 31);
+            this.pictureBox4.TabIndex = 17;
+            this.pictureBox4.TabStop = false;
             // 
             // pictureBox3
             // 
@@ -305,17 +420,6 @@
             this.pictureBox2.TabIndex = 15;
             this.pictureBox2.TabStop = false;
             // 
-            // lbTestTitle
-            // 
-            this.lbTestTitle.AutoSize = true;
-            this.lbTestTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTestTitle.ForeColor = System.Drawing.Color.Red;
-            this.lbTestTitle.Location = new System.Drawing.Point(214, 232);
-            this.lbTestTitle.Name = "lbTestTitle";
-            this.lbTestTitle.Size = new System.Drawing.Size(140, 25);
-            this.lbTestTitle.TabIndex = 14;
-            this.lbTestTitle.Text = "schedule test";
-            // 
             // pbTestType
             // 
             this.pbTestType.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.street_test;
@@ -325,110 +429,6 @@
             this.pbTestType.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTestType.TabIndex = 13;
             this.pbTestType.TabStop = false;
-            // 
-            // gbRetakeTest
-            // 
-            this.gbRetakeTest.Controls.Add(this.label6);
-            this.gbRetakeTest.Controls.Add(this.label7);
-            this.gbRetakeTest.Controls.Add(this.label8);
-            this.gbRetakeTest.Controls.Add(this.pictureBox5);
-            this.gbRetakeTest.Controls.Add(this.lbRetakeTestAppID);
-            this.gbRetakeTest.Controls.Add(this.lbTotalFees);
-            this.gbRetakeTest.Controls.Add(this.lbRetakeTestFees);
-            this.gbRetakeTest.Controls.Add(this.pictureBox6);
-            this.gbRetakeTest.Controls.Add(this.pictureBox4);
-            this.gbRetakeTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbRetakeTest.Location = new System.Drawing.Point(3, 544);
-            this.gbRetakeTest.Name = "gbRetakeTest";
-            this.gbRetakeTest.Size = new System.Drawing.Size(558, 115);
-            this.gbRetakeTest.TabIndex = 14;
-            this.gbRetakeTest.TabStop = false;
-            this.gbRetakeTest.Text = "Retake test info";
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.money_32;
-            this.pictureBox5.Location = new System.Drawing.Point(130, 27);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(34, 31);
-            this.pictureBox5.TabIndex = 18;
-            this.pictureBox5.TabStop = false;
-            // 
-            // lbRetakeTestAppID
-            // 
-            this.lbRetakeTestAppID.AutoSize = true;
-            this.lbRetakeTestAppID.Location = new System.Drawing.Point(184, 80);
-            this.lbRetakeTestAppID.Name = "lbRetakeTestAppID";
-            this.lbRetakeTestAppID.Size = new System.Drawing.Size(48, 18);
-            this.lbRetakeTestAppID.TabIndex = 29;
-            this.lbRetakeTestAppID.Text = "?????";
-            // 
-            // lbTotalFees
-            // 
-            this.lbTotalFees.AutoSize = true;
-            this.lbTotalFees.Location = new System.Drawing.Point(455, 38);
-            this.lbTotalFees.Name = "lbTotalFees";
-            this.lbTotalFees.Size = new System.Drawing.Size(48, 18);
-            this.lbTotalFees.TabIndex = 30;
-            this.lbTotalFees.Text = "?????";
-            // 
-            // lbRetakeTestFees
-            // 
-            this.lbRetakeTestFees.AutoSize = true;
-            this.lbRetakeTestFees.Location = new System.Drawing.Point(175, 38);
-            this.lbRetakeTestFees.Name = "lbRetakeTestFees";
-            this.lbRetakeTestFees.Size = new System.Drawing.Size(48, 18);
-            this.lbRetakeTestFees.TabIndex = 31;
-            this.lbRetakeTestFees.Text = "?????";
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Number_32;
-            this.pictureBox6.Location = new System.Drawing.Point(144, 69);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(34, 31);
-            this.pictureBox6.TabIndex = 19;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.money_32;
-            this.pictureBox4.Location = new System.Drawing.Point(415, 27);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(34, 31);
-            this.pictureBox4.TabIndex = 17;
-            this.pictureBox4.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(463, 683);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 20);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "save";
-            // 
-            // btnSave
-            // 
-            this.btnSave.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Save_32;
-            this.btnSave.Location = new System.Drawing.Point(511, 665);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(50, 38);
-            this.btnSave.TabIndex = 15;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // lbErrorMesseges
-            // 
-            this.lbErrorMesseges.AutoSize = true;
-            this.lbErrorMesseges.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbErrorMesseges.ForeColor = System.Drawing.Color.Red;
-            this.lbErrorMesseges.Location = new System.Drawing.Point(125, 257);
-            this.lbErrorMesseges.Name = "lbErrorMesseges";
-            this.lbErrorMesseges.Size = new System.Drawing.Size(307, 25);
-            this.lbErrorMesseges.TabIndex = 37;
-            this.lbErrorMesseges.Text = "error messages will apear here";
             // 
             // ctrlSchedulTest
             // 
@@ -442,6 +442,11 @@
             this.Size = new System.Drawing.Size(591, 706);
             this.gbTestType.ResumeLayout(false);
             this.gbTestType.PerformLayout();
+            this.gbRetakeTest.ResumeLayout(false);
+            this.gbRetakeTest.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
@@ -449,11 +454,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTestType)).EndInit();
-            this.gbRetakeTest.ResumeLayout(false);
-            this.gbRetakeTest.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

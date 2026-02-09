@@ -18,9 +18,10 @@ namespace BusinessLayer
         public bool TestResults { get; set; }
         public string Notes { get; set; }
         public int CreatedByUserID { get; set; }
+
         clsTestAppointment testAppointmentInfo = new clsTestAppointment();
 
-        clsTest()
+        public clsTest()
         {
             TestID = -1;
             TestAppointmentID = -1;
@@ -42,7 +43,7 @@ namespace BusinessLayer
 
         }
 
-        private bool _addNewTest()
+        private int _addNewTest()
         {
             int newTestID = -1, TestAppointment = -1, createdByUserID = -1;
             bool TestResults = false;
@@ -57,7 +58,7 @@ namespace BusinessLayer
         {
             if (Mode == enMode.Add)
             {
-                return _addNewTest();
+                return (_addNewTest() != -1);
             }
             else if (Mode == enMode.Update)
             {
@@ -88,7 +89,7 @@ namespace BusinessLayer
 
         }
 
-           public static clsTest Find(int id)
+          public static clsTest Find(int Testid)
             {
             int TestID = -1, TestAppointment = -1, createdByUserID = -1;
             bool TestResults = false;
@@ -106,7 +107,5 @@ namespace BusinessLayer
 
 
 
-        }
-
-
+    }
 }
