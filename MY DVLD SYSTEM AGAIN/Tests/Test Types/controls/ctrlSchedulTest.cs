@@ -17,7 +17,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
         public ctrlSchedulTest()
         {
             InitializeComponent();
-            this.TestType = clsTestTypes.enTestType.vissionTest; // Triggers the setter logic immediately
         }
 
         enum enMode { add = 0, update = 1 }
