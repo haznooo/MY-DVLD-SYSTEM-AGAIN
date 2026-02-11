@@ -28,26 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlLocalDrivingLicensInfo1 = new MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens.ctrlLocalDrivingLicensInfo();
             this.pbTestType = new System.Windows.Forms.PictureBox();
             this.lbTestType = new System.Windows.Forms.Label();
             this.dgvAppoinments = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lbTotalRecords = new System.Windows.Forms.Label();
             this.btnSchedulTest = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.ctrlLocalDrivingLicensInfo1 = new MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens.ctrlLocalDrivingLicensInfo();
             ((System.ComponentModel.ISupportInitialize)(this.pbTestType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppoinments)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ctrlLocalDrivingLicensInfo1
-            // 
-            this.ctrlLocalDrivingLicensInfo1.Location = new System.Drawing.Point(3, 113);
-            this.ctrlLocalDrivingLicensInfo1.Name = "ctrlLocalDrivingLicensInfo1";
-            this.ctrlLocalDrivingLicensInfo1.Size = new System.Drawing.Size(742, 374);
-            this.ctrlLocalDrivingLicensInfo1.TabIndex = 0;
             // 
             // pbTestType
             // 
@@ -77,15 +69,6 @@
             this.dgvAppoinments.Name = "dgvAppoinments";
             this.dgvAppoinments.Size = new System.Drawing.Size(722, 150);
             this.dgvAppoinments.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(632, 363);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
             // 
             // label2
             // 
@@ -137,6 +120,13 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Add :";
             // 
+            // ctrlLocalDrivingLicensInfo1
+            // 
+            this.ctrlLocalDrivingLicensInfo1.Location = new System.Drawing.Point(3, 113);
+            this.ctrlLocalDrivingLicensInfo1.Name = "ctrlLocalDrivingLicensInfo1";
+            this.ctrlLocalDrivingLicensInfo1.Size = new System.Drawing.Size(742, 374);
+            this.ctrlLocalDrivingLicensInfo1.TabIndex = 0;
+            // 
             // listTestAppointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -147,7 +137,6 @@
             this.Controls.Add(this.lbTotalRecords);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvAppoinments);
             this.Controls.Add(this.lbTestType);
             this.Controls.Add(this.pbTestType);
@@ -168,7 +157,6 @@
         private System.Windows.Forms.PictureBox pbTestType;
         private System.Windows.Forms.Label lbTestType;
         private System.Windows.Forms.DataGridView dgvAppoinments;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbTotalRecords;

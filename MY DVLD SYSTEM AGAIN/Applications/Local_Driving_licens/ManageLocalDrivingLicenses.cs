@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using MY_DVLD_SYSTEM_AGAIN.Tests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -117,6 +118,12 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             }
              _refreshList();
 
+        }
+
+        private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listTestAppointments frm = new listTestAppointments(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value), clsTestTypes.enTestType.vissionTest);
+            frm.ShowDialog();
         }
     }
 }

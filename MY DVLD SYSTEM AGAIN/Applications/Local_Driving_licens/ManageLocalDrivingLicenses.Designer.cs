@@ -224,6 +224,7 @@
             this.visionTestToolStripMenuItem.Name = "visionTestToolStripMenuItem";
             this.visionTestToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
             this.visionTestToolStripMenuItem.Text = "vision test";
+            this.visionTestToolStripMenuItem.Click += new System.EventHandler(this.visionTestToolStripMenuItem_Click);
             // 
             // writtenTestToolStripMenuItem
             // 
