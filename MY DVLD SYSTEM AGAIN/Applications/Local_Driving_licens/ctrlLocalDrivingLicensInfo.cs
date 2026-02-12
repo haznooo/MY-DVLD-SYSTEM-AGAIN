@@ -79,7 +79,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         {
             lbDLappID.Text = _localDrivingLicensApp.LocalDrivingLicensApplicationID.ToString();
             lbLicensClass.Text = clsLicenceClasses.Find(_localDrivingLicensApp.LicensClassId).ClassName;
-            lbPassedTests.Text = "not implemented yet";
+            lbPassedTests.Text = clsTest.GetPassedTestsCount(_localDrivingLicensApp.LocalDrivingLicensApplicationID).ToString();
 
             if (LicenseID == -1)
            llLicenseInfo.Visible = false;

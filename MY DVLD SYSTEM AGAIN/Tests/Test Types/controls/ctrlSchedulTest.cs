@@ -294,7 +294,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
                     return;
             }
 
-            lbTotalFees.Text = Convert.ToString(Convert.ToInt32(lbFees.Text) + Convert.ToInt32(lbRetakeTestFees.Text));
+            decimal totalFees = Convert.ToDecimal(lbFees.Text) + Convert.ToDecimal(lbRetakeTestFees.Text);
+
+            lbTotalFees.Text = totalFees.ToString();
 
             if (!_handleActiveTestAppointment())
                 return;
@@ -312,7 +314,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
             _testAppointmentt.TestTypeID = (int)_testType;
             _testAppointmentt.localDrivingLicensesApplicantID = _localDrivingLicnesApplicationID;
             _testAppointmentt.AppointmentDate = dtpDate.Value;
-            _testAppointmentt.paidFees = Convert.ToInt32(lbTotalFees.Text);
+            _testAppointmentt.paidFees = Convert.ToSingle(lbTotalFees.Text);
             _testAppointmentt.createdByUserID = clsGlobal.CurrentUser.UserID;
 
             if (_testAppointmentt.save())

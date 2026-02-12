@@ -37,33 +37,49 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
 
         }
 
-        private void listTestAppointments_Load(object sender, EventArgs e)
+        public void _refreshList()     
         {
-            if (ctrlLocalDrivingLicensInfo1.loadApplicationInfoByLocalDrivingLicenseAppID(_localDrivingLicenseApplicationID))
+            _DtAppointments = clsTestAppointment.GetAllTestAppointmentsPerTestType(_localDrivingLicenseApplicationID, (int)_TestType);
+
+            if (_DtAppointments.Rows.Count > 0 )
             {
-                return;
-            }
-            _DtAppointments = clsLocalDrivingLicensApplication.GetAllApplications();
+                dgvAppoinments.DataSource = _DtAppointments;
+                dgvAppoinments.Visible = true;
+                lbUserErrorMessgae.Visible = false;
 
-            dgvAppoinments.DataSource = _DtAppointments;
-
-            if (dgvAppoinments.Rows.Count > 0) 
-            {
-
-                dgvAppoinments.Columns[0].HeaderText = "ID";
+                dgvAppoinments.Columns[0].HeaderText = "Appointment ID";
                 dgvAppoinments.Columns[0].Width = 100;
 
-                dgvAppoinments.Columns[1].HeaderText = "Appointment Date";
+                dgvAppoinments.Columns[1].HeaderText = "Test Type ID";
                 dgvAppoinments.Columns[1].Width = 100;
 
-                dgvAppoinments.Columns[2].HeaderText = "paied fees";
+                dgvAppoinments.Columns[2].HeaderText = "L.D Licens ID";
                 dgvAppoinments.Columns[2].Width = 100;
 
-                dgvAppoinments.Columns[3].HeaderText = "is locked";
+                dgvAppoinments.Columns[3].HeaderText = "appointment date";
                 dgvAppoinments.Columns[3].Width = 100;
 
 
             }
+            else
+            {
+                dgvAppoinments.Visible = false;
+                lbUserErrorMessgae.Visible = true; ;
+
+
+
+            }
+
+        }
+
+        private void listTestAppointments_Load(object sender, EventArgs e)
+        {
+            if (!ctrlLocalDrivingLicensInfo1.loadApplicationInfoByLocalDrivingLicenseAppID(_localDrivingLicenseApplicationID))
+            {
+                return;
+            }
+
+            _refreshList();
 
         }
 
@@ -71,6 +87,14 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
         {
             scheduleTest frm = new scheduleTest(_localDrivingLicenseApplicationID, _TestType);
             frm.ShowDialog();
+            _refreshList();
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            scheduleTest frm = new scheduleTest(_localDrivingLicenseApplicationID, _TestType, clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(_localDrivingLicenseApplicationID).applicationID);  
+            frm.ShowDialog();
+            _refreshList();
         }
     }
 }

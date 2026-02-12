@@ -217,6 +217,7 @@
             this.sToolStripMenuItem.Name = "sToolStripMenuItem";
             this.sToolStripMenuItem.Size = new System.Drawing.Size(245, 36);
             this.sToolStripMenuItem.Text = "schedul test";
+            this.sToolStripMenuItem.DropDownOpening += new System.EventHandler(this.sToolStripMenuItem_DropDownOpening);
             // 
             // visionTestToolStripMenuItem
             // 
@@ -233,6 +234,7 @@
             this.writtenTestToolStripMenuItem.Name = "writtenTestToolStripMenuItem";
             this.writtenTestToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
             this.writtenTestToolStripMenuItem.Text = "written test";
+            this.writtenTestToolStripMenuItem.Click += new System.EventHandler(this.writtenTestToolStripMenuItem_Click);
             // 
             // streetTestToolStripMenuItem
             // 
@@ -241,6 +243,7 @@
             this.streetTestToolStripMenuItem.Name = "streetTestToolStripMenuItem";
             this.streetTestToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
             this.streetTestToolStripMenuItem.Text = "street test";
+            this.streetTestToolStripMenuItem.Click += new System.EventHandler(this.streetTestToolStripMenuItem_Click);
             // 
             // issueDrivingLicensfristTimeToolStripMenuItem
             // 

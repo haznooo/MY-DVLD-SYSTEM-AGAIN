@@ -39,7 +39,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
             _refreshList();
 
-       
+
 
             if (dgvApplications.Rows.Count > 0)
             {
@@ -103,26 +103,77 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         {
             AddUpdateLocalDrivingLicensApplication frm = new AddUpdateLocalDrivingLicensApplication(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
             frm.ShowDialog();
-             _refreshList();
+            _refreshList();
         }
 
         private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value)).Cancel()) 
-            { 
-            MessageBox.Show("Application canceled successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value)).Cancel())
+            {
+                MessageBox.Show("Application canceled successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 MessageBox.Show("Failed to cancel application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-             _refreshList();
+            _refreshList();
 
         }
 
         private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listTestAppointments frm = new listTestAppointments(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value), clsTestTypes.enTestType.vissionTest);
+            frm.ShowDialog();
+        }
+
+        private void sToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            switch (Convert.ToInt32(dgvApplications.CurrentRow.Cells[5].Value))
+            {
+
+                case 0:
+                    {
+                        visionTestToolStripMenuItem.Enabled = true;
+                        writtenTestToolStripMenuItem.Enabled = false;
+                        streetTestToolStripMenuItem.Enabled = false;
+                        break;
+                    }
+                case 1:
+                    {
+                        visionTestToolStripMenuItem.Enabled = false;
+                        writtenTestToolStripMenuItem.Enabled = true;
+                        streetTestToolStripMenuItem.Enabled = false;
+                        break;
+                    }
+                case 2:
+                    {
+                        visionTestToolStripMenuItem.Enabled = false;
+                        writtenTestToolStripMenuItem.Enabled = false;
+                        streetTestToolStripMenuItem.Enabled = true;
+                        break;
+                    }
+
+                default:
+                    {
+                        visionTestToolStripMenuItem.Enabled = false;
+                        writtenTestToolStripMenuItem.Enabled = false;
+                        streetTestToolStripMenuItem.Enabled = false;
+                        break;
+
+                    }
+
+            }
+        }
+
+        private void writtenTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listTestAppointments frm = new listTestAppointments(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value), clsTestTypes.enTestType.writtenTest);
+            frm.ShowDialog();
+        }
+
+        private void streetTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listTestAppointments frm = new listTestAppointments(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value), clsTestTypes.enTestType.streetTest);
             frm.ShowDialog();
         }
     }

@@ -77,12 +77,12 @@ namespace BusinessLayer
 
         }
 
-        public int GetPassedTestsCount(int LocalDrivingLicenseApplicationID)
+        public static int GetPassedTestsCount(int LocalDrivingLicenseApplicationID)
         {
             return testDataAccess.GetPassedTestsCount(LocalDrivingLicenseApplicationID);
         }
 
-        public bool DoesPassedAllTest(int LocalDrivingLicenseApplicationID) {
+        public static bool DoesPassedAllTest(int LocalDrivingLicenseApplicationID) {
 
             return testDataAccess.GetPassedTestsCount(LocalDrivingLicenseApplicationID) == 3;
 

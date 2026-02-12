@@ -129,8 +129,8 @@ namespace Data_Access_Layer
         {
             string query = @"select * from TestAppointments 
                     where TestTypeID = @TestTypeID 
-                    and LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplication 
-                    order by TestAppointment desc";
+                    and LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID 
+                    order by TestAppointmentID desc";
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", localDrivingLicenseApplicationID);
@@ -139,8 +139,8 @@ namespace Data_Access_Layer
             try
             {
                 connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                adapter.Fill(dtTestAppointments);
+                SqlDataReader reader  = command.ExecuteReader();
+                dtTestAppointments.Load(reader);
             }
             catch (Exception ex)
             {
@@ -157,18 +157,19 @@ namespace Data_Access_Layer
          DateTime appointmentDate, float paidFees, int createdByUserID, bool isLocked)
         {
             string query = @"INSERT INTO TestAppointments
-                        (TestTypeID,LocalDrivingLicensApplicationID,AppointmentDate,PaidFees,CreatedByUserID,IsLocked)
+                        (TestTypeID,LocalDrivingLicenseApplicationID,AppointmentDate,PaidFees,CreatedByUserID,IsLocked)
                         VALUES
-                        (@TestTypeID,@LocalDrivingLicensApplicationID,@AppointmentDate,@PaidFees,@CreatedByUserID,@IsLocked)";
+                        (@TestTypeID,@LocalDrivingLicenseApplicationID,@AppointmentDate,@PaidFees,@CreatedByUserID,@IsLocked)";
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@TestTypeID", testTypeID);
-            command.Parameters.AddWithValue("@LocalDrivingLicensApplicationID", LocalDrivingLicensApplicationID);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicensApplicationID);
             command.Parameters.AddWithValue("@AppointmentDate", appointmentDate);
             command.Parameters.AddWithValue("@PaidFees", paidFees);
             command.Parameters.AddWithValue("@CreatedByUserID", createdByUserID);
             command.Parameters.AddWithValue("@IsLocked", isLocked);
+
 
             bool isAdded = false;
             try

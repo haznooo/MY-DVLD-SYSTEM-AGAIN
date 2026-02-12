@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pbTestType = new System.Windows.Forms.PictureBox();
             this.lbTestType = new System.Windows.Forms.Label();
             this.dgvAppoinments = new System.Windows.Forms.DataGridView();
@@ -36,9 +37,14 @@
             this.lbTotalRecords = new System.Windows.Forms.Label();
             this.btnSchedulTest = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.lbUserErrorMessgae = new System.Windows.Forms.Label();
+            this.cmsPeopleOpetions = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TakeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ctrlLocalDrivingLicensInfo1 = new MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens.ctrlLocalDrivingLicensInfo();
             ((System.ComponentModel.ISupportInitialize)(this.pbTestType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppoinments)).BeginInit();
+            this.cmsPeopleOpetions.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbTestType
@@ -65,6 +71,7 @@
             // dgvAppoinments
             // 
             this.dgvAppoinments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAppoinments.ContextMenuStrip = this.cmsPeopleOpetions;
             this.dgvAppoinments.Location = new System.Drawing.Point(12, 533);
             this.dgvAppoinments.Name = "dgvAppoinments";
             this.dgvAppoinments.Size = new System.Drawing.Size(722, 150);
@@ -120,6 +127,41 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Add :";
             // 
+            // lbUserErrorMessgae
+            // 
+            this.lbUserErrorMessgae.AutoSize = true;
+            this.lbUserErrorMessgae.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUserErrorMessgae.ForeColor = System.Drawing.Color.Red;
+            this.lbUserErrorMessgae.Location = new System.Drawing.Point(16, 583);
+            this.lbUserErrorMessgae.Name = "lbUserErrorMessgae";
+            this.lbUserErrorMessgae.Size = new System.Drawing.Size(697, 42);
+            this.lbUserErrorMessgae.TabIndex = 10;
+            this.lbUserErrorMessgae.Text = "no active appointments for this person ";
+            // 
+            // cmsPeopleOpetions
+            // 
+            this.cmsPeopleOpetions.ImageScalingSize = new System.Drawing.Size(30, 30);
+            this.cmsPeopleOpetions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TakeToolStripMenuItem,
+            this.editToolStripMenuItem});
+            this.cmsPeopleOpetions.Name = "cmsPeopleOpetions";
+            this.cmsPeopleOpetions.Size = new System.Drawing.Size(113, 76);
+            // 
+            // TakeToolStripMenuItem
+            // 
+            this.TakeToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.PersonDetails_32;
+            this.TakeToolStripMenuItem.Name = "TakeToolStripMenuItem";
+            this.TakeToolStripMenuItem.Size = new System.Drawing.Size(112, 36);
+            this.TakeToolStripMenuItem.Text = "Take";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.edit_32;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(112, 36);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
             // ctrlLocalDrivingLicensInfo1
             // 
             this.ctrlLocalDrivingLicensInfo1.Location = new System.Drawing.Point(3, 113);
@@ -132,6 +174,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(746, 727);
+            this.Controls.Add(this.lbUserErrorMessgae);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnSchedulTest);
             this.Controls.Add(this.lbTotalRecords);
@@ -146,6 +189,7 @@
             this.Load += new System.EventHandler(this.listTestAppointments_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbTestType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppoinments)).EndInit();
+            this.cmsPeopleOpetions.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +206,9 @@
         private System.Windows.Forms.Label lbTotalRecords;
         private System.Windows.Forms.Button btnSchedulTest;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbUserErrorMessgae;
+        private System.Windows.Forms.ContextMenuStrip cmsPeopleOpetions;
+        private System.Windows.Forms.ToolStripMenuItem TakeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
     }
 }

@@ -85,6 +85,12 @@
     <Compile Include="Global\clsGlobal.cs" />
     <Compile Include="Global\clsValidatoin.cs" />
     <Compile Include="Global\util.cs" />
+    <Compile Include="licenses\local Licenses\IssueDriverLicenseForFirstTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="licenses\local Licenses\IssueDriverLicenseForFirstTime.Designer.cs">
+      <DependentUpon>IssueDriverLicenseForFirstTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Local_Driving_licens\ManageLocalDrivingLicenses.resx">
       <DependentUpon>ManageLocalDrivingLicenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="licenses\local Licenses\IssueDriverLicenseForFirstTime.resx">
+      <DependentUpon>IssueDriverLicenseForFirstTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginMenu.resx">
       <DependentUpon>LoginMenu.cs</DependentUpon>
@@ -680,5 +689,6 @@
   <ItemGroup>
     <None Include="Resources\street test.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
