@@ -18,6 +18,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
         int _localDrivingLicenseApplicationID;
         clsLocalDrivingLicensApplication _localDrivingLicensApplication;
         DataTable _DtAppointments;
+        int _passedTests = 0;
 
         public listTestAppointments(int localDrivingLicenseApplicationID,clsTestTypes.enTestType testType)
         {
@@ -39,6 +40,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
 
         public void _refreshList()     
         {
+        
+
             _DtAppointments = clsTestAppointment.GetAllTestAppointmentsPerTestType(_localDrivingLicenseApplicationID, (int)_TestType);
 
             if (_DtAppointments.Rows.Count > 0 )
@@ -74,9 +77,31 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
 
         private void listTestAppointments_Load(object sender, EventArgs e)
         {
+
             if (!ctrlLocalDrivingLicensInfo1.loadApplicationInfoByLocalDrivingLicenseAppID(_localDrivingLicenseApplicationID))
             {
                 return;
+            }
+            _passedTests = clsTest.GetPassedTestsCount(ctrlLocalDrivingLicensInfo1.LocalDrivingLicensAppID);
+
+
+            switch (_TestType) 
+            {
+                case clsTestTypes.enTestType.vissionTest:
+                    pbTestType.Image = Properties.Resources.Vision_512;
+                    lbTestType.Text = "scedule vision test";
+                    break;
+                 case clsTestTypes.enTestType.writtenTest:
+                    pbTestType.Image = Properties.Resources.Written_Test_512;
+                    lbTestType.Text = "scedule written test";
+                    break;
+                    case clsTestTypes.enTestType.streetTest: pbTestType.Image = Properties.Resources.street_test;
+                    lbTestType.Text = "scedule street test";
+                    break;
+                default: pbTestType.Image = null;
+                    lbTestType.Text = "error in the test type";
+                    break;
+            
             }
 
             _refreshList();
@@ -92,9 +117,21 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            scheduleTest frm = new scheduleTest(_localDrivingLicenseApplicationID, _TestType, clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(_localDrivingLicenseApplicationID).applicationID);  
-            frm.ShowDialog();
+            MessageBox.Show("not implemented");
+            return;
             _refreshList();
+        }
+
+        private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clsTestAppointment.CancelTestAppointment((int)dgvAppoinments.CurrentRow.Cells[0].Value);
+            _refreshList();
+        }
+
+        private void TakeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TakeTest frm = new TakeTest((int)dgvAppoinments.CurrentRow.Cells[0].Value, _localDrivingLicenseApplicationID, _TestType);
+            frm.ShowDialog();
         }
     }
 }

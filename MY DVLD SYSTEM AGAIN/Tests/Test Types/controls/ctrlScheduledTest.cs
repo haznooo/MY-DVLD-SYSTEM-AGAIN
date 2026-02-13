@@ -102,6 +102,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
             _localDrivingLicensApplication = clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(localDrivingLicnesApplicationID);
             _testAppointmentID = testAppointmentID;
 
+          
+
             if (_localDrivingLicensApplication == null)
             {
                 MessageBox.Show("Error loading local driving license application data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -122,27 +124,19 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
 
 
             }
-            else
-            {
-                lbTestTitle.Text = "Retake Test";
-                lbRetakeTestFees.Text = clsApplicationTypes.Find((int)clsApplication.enApplicationType.RetakeDrivingTest).ApplicationTypeFee.ToString();
-                lbRetakeTestAppID.Text = "0";
+            //else
+            //{
+            //    lbTestTitle.Text = "Retake Test";
+            //    lbRetakeTestFees.Text = clsApplicationTypes.Find((int)clsApplication.enApplicationType.RetakeDrivingTest).ApplicationTypeFee.ToString();
+            //    lbRetakeTestAppID.Text = "0";
 
 
-            }
+            //}
 
             DLAppID.Text = _localDrivingLicnesApplicationID.ToString();
             lbDrivingClass.Text = _localDrivingLicensApplication.LicensClassInfo.ClassName;
             lbFullName.Text = _localDrivingLicensApplication.applicantFullName;
             lbTotalTrails.Text = _localDrivingLicensApplication.TotalTrialsForTestType((int)TestType).ToString();
-
-
-                if (!_loadTestAppointmentData())
-                    return false;
-            
-
-            lbTotalFees.Text = Convert.ToString(Convert.ToInt32(lbFees.Text) + Convert.ToInt32(lbRetakeTestFees.Text));
-
             return true;
         }
 

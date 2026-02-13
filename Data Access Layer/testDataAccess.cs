@@ -76,10 +76,10 @@ namespace Data_Access_Layer
 
         public static int addTest(int TestAppointment, bool testResults, string notes, int createdByUserID, out int NewTestID)
         {
-            string query = @"Insert into Tests(TestAppointmentID, TestResults, Notes, CreatedByUserID)
+            string query = @"Insert into Tests(TestAppointmentID,TestResult, Notes, CreatedByUserID)
                              values(@TestAppointment, @TestResults, @Notes, @CreatedByUserID);
 
-                             Updaet TestAppointments set IsLocked =1 where TestAppointmentID = @TestAppointmentID;
+                             Update TestAppointments set IsLocked = 1 where TestAppointmentID = @TestAppointmentID;
 
                              SELECT SCOPE_IDENTITY();";
 
@@ -96,6 +96,7 @@ namespace Data_Access_Layer
             NewTestID = -1;
             try
             {
+                connection.Open();
                 object result = command.ExecuteScalar();
 
                 if (result != null && result != DBNull.Value)

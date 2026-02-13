@@ -39,10 +39,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
             this.Close();
         }
 
-        private void ctrlSchedulTest1_Load(object sender, EventArgs e)
-        {
-           
-        }
+    
 
         private void scheduleTest_Load(object sender, EventArgs e)
         {

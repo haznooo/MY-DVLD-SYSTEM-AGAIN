@@ -27,6 +27,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             get { return _localDrivingLicensAppID; }
         }
         private int  LicenseID = -1;
+        public int passedTests = 0;
         public bool loadApplicationInfoByLocalDrivingLicenseAppID(int localDrivingAppID)
         {
 

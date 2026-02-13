@@ -16,9 +16,12 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
     {
 
         int _appointmentID;
-        clsTestTypes _testTypes;
+        clsTestTypes _testTypesInfo;
         clsTest _test;
-        public TakeTest(int appointmentID,clsTestTypes testType)
+        int testID = -1;
+        clsTestTypes.enTestType _testTypes;
+       int localDrivingLicneseApplicationID = -1;
+        public TakeTest(int appointmentID,int localDrivingLicneseApplicationID, clsTestTypes.enTestType testType,int testID = -1)
         {
             InitializeComponent();
 
@@ -29,14 +32,17 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
 
             _appointmentID = appointmentID;
             _testTypes = testType;
+            this.localDrivingLicneseApplicationID = localDrivingLicneseApplicationID;
+            this.testID = testID;
         }
 
+ 
         private void TakeTest_Load(object sender, EventArgs e)
         {
-            ctrlScheduledTest2.LoadInfo(_appointmentID);
+            if (!ctrlScheduledTest2.LoadInfo(localDrivingLicneseApplicationID))
+                return;
 
-
-            int testID = -1;
+        
 
             if (testID != -1)
             {
@@ -65,7 +71,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
             {
                 return;
             }
-
+         
             _test.TestAppointmentID = _appointmentID;
             _test.TestResults = rdPass.Checked;
             _test.Notes = txtNotes.Text;

@@ -174,6 +174,7 @@
             this.licensesHistoryToolStripMenuItem});
             this.cmsApplicationOpetions.Name = "cmsPeopleOpetions";
             this.cmsApplicationOpetions.Size = new System.Drawing.Size(246, 314);
+            this.cmsApplicationOpetions.Opening += new System.ComponentModel.CancelEventHandler(this.cmsApplicationOpetions_Opening);
             // 
             // detailsToolStripMenuItem
             // 
@@ -223,7 +224,7 @@
             // 
             this.visionTestToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Vision_Test_Schdule;
             this.visionTestToolStripMenuItem.Name = "visionTestToolStripMenuItem";
-            this.visionTestToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.visionTestToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.visionTestToolStripMenuItem.Text = "vision test";
             this.visionTestToolStripMenuItem.Click += new System.EventHandler(this.visionTestToolStripMenuItem_Click);
             // 
@@ -232,7 +233,7 @@
             this.writtenTestToolStripMenuItem.Enabled = false;
             this.writtenTestToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Written_Test_32_Sechdule;
             this.writtenTestToolStripMenuItem.Name = "writtenTestToolStripMenuItem";
-            this.writtenTestToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.writtenTestToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.writtenTestToolStripMenuItem.Text = "written test";
             this.writtenTestToolStripMenuItem.Click += new System.EventHandler(this.writtenTestToolStripMenuItem_Click);
             // 
@@ -241,7 +242,7 @@
             this.streetTestToolStripMenuItem.Enabled = false;
             this.streetTestToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Street_Test_32;
             this.streetTestToolStripMenuItem.Name = "streetTestToolStripMenuItem";
-            this.streetTestToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.streetTestToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.streetTestToolStripMenuItem.Text = "street test";
             this.streetTestToolStripMenuItem.Click += new System.EventHandler(this.streetTestToolStripMenuItem_Click);
             // 

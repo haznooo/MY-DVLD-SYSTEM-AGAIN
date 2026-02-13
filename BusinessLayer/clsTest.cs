@@ -45,10 +45,9 @@ namespace BusinessLayer
 
         private int _addNewTest()
         {
-            int newTestID = -1, TestAppointment = -1, createdByUserID = -1;
-            bool TestResults = false;
-            string Notes = "";
-            return testDataAccess.addTest(TestAppointment, TestResults, Notes, createdByUserID, out newTestID);
+            int newTestID = -1;
+      
+            return testDataAccess.addTest(this.TestAppointmentID,this.TestResults,this.Notes,this.CreatedByUserID, out newTestID);
         }
         private bool _updateTest()
         {

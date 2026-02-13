@@ -130,7 +130,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         {
             switch (Convert.ToInt32(dgvApplications.CurrentRow.Cells[5].Value))
             {
-
+                //those number check how many test the person has passed to determine which test to take 
                 case 0:
                     {
                         visionTestToolStripMenuItem.Enabled = true;
@@ -175,6 +175,36 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         {
             listTestAppointments frm = new listTestAppointments(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value), clsTestTypes.enTestType.streetTest);
             frm.ShowDialog();
+        }
+
+        private void cmsApplicationOpetions_Opening(object sender, CancelEventArgs e)
+        {
+            int passedTests = clsTest.GetPassedTestsCount(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
+
+
+
+            if (passedTests == 3)
+            {
+                editToolStripMenuItem.Enabled = false;
+                cancelToolStripMenuItem.Enabled = false;
+                deleteToolStripMenuItem.Enabled = false;
+                sToolStripMenuItem.Enabled = false;
+                showLicensToolStripMenuItem.Enabled = false;
+
+                issueDrivingLicensfristTimeToolStripMenuItem.Enabled = true;
+
+            }
+            else 
+            {
+                editToolStripMenuItem.Enabled = true;
+                cancelToolStripMenuItem.Enabled = true;
+                deleteToolStripMenuItem.Enabled = true;
+                sToolStripMenuItem.Enabled = true;
+
+                showLicensToolStripMenuItem.Enabled = false;
+                issueDrivingLicensfristTimeToolStripMenuItem.Enabled = false;
+
+            }
         }
     }
 }

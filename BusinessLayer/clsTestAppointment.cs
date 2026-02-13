@@ -133,7 +133,15 @@ namespace BusinessLayer
             return clsTestAppointmentDataAccess.GetTestID(TestAppointmentID);
 
         }
-    
 
+        public static bool DoesHaveActiveTestAppointment(int localDrivingLicensApplication, int testTypeID)
+        {
+            return clsTestAppointmentDataAccess.DoesHaveActiveTestAppointment(localDrivingLicensApplication, testTypeID);
+        
+        }
+        public static bool CancelTestAppointment(int testAppointment) 
+        {
+        return clsTestAppointmentDataAccess.CancelTestAppointment(testAppointment);
+        }
     }
 }

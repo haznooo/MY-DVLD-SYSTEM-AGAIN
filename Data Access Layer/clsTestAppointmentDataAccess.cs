@@ -237,49 +237,6 @@ namespace Data_Access_Layer
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
         public static int GetTestID(int testAppointmentID) {
@@ -312,9 +269,77 @@ namespace Data_Access_Layer
             return testID;
         }
 
+        public static bool DoesHaveActiveTestAppointment(int localDrivingLicenseApplicationID, int testTypeID)
+        {
+
+            string query = @"select top 1 found =1 from TestAppointments 
+        where LocalDrivingLicenseApplicationID = @localDrivingLicneseApplicationID and TestTypeID = @testTypeID and IsLocked = 0";
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@testTypeID", testTypeID);
+            command.Parameters.AddWithValue("@localDrivingLicneseApplicationID", localDrivingLicenseApplicationID);
+            bool isFound = false;
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                  
+                    isFound = true;
+                }
+                else
+                {
+                    reader.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return isFound;
 
 
 
+        }
+
+        public static bool CancelTestAppointment(int testAppointment) 
+        
+        {
+            string query = @"UPDATE TestAppointments SET
+                        IsLocked = 1
+                        WHERE TestAppointmentID = @testAppointmentID ";
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@testAppointmentID", testAppointment);
+            bool isUpdated = false;
+            try
+            {
+                connection.Open();
+                int rowsAffected = command.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    isUpdated = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return isUpdated;
+
+
+        }
 
     }
 }
