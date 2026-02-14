@@ -37,6 +37,11 @@ namespace BusinessLayer
         public int CountryID { get; set; }
         public string ImagePath { get; set; }
 
+        public string GenderTxt { get {
+
+                if (Gender == 0) return "Male";
+                else return "Female";
+            } }
        public clsCountry CountryInfo;
 
  

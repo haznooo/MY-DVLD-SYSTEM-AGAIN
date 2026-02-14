@@ -262,6 +262,7 @@
             this.showLicensToolStripMenuItem.Name = "showLicensToolStripMenuItem";
             this.showLicensToolStripMenuItem.Size = new System.Drawing.Size(245, 36);
             this.showLicensToolStripMenuItem.Text = "show licens";
+            this.showLicensToolStripMenuItem.Click += new System.EventHandler(this.showLicensToolStripMenuItem_Click);
             // 
             // licensesHistoryToolStripMenuItem
             // 

@@ -221,5 +221,10 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             IssueDriverLicenseForFirstTime frm = new IssueDriverLicenseForFirstTime(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
             frm.ShowDialog();
         }
+
+        private void showLicensToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

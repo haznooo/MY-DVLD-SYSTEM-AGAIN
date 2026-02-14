@@ -16,7 +16,7 @@ namespace BusinessLayer
         public int CreatedByUserID;
         public DateTime CreatedDate;
         public int PersonID;
-        clsPerson PersonInfo;
+        public clsPerson PersonInfo;
 
         public clsDriver() {
         
