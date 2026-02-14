@@ -13,7 +13,7 @@ namespace Data_Access_Layer
     public class clsLocalDrivingLicensApplicationDataAccess
     {
 
-        public static bool GetLocalDrivingLicensApplicationInfoByID(int LocalDrivingLicenseApplicationID,ref int ApplicationID,
+        public static bool GetLocalDrivingLicensApplicationInfoByID(int LocalDrivingLicenseApplicationID, ref int ApplicationID,
             ref int LicenseClassID)
         {
 
@@ -26,7 +26,7 @@ namespace Data_Access_Layer
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@localDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
 
-            try { 
+            try {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -51,7 +51,7 @@ namespace Data_Access_Layer
                 connection.Close();
             }
 
-            return isFound; 
+            return isFound;
         }
         public static bool GetLocalDrivingLicensApplicationInfoByApplicationID(int ApplicationID, ref int LocalDrivingLicenseApplicationID,
             ref int LicenseClassID)
@@ -110,12 +110,12 @@ namespace Data_Access_Layer
             {
                 connection.Open();
                 // Execute the command and get the inserted ID if needed
-                 insertedId = Convert.ToInt32(command.ExecuteScalar());
+                insertedId = Convert.ToInt32(command.ExecuteScalar());
             }
             catch (Exception ex)
             {
                 // Handle exception (log it, rethrow it, etc.)
-          
+
             }
             finally
             {
@@ -127,7 +127,7 @@ namespace Data_Access_Layer
         public static bool UpdateLocalDrivingLicensApplicationByID(int LocalDrivingLicenseApplicationID,
             int ApplicationID, int LicenseClassID)
         {
-           
+
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             string query = "UPDATE LocalDrivingLicenseApplications SET ApplicationID = @applicationID, " +
                            "LicenseClassID = @licenseClassID WHERE LocalDrivingLicenseApplicationID = @localDrivingLicenseApplicationID";
@@ -141,21 +141,21 @@ namespace Data_Access_Layer
             try
             {
                 connection.Open();
-               rowsAffected = command.ExecuteNonQuery();
+                rowsAffected = command.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-              
+
             }
             finally
             {
                 connection.Close();
             }
-            return (rowsAffected > 0); 
+            return (rowsAffected > 0);
         }
         public static bool DeleteLocalDrivingLicensApplication(int LocalDrivingLicenseApplicationID)
         {
-          
+
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             string query = "DELETE FROM LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID = @localDrivingLicenseApplicationID";
             SqlCommand command = new SqlCommand(query, connection);
@@ -166,12 +166,12 @@ namespace Data_Access_Layer
             {
                 connection.Open();
                 rowsAffected = command.ExecuteNonQuery();
-                
+
             }
             catch (Exception ex)
             {
-          
-               
+
+
             }
             finally
             {
@@ -181,8 +181,8 @@ namespace Data_Access_Layer
         }
 
         public static DataTable GetAllLocalDrivingLicensApplications()
-        {   
-    
+        {
+
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "select * from LocalDrivingLicenseApplications_View";
@@ -190,7 +190,7 @@ namespace Data_Access_Layer
             SqlCommand command = new SqlCommand(query, connection);
 
             DataTable localDrivingLicensApplications = new DataTable();
-        
+
 
             try
             {
@@ -199,13 +199,13 @@ namespace Data_Access_Layer
 
                 if (reader.HasRows)
                 {
-                    localDrivingLicensApplications.Load(reader);   
+                    localDrivingLicensApplications.Load(reader);
                 }
                 reader.Close();
             }
             catch (Exception ex)
             {
-            
+
 
             }
             finally
@@ -214,7 +214,7 @@ namespace Data_Access_Layer
             }
 
             return localDrivingLicensApplications;
-         
+
         }
 
         public static bool DoesPassTestType(int localDrivingLicensApplicationID, int testTYpe) {
@@ -234,7 +234,7 @@ namespace Data_Access_Layer
             command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", localDrivingLicensApplicationID);
             command.Parameters.AddWithValue("@TestTypeID", testTYpe);
 
-            try 
+            try
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
@@ -248,7 +248,7 @@ namespace Data_Access_Layer
             catch (Exception ex)
             {
                 // Handle exception (log it, rethrow it, etc.)
-               
+
             }
             finally
             {
@@ -275,7 +275,7 @@ namespace Data_Access_Layer
             command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", localDrivingLicensApplicationID);
             command.Parameters.AddWithValue("@TestTypeID", testTYpe);
             bool isfound = false;
-            try 
+            try
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
@@ -289,13 +289,13 @@ namespace Data_Access_Layer
             catch (Exception ex)
             {
                 // Handle exception (log it, rethrow it, etc.)
-               
+
             }
             finally
             {
                 connection.Close();
             }
-            return isfound; 
+            return isfound;
         }
         public static int TotalTrailsPerTestType(int localDrivingLicensApplicationID, int testTYpe) {
 
@@ -312,7 +312,7 @@ namespace Data_Access_Layer
             command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", localDrivingLicensApplicationID);
             command.Parameters.AddWithValue("@TestTypeID", testTYpe);
 
-            try 
+            try
             {
                 connection.Open();
                 totalTrails = (int)command.ExecuteScalar();
@@ -320,7 +320,7 @@ namespace Data_Access_Layer
             catch (Exception ex)
             {
                 // Handle exception (log it, rethrow it, etc.)
-               
+
             }
             finally
             {
@@ -371,8 +371,11 @@ namespace Data_Access_Layer
 
         }
 
-    
+
+    }
+        
+        }
 
 
-}
-}
+
+

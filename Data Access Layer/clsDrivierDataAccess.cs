@@ -162,7 +162,7 @@ namespace Data_Access_Layer
                 Connection.Open();
                 SqlDataReader reader = Coomand.ExecuteReader();
 
-                while (reader.HasRows)
+                while (reader.Read())
                 {
 
                     DriverID = Convert.ToInt32(reader["DriverID"]);

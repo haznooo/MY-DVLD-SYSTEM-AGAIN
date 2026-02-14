@@ -31,7 +31,7 @@
             this.ctrlLocalDrivingLicensInfo1 = new MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens.ctrlLocalDrivingLicensInfo();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNotes = new System.Windows.Forms.TextBox();
             this.btnIssue = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -63,13 +63,13 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox1
+            // txtNotes
             // 
-            this.textBox1.Location = new System.Drawing.Point(113, 375);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(631, 95);
-            this.textBox1.TabIndex = 3;
+            this.txtNotes.Location = new System.Drawing.Point(113, 375);
+            this.txtNotes.Multiline = true;
+            this.txtNotes.Name = "txtNotes";
+            this.txtNotes.Size = new System.Drawing.Size(631, 95);
+            this.txtNotes.TabIndex = 3;
             // 
             // btnIssue
             // 
@@ -106,12 +106,13 @@
             this.ClientSize = new System.Drawing.Size(746, 526);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnIssue);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ctrlLocalDrivingLicensInfo1);
             this.Name = "IssueDriverLicenseForFirstTime";
             this.Text = "IssueDriverLicenseForFirstTime";
+            this.Load += new System.EventHandler(this.IssueDriverLicenseForFirstTime_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -123,7 +124,7 @@
         private Applications.Local_Driving_licens.ctrlLocalDrivingLicensInfo ctrlLocalDrivingLicensInfo1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.Button btnIssue;
         private System.Windows.Forms.Button btnClose;
     }

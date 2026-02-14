@@ -6,6 +6,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BusinessLayer;
+using System.ComponentModel;
 
 namespace BusinessLayer
 {
@@ -92,6 +94,14 @@ namespace BusinessLayer
 
         }
 
+        public static bool isCompleted(int localDrivingLicneseApplication)
+        {
+            enApplicationStatus ApplicationStatus;
+            ApplicationStatus = clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(localDrivingLicneseApplication).applicationStatus;
+
+            if (ApplicationStatus == enApplicationStatus.complete) return true;
+            else return false;
+        }
 
         public static clsLocalDrivingLicensApplication FindLocalDrivingLicensApplicationByID(int LocalDrivingapplicationID)
         {
@@ -130,14 +140,11 @@ namespace BusinessLayer
             clsApplication application = clsApplication.GetBaseApplicationInfoByID(applicationID);
 
             if (application == null) { return null; }
-            ;
-
             return new clsLocalDrivingLicensApplication(localDrivingLicensApplicationID, licensClassID, application.applicationID,
                 application.applicantID, application.applicationTypeID, application.applicationDate, application.paidFee,
                 application.createdByUserID, application.applicationStatus, application.lastStatusDate);
 
 
-            return null;
         }
 
         public bool DeleteLocalDrivingLicensApplicationByID()
@@ -169,6 +176,54 @@ namespace BusinessLayer
         public bool isthereActiveScheduledTest(int testTYpe)
         {
             return clsLocalDrivingLicensApplicationDataAccess.isthereActiveScheduledTest(this.LocalDrivingLicensApplicationID, testTYpe);
+        }
+
+        public int IssueLicenseFirstTime(string notes, int CreatedByUserID)
+        {
+            int driverID = -1;
+            clsDriver driver = clsDriver.GetDriverInfoByPersonID(this.applicantID);
+
+            if (driver == null)
+            {
+                driver = new clsDriver();
+                driver.PersonID = this.applicantID;
+                driver.CreatedByUserID = CreatedByUserID;
+                driver.CreatedDate = DateTime.Now;
+
+                if (driver.Save())
+                {
+                }
+                else { return -1; }
+
+            }
+
+            driverID = driver.DriverID;
+
+            clsLicense license = new clsLicense();
+            license.ApplicationID = this.applicationID;
+            license.DriverID = driverID;
+            license.LicenseClasID = this.LicensClassId;
+            license.Issuereason = clsLicense.enIssueReason.FirstTime;
+            license.PaidFees = this.LicensClassInfo.Fee;
+            license.isActive = true;
+            license.issueDate = DateTime.Now;
+            license.ExpirationDate = DateTime.Now.AddYears(this.LicensClassInfo.validityYears);
+            license.Notes = notes;
+            license.CreatedByUserID = CreatedByUserID;
+
+            int newLicenseID = -1;
+            if (license.Save(out newLicenseID))
+            {
+                this.SetComplete();
+
+            }
+            else
+            {
+                return -1;
+            }
+     
+            return newLicenseID;
+
         }
 
 

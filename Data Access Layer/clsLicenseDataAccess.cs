@@ -152,16 +152,16 @@ namespace Data_Access_Layer
 
             return dt;
         }
-        static public int AddNewLicense(ref int applicationID, ref int DriverId, ref int LicenseClass,
-         ref int CreatedByUserID, ref DateTime IssueDate, ref DateTime ExpirationDate, ref string Notes, ref decimal paidfees,
-         ref bool isActive, ref int IssueReason) 
+        static public int AddNewLicense(int applicationID,int DriverId,int LicenseClass,
+         int CreatedByUserID,DateTime IssueDate,DateTime ExpirationDate,string Notes,decimal paidfees,
+         bool isActive,int IssueReason) 
 
         {
             string query = @"insert into Licenses
 (ApplicationID,CreatedByUserID,DriverID,
-LicenseClass,IssueDate,ExpirationDate,PaidFees,IsActive,IssueReason,Notes) values
+LicenseClass,IssueDate,ExpirationDate,PaidFees,IssueeReason,IsActive,Notes) values
 (@ApplicationID,@CreatedByUserID,@DriverID,
-@LicenseClass,@IssueDate,@ExpirationDate,@PaidFees,@IsActive,IssueReason,@Notes);
+@LicenseClass,@IssueDate,@ExpirationDate,@PaidFees,@IssueReason,@IsActive,@Notes);
  SELECT SCOPE_IDENTITY();
 ";
 
@@ -171,7 +171,7 @@ LicenseClass,IssueDate,ExpirationDate,PaidFees,IsActive,IssueReason,Notes) value
 
             Coomand.Parameters.AddWithValue("@ApplicationID", applicationID);
             Coomand.Parameters.AddWithValue("@DriverID", DriverId);
-            Coomand.Parameters.AddWithValue("@DriverID", LicenseClass);
+            Coomand.Parameters.AddWithValue("@LicenseClass", LicenseClass);
             Coomand.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
             Coomand.Parameters.AddWithValue("@IssueDate", IssueDate);
             Coomand.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);

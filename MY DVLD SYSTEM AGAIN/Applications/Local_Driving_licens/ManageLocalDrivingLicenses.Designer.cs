@@ -253,6 +253,7 @@
             this.issueDrivingLicensfristTimeToolStripMenuItem.Name = "issueDrivingLicensfristTimeToolStripMenuItem";
             this.issueDrivingLicensfristTimeToolStripMenuItem.Size = new System.Drawing.Size(245, 36);
             this.issueDrivingLicensfristTimeToolStripMenuItem.Text = "issue driving licens (frist time)";
+            this.issueDrivingLicensfristTimeToolStripMenuItem.Click += new System.EventHandler(this.issueDrivingLicensfristTimeToolStripMenuItem_Click);
             // 
             // showLicensToolStripMenuItem
             // 

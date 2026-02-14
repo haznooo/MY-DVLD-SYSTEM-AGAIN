@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses;
 using MY_DVLD_SYSTEM_AGAIN.Tests;
 using System;
 using System.Collections.Generic;
@@ -181,17 +182,21 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         {
             int passedTests = clsTest.GetPassedTestsCount(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
 
-
+            bool isCompleted = clsLocalDrivingLicensApplication.isCompleted(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
 
             if (passedTests == 3)
             {
+                issueDrivingLicensfristTimeToolStripMenuItem.Enabled = true;
+
+                if (isCompleted) { issueDrivingLicensfristTimeToolStripMenuItem.Enabled = false; }
+
                 editToolStripMenuItem.Enabled = false;
                 cancelToolStripMenuItem.Enabled = false;
                 deleteToolStripMenuItem.Enabled = false;
                 sToolStripMenuItem.Enabled = false;
                 showLicensToolStripMenuItem.Enabled = false;
 
-                issueDrivingLicensfristTimeToolStripMenuItem.Enabled = true;
+              
 
             }
             else 
@@ -205,6 +210,12 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
                 issueDrivingLicensfristTimeToolStripMenuItem.Enabled = false;
 
             }
+        }
+
+        private void issueDrivingLicensfristTimeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IssueDriverLicenseForFirstTime frm = new IssueDriverLicenseForFirstTime(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
+            frm.ShowDialog();
         }
     }
 }

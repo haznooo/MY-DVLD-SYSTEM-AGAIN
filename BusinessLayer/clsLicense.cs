@@ -17,14 +17,14 @@ namespace BusinessLayer
         public int ApplicationID { get; set; }
         public int LicenseClasID { get; set; }
         public int DriverID { get; set; }
-        int CreatedByUserID { get; set; }
-        DateTime issueDate { get; set; }
-        DateTime ExpirationDate { get; set; }
-        string Notes { get; set; }
-        decimal PaidFees { get; set; }
-        bool isActive { get; set; }
-        int IssueReasonID { get; set; }
-        public clsDriver DriverInfo;
+        public int CreatedByUserID { get; set; }
+        public DateTime issueDate { get; set; }
+        public DateTime ExpirationDate { get; set; }
+        public string Notes { get; set; }
+        public decimal PaidFees { get; set; }
+        public bool isActive { get; set; }
+        public int IssueReasonID { get; set; }
+       public clsDriver DriverInfo;
         public clsLicenceClasses LicenceClassesInfo;
         public enIssueReason Issuereason;
         public bool IsDetained;
@@ -90,14 +90,10 @@ namespace BusinessLayer
 
         private int _addNewLicense()
         {
-            int LicneseID = -1, applicationID = -1, DriverId = -1, LicenseClass = -1, CreatedByUserID = -1, IssueReason = -1;
-            DateTime IssueDate = DateTime.Now, ExpirationDate = DateTime.Now;
-            string Notes = string.Empty;
-            decimal paidfees = 0;
-            bool isActive = false;
+     
 
-            LicneseID = clsLicenseDataAccess.AddNewLicense(ref applicationID, ref DriverId, ref LicenseClass, ref CreatedByUserID
-                 , ref IssueDate, ref ExpirationDate, ref Notes, ref paidfees, ref isActive, ref IssueReason);
+            LicneseID = clsLicenseDataAccess.AddNewLicense(this.ApplicationID,this.DriverID,this.LicenseClasID,this.CreatedByUserID
+                 ,this.issueDate,this.ExpirationDate,this.Notes,this.PaidFees,this.isActive,(int)this.Issuereason);
 
             return LicneseID;
         }
@@ -116,9 +112,9 @@ namespace BusinessLayer
             }
             return false;
         }
-        public bool Save()
+        public bool Save(out int newID)
         {
-
+            newID = -1;
             switch (_Mode)
             {
 
@@ -126,7 +122,8 @@ namespace BusinessLayer
                     _UpdateLicense(this.LicneseID); return true;
                 case enMode.add:
                     {
-                        if (_addNewLicense() > 0)
+                        newID = _addNewLicense();
+                        if (newID > 0)
                             return true;
                         else return false;
 
