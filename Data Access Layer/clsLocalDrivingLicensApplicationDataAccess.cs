@@ -371,7 +371,11 @@ namespace Data_Access_Layer
 
         }
 
-
+        public static bool DoesPassAllTests(int localDrivingLicneseApplicationID)
+        {
+            return testDataAccess.GetPassedTestsCount(localDrivingLicneseApplicationID) == 3;
+        
+        }
     }
         
         }

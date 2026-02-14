@@ -187,14 +187,18 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             if (passedTests == 3)
             {
                 issueDrivingLicensfristTimeToolStripMenuItem.Enabled = true;
-
-                if (isCompleted) { issueDrivingLicensfristTimeToolStripMenuItem.Enabled = false; }
-
                 editToolStripMenuItem.Enabled = false;
                 cancelToolStripMenuItem.Enabled = false;
                 deleteToolStripMenuItem.Enabled = false;
                 sToolStripMenuItem.Enabled = false;
                 showLicensToolStripMenuItem.Enabled = false;
+
+                if (isCompleted) {
+                    issueDrivingLicensfristTimeToolStripMenuItem.Enabled = false;
+                    showLicensToolStripMenuItem.Enabled = true;
+                }
+
+                
 
               
 

@@ -168,6 +168,12 @@ namespace BusinessLayer
         {
             return clsLocalDrivingLicensApplicationDataAccess.DoesPassTestType(this.LocalDrivingLicensApplicationID, testTypeID);
         }
+
+        public static bool DoesPassAllTests(int localDrivingLicneseApplicationID)
+        {
+            return clsTest.GetPassedTestsCount(localDrivingLicneseApplicationID) == 3;
+    
+        }
         public int TotalTrialsForTestType(int testTypeID)
         {
             return clsLocalDrivingLicensApplicationDataAccess.TotalTrailsPerTestType(this.LocalDrivingLicensApplicationID, testTypeID);

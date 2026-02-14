@@ -37,6 +37,25 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
 
             _LocalDrivingLicensApplication = clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(_LocalDrivingLicensesApplicationID);
 
+            if (_LocalDrivingLicensApplication == null) 
+            {
+                MessageBox.Show("application with the id " + _LocalDrivingLicensesApplicationID + " not found", "faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
+
+
+            if (!clsLocalDrivingLicensApplication.DoesPassAllTests(_LocalDrivingLicensesApplicationID)) 
+            {
+                MessageBox.Show("person did not pass all the test yet", "faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
+       //soon i will addd a method that checks if the person already have a licnese of this class
+  
+
             if (_LocalDrivingLicensApplication.IssueLicenseFirstTime(txtNotes.Text, clsGlobal.CurrentUser.UserID) > 0)
             {
                 MessageBox.Show("new license added", "succese", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -45,14 +64,15 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
             {
                 MessageBox.Show("failed to add the new licnese", "faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-
-
             }
+
         }
 
         private void IssueDriverLicenseForFirstTime_Load(object sender, EventArgs e)
         {
             ctrlLocalDrivingLicensInfo1.loadApplicationInfoByLocalDrivingLicenseAppID(this._LocalDrivingLicensesApplicationID);
+
+
 
            
 
