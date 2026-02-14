@@ -198,12 +198,12 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
                     showLicensToolStripMenuItem.Enabled = true;
                 }
 
-                
 
-              
+
+
 
             }
-            else 
+            else
             {
                 editToolStripMenuItem.Enabled = true;
                 cancelToolStripMenuItem.Enabled = true;
@@ -224,7 +224,11 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
         private void showLicensToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+          
+            // kinda goofy ngl
+            DriverLicenseInfo frm = new DriverLicenseInfo(clsLocalDrivingLicensApplication.GetLicneseID_IfIssued(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value)));
+            frm.Show();
         }
+    
     }
 }

@@ -252,6 +252,9 @@
     <EmbeddedResource Include="licenses\local Licenses\ctrlDriverLicenseInfo.resx">
       <DependentUpon>ctrlDriverLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="licenses\local Licenses\DriverLicenseInfo.resx">
+      <DependentUpon>DriverLicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="licenses\local Licenses\IssueDriverLicenseForFirstTime.resx">
       <DependentUpon>IssueDriverLicenseForFirstTime.cs</DependentUpon>
     </EmbeddedResource>

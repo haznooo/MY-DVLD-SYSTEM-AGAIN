@@ -78,6 +78,24 @@ namespace BusinessLayer
             }
             return null;
         }
+        static public clsLicense FindByApplicationID(int applicationID)
+        {
+            int LicneseID = -1, DriverId = -1, LicenseClass = -1, CreatedByUserID = -1, IssueReason = -1;
+            DateTime IssueDate = DateTime.Now, ExpirationDate = DateTime.Now;
+            string Notes = string.Empty;
+            decimal paidfees = 0;
+            bool isActive = false;
+
+            if (clsLicenseDataAccess.GetLicenseInfobyApplicatoinID(ref LicneseID,applicationID, ref DriverId, ref LicenseClass, ref CreatedByUserID
+                , ref IssueDate, ref ExpirationDate, ref Notes, ref paidfees, ref isActive, ref IssueReason))
+            {
+
+                return new clsLicense(LicneseID, applicationID, DriverId,
+               LicenseClass, CreatedByUserID, IssueDate, ExpirationDate, Notes, paidfees, isActive, (enIssueReason)IssueReason);
+
+            }
+            return null;
+        }
 
         static public DataTable GetAllLicenses()
         {

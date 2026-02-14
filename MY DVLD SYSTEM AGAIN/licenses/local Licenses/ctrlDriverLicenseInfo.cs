@@ -14,27 +14,34 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
     public partial class ctrlDriverLicenseInfo : UserControl
     {
         int _LicenseID;
-        public ctrlDriverLicenseInfo(int licenseID)
+        public ctrlDriverLicenseInfo()
         {
             InitializeComponent();
-            if (this.DesignMode) { return; }
+        
 
-            _LicenseID = licenseID;
+           
         }
 
-        private void ctrlDriverLicenseInfo_Load(object sender, EventArgs e)
+        public void LoadInfo(int LicenseID) 
         {
+           
+            
+
+            _LicenseID = LicenseID;
+
+            if (this.DesignMode) return;
 
             clsLicense license = clsLicense.FindbyID(_LicenseID);
 
-            if (license == null) 
-            { MessageBox.Show("Failed to load license info", "error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            if (license == null)
+            { MessageBox.Show("Failed to load license info", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);return; }
+            
 
             clsPerson person = clsPerson.GetPersonInfoByID(license.DriverInfo.PersonInfo.PersonID);
 
-            lbFullName.Text = person.FullName ;
+            lbFullName.Text = person.FullName;
             lbNationalNumber.Text = person.NationalNUmber;
-            lbDateOfBirth.Text = person.DateOfBirth.ToString() ;
+            lbDateOfBirth.Text = person.DateOfBirth.ToString();
             lbGender.Text = person.GenderTxt;
             lbDriverID.Text = license.DriverInfo.DriverID.ToString();
             lbIssueReason.Text = license.IssueReasonText;
@@ -50,19 +57,14 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
             {
                 pbPersonImage.ImageLocation = person.ImagePath;
             }
-            else 
+            else
             {
                 // 0 means it is a male
                 if (person.Gender == 0) { pbPersonImage.Image = Properties.Resources.Male_512; }
                 else pbPersonImage.Image = Properties.Resources.Female_512;
             }
 
-          
-
-
-
-
-
         }
+      
     }
 }

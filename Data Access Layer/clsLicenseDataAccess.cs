@@ -29,7 +29,7 @@ namespace Data_Access_Layer
                 Connection.Open();
                 SqlDataReader reader = Coomand.ExecuteReader();
 
-                while (reader.HasRows)
+                while (reader.Read())
                 {
                
                     applicationID =   Convert.ToInt32(reader["ApplicationID"]);
@@ -47,8 +47,67 @@ namespace Data_Access_Layer
                     }
                     else 
                     { Notes = reader["Notes"].ToString(); }
+                    isFound = true;
 
                    
+
+
+
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+
+                Connection.Close();
+            }
+            return isFound;
+
+
+        }
+
+        static public bool GetLicenseInfobyApplicatoinID(ref int LicneseID,int applicationID, ref int DriverId, ref int LicenseClass,
+           ref int CreatedByUserID, ref DateTime IssueDate, ref DateTime ExpirationDate, ref string Notes, ref decimal paidfees,
+           ref bool isActive, ref int IssueReason)
+        {
+            string query = "select * from Licenses where ApplicationID = @applicationID;";
+
+            SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlCommand Coomand = new SqlCommand(query, Connection);
+            Coomand.Parameters.AddWithValue("@applicationID", applicationID);
+            bool isFound = false;
+
+            try
+            {
+
+                Connection.Open();
+                SqlDataReader reader = Coomand.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    LicneseID = Convert.ToInt32(reader["LicenseID"]);
+                    CreatedByUserID = Convert.ToInt32(reader["CreatedByUserID"]);
+                    DriverId = Convert.ToInt32(reader["DriverID"]);
+                    LicenseClass = Convert.ToInt32(reader["LicenseClass"]);
+                    IssueDate = Convert.ToDateTime(reader["IssueDate"]);
+                    ExpirationDate = Convert.ToDateTime(reader["ExpirationDate"]);
+                    paidfees = Convert.ToInt32(reader["PaidFees"]);
+                    isActive = Convert.ToBoolean(reader["IsActive"]);
+                    IssueReason = Convert.ToInt32(reader["IssueReason"]);
+                    if (reader["Notes"] == DBNull.Value)
+                    {
+                        Notes = "";
+                    }
+                    else
+                    { Notes = reader["Notes"].ToString(); }
+                    isFound = true;
+
+
 
 
 
@@ -159,7 +218,7 @@ namespace Data_Access_Layer
         {
             string query = @"insert into Licenses
 (ApplicationID,CreatedByUserID,DriverID,
-LicenseClass,IssueDate,ExpirationDate,PaidFees,IssueeReason,IsActive,Notes) values
+LicenseClass,IssueDate,ExpirationDate,PaidFees,IssueReason,IsActive,Notes) values
 (@ApplicationID,@CreatedByUserID,@DriverID,
 @LicenseClass,@IssueDate,@ExpirationDate,@PaidFees,@IssueReason,@IsActive,@Notes);
  SELECT SCOPE_IDENTITY();

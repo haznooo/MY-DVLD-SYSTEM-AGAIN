@@ -28,13 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.ctrlDriverLicenseInfo1 = new MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses.ctrlDriverLicenseInfo();
             this.SuspendLayout();
+            // 
+            // ctrlDriverLicenseInfo1
+            // 
+            this.ctrlDriverLicenseInfo1.Location = new System.Drawing.Point(3, 1);
+            this.ctrlDriverLicenseInfo1.Name = "ctrlDriverLicenseInfo1";
+            this.ctrlDriverLicenseInfo1.Size = new System.Drawing.Size(778, 505);
+            this.ctrlDriverLicenseInfo1.TabIndex = 0;
+            this.ctrlDriverLicenseInfo1.Load += new System.EventHandler(this.ctrlDriverLicenseInfo1_Load);
             // 
             // DriverLicenseInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 596);
+            this.ClientSize = new System.Drawing.Size(784, 498);
+            this.Controls.Add(this.ctrlDriverLicenseInfo1);
             this.Name = "DriverLicenseInfo";
             this.Text = "DriverLicenseInfo";
             this.ResumeLayout(false);
@@ -42,5 +52,7 @@
         }
 
         #endregion
+
+        private ctrlDriverLicenseInfo ctrlDriverLicenseInfo1;
     }
 }

@@ -232,6 +232,15 @@ namespace BusinessLayer
 
         }
 
+        public static int GetLicneseID_IfIssued(int localDrivingLicneseApplicationID) 
+        {
+            clsLocalDrivingLicensApplication localDrivingLicenseApplication = clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(localDrivingLicneseApplicationID);
 
+            if (localDrivingLicenseApplication == null) { return -1; }
+           return clsLicense.FindByApplicationID(localDrivingLicenseApplication.applicationID).LicneseID;
+
+
+
+        }
     }
 }
