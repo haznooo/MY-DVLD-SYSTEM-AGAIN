@@ -44,7 +44,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
         
         }
         public int LicenseID = -1;
-        clsLicense LicenseInfo { get { return ctrlDriverLicenseInfo1.LicenseInfo; } }
+       public clsLicense LicenseInfo { get { return ctrlDriverLicenseInfo1.LicenseInfo; } }
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (!this.ValidateChildren()) 
@@ -87,22 +87,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
         private void emptyTxtBox_Validating(object sender, CancelEventArgs e)
         {
 
-            TextBox currentTextBox = (TextBox)sender;
-
-            if (string.IsNullOrEmpty(currentTextBox.Text.Trim()))
-            {
-
-                e.Cancel = true;
-                currentTextBox.Focus();
-                errorProvider1.SetError(currentTextBox, "This info is required");
-
-            }
-            else
-            {
-
-                e.Cancel = false;
-                errorProvider1.SetError(currentTextBox, "");
-            }
         }
     }
 }

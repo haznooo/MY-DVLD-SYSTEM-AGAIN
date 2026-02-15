@@ -1,6 +1,7 @@
 ﻿using MY_DVLD_SYSTEM.Global;
 using MY_DVLD_SYSTEM_AGAIN.Applications.Application_types;
 using MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens;
+using MY_DVLD_SYSTEM_AGAIN.Applications.Renew_Licenses;
 using MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types;
 using MY_DVLD_SYSTEM_AGAIN.Users;
 using System;
@@ -85,6 +86,15 @@ namespace MY_DVLD_SYSTEM_AGAIN
             frm.ShowDialog();
         }
 
-   
+        private void renewLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RenewLicense frm = new RenewLicense();
+            frm.ShowDialog();
+        }
+
+        private void replacmentForLostOfDamagedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

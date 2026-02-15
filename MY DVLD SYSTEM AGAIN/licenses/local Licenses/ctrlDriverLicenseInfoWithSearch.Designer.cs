@@ -80,6 +80,7 @@
             this.txtSearch.Size = new System.Drawing.Size(182, 24);
             this.txtSearch.TabIndex = 60;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
+            this.txtSearch.Validating += new System.ComponentModel.CancelEventHandler(this.emptyTxtBox_Validating);
             // 
             // ctrlDriverLicenseInfo1
             // 
@@ -100,7 +101,6 @@
             this.Controls.Add(this.gbSearch);
             this.Name = "ctrlDriverLicenseInfoWithSearch";
             this.Size = new System.Drawing.Size(872, 388);
-            this.Validating += new System.ComponentModel.CancelEventHandler(this.emptyTxtBox_Validating);
             this.gbSearch.ResumeLayout(false);
             this.gbSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

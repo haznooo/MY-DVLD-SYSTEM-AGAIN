@@ -208,7 +208,7 @@ namespace BusinessLayer
             clsLicense license = new clsLicense();
             license.ApplicationID = this.applicationID;
             license.DriverID = driverID;
-            license.LicenseClasID = this.LicensClassId;
+            license.LicenseClassID = this.LicensClassId;
             license.Issuereason = clsLicense.enIssueReason.FirstTime;
             license.PaidFees = this.LicensClassInfo.Fee;
             license.isActive = true;
