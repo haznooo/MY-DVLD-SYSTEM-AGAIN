@@ -29,30 +29,60 @@
         private void InitializeComponent()
         {
             this.ctrlDriverLicenseInfo1 = new MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses.ctrlDriverLicenseInfo();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // ctrlDriverLicenseInfo1
             // 
-            this.ctrlDriverLicenseInfo1.Location = new System.Drawing.Point(3, 1);
+            this.ctrlDriverLicenseInfo1.Location = new System.Drawing.Point(1, 135);
             this.ctrlDriverLicenseInfo1.Name = "ctrlDriverLicenseInfo1";
-            this.ctrlDriverLicenseInfo1.Size = new System.Drawing.Size(778, 505);
+            this.ctrlDriverLicenseInfo1.Size = new System.Drawing.Size(869, 310);
             this.ctrlDriverLicenseInfo1.TabIndex = 0;
-            this.ctrlDriverLicenseInfo1.Load += new System.EventHandler(this.ctrlDriverLicenseInfo1_Load);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.LicenseView_400;
+            this.pictureBox1.Location = new System.Drawing.Point(297, 1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(144, 103);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(256, 107);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(227, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Driver\'s License info";
             // 
             // DriverLicenseInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 498);
+            this.ClientSize = new System.Drawing.Size(870, 444);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ctrlDriverLicenseInfo1);
             this.Name = "DriverLicenseInfo";
             this.Text = "DriverLicenseInfo";
+            this.Load += new System.EventHandler(this.ctrlDriverLicenseInfo1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private ctrlDriverLicenseInfo ctrlDriverLicenseInfo1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

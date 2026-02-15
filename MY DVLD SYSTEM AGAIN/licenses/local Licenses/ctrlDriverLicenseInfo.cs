@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
 {
     public partial class ctrlDriverLicenseInfo : UserControl
     {
-        int _LicenseID;
+       public int _LicenseID;
+        public clsLicense LicenseInfo;
+       
         public ctrlDriverLicenseInfo()
         {
             InitializeComponent();
@@ -22,6 +25,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
            
         }
 
+   
         public void LoadInfo(int LicenseID) 
         {
            
@@ -31,29 +35,31 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
 
             if (this.DesignMode) return;
 
-            clsLicense license = clsLicense.FindbyID(_LicenseID);
+             LicenseInfo = clsLicense.FindbyID(_LicenseID);
 
-            if (license == null)
+            if (LicenseInfo == null)
             { MessageBox.Show("Failed to load license info", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);return; }
             
 
-            clsPerson person = clsPerson.GetPersonInfoByID(license.DriverInfo.PersonInfo.PersonID);
+            clsPerson person = clsPerson.GetPersonInfoByID(LicenseInfo.DriverInfo.PersonInfo.PersonID);
 
             lbFullName.Text = person.FullName;
             lbNationalNumber.Text = person.NationalNUmber;
             lbDateOfBirth.Text = person.DateOfBirth.ToString();
             lbGender.Text = person.GenderTxt;
-            lbDriverID.Text = license.DriverInfo.DriverID.ToString();
-            lbIssueReason.Text = license.IssueReasonText;
-            lbIsActive.Text = license.isActive.ToString();
+            lbDriverID.Text = LicenseInfo.DriverInfo.DriverID.ToString();
+            lbIssueReason.Text = LicenseInfo.IssueReasonText;
+            lbIsActive.Text = LicenseInfo.isActive.ToString();
 
             lbLicenseID.Text = _LicenseID.ToString();
-            lbLicenseClass.Text = license.LicenceClassesInfo.ClassName;
-            lbIssueDate.Text = license.issueDate.ToString();
-            LbExpirationDate.Text = license.ExpirationDate.ToString();
-            lbNotes.Text = license.Notes.ToString();
+            lbLicenseClass.Text = LicenseInfo.LicenceClassesInfo.ClassName;
+            lbIssueDate.Text = LicenseInfo.issueDate.ToString();
+            LbExpirationDate.Text = LicenseInfo.ExpirationDate.ToString();
+            lbNotes.Text = LicenseInfo.Notes.ToString();
 
-            if (person.ImagePath != string.Empty)
+
+
+            if (person.ImagePath != string.Empty && File.Exists(person.ImagePath))
             {
                 pbPersonImage.ImageLocation = person.ImagePath;
             }

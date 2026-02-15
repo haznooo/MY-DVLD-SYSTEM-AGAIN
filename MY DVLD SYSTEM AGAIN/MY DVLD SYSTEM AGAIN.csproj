@@ -91,6 +91,12 @@
     <Compile Include="licenses\local Licenses\ctrlDriverLicenseInfo.Designer.cs">
       <DependentUpon>ctrlDriverLicenseInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="licenses\local Licenses\ctrlDriverLicenseInfoWithSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="licenses\local Licenses\ctrlDriverLicenseInfoWithSearch.Designer.cs">
+      <DependentUpon>ctrlDriverLicenseInfoWithSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="licenses\local Licenses\DriverLicenseInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="licenses\local Licenses\ctrlDriverLicenseInfo.resx">
       <DependentUpon>ctrlDriverLicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="licenses\local Licenses\ctrlDriverLicenseInfoWithSearch.resx">
+      <DependentUpon>ctrlDriverLicenseInfoWithSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="licenses\local Licenses\DriverLicenseInfo.resx">
       <DependentUpon>DriverLicenseInfo.cs</DependentUpon>
