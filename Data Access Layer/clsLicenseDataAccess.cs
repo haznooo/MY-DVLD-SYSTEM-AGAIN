@@ -387,7 +387,7 @@ LicenseClass,IssueDate,ExpirationDate,PaidFees,IssueReason,IsActive,Notes) value
         }
         static public bool DeActiveLicense(int LicneseID) 
         {
-            string query = "update Licenses set IsActive = 0 where LicneseID = @licneseID ";
+            string query = "update Licenses set IsActive = 1 where LicenseID = @licneseID; ";
 
             SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             SqlCommand Coomand = new SqlCommand(query, Connection);

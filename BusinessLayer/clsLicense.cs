@@ -235,6 +235,54 @@ namespace BusinessLayer
 
         }
 
+        public clsLicense Replace(int userID,byte issueReasonID) 
+        {
+
+            clsApplication newApplication = new clsApplication();
+
+            newApplication.applicantID = this.DriverInfo.PersonID;
+            newApplication.applicationDate = DateTime.Now;
+            newApplication.applicationTypeID = issueReasonID;
+            newApplication.paidFee = clsApplicationTypes.Find((int)clsApplication.enApplicationType.RenewDrivingLicens).ApplicationTypeFee;
+            newApplication.lastStatusDate = DateTime.Now;
+            newApplication.createdByUserID = userID ;
+
+            if (!newApplication.SaveApplication(out int newApplicationID))
+            {
+                return null;
+            }
+            clsLicense newLicense = new clsLicense();
+
+
+
+            int DefaultValidityLength = this.LicenceClassesInfo.validityYears;
+            decimal LicenseFees = this.LicenceClassesInfo.Fee;
+            decimal ApplicationFees = this.PaidFees;
+            decimal TotalFees = ApplicationFees + LicenseFees;
+
+            newLicense.ExpirationDate = DateTime.Now.AddYears(DefaultValidityLength);
+            newLicense.IssueReasonID = (int)clsApplication.enApplicationType.RenewDrivingLicens;
+            newLicense.DriverID = this.DriverID;
+            newLicense.Notes = this.Notes;
+            newLicense.PaidFees = newApplication.paidFee;
+            newLicense.isActive = true;
+            newLicense.ApplicationID = newApplicationID;
+            newLicense.CreatedByUserID = userID;
+            newLicense.issueDate = DateTime.Now;
+            newLicense.LicenseClassID = this.LicenseClassID;
+
+
+            if (!newLicense.Save(out int newLicenseID))
+            { return null; }
+
+            DeActivate(this.LicneseID);
+
+            return newLicense;
+
+
+
+        }
+
 
     }
 }

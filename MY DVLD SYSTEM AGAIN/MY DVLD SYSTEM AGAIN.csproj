@@ -88,6 +88,18 @@
     <Compile Include="Applications\Renew Licenses\RenewLicense.Designer.cs">
       <DependentUpon>RenewLicense.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\replacement_damaged_lost\ReplacementDamageLostLicenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\replacement_damaged_lost\ReplacementDamageLostLicenses.Designer.cs">
+      <DependentUpon>ReplacementDamageLostLicenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Drivers\ListDrivers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drivers\ListDrivers.Designer.cs">
+      <DependentUpon>ListDrivers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global\clsGlobal.cs" />
     <Compile Include="Global\clsValidatoin.cs" />
     <Compile Include="Global\util.cs" />
@@ -263,6 +275,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Renew Licenses\RenewLicense.resx">
       <DependentUpon>RenewLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\replacement_damaged_lost\ReplacementDamageLostLicenses.resx">
+      <DependentUpon>ReplacementDamageLostLicenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Drivers\ListDrivers.resx">
+      <DependentUpon>ListDrivers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="licenses\local Licenses\ctrlDriverLicenseInfo.resx">
       <DependentUpon>ctrlDriverLicenseInfo.cs</DependentUpon>

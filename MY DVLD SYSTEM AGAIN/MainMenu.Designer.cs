@@ -35,6 +35,7 @@
             this.addNewLicensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.localLicensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renewLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.replacmentForLostOfDamagedLicensesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageApplicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.localLicenseAppllicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.applicationTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +46,7 @@
             this.currentInfosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.replacmentForLostOfDamagedLicensesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageDriversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +72,7 @@
             this.applicationToolStripMenuItem,
             this.managePeopleToolStripMenuItem,
             this.manageUsersToolStripMenuItem,
+            this.manageDriversToolStripMenuItem,
             this.userSettingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -111,7 +113,7 @@
             this.addNewLicensToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.addNewLicensToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.New_Driving_License_32;
             this.addNewLicensToolStripMenuItem.Name = "addNewLicensToolStripMenuItem";
-            this.addNewLicensToolStripMenuItem.Size = new System.Drawing.Size(438, 66);
+            this.addNewLicensToolStripMenuItem.Size = new System.Drawing.Size(394, 28);
             this.addNewLicensToolStripMenuItem.Text = "Add New Licens";
             // 
             // localLicensToolStripMenuItem
@@ -127,9 +129,17 @@
             // 
             this.renewLicenseToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Renew_Driving_License_32;
             this.renewLicenseToolStripMenuItem.Name = "renewLicenseToolStripMenuItem";
-            this.renewLicenseToolStripMenuItem.Size = new System.Drawing.Size(438, 66);
+            this.renewLicenseToolStripMenuItem.Size = new System.Drawing.Size(394, 28);
             this.renewLicenseToolStripMenuItem.Text = "Renew License";
             this.renewLicenseToolStripMenuItem.Click += new System.EventHandler(this.renewLicenseToolStripMenuItem_Click);
+            // 
+            // replacmentForLostOfDamagedLicensesToolStripMenuItem
+            // 
+            this.replacmentForLostOfDamagedLicensesToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Lost_Driving_License_32;
+            this.replacmentForLostOfDamagedLicensesToolStripMenuItem.Name = "replacmentForLostOfDamagedLicensesToolStripMenuItem";
+            this.replacmentForLostOfDamagedLicensesToolStripMenuItem.Size = new System.Drawing.Size(394, 28);
+            this.replacmentForLostOfDamagedLicensesToolStripMenuItem.Text = "Replacment for lost of damaged licenses";
+            this.replacmentForLostOfDamagedLicensesToolStripMenuItem.Click += new System.EventHandler(this.replacmentForLostOfDamagedLicensesToolStripMenuItem_Click);
             // 
             // manageApplicationsToolStripMenuItem
             // 
@@ -222,13 +232,14 @@
             this.logOutToolStripMenuItem.Text = "Log out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
-            // replacmentForLostOfDamagedLicensesToolStripMenuItem
+            // manageDriversToolStripMenuItem
             // 
-            this.replacmentForLostOfDamagedLicensesToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Lost_Driving_License_32;
-            this.replacmentForLostOfDamagedLicensesToolStripMenuItem.Name = "replacmentForLostOfDamagedLicensesToolStripMenuItem";
-            this.replacmentForLostOfDamagedLicensesToolStripMenuItem.Size = new System.Drawing.Size(438, 66);
-            this.replacmentForLostOfDamagedLicensesToolStripMenuItem.Text = "Replacment for lost of damaged licenses";
-            this.replacmentForLostOfDamagedLicensesToolStripMenuItem.Click += new System.EventHandler(this.replacmentForLostOfDamagedLicensesToolStripMenuItem_Click);
+            this.manageDriversToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.manageDriversToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Drivers_64;
+            this.manageDriversToolStripMenuItem.Name = "manageDriversToolStripMenuItem";
+            this.manageDriversToolStripMenuItem.Size = new System.Drawing.Size(217, 64);
+            this.manageDriversToolStripMenuItem.Text = "Manage Drivers";
+            this.manageDriversToolStripMenuItem.Click += new System.EventHandler(this.manageDriversToolStripMenuItem_Click);
             // 
             // MainMenu
             // 
@@ -270,6 +281,7 @@
         private System.Windows.Forms.ToolStripMenuItem localLicenseAppllicationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renewLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem replacmentForLostOfDamagedLicensesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manageDriversToolStripMenuItem;
     }
 }
 

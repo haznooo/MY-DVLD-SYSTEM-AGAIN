@@ -2,6 +2,8 @@
 using MY_DVLD_SYSTEM_AGAIN.Applications.Application_types;
 using MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens;
 using MY_DVLD_SYSTEM_AGAIN.Applications.Renew_Licenses;
+using MY_DVLD_SYSTEM_AGAIN.Applications.replacement_damaged_lost;
+using MY_DVLD_SYSTEM_AGAIN.Drivers;
 using MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types;
 using MY_DVLD_SYSTEM_AGAIN.Users;
 using System;
@@ -94,7 +96,14 @@ namespace MY_DVLD_SYSTEM_AGAIN
 
         private void replacmentForLostOfDamagedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ReplacementDamageLostLicenses frm = new ReplacementDamageLostLicenses();
+            frm.ShowDialog();
+        }
 
+        private void manageDriversToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListDrivers frm = new ListDrivers();
+            frm.ShowDialog();
         }
     }
 }
