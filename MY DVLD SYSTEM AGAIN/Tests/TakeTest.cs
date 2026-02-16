@@ -1,13 +1,6 @@
 ﻿using BusinessLayer;
 using MY_DVLD_SYSTEM.Global;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN.Tests
@@ -20,14 +13,14 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
         clsTest _test;
         int testID = -1;
         clsTestTypes.enTestType _testTypes;
-       int localDrivingLicneseApplicationID = -1;
-        public TakeTest(int appointmentID,int localDrivingLicneseApplicationID, clsTestTypes.enTestType testType,int testID = -1)
+        int localDrivingLicneseApplicationID = -1;
+        public TakeTest(int appointmentID, int localDrivingLicneseApplicationID, clsTestTypes.enTestType testType, int testID = -1)
         {
             InitializeComponent();
 
-            if (this.DesignMode) 
+            if (this.DesignMode)
             {
-                return; 
+                return;
             }
 
             _appointmentID = appointmentID;
@@ -36,13 +29,13 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
             this.testID = testID;
         }
 
- 
+
         private void TakeTest_Load(object sender, EventArgs e)
         {
             if (!ctrlScheduledTest2.LoadInfo(localDrivingLicneseApplicationID))
                 return;
 
-        
+
 
             if (testID != -1)
             {
@@ -67,11 +60,11 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("are you sure you want to take this tetst", "take test",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Cancel) 
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Cancel)
             {
                 return;
             }
-         
+
             _test.TestAppointmentID = _appointmentID;
             _test.TestResults = rdPass.Checked;
             _test.Notes = txtNotes.Text;
@@ -83,8 +76,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
                 MessageBox.Show("test taken successfully", "take test", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
-            else { 
-            MessageBox.Show("an error occurred while taking the test", "take test", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                MessageBox.Show("an error occurred while taking the test", "take test", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
 

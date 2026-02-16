@@ -1,14 +1,7 @@
 ﻿using DataAccessLayer;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Net;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Data_Access_Layer
 {
@@ -97,7 +90,7 @@ namespace Data_Access_Layer
             command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);
             command.Parameters.AddWithValue("@PaidFees", paidFee);
             command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
-           
+
 
 
             try
@@ -129,7 +122,7 @@ namespace Data_Access_Layer
         {
 
 
-          
+
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
@@ -157,10 +150,10 @@ namespace Data_Access_Layer
 
             int effectedRows = 0;
             try
-                {
+            {
                 connection.Open();
                 effectedRows = command.ExecuteNonQuery();
-               
+
             }
             catch (Exception e)
             {
@@ -387,13 +380,13 @@ namespace Data_Access_Layer
             command.Parameters.AddWithValue("@ApplicationTypeID", applicationTypeID);
             command.Parameters.AddWithValue("@LicenseClasses", licenseClassID);
             int ActiveApplicationID = -1;
-            try 
+            try
             {
                 connection.Open();
                 object result = command.ExecuteScalar();
                 if (result != null)
                 {
-                    ActiveApplicationID =  Convert.ToInt32(result);
+                    ActiveApplicationID = Convert.ToInt32(result);
                 }
             }
             catch (Exception e)

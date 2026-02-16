@@ -1,13 +1,4 @@
 ﻿using BusinessLayer;
-using MY_DVLD_SYSTEM.Global;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
@@ -18,7 +9,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
         {
             InitializeComponent();
         }
-   
+
         enum createionMode { FirstTimeTest = 0, retakeTest = 1 }
         createionMode _creationMode;
         private clsTestTypes.enTestType _testType = clsTestTypes.enTestType.vissionTest;
@@ -57,7 +48,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
         }
 
 
-    
+
         private bool _loadTestAppointmentData()
         {
             _testAppointmentt = clsTestAppointment.Find(_testAppointmentID);
@@ -102,7 +93,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
             _localDrivingLicensApplication = clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(localDrivingLicnesApplicationID);
             _testAppointmentID = testAppointmentID;
 
-          
+
 
             if (_localDrivingLicensApplication == null)
             {
@@ -114,7 +105,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
                 _creationMode = createionMode.retakeTest;
             else _creationMode = createionMode.FirstTimeTest;
 
-  
+
             if (_creationMode == createionMode.FirstTimeTest)
             {
 
@@ -140,6 +131,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
             return true;
         }
 
-      
+
     }
 }

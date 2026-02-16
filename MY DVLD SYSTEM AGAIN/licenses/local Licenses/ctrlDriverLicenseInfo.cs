@@ -1,45 +1,37 @@
 ﻿using BusinessLayer;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
 {
     public partial class ctrlDriverLicenseInfo : UserControl
     {
-       public int _LicenseID;
+        public int _LicenseID;
         public clsLicense LicenseInfo;
-       
+
         public ctrlDriverLicenseInfo()
         {
             InitializeComponent();
-        
 
-           
+
+
         }
 
-   
-        public void LoadInfo(int LicenseID) 
+
+        public void LoadInfo(int LicenseID)
         {
-           
-            
+
+
 
             _LicenseID = LicenseID;
 
             if (this.DesignMode) return;
 
-             LicenseInfo = clsLicense.FindbyID(_LicenseID);
+            LicenseInfo = clsLicense.FindbyID(_LicenseID);
 
             if (LicenseInfo == null)
-            { MessageBox.Show("Failed to load license info", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);return; }
-            
+            { MessageBox.Show("Failed to load license info", "error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+
 
             clsPerson person = clsPerson.GetPersonInfoByID(LicenseInfo.DriverInfo.PersonInfo.PersonID);
 
@@ -71,6 +63,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
             }
 
         }
-      
+
     }
 }

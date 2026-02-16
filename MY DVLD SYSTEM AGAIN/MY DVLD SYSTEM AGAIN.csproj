@@ -94,6 +94,12 @@
     <Compile Include="Applications\replacement_damaged_lost\ReplacementDamageLostLicenses.Designer.cs">
       <DependentUpon>ReplacementDamageLostLicenses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Drivers\ctrlDriverLicenses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Drivers\ctrlDriverLicenses.Designer.cs">
+      <DependentUpon>ctrlDriverLicenses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Drivers\ListDrivers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,12 @@
     </Compile>
     <Compile Include="licenses\local Licenses\IssueDriverLicenseForFirstTime.Designer.cs">
       <DependentUpon>IssueDriverLicenseForFirstTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="licenses\local Licenses\PersonLicenseHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="licenses\local Licenses\PersonLicenseHistory.Designer.cs">
+      <DependentUpon>PersonLicenseHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginMenu.cs">
       <SubType>Form</SubType>
@@ -279,6 +291,9 @@
     <EmbeddedResource Include="Applications\replacement_damaged_lost\ReplacementDamageLostLicenses.resx">
       <DependentUpon>ReplacementDamageLostLicenses.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Drivers\ctrlDriverLicenses.resx">
+      <DependentUpon>ctrlDriverLicenses.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Drivers\ListDrivers.resx">
       <DependentUpon>ListDrivers.cs</DependentUpon>
     </EmbeddedResource>
@@ -293,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="licenses\local Licenses\IssueDriverLicenseForFirstTime.resx">
       <DependentUpon>IssueDriverLicenseForFirstTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="licenses\local Licenses\PersonLicenseHistory.resx">
+      <DependentUpon>PersonLicenseHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginMenu.resx">
       <DependentUpon>LoginMenu.cs</DependentUpon>

@@ -1,14 +1,7 @@
 ﻿using BusinessLayer;
 using MY_DVLD_SYSTEM_AGAIN.People;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM.People.Controls
@@ -46,7 +39,7 @@ namespace MY_DVLD_SYSTEM.People.Controls
             set
             {
                 _EnableAddButton = value;
-                btnAddNewPerson.Visible = value;
+                btnAddNewPerson.Enabled = value;
             }
         }
 

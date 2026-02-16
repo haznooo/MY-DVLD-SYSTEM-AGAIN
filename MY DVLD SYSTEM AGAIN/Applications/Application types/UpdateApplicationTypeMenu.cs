@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BusinessLayer;
+using System;
 using System.Windows.Forms;
-using BusinessLayer;
 
 namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
 {
@@ -21,7 +14,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
         {
             InitializeComponent();
 
-            if(this.DesignMode)
+            if (this.DesignMode)
             {
                 return;
             }
@@ -32,7 +25,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
         private void UpdateApplicationTypeMenu_Load(object sender, EventArgs e)
         {
 
-          appType =  clsApplicationTypes.Find(_appTypeID);
+            appType = clsApplicationTypes.Find(_appTypeID);
 
             txtApplicationName.Text = appType.ApplicationTypeTitle;
             txtApplicationFee.Text = appType.ApplicationTypeFee.ToString();
@@ -47,7 +40,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
                 return;
             }
 
-            if(!decimal.TryParse(txtApplicationFee.Text, out decimal fee) || fee < 0)
+            if (!decimal.TryParse(txtApplicationFee.Text, out decimal fee) || fee < 0)
             {
                 MessageBox.Show("Application fee must be a valid non-negative number", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

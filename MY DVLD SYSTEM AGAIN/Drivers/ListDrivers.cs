@@ -1,13 +1,8 @@
 ﻿using BusinessLayer;
+using MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses;
 using MY_DVLD_SYSTEM_AGAIN.People;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN.Drivers
@@ -23,9 +18,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.Drivers
         private void ListDrivers_Load(object sender, EventArgs e)
         {
             _AllDrivers = clsDriver.GetAllDrivers();
-           dgvAllDrivers.DataSource = _AllDrivers;
+            dgvAllDrivers.DataSource = _AllDrivers;
             lbRecordsCount.Text = dgvAllDrivers.Rows.Count.ToString();
-            if (dgvAllDrivers.Rows.Count > 0) 
+            if (dgvAllDrivers.Rows.Count > 0)
             {
 
                 dgvAllDrivers.Columns[0].HeaderText = "Full Name";
@@ -55,6 +50,12 @@ namespace MY_DVLD_SYSTEM_AGAIN.Drivers
         private void showPersonInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PersonDetails frm = new PersonDetails((int)dgvAllDrivers.CurrentRow.Cells[4].Value);
+            frm.ShowDialog();
+        }
+
+        private void showLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PersonLicenseHistory frm = new PersonLicenseHistory((int)dgvAllDrivers.CurrentRow.Cells[4].Value);
             frm.ShowDialog();
         }
     }

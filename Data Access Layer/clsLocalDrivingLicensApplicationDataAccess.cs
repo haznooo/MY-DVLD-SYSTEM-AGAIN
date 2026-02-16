@@ -1,12 +1,7 @@
 ﻿using DataAccessLayer;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Data_Access_Layer
 {
@@ -26,7 +21,8 @@ namespace Data_Access_Layer
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@localDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
 
-            try {
+            try
+            {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -217,7 +213,8 @@ namespace Data_Access_Layer
 
         }
 
-        public static bool DoesPassTestType(int localDrivingLicensApplicationID, int testTYpe) {
+        public static bool DoesPassTestType(int localDrivingLicensApplicationID, int testTYpe)
+        {
 
             string query = @" SELECT top 1 Found=1
                             FROM LocalDrivingLicenseApplications INNER JOIN
@@ -297,7 +294,8 @@ namespace Data_Access_Layer
             }
             return isfound;
         }
-        public static int TotalTrailsPerTestType(int localDrivingLicensApplicationID, int testTYpe) {
+        public static int TotalTrailsPerTestType(int localDrivingLicensApplicationID, int testTYpe)
+        {
 
             string query = @"	 SELECT count(*)
                             FROM LocalDrivingLicenseApplications INNER JOIN
@@ -374,11 +372,11 @@ namespace Data_Access_Layer
         public static bool DoesPassAllTests(int localDrivingLicneseApplicationID)
         {
             return testDataAccess.GetPassedTestsCount(localDrivingLicneseApplicationID) == 3;
-        
+
         }
     }
-        
-        }
+
+}
 
 
 

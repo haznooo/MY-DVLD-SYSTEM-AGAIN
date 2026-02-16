@@ -1,11 +1,7 @@
 ﻿using DataAccessLayer;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data_Access_Layer
 {
@@ -51,7 +47,7 @@ namespace Data_Access_Layer
         }
 
 
-        public static bool UpdateApplicationType(int ApplicationTypeID,string ApplicationTypeTitle,decimal ApplicationTYpeFee)
+        public static bool UpdateApplicationType(int ApplicationTypeID, string ApplicationTypeTitle, decimal ApplicationTYpeFee)
         {
 
 
@@ -98,7 +94,7 @@ namespace Data_Access_Layer
 
 
 
-        public static bool GetApplicationTypeInfoByID(int ApplicationTypeID,ref string ApplicationTypeTitle,ref decimal ApplicationTYpeFee)
+        public static bool GetApplicationTypeInfoByID(int ApplicationTypeID, ref string ApplicationTypeTitle, ref decimal ApplicationTYpeFee)
         {
 
 
@@ -150,5 +146,5 @@ namespace Data_Access_Layer
 
     }
 
-    }
+}
 

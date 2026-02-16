@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using BusinessLayer;
-using MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens;
+﻿using BusinessLayer;
 using MY_DVLD_SYSTEM_AGAIN.People;
+using System.Windows.Forms;
 namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 {
     public partial class ctrlLocalDrivingLicensInfo : UserControl
@@ -26,7 +17,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         {
             get { return _localDrivingLicensAppID; }
         }
-        private int  LicenseID = -1;
+        private int LicenseID = -1;
         public int passedTests = 0;
         public bool loadApplicationInfoByLocalDrivingLicenseAppID(int localDrivingAppID)
         {
@@ -40,14 +31,14 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
                 return false;
             }
 
-                  _FillLocalDrivingLicensInfo();
+            _FillLocalDrivingLicensInfo();
             return true;
         }
-        public void LoaddApplicationInfoByApplicationAppID(int applicationID) 
+        public void LoaddApplicationInfoByApplicationAppID(int applicationID)
         {
-            _localDrivingLicensApp = clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByApplicationID(applicationID);  
+            _localDrivingLicensApp = clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByApplicationID(applicationID);
 
-               if (_localDrivingLicensApp == null)
+            if (_localDrivingLicensApp == null)
             {
                 _resetControl();
                 MessageBox.Show("Local Driving License Application not found.");
@@ -83,7 +74,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             lbPassedTests.Text = clsTest.GetPassedTestsCount(_localDrivingLicensApp.LocalDrivingLicensApplicationID).ToString();
 
             if (LicenseID == -1)
-           llLicenseInfo.Visible = false;
+                llLicenseInfo.Visible = false;
             else llLicenseInfo.Visible = true;
 
             lbAppID.Text = _localDrivingLicensApp.applicantID.ToString();
@@ -103,7 +94,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             frm.ShowDialog();
         }
 
-      
+
         private void llLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MessageBox.Show("Viewing License Class details is not implemented yet");

@@ -1,10 +1,5 @@
 ﻿using Data_Access_Layer;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
@@ -13,9 +8,9 @@ namespace BusinessLayer
 
         public enum enMode { Add, Edit }
 
-         enMode CurrentMode = enMode.Edit;
+        enMode CurrentMode = enMode.Edit;
         public enum enTestType { vissionTest = 1, writtenTest = 2, streetTest = 3 }
-        
+
         public clsTestTypes.enTestType TestType { get; set; }
         public string TestTypeTitle;
         public string TestTypeDescription;
@@ -23,7 +18,7 @@ namespace BusinessLayer
 
 
 
-        public clsTestTypes(clsTestTypes.enTestType TestTypeID, string newTitle,string newDescription,decimal newFees)
+        public clsTestTypes(clsTestTypes.enTestType TestTypeID, string newTitle, string newDescription, decimal newFees)
         {
 
             this.TestType = TestTypeID;
@@ -42,22 +37,22 @@ namespace BusinessLayer
 
         }
 
-        static public bool UpdateApplicationType(int ApplicationTypeID,string newDescription,string newTitle, decimal newFees)
+        static public bool UpdateApplicationType(int ApplicationTypeID, string newDescription, string newTitle, decimal newFees)
         {
 
-            return clsTestTypesDataAccess.UpdateTestType(ApplicationTypeID, newTitle,newDescription,newFees);
+            return clsTestTypesDataAccess.UpdateTestType(ApplicationTypeID, newTitle, newDescription, newFees);
 
         }
 
         static public clsTestTypes GetTestTypeByID(clsTestTypes.enTestType TestTypeID)
         {
-            string TestTypeTitle = "",TestTypeDescription = "";
+            string TestTypeTitle = "", TestTypeDescription = "";
             decimal TestTypeFee = 0;
 
-            if (clsTestTypesDataAccess.GetTestTypeInfoByID((int)TestTypeID, ref TestTypeTitle,ref TestTypeDescription, ref TestTypeFee))
+            if (clsTestTypesDataAccess.GetTestTypeInfoByID((int)TestTypeID, ref TestTypeTitle, ref TestTypeDescription, ref TestTypeFee))
             {
 
-                return new clsTestTypes(TestTypeID, TestTypeTitle, TestTypeDescription,TestTypeFee);
+                return new clsTestTypes(TestTypeID, TestTypeTitle, TestTypeDescription, TestTypeFee);
 
             }
             else

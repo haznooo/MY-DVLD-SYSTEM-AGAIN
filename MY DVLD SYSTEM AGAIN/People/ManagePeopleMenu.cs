@@ -2,13 +2,7 @@
 using DVLD.Classes;
 using MY_DVLD_SYSTEM_AGAIN.People;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN
@@ -232,7 +226,7 @@ namespace MY_DVLD_SYSTEM_AGAIN
         private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-           PersonDetails frm = new PersonDetails((int)dgvPeople.CurrentRow.Cells[0].Value);
+            PersonDetails frm = new PersonDetails((int)dgvPeople.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
             _refreshList();
 

@@ -1,11 +1,7 @@
 ﻿using DataAccessLayer;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data_Access_Layer
 {
@@ -42,7 +38,8 @@ namespace Data_Access_Layer
             catch (Exception ex)
             {
             }
-            finally {
+            finally
+            {
 
                 Connection.Close();
             }
@@ -52,14 +49,14 @@ namespace Data_Access_Layer
 
         }
 
-        public static DataTable GetAllDriversInf() 
-      {
-        
+        public static DataTable GetAllDriversInf()
+        {
+
             DataTable dt = new DataTable();
             string query = "select * from Drivers_View";
 
             SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            SqlCommand Coomand = new SqlCommand(query,Connection);
+            SqlCommand Coomand = new SqlCommand(query, Connection);
 
             try
             {
@@ -72,7 +69,7 @@ namespace Data_Access_Layer
 
                     dt.Load(reader);
                 }
-                reader.Close() ;
+                reader.Close();
 
 
             }
@@ -85,11 +82,11 @@ namespace Data_Access_Layer
         }
 
         public static int addNewDriver(ref int personID, ref int CreatedByUserID,
-            ref DateTime CreateDate)     
+            ref DateTime CreateDate)
         {
             string query = "insert into Drivers (personID,CreatedByUserID,CreateDate) values (@personID,@CreatedByUserID,@CreateDate);SELECT SCOPE_IDENTITY();";
             SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            SqlCommand Coomand = new SqlCommand( query,Connection);
+            SqlCommand Coomand = new SqlCommand(query, Connection);
 
             Coomand.Parameters.AddWithValue("@personID", personID);
             Coomand.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
@@ -97,7 +94,7 @@ namespace Data_Access_Layer
 
             int NewID = -1;
 
-            try 
+            try
             {
                 Connection.Open();
                 object result = Coomand.ExecuteScalar();
@@ -136,17 +133,17 @@ namespace Data_Access_Layer
                 Connection.Open();
                 rowEffected = Coomand.ExecuteNonQuery();
 
-          
+
             }
             catch (Exception ex) { }
             finally { Connection.Close(); }
 
             return rowEffected > 0;
-            
+
 
         }
 
-        public static bool GetDriverInfoByPersonID(ref int DriverID,int personID, ref int CreatedByUserID,
+        public static bool GetDriverInfoByPersonID(ref int DriverID, int personID, ref int CreatedByUserID,
             ref DateTime CreateDate)
         {
             string query = "select * from Drivers where PersonID = @PersonId";
@@ -189,9 +186,9 @@ namespace Data_Access_Layer
 
     }
 
-    }
+}
 
-    
 
-    
+
+
 

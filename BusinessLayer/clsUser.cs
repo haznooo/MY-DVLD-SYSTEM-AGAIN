@@ -1,10 +1,5 @@
 ﻿using DataAccessLayer;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
@@ -12,7 +7,7 @@ namespace BusinessLayer
     {
 
         public int UserID { get; private set; }
-        public int PersonID { get;set; }
+        public int PersonID { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public bool isActive { get; set; }
@@ -32,32 +27,32 @@ namespace BusinessLayer
             this.Password = "";
             this.isActive = false;
             this.PersonInfo = null;
-    
+
             _Mode = enMode.AddNew;
 
         }
-        private clsUser(int UserID,int PersonID,string Password,string userName,bool isActive)
+        private clsUser(int UserID, int PersonID, string Password, string userName, bool isActive)
 
         {
             this.PersonID = PersonID;
-            this.UserID = UserID; 
+            this.UserID = UserID;
 
             this.UserName = userName;
             this.Password = Password;
             this.isActive = isActive;
             PersonInfo = clsPerson.GetPersonInfoByID(PersonID);
-   
+
             _Mode = enMode.Update;
 
         }
 
-   
+
         private bool _AddNewUser()
         {
             //call DataAccess Layer 
 
             this.UserID = clsUsersDataAccess.AddNewUser(this.UserName, this.PersonID, this.Password, this.isActive);
-          
+
 
             return (this.UserID != -1);
         }
@@ -65,7 +60,7 @@ namespace BusinessLayer
         {
             //call DataAccess Layer 
 
-            return clsUsersDataAccess.UpdateUser(this.UserID,this.UserName,this.PersonID,this.Password,this.isActive);
+            return clsUsersDataAccess.UpdateUser(this.UserID, this.UserName, this.PersonID, this.Password, this.isActive);
 
         }
 
@@ -82,11 +77,11 @@ namespace BusinessLayer
             string Password = "", UserName = "";
             bool isActive = false;
             int PersonID = -1;
-            
 
-            if (clsUsersDataAccess.GetUserInfoByUserID(UserID,ref UserName,ref PersonID,ref Password,ref isActive))
 
-                return new clsUser(UserID,PersonID,Password,UserName,isActive);
+            if (clsUsersDataAccess.GetUserInfoByUserID(UserID, ref UserName, ref PersonID, ref Password, ref isActive))
+
+                return new clsUser(UserID, PersonID, Password, UserName, isActive);
 
             else
                 return null;
@@ -97,7 +92,7 @@ namespace BusinessLayer
             string Password = "", UserName = "";
             bool isActive = false;
             int UserID = -1;
-            if (clsUsersDataAccess.GetUserInfoByPersonID(ref UserID, ref UserName,PersonID, ref Password, ref isActive))
+            if (clsUsersDataAccess.GetUserInfoByPersonID(ref UserID, ref UserName, PersonID, ref Password, ref isActive))
 
                 return new clsUser(UserID, PersonID, Password, UserName, isActive);
 
@@ -105,15 +100,15 @@ namespace BusinessLayer
                 return null;
 
         }
-        public static clsUser GetUserByUserNameAndPassword(string UserName,string password)
+        public static clsUser GetUserByUserNameAndPassword(string UserName, string password)
         {
 
-     
+
             bool isActive = false;
-            int PersonID = -1,UserID = -1;
+            int PersonID = -1, UserID = -1;
 
 
-            if (clsUsersDataAccess.GetUserInfoByUsernameAndPassword(ref UserID,UserName, ref PersonID, password, ref isActive))
+            if (clsUsersDataAccess.GetUserInfoByUsernameAndPassword(ref UserID, UserName, ref PersonID, password, ref isActive))
 
                 return new clsUser(UserID, PersonID, password, UserName, isActive);
 
@@ -174,7 +169,7 @@ namespace BusinessLayer
 
             if (clsUsersDataAccess.ChangeUserPassword(this.UserID, newPassword))
             {
-           
+
                 return true;
             }
             else

@@ -2,14 +2,6 @@
 using MY_DVLD_SYSTEM_AGAIN.People;
 using MY_DVLD_SYSTEM_AGAIN.Properties;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM.People.Controls
@@ -60,7 +52,7 @@ namespace MY_DVLD_SYSTEM.People.Controls
             lbPhoneNumber.Text = "";
             lbNationalNumber.Text = "";
             lbGender.Text = "";
-            pbPersonImage.Image =  Resources.Male_512;
+            pbPersonImage.Image = Resources.Male_512;
             _PersonID = -1;
             _Person = null;
         }

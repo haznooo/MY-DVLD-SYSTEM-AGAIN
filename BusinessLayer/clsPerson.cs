@@ -1,12 +1,6 @@
 ﻿using DataAccessLayer;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Net;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
@@ -15,8 +9,8 @@ namespace BusinessLayer
 
         public enum enMode { AddNew = 0, Update = 1 };
         private enMode _Mode = enMode.AddNew;
-        public int PersonID { get;private set; }
-        public string NationalNUmber {  get; set; }
+        public int PersonID { get; private set; }
+        public string NationalNUmber { get; set; }
 
         public string FullName
         {
@@ -37,17 +31,22 @@ namespace BusinessLayer
         public int CountryID { get; set; }
         public string ImagePath { get; set; }
 
-        public string GenderTxt { get {
+        public string GenderTxt
+        {
+            get
+            {
 
                 if (Gender == 0) return "Male";
                 else return "Female";
-            } }
-       public clsCountry CountryInfo;
+            }
+        }
+        public clsCountry CountryInfo;
 
- 
-     public static DataTable GetAllPeople() { 
-        
-        return clsPersonDataAccess.GetPeople();
+
+        public static DataTable GetAllPeople()
+        {
+
+            return clsPersonDataAccess.GetPeople();
 
         }
 
@@ -73,7 +72,7 @@ namespace BusinessLayer
         }
 
         private clsPerson(int PersonID, string NationalNumber, string FirstName, string SecondName, string ThirdName, string LastName,
-             DateTime DateOfBirth, byte gender, string Address,string Phone,string Email,int CountryID, string ImagePath)
+             DateTime DateOfBirth, byte gender, string Address, string Phone, string Email, int CountryID, string ImagePath)
 
         {
             this.PersonID = PersonID;
@@ -94,12 +93,12 @@ namespace BusinessLayer
             _Mode = enMode.Update;
 
         }
-            
-         private bool _AddNewPerson()
+
+        private bool _AddNewPerson()
         {
 
-            this.PersonID = clsPersonDataAccess.AddNewPerson(this.NationalNUmber,this.FirstName,this.SecondName,this.ThirdName,this.LastName,
-               this.DateOfBirth,this.Gender,this.Address,this.Phone,this.Email,this.CountryID,this.ImagePath );
+            this.PersonID = clsPersonDataAccess.AddNewPerson(this.NationalNUmber, this.FirstName, this.SecondName, this.ThirdName, this.LastName,
+               this.DateOfBirth, this.Gender, this.Address, this.Phone, this.Email, this.CountryID, this.ImagePath);
 
             return (this.PersonID != -1);
         }
@@ -107,20 +106,20 @@ namespace BusinessLayer
         private bool _UpdatePerson()
         {
 
-            return clsPersonDataAccess.UpdatePerson(this.PersonID,this.NationalNUmber, this.FirstName, this.SecondName, this.ThirdName, this.LastName,
+            return clsPersonDataAccess.UpdatePerson(this.PersonID, this.NationalNUmber, this.FirstName, this.SecondName, this.ThirdName, this.LastName,
                this.DateOfBirth, this.Gender, this.Address, this.Phone, this.Email, this.CountryID, this.ImagePath);
         }
 
         public static clsPerson GetPersonInfoByID(int PersonID)
         {
-            
-            string NationalNumber="",FirstName = "",SecondName="",ThirdName="", LastName = "", Email = "", Phone = "", Address = "", ImagePath = "";
+
+            string NationalNumber = "", FirstName = "", SecondName = "", ThirdName = "", LastName = "", Email = "", Phone = "", Address = "", ImagePath = "";
             DateTime DateOfBirth = DateTime.Now;
             byte Gender = 0;
             int CountryID = -1;
 
             if (clsPersonDataAccess.GetPersonInfoByID(PersonID, ref NationalNumber, ref FirstName, ref SecondName, ref ThirdName
-             ,ref LastName, ref DateOfBirth, ref Gender, ref Address, ref Phone, ref Email, ref CountryID, ref ImagePath))
+             , ref LastName, ref DateOfBirth, ref Gender, ref Address, ref Phone, ref Email, ref CountryID, ref ImagePath))
 
                 return new clsPerson(PersonID, NationalNumber, FirstName, SecondName, ThirdName, LastName,
                     DateOfBirth, Gender, Address, Phone, Email, CountryID, ImagePath);

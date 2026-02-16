@@ -1,13 +1,6 @@
 ﻿using BusinessLayer;
 using MY_DVLD_SYSTEM.Global;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
@@ -20,7 +13,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
         {
             InitializeComponent();
 
-            if (this.DesignMode) {
+            if (this.DesignMode)
+            {
                 return;
             }
             this._LocalDrivingLicensesApplicationID = localDrivingLicenseApplicationId;
@@ -37,7 +31,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
 
             _LocalDrivingLicensApplication = clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(_LocalDrivingLicensesApplicationID);
 
-            if (_LocalDrivingLicensApplication == null) 
+            if (_LocalDrivingLicensApplication == null)
             {
                 MessageBox.Show("application with the id " + _LocalDrivingLicensesApplicationID + " not found", "faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
@@ -46,15 +40,15 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
 
 
 
-            if (!clsLocalDrivingLicensApplication.DoesPassAllTests(_LocalDrivingLicensesApplicationID)) 
+            if (!clsLocalDrivingLicensApplication.DoesPassAllTests(_LocalDrivingLicensesApplicationID))
             {
                 MessageBox.Show("person did not pass all the test yet", "faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
 
-       //soon i will addd a method that checks if the person already have a licnese of this class
-  
+            //soon i will addd a method that checks if the person already have a licnese of this class
+
 
             if (_LocalDrivingLicensApplication.IssueLicenseFirstTime(txtNotes.Text, clsGlobal.CurrentUser.UserID) > 0)
             {
@@ -74,9 +68,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
 
 
 
-           
 
-            }
+
         }
     }
+}
 

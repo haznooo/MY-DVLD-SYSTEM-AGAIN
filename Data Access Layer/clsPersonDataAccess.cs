@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Security.Policy;
 
 
 namespace DataAccessLayer
@@ -9,15 +8,16 @@ namespace DataAccessLayer
     public class clsPersonDataAccess
     {
 
-        public static bool GetPersonInfoByID(int PersonID,ref string NationalNumber, ref string FirstName,ref string SecondName,ref string ThirdName
-             ,ref string LastName, ref DateTime DateOfBirth,ref byte gender, ref string Address, ref string Phone, ref string Email,ref int CountryID,ref string ImagePath) {
+        public static bool GetPersonInfoByID(int PersonID, ref string NationalNumber, ref string FirstName, ref string SecondName, ref string ThirdName
+             , ref string LastName, ref DateTime DateOfBirth, ref byte gender, ref string Address, ref string Phone, ref string Email, ref int CountryID, ref string ImagePath)
+        {
 
 
             bool isFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-      
+
             string query = @"select PersonID,NationalNumber,FirstName,SecondName,ThirdName,LastName,DateOfBirth,Gender,
 
                    CASE WHEN Gender = 0 THEN 'Male' 
@@ -39,7 +39,8 @@ namespace DataAccessLayer
                 SqlDataReader reader = command.ExecuteReader();
 
 
-                while (reader.Read()) {
+                while (reader.Read())
+                {
 
                     isFound = true;
 
@@ -52,17 +53,19 @@ namespace DataAccessLayer
 
                         ThirdName = (string)reader["ThirdName"];
                     }
-                    else {
+                    else
+                    {
                         ThirdName = "";
                     }
 
-                        LastName = (string)reader["LastName"];
+                    LastName = (string)reader["LastName"];
                     DateOfBirth = (DateTime)reader["DateOfBirth"];
                     gender = (byte)reader["Gender"];
                     Address = (string)reader["Address"];
                     Phone = (string)reader["Phone"];
 
-                    if (reader["Email"] != DBNull.Value) {
+                    if (reader["Email"] != DBNull.Value)
+                    {
                         Email = (string)reader["Email"];
                     }
                     else
@@ -72,7 +75,8 @@ namespace DataAccessLayer
 
                     CountryID = (int)reader["CountryID"];
 
-                    if (reader["ImagePath"] != DBNull.Value) {
+                    if (reader["ImagePath"] != DBNull.Value)
+                    {
                         ImagePath = (string)reader["ImagePath"];
                     }
                     else
@@ -81,7 +85,7 @@ namespace DataAccessLayer
                     }
 
                 }
-                
+
 
             }
             catch (Exception e)
@@ -89,8 +93,8 @@ namespace DataAccessLayer
 
             }
             finally
-            { 
-            
+            {
+
                 connection.Close();
             }
 
@@ -100,7 +104,7 @@ namespace DataAccessLayer
 
 
         public static bool GetPersonInfoByNationalNumber(ref int PersonID, string NationalNumber, ref string FirstName, ref string SecondName, ref string ThirdName
-      , ref string LastName, ref DateTime DateOfBirth,ref byte gender, ref string Address, ref string Phone, ref string Email, ref int CountryID, ref string ImagePath)
+      , ref string LastName, ref DateTime DateOfBirth, ref byte gender, ref string Address, ref string Phone, ref string Email, ref int CountryID, ref string ImagePath)
         {
 
 
@@ -108,7 +112,7 @@ namespace DataAccessLayer
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-   
+
             string query = @"select PersonID,NationalNumber,FirstName,SecondName,ThirdName,LastName,DateOfBirth,Gender,
 
                    CASE WHEN Gender = 0 THEN 'Male' 
@@ -195,8 +199,8 @@ namespace DataAccessLayer
 
         }
 
-        public static int AddNewPerson(string NationalNumber,string FirstName,string SecondName,string ThirdName, string LastName,
-           DateTime DateOfBirth,byte Gender, string Address, string Phone,string Email, int CountryID, string ImagePath)
+        public static int AddNewPerson(string NationalNumber, string FirstName, string SecondName, string ThirdName, string LastName,
+           DateTime DateOfBirth, byte Gender, string Address, string Phone, string Email, int CountryID, string ImagePath)
         {
             //this function will return the new person id if succeeded and -1 if not.
             int PersonID = -1;
@@ -229,16 +233,16 @@ namespace DataAccessLayer
             else
                 command.Parameters.AddWithValue("@Email", System.DBNull.Value);
 
-          
+
             command.Parameters.AddWithValue("@CountryID", CountryID);
-        
+
             if (ImagePath != "")
                 command.Parameters.AddWithValue("@ImagePath", ImagePath);
             else
                 command.Parameters.AddWithValue("@ImagePath", System.DBNull.Value);
 
 
-         
+
             try
             {
                 connection.Open();
@@ -267,8 +271,8 @@ namespace DataAccessLayer
             return PersonID;
         }
 
-        public static bool UpdatePerson(int PersonID,string NationalNumber,string FirstName,string SecondName,string ThirdName,string LastName,
-             DateTime DateOfBirth,byte gender, string Address,string Phone,string Email, int CountryID, string ImagePath)
+        public static bool UpdatePerson(int PersonID, string NationalNumber, string FirstName, string SecondName, string ThirdName, string LastName,
+             DateTime DateOfBirth, byte gender, string Address, string Phone, string Email, int CountryID, string ImagePath)
         {
 
             int rowsAffected = 0;
@@ -313,7 +317,7 @@ namespace DataAccessLayer
             command.Parameters.AddWithValue("@Address", Address);
             command.Parameters.AddWithValue("@Phone", Phone);
             command.Parameters.AddWithValue("@CountryID", CountryID);
-           
+
             if (!string.IsNullOrEmpty(ImagePath))
                 command.Parameters.AddWithValue("@ImagePath", ImagePath);
             else
@@ -345,7 +349,7 @@ namespace DataAccessLayer
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-     
+
             string query = @"select PersonID,NationalNumber,FirstName,SecondName,ThirdName,LastName,DateOfBirth,Gender,
 
                    CASE WHEN Gender = 0 THEN 'Male' 
@@ -458,7 +462,7 @@ namespace DataAccessLayer
             return isFound;
         }
 
-        public static bool IsPersonExist(string NationalNumber) 
+        public static bool IsPersonExist(string NationalNumber)
         {
 
             bool isFound = false;

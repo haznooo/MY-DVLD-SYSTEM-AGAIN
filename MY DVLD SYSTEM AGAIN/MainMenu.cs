@@ -7,30 +7,23 @@ using MY_DVLD_SYSTEM_AGAIN.Drivers;
 using MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types;
 using MY_DVLD_SYSTEM_AGAIN.Users;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN
 {
     public partial class MainMenu : Form
     {
-  
 
-       LoginMenu _loginMenu;
+
+        LoginMenu _loginMenu;
         public MainMenu(LoginMenu loginMenu)
         {
             InitializeComponent();
 
-           _loginMenu = loginMenu;
+            _loginMenu = loginMenu;
         }
 
-    
+
         private void managePeopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -40,7 +33,7 @@ namespace MY_DVLD_SYSTEM_AGAIN
         private void manageUsersToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-           ManageUsersMenu frm = new ManageUsersMenu();
+            ManageUsersMenu frm = new ManageUsersMenu();
             frm.ShowDialog();
         }
         private void applicationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,14 +49,14 @@ namespace MY_DVLD_SYSTEM_AGAIN
         }
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           ChangePasswordMenu frm = new ChangePasswordMenu(clsGlobal.CurrentUser.UserID);
+            ChangePasswordMenu frm = new ChangePasswordMenu(clsGlobal.CurrentUser.UserID);
             frm.ShowDialog();
         }
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             clsGlobal.CurrentUser = null;
             _loginMenu.Show();
-           this.Close();
+            this.Close();
         }
         private void applicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {

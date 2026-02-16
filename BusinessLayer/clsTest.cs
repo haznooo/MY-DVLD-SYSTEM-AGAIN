@@ -1,10 +1,5 @@
 ﻿using Data_Access_Layer;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
@@ -46,8 +41,8 @@ namespace BusinessLayer
         private int _addNewTest()
         {
             int newTestID = -1;
-      
-            return testDataAccess.addTest(this.TestAppointmentID,this.TestResults,this.Notes,this.CreatedByUserID, out newTestID);
+
+            return testDataAccess.addTest(this.TestAppointmentID, this.TestResults, this.Notes, this.CreatedByUserID, out newTestID);
         }
         private bool _updateTest()
         {
@@ -81,28 +76,29 @@ namespace BusinessLayer
             return testDataAccess.GetPassedTestsCount(LocalDrivingLicenseApplicationID);
         }
 
-        public static bool DoesPassedAllTest(int LocalDrivingLicenseApplicationID) {
+        public static bool DoesPassedAllTest(int LocalDrivingLicenseApplicationID)
+        {
 
             return testDataAccess.GetPassedTestsCount(LocalDrivingLicenseApplicationID) == 3;
 
 
         }
 
-          public static clsTest Find(int Testid)
-            {
+        public static clsTest Find(int Testid)
+        {
             int TestID = -1, TestAppointment = -1, createdByUserID = -1;
             bool TestResults = false;
             string Notes = "";
 
-            if (testDataAccess.GetTestInfoByID(TestID,ref TestAppointment,ref TestResults,ref Notes,ref createdByUserID))
-                {
+            if (testDataAccess.GetTestInfoByID(TestID, ref TestAppointment, ref TestResults, ref Notes, ref createdByUserID))
+            {
                 return new clsTest(TestID, TestAppointment, TestResults, Notes, createdByUserID);
-               }
+            }
 
             return null;
 
         }
-                
+
 
 
 

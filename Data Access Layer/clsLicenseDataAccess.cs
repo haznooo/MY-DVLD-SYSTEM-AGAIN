@@ -1,20 +1,15 @@
 ﻿using DataAccessLayer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data_Access_Layer
 {
     public class clsLicenseDataAccess
     {
-        static public bool GetLicenseInfobyID(int LicneseID,ref int applicationID,ref int DriverId,ref int LicenseClass,
-            ref int CreatedByUserID,ref DateTime IssueDate,ref DateTime ExpirationDate, ref string Notes,ref decimal paidfees,
-            ref bool isActive,ref int IssueReason)
+        static public bool GetLicenseInfobyID(int LicneseID, ref int applicationID, ref int DriverId, ref int LicenseClass,
+            ref int CreatedByUserID, ref DateTime IssueDate, ref DateTime ExpirationDate, ref string Notes, ref decimal paidfees,
+            ref bool isActive, ref int IssueReason)
         {
             string query = "select * from Licenses where LicenseID = @LicenseID";
 
@@ -31,13 +26,13 @@ namespace Data_Access_Layer
 
                 while (reader.Read())
                 {
-               
-                    applicationID =   Convert.ToInt32(reader["ApplicationID"]);
+
+                    applicationID = Convert.ToInt32(reader["ApplicationID"]);
                     CreatedByUserID = Convert.ToInt32(reader["CreatedByUserID"]);
-                    DriverId =        Convert.ToInt32(reader["DriverID"]);
+                    DriverId = Convert.ToInt32(reader["DriverID"]);
                     LicenseClass = Convert.ToInt32(reader["LicenseClass"]);
-                    IssueDate   = Convert.ToDateTime(reader["IssueDate"]);
-                    ExpirationDate  = Convert.ToDateTime(reader["ExpirationDate"]);
+                    IssueDate = Convert.ToDateTime(reader["IssueDate"]);
+                    ExpirationDate = Convert.ToDateTime(reader["ExpirationDate"]);
                     paidfees = Convert.ToInt32(reader["PaidFees"]);
                     isActive = Convert.ToBoolean(reader["IsActive"]);
                     IssueReason = Convert.ToInt32(reader["IssueReason"]);
@@ -45,11 +40,11 @@ namespace Data_Access_Layer
                     {
                         Notes = "";
                     }
-                    else 
+                    else
                     { Notes = reader["Notes"].ToString(); }
                     isFound = true;
 
-                   
+
 
 
 
@@ -70,7 +65,7 @@ namespace Data_Access_Layer
 
         }
 
-        static public bool GetLicenseInfobyApplicatoinID(ref int LicneseID,int applicationID, ref int DriverId, ref int LicenseClass,
+        static public bool GetLicenseInfobyApplicatoinID(ref int LicneseID, int applicationID, ref int DriverId, ref int LicenseClass,
            ref int CreatedByUserID, ref DateTime IssueDate, ref DateTime ExpirationDate, ref string Notes, ref decimal paidfees,
            ref bool isActive, ref int IssueReason)
         {
@@ -127,7 +122,7 @@ namespace Data_Access_Layer
 
 
         }
-        static public DataTable GetAllLicenses() 
+        static public DataTable GetAllLicenses()
         {
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -165,7 +160,7 @@ namespace Data_Access_Layer
             return dt;
 
         }
-        static public DataTable GetDriverLicenses(int driverID) 
+        static public DataTable GetDriverLicenses(int driverID)
         {
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -211,9 +206,9 @@ namespace Data_Access_Layer
 
             return dt;
         }
-        static public int AddNewLicense(int applicationID,int DriverId,int LicenseClass,
-         int CreatedByUserID,DateTime IssueDate,DateTime ExpirationDate,string Notes,decimal paidfees,
-         bool isActive,int IssueReason) 
+        static public int AddNewLicense(int applicationID, int DriverId, int LicenseClass,
+         int CreatedByUserID, DateTime IssueDate, DateTime ExpirationDate, string Notes, decimal paidfees,
+         bool isActive, int IssueReason)
 
         {
             string query = @"insert into Licenses
@@ -262,9 +257,9 @@ LicenseClass,IssueDate,ExpirationDate,PaidFees,IssueReason,IsActive,Notes) value
 
 
         }
-        static public bool updateLicense(int LicneseID,int applicationID,int DriverId,int LicenseClass,
-          int CreatedByUserID,DateTime IssueDate,DateTime ExpirationDate,string Notes,decimal paidfees,
-          bool isActive,int IssueReason) 
+        static public bool updateLicense(int LicneseID, int applicationID, int DriverId, int LicenseClass,
+          int CreatedByUserID, DateTime IssueDate, DateTime ExpirationDate, string Notes, decimal paidfees,
+          bool isActive, int IssueReason)
         {
             string query = @"Update Licenses set
                              ApplicationID = @ApplicationID,                 
@@ -292,9 +287,9 @@ LicenseClass,IssueDate,ExpirationDate,PaidFees,IssueReason,IsActive,Notes) value
             Coomand.Parameters.AddWithValue("@PaidFees", paidfees);
             Coomand.Parameters.AddWithValue("@IsActive", isActive);
             Coomand.Parameters.AddWithValue("@IssueReason", IssueReason);
-            if(Notes == "")
-            Coomand.Parameters.AddWithValue("@Notes", DBNull.Value);
-            else Coomand.Parameters.AddWithValue("@Notes",Notes);
+            if (Notes == "")
+                Coomand.Parameters.AddWithValue("@Notes", DBNull.Value);
+            else Coomand.Parameters.AddWithValue("@Notes", Notes);
 
             bool isFound = false;
 
@@ -307,7 +302,7 @@ LicenseClass,IssueDate,ExpirationDate,PaidFees,IssueReason,IsActive,Notes) value
                 while (reader.HasRows)
                 {
 
-                   
+
 
                     applicationID = Convert.ToInt32(reader["ApplicationID"]);
                     CreatedByUserID = Convert.ToInt32(reader["CreatedByUserID"]);
@@ -345,7 +340,8 @@ LicenseClass,IssueDate,ExpirationDate,PaidFees,IssueReason,IsActive,Notes) value
 
 
         }
-        static public int GetActiveLicenseIDByPersonID(int personID, int LicenseClassID) {
+        static public int GetActiveLicenseIDByPersonID(int personID, int LicenseClassID)
+        {
 
             int LicenseID = -1;
 
@@ -377,7 +373,7 @@ LicenseClass,IssueDate,ExpirationDate,PaidFees,IssueReason,IsActive,Notes) value
             catch
             {
             }
-            finally 
+            finally
             {
                 Connection.Close();
             }
@@ -385,7 +381,7 @@ LicenseClass,IssueDate,ExpirationDate,PaidFees,IssueReason,IsActive,Notes) value
 
 
         }
-        static public bool DeActiveLicense(int LicneseID) 
+        static public bool DeActiveLicense(int LicneseID)
         {
             string query = "update Licenses set IsActive = 1 where LicenseID = @licneseID; ";
 

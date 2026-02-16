@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DataAccessLayer;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using DataAccessLayer;
 
 namespace BusinessLayer
 {
@@ -19,10 +13,10 @@ namespace BusinessLayer
         {
             this._CountryID = ID;
             this._CountryName = CountryName;
-       
+
         }
 
-  
+
         public static clsCountry Find(int CountryID)
         {
 
@@ -49,7 +43,7 @@ namespace BusinessLayer
 
         }
 
-    
+
         public static DataTable GetAllCountries()
         {
             return clsCountryDataAccess.GetAllCountries();

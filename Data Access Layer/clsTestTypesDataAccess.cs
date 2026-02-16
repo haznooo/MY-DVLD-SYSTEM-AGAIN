@@ -1,11 +1,7 @@
 ﻿using DataAccessLayer;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data_Access_Layer
 {
@@ -50,7 +46,7 @@ namespace Data_Access_Layer
 
         }
 
-        public static bool UpdateTestType(int TestTypeID, string TestTypeTitle,string TestTypeDesription, decimal TestTypeFee)
+        public static bool UpdateTestType(int TestTypeID, string TestTypeTitle, string TestTypeDesription, decimal TestTypeFee)
         {
 
             int rowsEffected = 0;
@@ -69,7 +65,7 @@ namespace Data_Access_Layer
             command.Parameters.AddWithValue("@TestTypeTitle", TestTypeTitle);
             command.Parameters.AddWithValue("@TestFees", TestTypeFee);
             command.Parameters.AddWithValue("@TestTypesID", TestTypeID);
-            command.Parameters.AddWithValue("@TestTypeDescription",TestTypeDesription);
+            command.Parameters.AddWithValue("@TestTypeDescription", TestTypeDesription);
 
 
 
@@ -94,7 +90,7 @@ namespace Data_Access_Layer
             return (rowsEffected > 0);
         }
 
-        public static bool GetTestTypeInfoByID(int TestTypeID, ref string TestTypeTitle,ref string TestTypeDesrcription, ref decimal TestTypeFee)
+        public static bool GetTestTypeInfoByID(int TestTypeID, ref string TestTypeTitle, ref string TestTypeDesrcription, ref decimal TestTypeFee)
 
         {
             bool isFound = false;

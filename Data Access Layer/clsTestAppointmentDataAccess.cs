@@ -1,11 +1,7 @@
 ﻿using DataAccessLayer;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data_Access_Layer
 {
@@ -139,7 +135,7 @@ namespace Data_Access_Layer
             try
             {
                 connection.Open();
-                SqlDataReader reader  = command.ExecuteReader();
+                SqlDataReader reader = command.ExecuteReader();
                 dtTestAppointments.Load(reader);
             }
             catch (Exception ex)
@@ -239,7 +235,8 @@ namespace Data_Access_Layer
 
         }
 
-        public static int GetTestID(int testAppointmentID) {
+        public static int GetTestID(int testAppointmentID)
+        {
             string query = "select Tests.TestID from Tests where TestAppointmentID = @TestAppointmentID";
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             SqlCommand command = new SqlCommand(query, connection);
@@ -285,7 +282,7 @@ namespace Data_Access_Layer
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.HasRows)
                 {
-                  
+
                     isFound = true;
                 }
                 else
@@ -308,8 +305,8 @@ namespace Data_Access_Layer
 
         }
 
-        public static bool CancelTestAppointment(int testAppointment) 
-        
+        public static bool CancelTestAppointment(int testAppointment)
+
         {
             string query = @"UPDATE TestAppointments SET
                         IsLocked = 1

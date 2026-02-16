@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Data_Access_Layer;
+using System;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Data_Access_Layer;
-using DataAccessLayer;
 
 namespace BusinessLayer
 {
     public class clsApplication
     {
 
-       public enum enApplicationType : byte
+        public enum enApplicationType : byte
         {
             NewDrivingLicens = 1,
             RenewDrivingLicens = 2,
@@ -30,9 +25,9 @@ namespace BusinessLayer
             complete = 3,
 
         }
-       protected enum enMode { AddNew = 0, Update = 1 }
+        protected enum enMode { AddNew = 0, Update = 1 }
 
-       protected enMode CurrentMode;
+        protected enMode CurrentMode;
 
 
         public int applicationID { get; set; }
@@ -41,7 +36,7 @@ namespace BusinessLayer
         {
 
             get { return clsPerson.GetPersonInfoByID(applicantID).FullName; }
-           private set { }
+            private set { }
 
         }
         public DateTime applicationDate { get; set; }
@@ -78,7 +73,7 @@ namespace BusinessLayer
         }
 
         public clsPerson ApplicantInfo { get; set; }
-        
+
         public clsApplication()
         {
 
@@ -115,11 +110,11 @@ namespace BusinessLayer
             if (this.ApplicantInfo == null || CreatedByUser == null || ApplicationTypeInfo == null)
             {
                 throw new Exception("failed to load data for clsApplication initialization");
-               
+
             }
 
-          this.applicantFullName = ApplicantInfo.FullName; 
-       
+            this.applicantFullName = ApplicantInfo.FullName;
+
             CurrentMode = enMode.Update;
         }
 
@@ -134,7 +129,7 @@ namespace BusinessLayer
             }
             else
             {
-           
+
                 return -1;
             }
         }
@@ -180,8 +175,8 @@ namespace BusinessLayer
                 return null;
             }
         }
-     
-        public bool SaveApplication(out int ApplicationID )
+
+        public bool SaveApplication(out int ApplicationID)
         {
             if (CurrentMode == enMode.AddNew)
             {
@@ -210,7 +205,7 @@ namespace BusinessLayer
                 {
                     ApplicationID = this.applicationID;
                     return false;
-               
+
                 }
             }
 
@@ -235,7 +230,7 @@ namespace BusinessLayer
 
         public bool DoesPersonHaveActiveApplication(byte ApplicationType)
         {
-            return clsApplicationDataAccess.DoesPersonHaveActiveApplication(this.applicantID,ApplicationType);
+            return clsApplicationDataAccess.DoesPersonHaveActiveApplication(this.applicantID, ApplicationType);
         }
 
         public static int GetActiveApplicationID(int personID, byte ApplicationType)
@@ -243,8 +238,9 @@ namespace BusinessLayer
             return clsApplicationDataAccess.GetActiveApplicationID(personID, ApplicationType);
         }
 
-        public static int GetActiveApplicationIDForLicensClass(int PersonID,byte ApplicationType,int LicenseClassID) { 
-        return clsApplicationDataAccess.GetActiveApplicationIDForLicenseClass(PersonID, ApplicationType, LicenseClassID);
+        public static int GetActiveApplicationIDForLicensClass(int PersonID, byte ApplicationType, int LicenseClassID)
+        {
+            return clsApplicationDataAccess.GetActiveApplicationIDForLicenseClass(PersonID, ApplicationType, LicenseClassID);
         }
 
     }

@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DVLD.Classes
@@ -19,12 +14,12 @@ namespace DVLD.Classes
 
             // convert the GUID to a string
             return newGuid.ToString();
-            
+
         }
 
         public static bool CreateFolderIfDoesNotExist(string FolderPath)
         {
-         
+
             // Check if the folder exists
             if (!Directory.Exists(FolderPath))
             {
@@ -42,9 +37,9 @@ namespace DVLD.Classes
             }
 
             return true;
-            
+
         }
-     
+
         public static string ReplaceFileNameWithGUID(string sourceFile)
         {
             // Full file name. Change your file name   
@@ -54,8 +49,8 @@ namespace DVLD.Classes
             return GenerateGUID() + extn;
 
         }
-       
-        public static  bool CopyImageToProjectImagesFolder(ref string  sourceFile)
+
+        public static bool CopyImageToProjectImagesFolder(ref string sourceFile)
         {
             // this funciton will copy the image to the
             // project images foldr after renaming it
@@ -75,11 +70,11 @@ namespace DVLD.Classes
             }
             catch (IOException iox)
             {
-                MessageBox.Show (iox.Message,"Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(iox.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            sourceFile= destinationFile;
+            sourceFile = destinationFile;
             return true;
         }
     }

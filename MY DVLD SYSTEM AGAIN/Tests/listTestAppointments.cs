@@ -1,12 +1,6 @@
 ﻿using BusinessLayer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN.Tests
@@ -20,7 +14,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
         DataTable _DtAppointments;
         int _passedTests = 0;
 
-        public listTestAppointments(int localDrivingLicenseApplicationID,clsTestTypes.enTestType testType)
+        public listTestAppointments(int localDrivingLicenseApplicationID, clsTestTypes.enTestType testType)
         {
             InitializeComponent();
 
@@ -29,7 +23,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
                 // Stop here! We are in the Visual Studio Designer.
                 return;
             }
-            if (this.DesignMode) 
+            if (this.DesignMode)
             {
                 return;
             }
@@ -38,13 +32,13 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
 
         }
 
-        public void _refreshList()     
+        public void _refreshList()
         {
-        
+
 
             _DtAppointments = clsTestAppointment.GetAllTestAppointmentsPerTestType(_localDrivingLicenseApplicationID, (int)_TestType);
 
-            if (_DtAppointments.Rows.Count > 0 )
+            if (_DtAppointments.Rows.Count > 0)
             {
                 dgvAppoinments.DataSource = _DtAppointments;
                 dgvAppoinments.Visible = true;
@@ -85,23 +79,25 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
             _passedTests = clsTest.GetPassedTestsCount(ctrlLocalDrivingLicensInfo1.LocalDrivingLicensAppID);
 
 
-            switch (_TestType) 
+            switch (_TestType)
             {
                 case clsTestTypes.enTestType.vissionTest:
                     pbTestType.Image = Properties.Resources.Vision_512;
                     lbTestType.Text = "scedule vision test";
                     break;
-                 case clsTestTypes.enTestType.writtenTest:
+                case clsTestTypes.enTestType.writtenTest:
                     pbTestType.Image = Properties.Resources.Written_Test_512;
                     lbTestType.Text = "scedule written test";
                     break;
-                    case clsTestTypes.enTestType.streetTest: pbTestType.Image = Properties.Resources.street_test;
+                case clsTestTypes.enTestType.streetTest:
+                    pbTestType.Image = Properties.Resources.street_test;
                     lbTestType.Text = "scedule street test";
                     break;
-                default: pbTestType.Image = null;
+                default:
+                    pbTestType.Image = null;
                     lbTestType.Text = "error in the test type";
                     break;
-            
+
             }
 
             _refreshList();

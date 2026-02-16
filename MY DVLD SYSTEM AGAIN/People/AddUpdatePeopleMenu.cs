@@ -1,15 +1,10 @@
 ﻿using BusinessLayer;
+using DVLD.Classes;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DVLD.Classes;
 namespace MY_DVLD_SYSTEM_AGAIN.People
 {
     public partial class AddUpdatePeopleMenu : Form
@@ -66,7 +61,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
                 if (isNoImage)
                 {
                     pbPersonImage.Image = Properties.Resources.Male_512;
-                    
+
                     _Person.ImagePath = null;
                 }
 
@@ -172,7 +167,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
 
         }
 
- 
+
         public AddUpdatePeopleMenu(int PersonID)
         {
             InitializeComponent();

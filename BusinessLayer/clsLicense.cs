@@ -1,10 +1,6 @@
 ﻿using Data_Access_Layer;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
@@ -24,7 +20,7 @@ namespace BusinessLayer
         public decimal PaidFees { get; set; }
         public bool isActive { get; set; }
         public int IssueReasonID { get; set; }
-       public clsDriver DriverInfo;
+        public clsDriver DriverInfo;
         public clsLicenceClasses LicenceClassesInfo;
         public enIssueReason Issuereason;
         public bool IsDetained;
@@ -86,7 +82,7 @@ namespace BusinessLayer
             decimal paidfees = 0;
             bool isActive = false;
 
-            if (clsLicenseDataAccess.GetLicenseInfobyApplicatoinID(ref LicneseID,applicationID, ref DriverId, ref LicenseClass, ref CreatedByUserID
+            if (clsLicenseDataAccess.GetLicenseInfobyApplicatoinID(ref LicneseID, applicationID, ref DriverId, ref LicenseClass, ref CreatedByUserID
                 , ref IssueDate, ref ExpirationDate, ref Notes, ref paidfees, ref isActive, ref IssueReason))
             {
 
@@ -108,10 +104,10 @@ namespace BusinessLayer
 
         private int _addNewLicense()
         {
-     
 
-            LicneseID = clsLicenseDataAccess.AddNewLicense(this.ApplicationID,this.DriverID,this.LicenseClassID,this.CreatedByUserID
-                 ,this.issueDate,this.ExpirationDate,this.Notes,this.PaidFees,this.isActive,(int)this.Issuereason);
+
+            LicneseID = clsLicenseDataAccess.AddNewLicense(this.ApplicationID, this.DriverID, this.LicenseClassID, this.CreatedByUserID
+                 , this.issueDate, this.ExpirationDate, this.Notes, this.PaidFees, this.isActive, (int)this.Issuereason);
 
             return LicneseID;
         }
@@ -153,11 +149,11 @@ namespace BusinessLayer
 
         }
 
-        public static bool isLicenseExistByPersonID(int personID, int LicenseClassID) 
+        public static bool isLicenseExistByPersonID(int personID, int LicenseClassID)
         {
             return GetActiveLicenseIDbyPersonID(personID, LicenseClassID) > 0;
         }
-        public static int GetActiveLicenseIDbyPersonID(int personID,int LicenseClassID)
+        public static int GetActiveLicenseIDbyPersonID(int personID, int LicenseClassID)
         {
             return clsLicenseDataAccess.GetActiveLicenseIDByPersonID(personID, LicenseClassID);
         }
@@ -187,9 +183,9 @@ namespace BusinessLayer
             return clsLicenseDataAccess.DeActiveLicense(LicneseID);
         }
 
-        public clsLicense RenewLicense(string notes, int userID) 
-        { 
-        
+        public clsLicense RenewLicense(string notes, int userID)
+        {
+
             clsApplication newApplication = new clsApplication();
 
             newApplication.applicantID = this.DriverInfo.PersonID;
@@ -199,13 +195,13 @@ namespace BusinessLayer
             newApplication.lastStatusDate = DateTime.Now;
             newApplication.createdByUserID = userID;
 
-            if (!newApplication.SaveApplication(out int newApplicationID)) 
+            if (!newApplication.SaveApplication(out int newApplicationID))
             {
                 return null;
             }
             clsLicense newLicense = new clsLicense();
 
-         
+
 
             int DefaultValidityLength = this.LicenceClassesInfo.validityYears;
             decimal LicenseFees = this.LicenceClassesInfo.Fee;
@@ -222,9 +218,9 @@ namespace BusinessLayer
             newLicense.CreatedByUserID = userID;
             newLicense.issueDate = DateTime.Now;
             newLicense.LicenseClassID = this.LicenseClassID;
-            
 
-            if (!newLicense.Save(out int newLicenseID)) 
+
+            if (!newLicense.Save(out int newLicenseID))
             { return null; }
 
             DeActivate(this.LicneseID);
@@ -235,7 +231,7 @@ namespace BusinessLayer
 
         }
 
-        public clsLicense Replace(int userID,byte issueReasonID) 
+        public clsLicense Replace(int userID, byte issueReasonID)
         {
 
             clsApplication newApplication = new clsApplication();
@@ -245,7 +241,7 @@ namespace BusinessLayer
             newApplication.applicationTypeID = issueReasonID;
             newApplication.paidFee = clsApplicationTypes.Find((int)clsApplication.enApplicationType.RenewDrivingLicens).ApplicationTypeFee;
             newApplication.lastStatusDate = DateTime.Now;
-            newApplication.createdByUserID = userID ;
+            newApplication.createdByUserID = userID;
 
             if (!newApplication.SaveApplication(out int newApplicationID))
             {

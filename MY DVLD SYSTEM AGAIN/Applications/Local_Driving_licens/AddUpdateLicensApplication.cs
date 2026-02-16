@@ -1,15 +1,8 @@
 ﻿using BusinessLayer;
 using MY_DVLD_SYSTEM.Global;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 {
@@ -45,11 +38,11 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         {
             // this method is used to load the form with application infos during update mode
 
-       
+
             _LocalDrivingLicenseApplicationInfo = clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(LocalDrivingLicensApplicationID);
 
-            if (_LocalDrivingLicenseApplicationInfo == null) 
-            { MessageBox.Show("could not find the local driving licnese application");return; }
+            if (_LocalDrivingLicenseApplicationInfo == null)
+            { MessageBox.Show("could not find the local driving licnese application"); return; }
 
             _LocalDrivingLicensApplicationID = _LocalDrivingLicenseApplicationInfo.LocalDrivingLicensApplicationID;
 
@@ -60,7 +53,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             lbApplicationDate.Text = _LocalDrivingLicenseApplicationInfo.applicationDate.ToShortDateString();
             lbCreatedBy.Text = _LocalDrivingLicenseApplicationInfo.CreatedByUser.ToString();
             lbApplicationFee.Text = _LocalDrivingLicenseApplicationInfo.paidFee.ToString();
-    
+
 
         }
 
@@ -68,7 +61,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         {
             _HandelFormLabels();
             _FillLicensType();
-       
+
 
             if (_Mode == enMode.Add)
             {
@@ -82,7 +75,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
                 tpAddLocalLicensApplication.Enabled = false;
                 btnNext.Enabled = false;
                 ctrlPersonCardWithFilter1.Focus();
-                
+
 
             }
             else
@@ -93,7 +86,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
                 ctrlPersonCardWithFilter1.Enabled = false;
                 tpAddLocalLicensApplication.Enabled = true;
                 btnNext.Enabled = true;
-              
+
 
             }
 
@@ -116,7 +109,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         private void _FillLicensType()
         {
 
-           DataTable  dt = clsLicenceClasses.GetAllLicencesClasses();
+            DataTable dt = clsLicenceClasses.GetAllLicencesClasses();
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -157,17 +150,17 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             {
                 MessageBox.Show("Please select a person for the application");
                 return;
-            
+
             }
             int licensClassID = clsLicenceClasses.FindByClassName(cbLicensClass.SelectedItem.ToString()).LicnesClassID;
 
             int doesHaveActiveApplicationForThisClass =
-           clsLocalDrivingLicensApplication.GetActiveApplicationIDForLicensClass(ctrlPersonCardWithFilter1.PersonID, (byte)clsApplication.enApplicationType.NewDrivingLicens,licensClassID);
+           clsLocalDrivingLicensApplication.GetActiveApplicationIDForLicensClass(ctrlPersonCardWithFilter1.PersonID, (byte)clsApplication.enApplicationType.NewDrivingLicens, licensClassID);
 
             if (doesHaveActiveApplicationForThisClass != -1 && _Mode == enMode.Add)
-                {
-                    MessageBox.Show("This person already has an active application for this class, you can not add another one");
-                    return;
+            {
+                MessageBox.Show("This person already has an active application for this class, you can not add another one");
+                return;
             }
 
             //soon i will make a check if the person already have a licens of this class or not
@@ -200,7 +193,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
                 }
 
             }
-            else {
+            else
+            {
 
                 _LocalDrivingLicenseApplicationInfo.applicantID = ctrlPersonCardWithFilter1.PersonID;
                 _LocalDrivingLicenseApplicationInfo.LicensClassId = licensClassID;
@@ -208,7 +202,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
                 if (_LocalDrivingLicenseApplicationInfo.save())
                 {
                     MessageBox.Show($"application Update");
-              
+
                     _HandelFormLabels();
 
                 }
@@ -219,9 +213,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
             }
 
-      
-           }
-       
+
+        }
+
         private void _AddUpdateLocalLicensApplication_Load(object sender, EventArgs e)
         {
             _ResetForm();

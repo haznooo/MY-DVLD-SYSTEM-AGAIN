@@ -1,12 +1,5 @@
 ﻿using BusinessLayer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN.Tests
@@ -18,7 +11,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
         clsTestTypes.enTestType _testType = clsTestTypes.enTestType.vissionTest;
         int _appointmentID;
 
-        public scheduleTest(int LocalDrivingLicenseApplicationID,clsTestTypes.enTestType testType,int appointmentID =-1)
+        public scheduleTest(int LocalDrivingLicenseApplicationID, clsTestTypes.enTestType testType, int appointmentID = -1)
         {
             InitializeComponent();
 
@@ -27,7 +20,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
                 // Stop here! We are in the Visual Studio Designer.
                 return;
             }
-            
+
             this._LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             this._testType = testType;
             this._appointmentID = appointmentID;
@@ -39,7 +32,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
             this.Close();
         }
 
-    
+
 
         private void scheduleTest_Load(object sender, EventArgs e)
         {

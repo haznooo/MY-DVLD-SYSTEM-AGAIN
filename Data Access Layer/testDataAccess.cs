@@ -1,11 +1,7 @@
 ﻿using DataAccessLayer;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data_Access_Layer
 {
@@ -92,7 +88,7 @@ namespace Data_Access_Layer
             command.Parameters.AddWithValue("@Notes", notes);
             command.Parameters.AddWithValue("@CreatedByUserID", createdByUserID);
 
-         
+
             NewTestID = -1;
             try
             {
@@ -102,7 +98,7 @@ namespace Data_Access_Layer
                 if (result != null && result != DBNull.Value)
                 {
                     NewTestID = Convert.ToInt32(result);
-                   
+
                 }
             }
             catch (Exception ex)
@@ -175,8 +171,8 @@ namespace Data_Access_Layer
             return count;
 
         }
-        public static bool GetLastTestByPersonAndTestTypeAndClass(int personID,int LicenseClass,int testType,
-            ref int TestAppointmentID, ref bool testResults, ref string note, ref int createdByUserID) 
+        public static bool GetLastTestByPersonAndTestTypeAndClass(int personID, int LicenseClass, int testType,
+            ref int TestAppointmentID, ref bool testResults, ref string note, ref int createdByUserID)
         {
             string query = @"SELECT Tests.TestID,Tests.TestAppointmentID, Tests.TestResult,Tests.Notes, Tests.CreatedByUserID, Applications.ApplicantPersonID
 

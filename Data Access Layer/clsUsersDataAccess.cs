@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
@@ -12,7 +8,7 @@ namespace DataAccessLayer
     {
 
         public static bool GetUserInfoByUserID(int UserID, ref string UserName,
-            ref int PersonID,ref string Password,ref bool isActive)
+            ref int PersonID, ref string Password, ref bool isActive)
         {
 
 
@@ -41,12 +37,12 @@ namespace DataAccessLayer
 
                     isFound = true;
 
-                    UserID   = (int)reader["UserID"];
+                    UserID = (int)reader["UserID"];
                     PersonID = (int)reader["PersonID"];
                     Password = (string)reader["Password"];
                     UserName = (string)reader["UserName"];
                     isActive = (bool)reader["IsActive"];
-                 
+
                 }
                 reader.Close();
 
@@ -65,8 +61,8 @@ namespace DataAccessLayer
 
         }
 
-        public static bool GetUserInfoByUsernameAndPassword(ref int UserID,string UserName,
-            ref int PersonID,string Password,ref bool isActive)
+        public static bool GetUserInfoByUsernameAndPassword(ref int UserID, string UserName,
+            ref int PersonID, string Password, ref bool isActive)
         {
 
 
@@ -121,7 +117,7 @@ namespace DataAccessLayer
 
         }
 
-        public static bool GetUserInfoByPersonID(ref int UserID,ref string UserName,
+        public static bool GetUserInfoByPersonID(ref int UserID, ref string UserName,
         int PersonID, ref string Password, ref bool isActive)
         {
 
@@ -174,8 +170,8 @@ namespace DataAccessLayer
 
         }
 
-        public static int AddNewUser( string UserName, int PersonID, string Password
-                                       ,bool isActive)
+        public static int AddNewUser(string UserName, int PersonID, string Password
+                                       , bool isActive)
         {
 
             int UserId = -1;
@@ -192,8 +188,8 @@ namespace DataAccessLayer
             command.Parameters.AddWithValue("@PersonID", PersonID);
             command.Parameters.AddWithValue("@Password", Password);
             command.Parameters.AddWithValue("@IsActive", isActive);
-         
-    
+
+
             try
             {
                 connection.Open();
@@ -221,8 +217,8 @@ namespace DataAccessLayer
 
             return UserId;
         }
-        public static bool UpdateUser(int UserID,string UserName,int PersonID,string Password
-                                         ,bool isActive)
+        public static bool UpdateUser(int UserID, string UserName, int PersonID, string Password
+                                         , bool isActive)
         {
 
             int rowsAffected = 0;
@@ -237,7 +233,7 @@ namespace DataAccessLayer
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@userName",  UserName);
+            command.Parameters.AddWithValue("@userName", UserName);
             command.Parameters.AddWithValue("@personID", PersonID);
             command.Parameters.AddWithValue("@password", Password);
             command.Parameters.AddWithValue("@isActvie", isActive);
@@ -370,7 +366,7 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
-     
+
             }
             finally
             {

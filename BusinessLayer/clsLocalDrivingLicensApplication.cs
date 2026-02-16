@@ -1,13 +1,6 @@
 ﻿using Data_Access_Layer;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BusinessLayer;
-using System.ComponentModel;
 
 namespace BusinessLayer
 {
@@ -47,8 +40,8 @@ namespace BusinessLayer
             this.applicationStatus = applicationStatus;
             this.lastStatusDate = lastStatusDate;
             this.paidFee = paidFee;
-            this.createdByUserID = createdByUserID;  
-             this.LicensClassInfo = clsLicenceClasses.Find(LicensClsasID);
+            this.createdByUserID = createdByUserID;
+            this.LicensClassInfo = clsLicenceClasses.Find(LicensClsasID);
             base.ApplicationTypeInfo = clsApplicationTypes.Find(applicationTypeID);
             base.ApplicantInfo = clsPerson.GetPersonInfoByID(applicantID);
 
@@ -172,7 +165,7 @@ namespace BusinessLayer
         public static bool DoesPassAllTests(int localDrivingLicneseApplicationID)
         {
             return clsTest.GetPassedTestsCount(localDrivingLicneseApplicationID) == 3;
-    
+
         }
         public int TotalTrialsForTestType(int testTypeID)
         {
@@ -227,17 +220,17 @@ namespace BusinessLayer
             {
                 return -1;
             }
-     
+
             return newLicenseID;
 
         }
 
-        public static int GetLicneseID_IfIssued(int localDrivingLicneseApplicationID) 
+        public static int GetLicneseID_IfIssued(int localDrivingLicneseApplicationID)
         {
             clsLocalDrivingLicensApplication localDrivingLicenseApplication = clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(localDrivingLicneseApplicationID);
 
             if (localDrivingLicenseApplication == null) { return -1; }
-           return clsLicense.FindByApplicationID(localDrivingLicenseApplication.applicationID).LicneseID;
+            return clsLicense.FindByApplicationID(localDrivingLicenseApplication.applicationID).LicneseID;
 
 
 

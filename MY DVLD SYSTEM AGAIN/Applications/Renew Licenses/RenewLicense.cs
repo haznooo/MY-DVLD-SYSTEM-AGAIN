@@ -1,13 +1,6 @@
 ﻿using BusinessLayer;
 using MY_DVLD_SYSTEM.Global;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN.Applications.Renew_Licenses
@@ -39,7 +32,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Renew_Licenses
                 MessageBox.Show("This license is not active\nyou can not renew an unactive licnese", "unactive licnese", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (ctrlDriverLicenseInfoWithSearch1.LicenseInfo.ExpirationDate > DateTime.Now) 
+            if (ctrlDriverLicenseInfoWithSearch1.LicenseInfo.ExpirationDate > DateTime.Now)
             {
                 MessageBox.Show("This license is not expired\nyou can not renew an active licnese", "active licnese", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -83,6 +76,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Renew_Licenses
         }
 
 
-        }
     }
+}
 

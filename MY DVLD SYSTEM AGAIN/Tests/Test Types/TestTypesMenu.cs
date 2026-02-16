@@ -1,12 +1,6 @@
 ﻿using BusinessLayer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types
@@ -47,8 +41,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types
                 dgvTestTypes.Columns[2].HeaderText = "test type description";
                 dgvTestTypes.Columns[2].Width = 750;
 
-               dgvTestTypes.Columns[3].HeaderText = "test type fees";
-               dgvTestTypes.Columns[3].Width = 100;
+                dgvTestTypes.Columns[3].HeaderText = "test type fees";
+                dgvTestTypes.Columns[3].Width = 100;
 
 
 

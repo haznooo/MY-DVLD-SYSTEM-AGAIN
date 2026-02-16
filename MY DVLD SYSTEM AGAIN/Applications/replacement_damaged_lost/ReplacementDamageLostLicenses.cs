@@ -1,14 +1,6 @@
 ﻿using BusinessLayer;
 using MY_DVLD_SYSTEM.Global;
-using MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN.Applications.replacement_damaged_lost
@@ -21,7 +13,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.replacement_damaged_lost
             InitializeComponent();
         }
 
-    
+
 
         private void ReplacementDamageLostLicenses_Load(object sender, EventArgs e)
         {
@@ -29,7 +21,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.replacement_damaged_lost
             btnIssueReplacementLicense.Enabled = false;
             lbApplicationDate.Text = DateTime.Now.ToString();
             lbCreatedBy.Text = clsGlobal.CurrentUser.UserName;
-          
+
         }
 
         private void ctrlDriverLicenseInfoWithSearch1_OnLicenseSelected(int obj)
@@ -73,7 +65,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.replacement_damaged_lost
             {
                 return;
             }
-            clsLicense NewLicense = ctrlDriverLicenseInfoWithSearch1.LicenseInfo.Replace(clsGlobal.CurrentUser.UserID,(byte)_ApplicationType);
+            clsLicense NewLicense = ctrlDriverLicenseInfoWithSearch1.LicenseInfo.Replace(clsGlobal.CurrentUser.UserID, (byte)_ApplicationType);
 
             if (NewLicense == null)
             {

@@ -1,11 +1,7 @@
 ﻿using DataAccessLayer;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data_Access_Layer
 {
@@ -48,8 +44,8 @@ namespace Data_Access_Layer
 
         static public bool GetLicencesClassInfoByName(string ClassName, ref int LicenseClassID, ref string ClassDescription, ref byte minimumAge
             , ref byte validityLength, ref Decimal CassFee)
-        { 
-        
+        {
+
             string query = "Select * from LicenseClasses where ClassName = @ClassName";
             SqlConnection Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             SqlCommand command = new SqlCommand(query, Connection);
@@ -79,7 +75,7 @@ namespace Data_Access_Layer
 
         }
 
-            static public DataTable GetLicencesClasses()
+        static public DataTable GetLicencesClasses()
         {
 
             DataTable dt = new DataTable();

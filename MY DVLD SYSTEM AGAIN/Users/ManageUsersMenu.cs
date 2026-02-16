@@ -1,13 +1,7 @@
 ﻿using BusinessLayer;
 using MY_DVLD_SYSTEM_AGAIN.People;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN.Users
@@ -96,7 +90,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if ((txtSearchFilter.Visible)&& string.IsNullOrWhiteSpace(txtSearchFilter.Text)) { 
+            if ((txtSearchFilter.Visible) && string.IsNullOrWhiteSpace(txtSearchFilter.Text))
+            {
 
                 return;
 
@@ -134,13 +129,14 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
 
                 _dtAllUsers.DefaultView.RowFilter = "";
 
-                if (dgvUsers.Rows.Count != _totalRecords ) { 
-                
+                if (dgvUsers.Rows.Count != _totalRecords)
+                {
+
                     _refreshList();
 
                     lbTotalRecords.Text = dgvUsers.Rows.Count.ToString();
                 }
-    
+
                 return;
 
 
@@ -182,16 +178,16 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
         private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-             UserDetails frm = new UserDetails((int)dgvUsers.CurrentRow.Cells[0].Value);
+            UserDetails frm = new UserDetails((int)dgvUsers.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
             _refreshList();
 
         }
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-         
+
             AddUpdatePeopleMenu frm = new AddUpdatePeopleMenu((int)dgvUsers.CurrentRow.Cells[0].Value);
-           frm.ShowDialog();
+            frm.ShowDialog();
             _refreshList();
 
         }
@@ -223,7 +219,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
             _refreshList();
         }
 
-    
+
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {

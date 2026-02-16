@@ -2,13 +2,8 @@
 using MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses;
 using MY_DVLD_SYSTEM_AGAIN.Tests;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
@@ -193,7 +188,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
                 sToolStripMenuItem.Enabled = false;
                 showLicensToolStripMenuItem.Enabled = false;
 
-                if (isCompleted) {
+                if (isCompleted)
+                {
                     issueDrivingLicensfristTimeToolStripMenuItem.Enabled = false;
                     showLicensToolStripMenuItem.Enabled = true;
                 }
@@ -224,11 +220,11 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
         private void showLicensToolStripMenuItem_Click(object sender, EventArgs e)
         {
-          
+
             // kinda goofy ngl
             DriverLicenseInfo frm = new DriverLicenseInfo(clsLocalDrivingLicensApplication.GetLicneseID_IfIssued(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value)));
             frm.Show();
         }
-    
+
     }
 }

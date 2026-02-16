@@ -1,12 +1,6 @@
 ﻿using BusinessLayer;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
@@ -20,34 +14,35 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
 
         public event Action<int> OnLicenseSelected;
         protected virtual void PersonSelected(int LicenseID)
-        { 
-        
-        Action<int>handler = OnLicenseSelected;
-            if (handler != null) 
+        {
+
+            Action<int> handler = OnLicenseSelected;
+            if (handler != null)
             {
-            handler(LicenseID);
+                handler(LicenseID);
             }
 
 
         }
 
-        bool _Enable_serach =  true;
+        bool _Enable_serach = true;
 
         public bool Enable_serach
         {
             get { return _Enable_serach; }
 
-            set 
-            { _Enable_serach = value;
-                gbSearch.Enabled = _Enable_serach; 
+            set
+            {
+                _Enable_serach = value;
+                gbSearch.Enabled = _Enable_serach;
             }
-        
+
         }
         public int LicenseID = -1;
-       public clsLicense LicenseInfo { get { return ctrlDriverLicenseInfo1.LicenseInfo; } }
+        public clsLicense LicenseInfo { get { return ctrlDriverLicenseInfo1.LicenseInfo; } }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (!this.ValidateChildren()) 
+            if (!this.ValidateChildren())
             {
                 MessageBox.Show("Some fields are not ready", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -55,21 +50,21 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
 
 
             int licenseID = int.Parse(txtSearch.Text);
-                 LoadInfo(licenseID);
+            LoadInfo(licenseID);
 
         }
 
-        public void LoadInfo(int licenseID) 
+        public void LoadInfo(int licenseID)
         {
 
             ctrlDriverLicenseInfo1.LoadInfo(licenseID);
 
 
-             txtSearch.Text = licenseID.ToString();
+            txtSearch.Text = licenseID.ToString();
 
             LicenseID = licenseID;
 
-            if(OnLicenseSelected != null && _Enable_serach)
+            if (OnLicenseSelected != null && _Enable_serach)
                 OnLicenseSelected(LicenseID);
         }
 
@@ -78,9 +73,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
 
             // if enter is pressed
-            if (e.KeyChar == (char)13) 
+            if (e.KeyChar == (char)13)
             {
-            btnSearch.PerformClick();
+                btnSearch.PerformClick();
             }
         }
 

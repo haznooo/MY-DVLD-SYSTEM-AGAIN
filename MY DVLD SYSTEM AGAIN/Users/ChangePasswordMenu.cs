@@ -1,12 +1,5 @@
 ﻿using BusinessLayer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN.Users
@@ -19,7 +12,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
         {
             InitializeComponent();
 
-            if(this.DesignMode) { return; }
+            if (this.DesignMode) { return; }
 
             this.UserID = UserID;
         }

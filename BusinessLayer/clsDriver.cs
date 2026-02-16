@@ -1,16 +1,12 @@
 ﻿using Data_Access_Layer;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
     public class clsDriver
     {
-        enum enMode {add,update }
+        enum enMode { add, update }
         enMode _Mode = enMode.update;
         public int DriverID;
         public int CreatedByUserID;
@@ -18,17 +14,18 @@ namespace BusinessLayer
         public int PersonID;
         public clsPerson PersonInfo;
 
-        public clsDriver() {
-        
+        public clsDriver()
+        {
+
             DriverID = -1;
             CreatedByUserID = -1;
             CreatedDate = DateTime.Now;
             PersonInfo = new clsPerson();
             PersonID = -1;
             _Mode = enMode.add;
-        
+
         }
-        public clsDriver(int DriverID,int CreatedByUserID,DateTime CreaetDate,int PersonID) 
+        public clsDriver(int DriverID, int CreatedByUserID, DateTime CreaetDate, int PersonID)
         {
 
             this.DriverID = DriverID;
@@ -42,26 +39,12 @@ namespace BusinessLayer
 
 
         static public clsDriver GetDriverInfoByID(int DriverID)
-            {
-            int CreatedByUserID = -1, PersonID =-1;
-            DateTime CreateDate = DateTime.Now;
-
-
-            if (clsDrivierDataAccess.GetDriverInfoByDrivierID(DriverID, ref PersonID, ref CreatedByUserID, ref CreateDate)) 
-            {
-            return new clsDriver(DriverID,CreatedByUserID,CreateDate,PersonID);
-            }
-            return null;
-        
-        }
-
-        static public clsDriver GetDriverInfoByPersonID(int PersonID )
         {
-            int CreatedByUserID = -1, DriverID = -1;
+            int CreatedByUserID = -1, PersonID = -1;
             DateTime CreateDate = DateTime.Now;
 
 
-            if (clsDrivierDataAccess.GetDriverInfoByPersonID(ref DriverID,PersonID, ref CreatedByUserID, ref CreateDate))
+            if (clsDrivierDataAccess.GetDriverInfoByDrivierID(DriverID, ref PersonID, ref CreatedByUserID, ref CreateDate))
             {
                 return new clsDriver(DriverID, CreatedByUserID, CreateDate, PersonID);
             }
@@ -69,27 +52,41 @@ namespace BusinessLayer
 
         }
 
-        static public DataTable GetAllDrivers()   
+        static public clsDriver GetDriverInfoByPersonID(int PersonID)
         {
-        return clsDrivierDataAccess.GetAllDriversInf();
+            int CreatedByUserID = -1, DriverID = -1;
+            DateTime CreateDate = DateTime.Now;
+
+
+            if (clsDrivierDataAccess.GetDriverInfoByPersonID(ref DriverID, PersonID, ref CreatedByUserID, ref CreateDate))
+            {
+                return new clsDriver(DriverID, CreatedByUserID, CreateDate, PersonID);
+            }
+            return null;
+
         }
 
-        public bool Save() 
+        static public DataTable GetAllDrivers()
+        {
+            return clsDrivierDataAccess.GetAllDriversInf();
+        }
+
+        public bool Save()
         {
 
-            switch (_Mode) 
+            switch (_Mode)
             {
 
                 case enMode.add:
                     {
                         if (_AddNewDriver() > 0) return true;
                         else return false;
-                    
+
                     }
                 case enMode.update:
                     return _UpdateDriver();
 
-                default:return false;
+                default: return false;
             }
 
         }
@@ -100,8 +97,8 @@ namespace BusinessLayer
         }
         private bool _UpdateDriver()
         {
-           return clsDrivierDataAccess.UpdateDriver(this.DriverID,this.PersonID, this.CreatedByUserID, this.CreatedDate);
-        
+            return clsDrivierDataAccess.UpdateDriver(this.DriverID, this.PersonID, this.CreatedByUserID, this.CreatedDate);
+
         }
 
 

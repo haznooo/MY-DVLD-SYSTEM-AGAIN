@@ -1,13 +1,6 @@
 ﻿using BusinessLayer;
 using MY_DVLD_SYSTEM.Global;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
@@ -33,7 +26,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
         private int _testAppointmentID = -1;
 
 
-       
+
         public clsTestTypes.enTestType TestType
         {
 
@@ -158,7 +151,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
                 clsApplication application = new clsApplication();
                 application.applicantID = _localDrivingLicensApplication.applicantID;
                 application.applicationDate = DateTime.Now;
-               application.applicationStatus = clsApplication.enApplicationStatus.New;
+                application.applicationStatus = clsApplication.enApplicationStatus.New;
                 application.applicationTypeID = (byte)clsApplication.enApplicationType.RetakeDrivingTest;
                 application.createdByUserID = clsGlobal.CurrentUser.UserID;
                 application.lastStatusDate = DateTime.Now;
@@ -166,7 +159,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
 
                 if (!application.SaveApplication(out int NewApplicationID))
                 {
-                   MessageBox.Show("Error saving retake test application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error saving retake test application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
                 _testAppointmentt.RetakeTestApplicationID = NewApplicationID;
@@ -185,11 +178,11 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
                 return false;
             }
 
-         //   dtpDate.Value = _testAppointmentt.AppointmentDate;
-         //   lbRetakeTestAppID.Text = _testAppointmentt.TestAppointmentID.ToString();
-        //    lbFullName.Text = _localDrivingLicensApplication.applicantFullName;
+            //   dtpDate.Value = _testAppointmentt.AppointmentDate;
+            //   lbRetakeTestAppID.Text = _testAppointmentt.TestAppointmentID.ToString();
+            //    lbFullName.Text = _localDrivingLicensApplication.applicantFullName;
             lbFees.Text = _testAppointmentt.paidFees.ToString();
-          //  lbTotalTrails.Text = _localDrivingLicensApplication.TotalTrialsForTestType((int)TestType).ToString();
+            //  lbTotalTrails.Text = _localDrivingLicensApplication.TotalTrialsForTestType((int)TestType).ToString();
 
             // im not sure why this logic is like that but,
             // in case we were updating an appointment and its due date is in the past, we update it to now
@@ -311,7 +304,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
         {
             if (!_handleRetakeTest()) return;
 
-       
+
 
             if (clsTestAppointment.DoesHaveActiveTestAppointment(_localDrivingLicnesApplicationID, (int)_testType))
             {

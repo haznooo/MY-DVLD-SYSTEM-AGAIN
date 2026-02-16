@@ -121,7 +121,7 @@
             this.issueInternationalLicenseToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.issueInternationalLicenseToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.International_32;
             this.issueInternationalLicenseToolStripMenuItem.Name = "issueInternationalLicenseToolStripMenuItem";
-            this.issueInternationalLicenseToolStripMenuItem.Size = new System.Drawing.Size(259, 26);
+            this.issueInternationalLicenseToolStripMenuItem.Size = new System.Drawing.Size(276, 40);
             this.issueInternationalLicenseToolStripMenuItem.Text = "Issue international License";
             // 
             // showLicenseHistoryToolStripMenuItem
@@ -129,8 +129,9 @@
             this.showLicenseHistoryToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.showLicenseHistoryToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.PersonLicenseHistory_32;
             this.showLicenseHistoryToolStripMenuItem.Name = "showLicenseHistoryToolStripMenuItem";
-            this.showLicenseHistoryToolStripMenuItem.Size = new System.Drawing.Size(259, 26);
+            this.showLicenseHistoryToolStripMenuItem.Size = new System.Drawing.Size(276, 40);
             this.showLicenseHistoryToolStripMenuItem.Text = "show license history";
+            this.showLicenseHistoryToolStripMenuItem.Click += new System.EventHandler(this.showLicenseHistoryToolStripMenuItem_Click);
             // 
             // ListDrivers
             // 
