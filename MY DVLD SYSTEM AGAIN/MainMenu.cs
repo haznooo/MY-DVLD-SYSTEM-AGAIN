@@ -98,5 +98,10 @@ namespace MY_DVLD_SYSTEM_AGAIN
             ListDrivers frm = new ListDrivers();
             frm.ShowDialog();
         }
+
+        private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
