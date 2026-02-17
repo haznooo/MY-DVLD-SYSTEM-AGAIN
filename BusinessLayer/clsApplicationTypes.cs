@@ -14,7 +14,17 @@ namespace BusinessLayer
         public string ApplicationTypeTitle;
         public decimal ApplicationTypeFee;
 
+        public enum enApplicationType : byte
+        {
+            NewDrivingLicens = 1,
+            RenewDrivingLicens = 2,
+            ReplaceLostLicens = 3,
+            ReplaceDamagedLicens = 4,
+            ReleaseDetainedLicens = 5,
+            NewInternationalLicens = 6,
+            RetakeDrivingTest = 7
 
+        }
 
         public clsApplicationTypes(int ApplicationTypeID, string newTitle, decimal newFees)
         {

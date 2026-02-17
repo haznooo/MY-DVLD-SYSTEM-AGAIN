@@ -20,11 +20,12 @@ namespace BusinessLayer
         public decimal PaidFees { get; set; }
         public bool isActive { get; set; }
         public int IssueReasonID { get; set; }
-        public clsDriver DriverInfo;
-        public clsLicenceClasses LicenceClassesInfo;
-        public enIssueReason Issuereason;
-        public bool IsDetained;
-        public string IssueReasonText { get { return GetIssueReasonTxt(); } }
+        public clsDriver DriverInfo { get; set; }
+        public clsLicenceClasses LicenceClassesInfo { get; set; }
+        public enIssueReason Issuereason { get; set; }
+        public bool IsDetained { get { return clsDetainLicense.IsDetained(this.LicneseID); } }
+        public clsDetainLicense DetainInfo { get; set; }
+        public string IssueReasonText { get { return GetIssueReasonTxt();  } }
 
 
         public clsLicense()
@@ -51,8 +52,10 @@ namespace BusinessLayer
             this.isActive = isActive;
             this.PaidFees = paidfees;
             this.Issuereason = IssueReason;
+
             this.DriverInfo = clsDriver.GetDriverInfoByID(DriverId);
             this.LicenceClassesInfo = clsLicenceClasses.Find(LicenseClassID);
+            this.DetainInfo = clsDetainLicense.GetDetainedLicenseInfoByLicenseID(this.LicneseID);
             _Mode = enMode.update;
         }
 
@@ -230,7 +233,6 @@ namespace BusinessLayer
 
 
         }
-
         public clsLicense Replace(int userID, byte issueReasonID)
         {
 
@@ -276,6 +278,43 @@ namespace BusinessLayer
             return newLicense;
 
 
+
+        }
+
+        public int Detain(decimal FineFee, int CreatedByUserID) 
+        {
+        clsDetainLicense detain = new clsDetainLicense();
+            detain.fineFees = FineFee;
+            detain.DetainDate = DateTime.Now;
+            detain.CreatedByUserID = CreatedByUserID;
+            detain.isReleased = false;
+            detain.LicenseID = this.LicneseID;
+
+            if (detain.Save()) 
+            {
+                return detain.DetainID;
+            }
+            return -1;
+        
+        }
+
+        public bool Release(int releasedByUserID,ref int ApplicatoinID) 
+        {
+         clsApplication release = new clsApplication();
+           release.paidFee = clsApplicationTypes.Find((int)clsApplicationTypes.enApplicationType.ReleaseDetainedLicens).ApplicationTypeFee;
+            release.createdByUserID = releasedByUserID;
+            release.applicantID = this.DriverInfo.PersonID;
+            release.applicationDate = DateTime.Now;
+            release.lastStatusDate = DateTime.Now;
+            release.applicationStatus = clsApplication.enApplicationStatus.complete;
+            release.applicationTypeID = (int)clsApplicationTypes.enApplicationType.ReleaseDetainedLicens;
+
+            if (!release.SaveApplication(out ApplicatoinID)) 
+            {
+            return false; 
+            }
+
+            return this.DetainInfo.Release(releasedByUserID, ApplicatoinID);
 
         }
 

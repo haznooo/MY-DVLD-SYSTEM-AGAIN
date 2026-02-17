@@ -82,6 +82,12 @@
     <Compile Include="Applications\Local_Driving_licens\ManageLocalDrivingLicenses.Designer.cs">
       <DependentUpon>ManageLocalDrivingLicenses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\Release licenses\ReleaseDetainedLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Release licenses\ReleaseDetainedLicense.Designer.cs">
+      <DependentUpon>ReleaseDetainedLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\Renew Licenses\RenewLicense.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,12 @@
     </Compile>
     <Compile Include="licenses\local Licenses\Detain\DetainLicense.Designer.cs">
       <DependentUpon>DetainLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="licenses\local Licenses\Detain\ManageDetainedLicenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="licenses\local Licenses\Detain\ManageDetainedLicenses.Designer.cs">
+      <DependentUpon>ManageDetainedLicenses.cs</DependentUpon>
     </Compile>
     <Compile Include="licenses\local Licenses\DriverLicenseInfo.cs">
       <SubType>Form</SubType>
@@ -291,6 +303,9 @@
     <EmbeddedResource Include="Applications\Local_Driving_licens\ManageLocalDrivingLicenses.resx">
       <DependentUpon>ManageLocalDrivingLicenses.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Release licenses\ReleaseDetainedLicense.resx">
+      <DependentUpon>ReleaseDetainedLicense.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Applications\Renew Licenses\RenewLicense.resx">
       <DependentUpon>RenewLicense.cs</DependentUpon>
     </EmbeddedResource>
@@ -311,6 +326,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="licenses\local Licenses\Detain\DetainLicense.resx">
       <DependentUpon>DetainLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="licenses\local Licenses\Detain\ManageDetainedLicenses.resx">
+      <DependentUpon>ManageDetainedLicenses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="licenses\local Licenses\DriverLicenseInfo.resx">
       <DependentUpon>DriverLicenseInfo.cs</DependentUpon>
