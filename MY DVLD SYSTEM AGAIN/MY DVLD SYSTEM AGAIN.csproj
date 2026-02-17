@@ -121,6 +121,12 @@
     <Compile Include="licenses\InternationalLicenses\IssueInternationalLicense.Designer.cs">
       <DependentUpon>IssueInternationalLicense.cs</DependentUpon>
     </Compile>
+    <Compile Include="licenses\InternationalLicenses\ManageInterNationalLicenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="licenses\InternationalLicenses\ManageInterNationalLicenses.Designer.cs">
+      <DependentUpon>ManageInterNationalLicenses.cs</DependentUpon>
+    </Compile>
     <Compile Include="licenses\local Licenses\ctrlDriverLicenseInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -326,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="licenses\InternationalLicenses\IssueInternationalLicense.resx">
       <DependentUpon>IssueInternationalLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="licenses\InternationalLicenses\ManageInterNationalLicenses.resx">
+      <DependentUpon>ManageInterNationalLicenses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="licenses\local Licenses\ctrlDriverLicenseInfo.resx">
       <DependentUpon>ctrlDriverLicenseInfo.cs</DependentUpon>

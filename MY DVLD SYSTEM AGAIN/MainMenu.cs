@@ -128,7 +128,8 @@ namespace MY_DVLD_SYSTEM_AGAIN
 
         private void internationalLicenseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            ManageInterNationalLicenses frm = new ManageInterNationalLicenses();
+            frm.ShowDialog();
         }
     }
 }
