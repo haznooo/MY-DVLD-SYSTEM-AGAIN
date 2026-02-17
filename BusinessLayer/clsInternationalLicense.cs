@@ -58,12 +58,7 @@ namespace BusinessLayer
             base.applicationTypeID = (int)clsApplicationTypes.enApplicationType.NewInternationalLicens;
             base.paidFee = paidFees;
 
-
-            _Mode = enMode.Update;
-
-
-
-           
+            _Mode = enMode.Update;    
         
         }
 
@@ -126,13 +121,29 @@ namespace BusinessLayer
         public bool save() 
         {
 
+            base.CurrentMode = _Mode;
             switch (_Mode) 
             {
 
-                case enMode.AddNew: 
-                        return _AddInternationalLicense() != -1;
+                case enMode.AddNew:
+                    {
+                        if (base.SaveApplication(out int applicationID)) 
+                        {
+                        this.applicationID = applicationID;
+                            return _AddInternationalLicense() != -1;
+                        }
+                        return false ;
+                    }
+                   
                 case enMode.Update:
-                    return _UpdateInternationalLicense();
+                    {
+                        if (base.SaveApplication(out int applicationID))
+                        {
+                            return _UpdateInternationalLicense();
+                        }
+                        return false;
+                    }
+                 
                 default: return false;
 
           

@@ -5,6 +5,7 @@ using MY_DVLD_SYSTEM_AGAIN.Applications.Release_licenses;
 using MY_DVLD_SYSTEM_AGAIN.Applications.Renew_Licenses;
 using MY_DVLD_SYSTEM_AGAIN.Applications.replacement_damaged_lost;
 using MY_DVLD_SYSTEM_AGAIN.Drivers;
+using MY_DVLD_SYSTEM_AGAIN.licenses.InternationalLicenses;
 using MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses.Detain;
 using MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types;
 using MY_DVLD_SYSTEM_AGAIN.Users;
@@ -117,6 +118,17 @@ namespace MY_DVLD_SYSTEM_AGAIN
         {
             ManageDetainedLicenses frm = new ManageDetainedLicenses();
             frm.ShowDialog();
+        }
+
+        private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IssueInternationalLicense frm = new IssueInternationalLicense();
+            frm.ShowDialog();
+        }
+
+        private void internationalLicenseToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
