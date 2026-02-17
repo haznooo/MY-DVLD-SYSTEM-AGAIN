@@ -54,6 +54,7 @@
     <Compile Include="clsTestAppointment.cs" />
     <Compile Include="clsTestTypes.cs" />
     <Compile Include="clsUser.cs" />
+    <Compile Include="clsInternationalLicense.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -788,6 +788,8 @@
   <ItemGroup>
     <None Include="Resources\street test.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="licenses\InternationalLicenses\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
