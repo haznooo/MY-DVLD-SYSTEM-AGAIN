@@ -210,12 +210,14 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
                 issueDrivingLicensfristTimeToolStripMenuItem.Enabled = false;
 
             }
+            _refreshList();
         }
 
         private void issueDrivingLicensfristTimeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IssueDriverLicenseForFirstTime frm = new IssueDriverLicenseForFirstTime(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
             frm.ShowDialog();
+            _refreshList();
         }
 
         private void showLicensToolStripMenuItem_Click(object sender, EventArgs e)

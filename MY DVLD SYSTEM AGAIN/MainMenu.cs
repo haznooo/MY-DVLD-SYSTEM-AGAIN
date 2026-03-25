@@ -131,5 +131,10 @@ namespace MY_DVLD_SYSTEM_AGAIN
             ManageInterNationalLicenses frm = new ManageInterNationalLicenses();
             frm.ShowDialog();
         }
+
+        private void applicationToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

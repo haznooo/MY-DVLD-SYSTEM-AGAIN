@@ -1,6 +1,8 @@
 ﻿using BusinessLayer;
+using Microsoft.Win32;
 using System;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM.Global
@@ -13,80 +15,52 @@ namespace MY_DVLD_SYSTEM.Global
         public static bool GetSavedLoginCredentials(ref string UserName, ref string Password)
         {
 
+            // Specify the Registry key and path
+            string keyPath = @"HKEY_CURRENT_USER\Software\dvld";
+            string valueName = "UserLogin";
+
+
             try
             {
+                // Read the value from the Registry
+                string value = Registry.GetValue(keyPath,valueName, Password) as string;
+           
 
-                string CurrentDirectory = System.IO.Directory.GetCurrentDirectory();
-
-                string FilePath = CurrentDirectory + "\\credentials.txt";
-
-
-                if (File.Exists(FilePath))
+                if (value != null)
                 {
-
-                    using (StreamReader reader = new StreamReader(FilePath))
-                    {
-                        // Read data line by line until the end of the file
-                        string line;
-                        while ((line = reader.ReadLine()) != null)
-                        {
-
-                            string[] result = line.Split(new string[] { "#//#" }, StringSplitOptions.None);
-
-                            UserName = result[0];
-                            Password = result[1];
-                        }
-
-                        return true;
-                    }
-
+                    string[] values = value.Split(new string[] { "#==#" }, StringSplitOptions.None);
+                    UserName = values[0];
+                    Password = values[1];
+                    return true;
                 }
                 else
                 {
-                    return false; // No saved credentials
+                    return false;
                 }
-
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error reading saved credentials: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.ToString());
                 return false;
             }
 
+            return false;
 
         }
 
         public static bool SaveLoginCredentials(string UserName, string Password)
         {
 
-
             try
             {
 
-                string CurrentDirectory = System.IO.Directory.GetCurrentDirectory();
 
-                string FilePath = CurrentDirectory + "\\credentials.txt";
+                string FilePath = @"HKEY_CURRENT_USER\Software\dvld";
+                string ValueName = "UserLogin";
+                string Value = UserName + "#==#" + Password;
 
-
-                if ((UserName == null || Password == null) && File.Exists(FilePath))
-                {
-
-                    File.Delete(FilePath);
-                    return true;
-
-                }
-
-                string DataToSave = UserName + "#//#" + Password;
-
-
-                using (StreamWriter writer = new StreamWriter(FilePath))
-                {
-                    // Write the data to the file
-                    writer.WriteLine(DataToSave);
-
-                    return true;
-                }
+                Registry.SetValue(FilePath, ValueName, Value, RegistryValueKind.String);
+                return true;
 
 
             }
@@ -101,19 +75,42 @@ namespace MY_DVLD_SYSTEM.Global
 
         }
 
-        public static void ClearSavedLoginCredentials()
+        public static bool ClearSavedLoginCredentials()
         {
 
-            string CurrentDirectory = System.IO.Directory.GetCurrentDirectory();
-
-            string FilePath = CurrentDirectory + "\\credentials.txt";
-
-            if (File.Exists(FilePath))
+            string keyPath = @"HKEY_CURRENT_USER\Software\dvld";
+            string valueName = "UserLogin";
+            try
             {
-
-                File.Delete(FilePath);
-
+                // Open the registry key in read/write mode with explicit registry view
+                using (RegistryKey baseKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64))
+                {
+                    using (RegistryKey key = baseKey.OpenSubKey(keyPath, true))
+                    {
+                        if (key != null)
+                        {
+                            // Delete the specified value
+                            key.DeleteValue(valueName);
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
             }
+            catch (UnauthorizedAccessException)
+            {
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+
+   
 
 
         }

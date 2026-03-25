@@ -35,13 +35,13 @@
             this.cmsPeopleOpetions = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TakeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lbTotalRecords = new System.Windows.Forms.Label();
             this.btnSchedulTest = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.lbUserErrorMessgae = new System.Windows.Forms.Label();
-            this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ctrlLocalDrivingLicensInfo1 = new MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens.ctrlLocalDrivingLicensInfo();
             ((System.ComponentModel.ISupportInitialize)(this.pbTestType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppoinments)).BeginInit();
@@ -71,10 +71,13 @@
             // 
             // dgvAppoinments
             // 
+            this.dgvAppoinments.AllowUserToAddRows = false;
+            this.dgvAppoinments.AllowUserToDeleteRows = false;
             this.dgvAppoinments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAppoinments.ContextMenuStrip = this.cmsPeopleOpetions;
             this.dgvAppoinments.Location = new System.Drawing.Point(12, 533);
             this.dgvAppoinments.Name = "dgvAppoinments";
+            this.dgvAppoinments.ReadOnly = true;
             this.dgvAppoinments.Size = new System.Drawing.Size(722, 150);
             this.dgvAppoinments.TabIndex = 3;
             // 
@@ -86,13 +89,13 @@
             this.editToolStripMenuItem,
             this.cancelToolStripMenuItem});
             this.cmsPeopleOpetions.Name = "cmsPeopleOpetions";
-            this.cmsPeopleOpetions.Size = new System.Drawing.Size(195, 134);
+            this.cmsPeopleOpetions.Size = new System.Drawing.Size(125, 112);
             // 
             // TakeToolStripMenuItem
             // 
             this.TakeToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.PersonDetails_32;
             this.TakeToolStripMenuItem.Name = "TakeToolStripMenuItem";
-            this.TakeToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.TakeToolStripMenuItem.Size = new System.Drawing.Size(124, 36);
             this.TakeToolStripMenuItem.Text = "Take";
             this.TakeToolStripMenuItem.Click += new System.EventHandler(this.TakeToolStripMenuItem_Click);
             // 
@@ -100,9 +103,17 @@
             // 
             this.editToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.edit_32;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(124, 36);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // cancelToolStripMenuItem
+            // 
+            this.cancelToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Delete_32_2;
+            this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
+            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(124, 36);
+            this.cancelToolStripMenuItem.Text = "Cancel";
+            this.cancelToolStripMenuItem.Click += new System.EventHandler(this.cancelToolStripMenuItem_Click);
             // 
             // label2
             // 
@@ -164,14 +175,6 @@
             this.lbUserErrorMessgae.Size = new System.Drawing.Size(697, 42);
             this.lbUserErrorMessgae.TabIndex = 10;
             this.lbUserErrorMessgae.Text = "no active appointments for this person ";
-            // 
-            // cancelToolStripMenuItem
-            // 
-            this.cancelToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Delete_32_2;
-            this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
-            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
-            this.cancelToolStripMenuItem.Text = "Cancel";
-            this.cancelToolStripMenuItem.Click += new System.EventHandler(this.cancelToolStripMenuItem_Click);
             // 
             // ctrlLocalDrivingLicensInfo1
             // 

@@ -126,8 +126,17 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
 
         private void TakeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            bool isLocked = (bool)dgvAppoinments.CurrentRow.Cells[6].Value;
+
+            if (isLocked) 
+            {
+                MessageBox.Show("this appointment is locked , make a new one ","locked",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+
             TakeTest frm = new TakeTest((int)dgvAppoinments.CurrentRow.Cells[0].Value, _localDrivingLicenseApplicationID, _TestType);
             frm.ShowDialog();
+            _refreshList();
         }
     }
 }

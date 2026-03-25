@@ -61,7 +61,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         {
             _HandelFormLabels();
             _FillLicensType();
-
+            cbLicensClass.SelectedIndex = 2;
 
             if (_Mode == enMode.Add)
             {

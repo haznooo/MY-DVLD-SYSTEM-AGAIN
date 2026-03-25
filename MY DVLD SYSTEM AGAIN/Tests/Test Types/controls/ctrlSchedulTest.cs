@@ -155,7 +155,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
                 application.applicationTypeID = (byte)clsApplication.enApplicationType.RetakeDrivingTest;
                 application.createdByUserID = clsGlobal.CurrentUser.UserID;
                 application.lastStatusDate = DateTime.Now;
-                application.paidFee = Convert.ToDecimal(clsApplicationTypes.Find(Convert.ToInt32(clsApplication.enApplicationType.RetakeDrivingTest)));
+                application.paidFee = Convert.ToDecimal(lbRetakeTestFees.Text);
 
                 if (!application.SaveApplication(out int NewApplicationID))
                 {
@@ -241,6 +241,12 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
                 return;
             }
 
+            if (_localDrivingLicensApplication.DoesPassTestType((int)_testType)) 
+            {
+                MessageBox.Show("you already passed this test type", "test passed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
             if (_localDrivingLicensApplication.DoesAttendTestType((int)TestType))
                 _creationMode = createionMode.retakeTest;
             else _creationMode = createionMode.FirstTimeTest;
@@ -260,7 +266,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
             else
             {
                 lbTestTitle.Text = "Retake Test";
-                lbRetakeTestFees.Text = clsApplicationTypes.Find((int)clsApplication.enApplicationType.RetakeDrivingTest).ApplicationTypeFee.ToString();
+             
+                lbRetakeTestFees.Text = clsApplicationTypes.Find((int)clsApplicationTypes.enApplicationType.RetakeDrivingTest).ApplicationTypeFee.ToString();
                 gbRetakeTest.Enabled = true;
                 lbRetakeTestAppID.Text = "0";
 
@@ -299,7 +306,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
                 return;
 
         }
-
+        
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!_handleRetakeTest()) return;

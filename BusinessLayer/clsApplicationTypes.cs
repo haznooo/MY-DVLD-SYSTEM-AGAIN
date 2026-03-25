@@ -22,7 +22,8 @@ namespace BusinessLayer
             ReplaceDamagedLicens = 4,
             ReleaseDetainedLicens = 5,
             NewInternationalLicens = 6,
-            RetakeDrivingTest = 7
+            RetakeDrivingTest = 8
+              
 
         }
 
