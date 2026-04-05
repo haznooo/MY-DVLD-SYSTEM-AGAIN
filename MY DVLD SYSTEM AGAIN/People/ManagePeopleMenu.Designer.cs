@@ -112,10 +112,7 @@
             "Person ID",
             "National Number",
             "Phone",
-            "First Name",
-            "Second Name",
-            "Third Name",
-            "Last Name",
+            "Full Name",
             "Gender",
             "Address",
             "Email"});
@@ -170,11 +167,15 @@
             // 
             this.dgvPeople.AllowUserToAddRows = false;
             this.dgvPeople.AllowUserToDeleteRows = false;
-            this.dgvPeople.AllowUserToOrderColumns = true;
+            this.dgvPeople.AllowUserToResizeColumns = false;
+            this.dgvPeople.AllowUserToResizeRows = false;
+            this.dgvPeople.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvPeople.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvPeople.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPeople.Location = new System.Drawing.Point(3, 297);
             this.dgvPeople.Name = "dgvPeople";
             this.dgvPeople.ReadOnly = true;
+            this.dgvPeople.RowHeadersVisible = false;
             this.dgvPeople.Size = new System.Drawing.Size(1375, 387);
             this.dgvPeople.TabIndex = 20;
             // 

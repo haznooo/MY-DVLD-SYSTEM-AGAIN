@@ -350,7 +350,7 @@ namespace DataAccessLayer
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
 
-            string query = @"select PersonID,NationalNumber,FirstName,SecondName,ThirdName,LastName,DateOfBirth,Gender,
+            string query = @"select PersonID,NationalNumber,(FirstName + ' ' + ISNULL(SecondName, '') + ' ' + ISNULL(ThirdName, '') + ' ' + LastName) AS FullName,DateOfBirth,Gender,
 
                    CASE WHEN Gender = 0 THEN 'Male' 
                       WHEN Gender = 1 THEN 'Female' 

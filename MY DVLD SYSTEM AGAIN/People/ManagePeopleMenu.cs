@@ -3,6 +3,8 @@ using DVLD.Classes;
 using MY_DVLD_SYSTEM_AGAIN.People;
 using System;
 using System.Data;
+using System.Linq;
+using System.Net;
 using System.Windows.Forms;
 
 namespace MY_DVLD_SYSTEM_AGAIN
@@ -16,15 +18,12 @@ namespace MY_DVLD_SYSTEM_AGAIN
 
         static DataTable _dtAllPeople = clsPerson.GetAllPeople();
 
-        DataTable _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNumber", "FirstName", "SecondName", "ThirdName",
-           "LastName", "GenderCaption", "Address", "Phone", "Email", "CountryID", "ImagePath");
+        DataTable _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNumber", "FullName", "GenderCaption", "Address", "Phone", "Email", "CountryID", "ImagePath");
 
         private void _refreshList()
         {
 
             cbSearchFilter.SelectedIndex = 0;
-
-
             txtSearchFilter.Text = "";
             txtSearchFilter.Visible = false;
 
@@ -33,10 +32,15 @@ namespace MY_DVLD_SYSTEM_AGAIN
 
             _dtAllPeople = clsPerson.GetAllPeople();
 
-            _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNumber", "FirstName", "SecondName", "ThirdName",
-                "LastName", "DateOfBirth", "GenderCaption", "Address", "Phone", "Email", "CountryID", "ImagePath");
+            // Just pull the FullName directly from the SQL results
+            _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNumber", "FullName",
+                "DateOfBirth", "GenderCaption", "Address", "Phone", "Email", "CountryID", "ImagePath");
 
             dgvPeople.DataSource = _dtPeople;
+            // Hide only the technical IDs/Paths
+            dgvPeople.Columns["CountryID"].Visible = false;
+            dgvPeople.Columns["ImagePath"].Visible = false;
+
             lbTotalRecords.Text = dgvPeople.Rows.Count.ToString();
 
         }
@@ -60,26 +64,16 @@ namespace MY_DVLD_SYSTEM_AGAIN
                 dgvPeople.Columns[2].HeaderText = "First Name";
                 dgvPeople.Columns[2].Width = 110;
 
-                dgvPeople.Columns[3].HeaderText = "Second Name";
+                dgvPeople.Columns[3].HeaderText = "Date Of Birth";
                 dgvPeople.Columns[3].Width = 110;
 
-                dgvPeople.Columns[4].HeaderText = "Third Name";
                 dgvPeople.Columns[4].Width = 110;
-
-                dgvPeople.Columns[5].HeaderText = "Last Name";
+   
                 dgvPeople.Columns[5].Width = 110;
-
-                dgvPeople.Columns[6].HeaderText = "Date Of Birth";
                 dgvPeople.Columns[6].Width = 120;
 
-                dgvPeople.Columns[7].HeaderText = "gender";
-                dgvPeople.Columns[7].Width = 60;
+                dgvPeople.Columns[7].Width = 80;
 
-                dgvPeople.Columns[10].Width = 150;
-                dgvPeople.Columns[11].Width = 70;
-
-                dgvPeople.Columns[12].HeaderText = "Image Path";
-                dgvPeople.Columns[8].Width = 200;
 
             }
 
@@ -127,7 +121,6 @@ namespace MY_DVLD_SYSTEM_AGAIN
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-
             string FilterColumn = "";
             //Map Selected Filter to real Column name 
             switch (cbSearchFilter.Text)
@@ -136,28 +129,15 @@ namespace MY_DVLD_SYSTEM_AGAIN
                     FilterColumn = "PersonID";
                     break;
 
-                case "National No.":
+                case "National Number":
                     FilterColumn = "NationalNumber";
                     break;
 
-                case "First Name":
-                    FilterColumn = "FirstName";
+                case "Full Name":
+                    FilterColumn = "FullName";
                     break;
-
-                case "Second Name":
-                    FilterColumn = "SecondName";
-                    break;
-
-                case "Third Name":
-                    FilterColumn = "ThirdName";
-                    break;
-
-                case "Last Name":
-                    FilterColumn = "LastName";
-                    break;
-
-                case "CountryID":
-                    FilterColumn = "CountryName";
+                case "Address":
+                    FilterColumn = "Address";
                     break;
 
                 case "Gender":
@@ -187,30 +167,49 @@ namespace MY_DVLD_SYSTEM_AGAIN
 
             }
 
+
             if (FilterColumn == "PersonID")
-                _dtPeople.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtSearchFilter.Text.Trim());
+            {
+                _dtPeople.DefaultView.RowFilter = string.Format("Convert([{0}], 'System.String') LIKE '{1}*'", FilterColumn, txtSearchFilter.Text.Trim());
+            }
 
             else if (FilterColumn == "GenderCaption")
             {
 
-                if (rdMale.Checked) { _dtPeople.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, "Male"); }
-                else { _dtPeople.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, "Female"); }
+                if (rdMale.Checked) { _dtPeople.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}*'", FilterColumn, "Male"); }
+                else { _dtPeople.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}*'", FilterColumn, "Female"); }
             }
 
-            else
+            else if (FilterColumn == "Email")
+            {
+                _dtPeople.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}*'", FilterColumn, txtSearchFilter.Text.Trim());
+            }
+
+            else if (FilterColumn == "FullName")
             {
 
-                if ((FilterColumn == "Email") && !clsValidatoin.ValidateEmail(txtSearchFilter.Text.Trim()))
-                {
-                    MessageBox.Show("Please enter a valid email", "Invalid email format");
-                    txtSearchFilter.Text = "";
-                    return;
-                }
-
-                _dtPeople.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtSearchFilter.Text.Trim());
+                _dtPeople.DefaultView.RowFilter = string.Format("FullName LIKE '{0}%'", txtSearchFilter.Text.Trim());
 
 
             }
+            else if (FilterColumn == "Address")
+            {
+
+                _dtPeople.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}*'", FilterColumn, txtSearchFilter.Text.Trim());
+
+
+            }
+            else if (FilterColumn == "Phone") 
+            {
+                _dtPeople.DefaultView.RowFilter = string.Format("Convert([{0}], 'System.String') LIKE '{1}*'", FilterColumn, txtSearchFilter.Text.Trim());
+            }
+            else if (FilterColumn == "NationalNumber")
+            {
+                _dtPeople.DefaultView.RowFilter = string.Format("Convert([{0}], 'System.String') LIKE '{1}*'", FilterColumn, txtSearchFilter.Text.Trim());
+            }
+
+
+
 
             lbTotalRecords.Text = dgvPeople.Rows.Count.ToString();
 
