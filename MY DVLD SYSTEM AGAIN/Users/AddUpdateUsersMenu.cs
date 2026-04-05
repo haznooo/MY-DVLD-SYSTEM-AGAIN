@@ -41,7 +41,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
         private void _LoadUserInfos(int UserID)
         {
 
-            // this method is used to load the form with user infos during update mode
+            // this method is used to load the form with user infos 
 
             _User = clsUser.GetUserByID(UserID);
 
@@ -59,6 +59,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
 
                 ctrlPersonCardWithFilter1.LoadAndShowPersonInfo(_User.PersonID);
                 tpAddUser.Enabled = true;
+                ctrlPersonCardWithFilter1.Enabled = false;
                 btnNext.Enabled = true;
                 tcAddUpdateUsers.SelectedTab = tpAddUser;
                 _HandelFormLabels();
@@ -94,6 +95,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
 
                 tpAddUser.Enabled = true;
                 btnNext.Enabled = true;
+                tpLinkPerson.Enabled = false;
                 _HandelFormLabels();
 
             }
@@ -110,7 +112,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
             }
             else if (_Mode == enMode.UpdateUser)
             {
-                lbLinkPersonMessage.Text = "change linked Person";
+                lbLinkPersonMessage.Text = "Person is linked";
                 lbAddUserMessage.Text = "Update User infos";
             }
         }
@@ -220,7 +222,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
 
                     if (_User.Save())
                     {
-                        MessageBox.Show($"New person added with the id {_User.UserID}");
+                        MessageBox.Show($"New user added with the id {_User.UserID}");
                         _Mode = enMode.UpdateUser;
                         _HandelFormLabels();
 
@@ -229,10 +231,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
                     {
                         MessageBox.Show("Failed to add new user");
                     }
-
-
-
                 }
+
+
                 else
                 {
                     _User.PersonID = _PersonID;
@@ -243,14 +244,14 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
 
                     if (_User.Save())
                     {
-                        MessageBox.Show($"Updated person with the ID {_User.UserID}");
+                        MessageBox.Show($"Updated user with the ID {_User.UserID}");
                         _Mode = enMode.UpdateUser;
                         _HandelFormLabels();
 
                     }
                     else
                     {
-                        MessageBox.Show("Failed to add new user");
+                        MessageBox.Show("Failed to update user");
                     }
 
 

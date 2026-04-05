@@ -186,7 +186,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            AddUpdatePeopleMenu frm = new AddUpdatePeopleMenu((int)dgvUsers.CurrentRow.Cells[0].Value);
+            AddUpdateUsersMenu frm = new AddUpdateUsersMenu((int)dgvUsers.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
             _refreshList();
 
