@@ -96,7 +96,7 @@
             // 
             this.lbUserID.AutoSize = true;
             this.lbUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUserID.Location = new System.Drawing.Point(70, 40);
+            this.lbUserID.Location = new System.Drawing.Point(88, 40);
             this.lbUserID.Name = "lbUserID";
             this.lbUserID.Size = new System.Drawing.Size(45, 20);
             this.lbUserID.TabIndex = 9;

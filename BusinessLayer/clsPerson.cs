@@ -10,7 +10,7 @@ namespace BusinessLayer
         public enum enMode { AddNew = 0, Update = 1 };
         private enMode _Mode = enMode.AddNew;
         public int PersonID { get; private set; }
-        public string NationalNUmber { get; set; }
+        public int NationalNUmber { get; set; }
 
         public string FullName
         {
@@ -54,7 +54,7 @@ namespace BusinessLayer
 
         {
             this.PersonID = -1;
-            this.NationalNUmber = "";
+            this.NationalNUmber = 0;
             this.FirstName = "";
             this.SecondName = "";
             this.ThirdName = "";
@@ -71,7 +71,7 @@ namespace BusinessLayer
 
         }
 
-        private clsPerson(int PersonID, string NationalNumber, string FirstName, string SecondName, string ThirdName, string LastName,
+        private clsPerson(int PersonID,int NationalNumber, string FirstName, string SecondName, string ThirdName, string LastName,
              DateTime DateOfBirth, byte gender, string Address, string Phone, string Email, int CountryID, string ImagePath)
 
         {
@@ -113,10 +113,10 @@ namespace BusinessLayer
         public static clsPerson GetPersonInfoByID(int PersonID)
         {
 
-            string NationalNumber = "", FirstName = "", SecondName = "", ThirdName = "", LastName = "", Email = "", Phone = "", Address = "", ImagePath = "";
+            string  FirstName = "", SecondName = "", ThirdName = "", LastName = "", Email = "", Phone = "", Address = "", ImagePath = "";
             DateTime DateOfBirth = DateTime.Now;
             byte Gender = 0;
-            int CountryID = -1;
+            int CountryID = -1, NationalNumber = -1;
 
             if (clsPersonDataAccess.GetPersonInfoByID(PersonID, ref NationalNumber, ref FirstName, ref SecondName, ref ThirdName
              , ref LastName, ref DateOfBirth, ref Gender, ref Address, ref Phone, ref Email, ref CountryID, ref ImagePath))
@@ -129,7 +129,7 @@ namespace BusinessLayer
 
         }
 
-        public static clsPerson GetPersonInfoByNationalNumber(string NationalNumber)
+        public static clsPerson GetPersonInfoByNationalNumber(int NationalNumber)
         {
 
             string FirstName = "", SecondName = "", ThirdName = "", LastName = "", Email = "", Phone = "", Address = "", ImagePath = "";
@@ -186,9 +186,9 @@ namespace BusinessLayer
             return clsPersonDataAccess.IsPersonExist(PersonID);
         }
 
-        public static bool isPersonExist(string NationalNumber)
+        public static bool DoesNationalNumberExist(int NationalNumber,int PersonID = -1)
         {
-            return clsPersonDataAccess.IsPersonExist(NationalNumber);
+            return clsPersonDataAccess.DoesNationalNumberExist(NationalNumber,PersonID);
         }
 
 

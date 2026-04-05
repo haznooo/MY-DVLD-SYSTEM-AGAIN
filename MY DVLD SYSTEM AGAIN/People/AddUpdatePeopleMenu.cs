@@ -39,7 +39,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
                 return;
             }
 
-            txtNationalNumber.Text = _Person.NationalNUmber;
+            txtNationalNumber.Text = _Person.NationalNUmber.ToString();
             txtFirstName.Text = _Person.FirstName;
             txtSecondName.Text = _Person.SecondName;
             txtThirdName.Text = _Person.ThirdName;
@@ -48,7 +48,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
             txtEmail.Text = _Person.Email;
             txtPhone.Text = _Person.Phone;
             dtpDateOfBirth.Value = _Person.DateOfBirth;
-            txtNationalNumber.Text = _Person.NationalNUmber;
+            txtNationalNumber.Text = _Person.NationalNUmber.ToString();
             cbCountries.SelectedIndex = cbCountries.FindString(_Person.CountryInfo._CountryName);
 
             bool isNoImage = (string.IsNullOrEmpty(_Person.ImagePath));
@@ -92,7 +92,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
         private void _LoadFormInfosToPerson()
         {
 
-            _Person.NationalNUmber = txtNationalNumber.Text;
+            _Person.NationalNUmber = Convert.ToInt32(txtNationalNumber.Text);
             _Person.FirstName = txtFirstName.Text;
             _Person.SecondName = txtSecondName.Text;
             _Person.ThirdName = txtThirdName.Text;
@@ -265,6 +265,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
             }
 
 
+
             _LoadFormInfosToPerson();
 
             if (_Person.Save())
@@ -336,6 +337,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
 
         private void txtNationalNumber_Validating(object sender, CancelEventArgs e)
         {
+
             if (string.IsNullOrEmpty(txtNationalNumber.Text.Trim()))
             {
 
@@ -350,21 +352,28 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
                 e.Cancel = false;
                 errorProvider1.SetError(txtNationalNumber, "");
             }
+   
+            bool DoesNNExists = false;
 
-            if (clsPerson.isPersonExist(txtNationalNumber.Text) && _FormMode == enMode.add)
-            {
-
-                e.Cancel = true;
-                txtNationalNumber.Focus();
-                errorProvider1.SetError(txtNationalNumber, "This national number already exist");
-
-            }
+            if (_FormMode == enMode.add)
+                DoesNNExists = clsPerson.DoesNationalNumberExist(Convert.ToInt32(txtNationalNumber.Text));
             else
-            {
+                DoesNNExists = clsPerson.DoesNationalNumberExist(Convert.ToInt32(txtNationalNumber.Text), _PersonID);
 
-                e.Cancel = false;
-                errorProvider1.SetError(txtNationalNumber, "");
-            }
+                if (DoesNNExists)
+                {
+
+                    e.Cancel = true;
+                    txtNationalNumber.Focus();
+                    errorProvider1.SetError(txtNationalNumber, "This national number already exist");
+
+                }
+                else
+                {
+
+                    e.Cancel = false;
+                    errorProvider1.SetError(txtNationalNumber, "");
+                }
         }
 
         private void txtEmail_Validating(object sender, CancelEventArgs e)
@@ -456,6 +465,10 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
 
         }
 
-
+        private void txtNationalNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+       
+        }
     }
 }

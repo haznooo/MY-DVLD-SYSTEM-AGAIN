@@ -129,6 +129,7 @@
             this.txtNationalNumber.Name = "txtNationalNumber";
             this.txtNationalNumber.Size = new System.Drawing.Size(143, 26);
             this.txtNationalNumber.TabIndex = 108;
+            this.txtNationalNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNationalNumber_KeyPress);
             this.txtNationalNumber.Validating += new System.ComponentModel.CancelEventHandler(this.txtNationalNumber_Validating);
             // 
             // label9

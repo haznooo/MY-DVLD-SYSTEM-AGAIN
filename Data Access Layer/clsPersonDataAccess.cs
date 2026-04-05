@@ -8,7 +8,7 @@ namespace DataAccessLayer
     public class clsPersonDataAccess
     {
 
-        public static bool GetPersonInfoByID(int PersonID, ref string NationalNumber, ref string FirstName, ref string SecondName, ref string ThirdName
+        public static bool GetPersonInfoByID(int PersonID, ref int NationalNumber, ref string FirstName, ref string SecondName, ref string ThirdName
              , ref string LastName, ref DateTime DateOfBirth, ref byte gender, ref string Address, ref string Phone, ref string Email, ref int CountryID, ref string ImagePath)
         {
 
@@ -44,7 +44,7 @@ namespace DataAccessLayer
 
                     isFound = true;
 
-                    NationalNumber = (string)reader["NationalNumber"];
+                    NationalNumber = (int)reader["NationalNumber"];
                     FirstName = (string)reader["FirstName"];
                     SecondName = (string)reader["SecondName"];
 
@@ -103,7 +103,7 @@ namespace DataAccessLayer
         }
 
 
-        public static bool GetPersonInfoByNationalNumber(ref int PersonID, string NationalNumber, ref string FirstName, ref string SecondName, ref string ThirdName
+        public static bool GetPersonInfoByNationalNumber(ref int PersonID,int NationalNumber, ref string FirstName, ref string SecondName, ref string ThirdName
       , ref string LastName, ref DateTime DateOfBirth, ref byte gender, ref string Address, ref string Phone, ref string Email, ref int CountryID, ref string ImagePath)
         {
 
@@ -140,7 +140,7 @@ namespace DataAccessLayer
 
                     isFound = true;
 
-                    NationalNumber = (string)reader["NationalNumber"];
+                    NationalNumber = (int)reader["NationalNumber"];
                     FirstName = (string)reader["FirstName"];
                     SecondName = (string)reader["SecondName"];
 
@@ -199,7 +199,7 @@ namespace DataAccessLayer
 
         }
 
-        public static int AddNewPerson(string NationalNumber, string FirstName, string SecondName, string ThirdName, string LastName,
+        public static int AddNewPerson(int NationalNumber, string FirstName,string SecondName, string ThirdName, string LastName,
            DateTime DateOfBirth, byte Gender, string Address, string Phone, string Email, int CountryID, string ImagePath)
         {
             //this function will return the new person id if succeeded and -1 if not.
@@ -271,7 +271,7 @@ namespace DataAccessLayer
             return PersonID;
         }
 
-        public static bool UpdatePerson(int PersonID, string NationalNumber, string FirstName, string SecondName, string ThirdName, string LastName,
+        public static bool UpdatePerson(int PersonID, int NationalNumber, string FirstName, string SecondName, string ThirdName, string LastName,
              DateTime DateOfBirth, byte gender, string Address, string Phone, string Email, int CountryID, string ImagePath)
         {
 
@@ -462,27 +462,31 @@ namespace DataAccessLayer
             return isFound;
         }
 
-        public static bool IsPersonExist(string NationalNumber)
+        public static bool DoesNationalNumberExist(int NationalNumber,int PersonId = -1)
         {
+
+            string query = "SELECT Found=1 FROM People where NationalNumber = @nationalNumber and PersonID != @PersonId ";
+
 
             bool isFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "SELECT Found=1 FROM People WHERE NationalNumber = @nationalNumber";
-
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@nationalNumber", NationalNumber);
+            command.Parameters.AddWithValue("@PersonId", PersonId);
+
 
             try
             {
                 connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
+                object result = command.ExecuteScalar();
 
-                isFound = reader.HasRows;
+                if(result == null)
+                   isFound = false;
+                else isFound = true;
 
-                reader.Close();
             }
             catch (Exception ex)
             {

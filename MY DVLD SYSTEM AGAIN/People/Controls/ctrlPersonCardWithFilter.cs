@@ -146,8 +146,8 @@ namespace MY_DVLD_SYSTEM.People.Controls
                 }
                 else
                 {
-                    string nationalNumber = txtSearch.Text.Trim();
-                    ctrlPersonCard1.LoadAndShowPersonInfo(nationalNumber);
+                    int nationalNumber = Convert.ToInt32(txtSearch.Text.Trim());
+                    ctrlPersonCard1.LoadAndShowPersonInfoByNN(nationalNumber);
                     _PersonID = ctrlPersonCard1.PersonID;
                 }
 

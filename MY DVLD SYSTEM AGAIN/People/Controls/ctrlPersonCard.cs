@@ -74,7 +74,7 @@ namespace MY_DVLD_SYSTEM.People.Controls
 
                 lbPhoneNumber.Text = Person.Phone.ToString();
 
-                lbNationalNumber.Text = Person.NationalNUmber;
+                lbNationalNumber.Text = Person.NationalNUmber.ToString();
 
                 lbCountry.Text = Person.CountryInfo != null ? Person.CountryInfo._CountryName : "Erro Country";
 
@@ -150,7 +150,7 @@ namespace MY_DVLD_SYSTEM.People.Controls
 
         }
 
-        public void LoadAndShowPersonInfo(string NationalNumber)
+        public void LoadAndShowPersonInfoByNN(int NationalNumber)
         {
 
             if (this.DesignMode)

@@ -5,18 +5,18 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
     public partial class PersonDetails : Form
     {
 
-        public PersonDetails(int PersonID)
+  
+
+        public PersonDetails(int Number, bool IsId = true)
         {
             InitializeComponent();
 
-            ctrlPersonCard1.LoadAndShowPersonInfo(PersonID);
-        }
 
-        public PersonDetails(string NationalNumber)
-        {
-            InitializeComponent();
+            if (IsId)
+                ctrlPersonCard1.LoadAndShowPersonInfo(Number);
+            else
 
-            ctrlPersonCard1.LoadAndShowPersonInfo(NationalNumber);
+            ctrlPersonCard1.LoadAndShowPersonInfoByNN(Number);
         }
 
     }

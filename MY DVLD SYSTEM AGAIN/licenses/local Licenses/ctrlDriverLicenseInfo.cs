@@ -36,7 +36,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
             clsPerson person = clsPerson.GetPersonInfoByID(LicenseInfo.DriverInfo.PersonInfo.PersonID);
 
             lbFullName.Text = person.FullName;
-            lbNationalNumber.Text = person.NationalNUmber;
+            lbNationalNumber.Text = person.NationalNUmber.ToString();
             lbDateOfBirth.Text = person.DateOfBirth.ToString();
             lbGender.Text = person.GenderTxt;
             lbDriverID.Text = LicenseInfo.DriverInfo.DriverID.ToString();
