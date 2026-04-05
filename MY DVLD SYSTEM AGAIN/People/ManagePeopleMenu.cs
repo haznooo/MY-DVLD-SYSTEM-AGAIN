@@ -61,18 +61,18 @@ namespace MY_DVLD_SYSTEM_AGAIN
                 dgvPeople.Columns[1].HeaderText = "National Number";
                 dgvPeople.Columns[1].Width = 110;
 
-                dgvPeople.Columns[2].HeaderText = "First Name";
-                dgvPeople.Columns[2].Width = 110;
+                dgvPeople.Columns[2].HeaderText = "Full Name";
+                dgvPeople.Columns[2].Width = 340;
 
                 dgvPeople.Columns[3].HeaderText = "Date Of Birth";
                 dgvPeople.Columns[3].Width = 110;
 
                 dgvPeople.Columns[4].Width = 110;
    
-                dgvPeople.Columns[5].Width = 110;
+                dgvPeople.Columns[5].Width = 220;
                 dgvPeople.Columns[6].Width = 120;
 
-                dgvPeople.Columns[7].Width = 80;
+                dgvPeople.Columns[7].Width = 220;
 
 
             }
