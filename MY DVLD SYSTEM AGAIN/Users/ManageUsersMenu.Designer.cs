@@ -77,6 +77,7 @@
             this.txtSearchFilter.Name = "txtSearchFilter";
             this.txtSearchFilter.Size = new System.Drawing.Size(239, 26);
             this.txtSearchFilter.TabIndex = 40;
+            this.txtSearchFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchFilter_KeyPress);
             // 
             // cbSearchFilter
             // 
@@ -86,7 +87,7 @@
             "None",
             "User ID",
             "Person ID",
-            "Name",
+            "Full Name",
             "Is Active"});
             this.cbSearchFilter.Location = new System.Drawing.Point(70, 269);
             this.cbSearchFilter.Name = "cbSearchFilter";
@@ -161,13 +162,13 @@
             this.deleteToolStripMenuItem,
             this.changePasswordToolStripMenuItem});
             this.cmsUsersOpetions.Name = "cmsPeopleOpetions";
-            this.cmsUsersOpetions.Size = new System.Drawing.Size(195, 170);
+            this.cmsUsersOpetions.Size = new System.Drawing.Size(183, 148);
             // 
             // detailsToolStripMenuItem
             // 
             this.detailsToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.PersonDetails_32;
             this.detailsToolStripMenuItem.Name = "detailsToolStripMenuItem";
-            this.detailsToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.detailsToolStripMenuItem.Size = new System.Drawing.Size(182, 36);
             this.detailsToolStripMenuItem.Text = "Details";
             this.detailsToolStripMenuItem.Click += new System.EventHandler(this.detailsToolStripMenuItem_Click);
             // 
@@ -175,7 +176,7 @@
             // 
             this.editToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.edit_32;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(182, 36);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
@@ -183,7 +184,7 @@
             // 
             this.deleteToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Delete_32_2;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(182, 36);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -191,7 +192,7 @@
             // 
             this.changePasswordToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Password_32;
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(182, 36);
             this.changePasswordToolStripMenuItem.Text = "Change Password";
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 

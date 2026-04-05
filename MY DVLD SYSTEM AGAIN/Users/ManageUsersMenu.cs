@@ -92,9 +92,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
         {
             if ((txtSearchFilter.Visible) && string.IsNullOrWhiteSpace(txtSearchFilter.Text))
             {
-
                 return;
-
             }
 
             string FilterColumn = "";
@@ -143,12 +141,12 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
             }
 
             if (FilterColumn == "PersonID")
-                _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtSearchFilter.Text.Trim());
+                _dtAllUsers.DefaultView.RowFilter = string.Format("Convert([{0}], 'System.String') LIKE '{1}*'", FilterColumn, txtSearchFilter.Text.Trim());
 
             else if (FilterColumn == "UserID")
             {
 
-                _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtSearchFilter.Text.Trim());
+                _dtAllUsers.DefaultView.RowFilter = string.Format("Convert([{0}], 'System.String') LIKE '{1}*'", FilterColumn, txtSearchFilter.Text.Trim());
 
             }
             else if (FilterColumn == "IsActive")
@@ -160,7 +158,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
 
             }
             else
-                _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtSearchFilter.Text.Trim());
+                _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}*'", FilterColumn, txtSearchFilter.Text.Trim());
+
 
 
             lbTotalRecords.Text = dgvUsers.Rows.Count.ToString();
@@ -209,8 +208,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
             }
             _refreshList();
         }
-
-
 
         private void editToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
