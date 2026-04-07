@@ -1,5 +1,6 @@
 ﻿using BusinessLayer;
 using System.Windows.Forms;
+using static BusinessLayer.clsTestTypes;
 
 namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
 {
@@ -83,7 +84,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
 
             return true;
         }
-        public bool LoadInfo(int localDrivingLicnesApplicationID, int testAppointmentID = -1)
+        public bool LoadInfo(int localDrivingLicnesApplicationID, clsTestTypes.enTestType TestType, int testAppointmentID = -1)
         {
             gbRetakeTest.Enabled = false;
 
@@ -99,6 +100,29 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
             {
                 MessageBox.Show("Error loading local driving license application data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+
+
+
+            switch (TestType)
+            {
+                case clsTestTypes.enTestType.vissionTest:
+                    pbTestType.Image = Properties.Resources.Vision_512;
+                    lbTestTitle.Text = "scedule vision test";
+                    break;
+                case clsTestTypes.enTestType.writtenTest:
+                    pbTestType.Image = Properties.Resources.Written_Test_512;
+                    lbTestTitle.Text = "scedule written test";
+                    break;
+                case clsTestTypes.enTestType.streetTest:
+                    pbTestType.Image = Properties.Resources.street_test;
+                    lbTestTitle.Text = "scedule street test";
+                    break;
+                default:
+                    pbTestType.Image = null;
+                    lbTestTitle.Text = "error in the test type";
+                    break;
+
             }
 
             if (_localDrivingLicensApplication.DoesAttendTestType((int)TestType))

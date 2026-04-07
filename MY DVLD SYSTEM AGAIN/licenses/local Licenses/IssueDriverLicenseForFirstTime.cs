@@ -53,6 +53,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
             if (_LocalDrivingLicensApplication.IssueLicenseFirstTime(txtNotes.Text, clsGlobal.CurrentUser.UserID) > 0)
             {
                 MessageBox.Show("new license added", "succese", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnIssue.Enabled = false;
+                txtNotes.Enabled = false ;
             }
             else
             {

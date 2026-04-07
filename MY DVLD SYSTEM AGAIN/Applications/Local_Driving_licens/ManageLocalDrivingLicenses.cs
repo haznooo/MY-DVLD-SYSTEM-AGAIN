@@ -15,8 +15,11 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             InitializeComponent();
         }
 
-        static DataTable _dtAllLocalDrivingLicensApplications = null;
+        // this is used in some cases to save the selected row 
+        int _CurrentRowIndex = 0;
 
+        static DataTable _dtAllLocalDrivingLicensApplications = null;
+        
         private void _refreshList()
         {
 
@@ -118,12 +121,16 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
         private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            listTestAppointments frm = new listTestAppointments(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value), clsTestTypes.enTestType.vissionTest);
+            // idk why but i tried the property 'CurrentRow' and it did not works well "Alway use the first row value"
+            listTestAppointments frm = new listTestAppointments(Convert.ToInt32(dgvApplications.Rows[_CurrentRowIndex].Cells[0].Value), clsTestTypes.enTestType.vissionTest);
             frm.ShowDialog();
+            _refreshList();
         }
 
         private void sToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
         {
+            _CurrentRowIndex = Convert.ToInt32(dgvApplications.CurrentRow.Index);
+
             switch (Convert.ToInt32(dgvApplications.CurrentRow.Cells[5].Value))
             {
                 //those number check how many test the person has passed to determine which test to take 
@@ -163,14 +170,18 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
         private void writtenTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            listTestAppointments frm = new listTestAppointments(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value), clsTestTypes.enTestType.writtenTest);
+            // idk why but i tried the property 'CurrentRow' and it did not works well "Alway use the first row value"
+            listTestAppointments frm = new listTestAppointments(Convert.ToInt32(dgvApplications.Rows[_CurrentRowIndex].Cells[0].Value), clsTestTypes.enTestType.writtenTest);
             frm.ShowDialog();
+            _refreshList();
         }
 
         private void streetTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            listTestAppointments frm = new listTestAppointments(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value), clsTestTypes.enTestType.streetTest);
+            // idk why but i tried the property 'CurrentRow' and it did not works well "Alway use the first row value"
+            listTestAppointments frm = new listTestAppointments(Convert.ToInt32(dgvApplications.Rows[_CurrentRowIndex].Cells[0].Value), clsTestTypes.enTestType.streetTest);
             frm.ShowDialog();
+            _refreshList();
         }
 
         private void cmsApplicationOpetions_Opening(object sender, CancelEventArgs e)
@@ -210,7 +221,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
                 issueDrivingLicensfristTimeToolStripMenuItem.Enabled = false;
 
             }
-            _refreshList();
+            
         }
 
         private void issueDrivingLicensfristTimeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -228,5 +239,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             frm.Show();
         }
 
+        private void sToolStripMenuItem_DropDownClosed(object sender, EventArgs e)
+        {
+            _refreshList();
+        }
     }
 }

@@ -38,6 +38,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         {
             // this method is used to load the form with application infos during update mode
 
+           
 
             _LocalDrivingLicenseApplicationInfo = clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(LocalDrivingLicensApplicationID);
 
@@ -46,6 +47,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
             _LocalDrivingLicensApplicationID = _LocalDrivingLicenseApplicationInfo.LocalDrivingLicensApplicationID;
 
+            byte passedTests = (byte)clsTest.GetPassedTestsCount(_LocalDrivingLicensApplicationID);
+            if (passedTests > 0) { tcAddUpdateLocalLicensApplication.Enabled = false; }
+
             ctrlPersonCardWithFilter1.LoadAndShowPersonInfo(_LocalDrivingLicenseApplicationInfo.applicantID);
             // combobox start from 0 while the licens class id start from 1 so we need to subtract 1 from the licens class id to get the correct index in the combobox
             cbLicensClass.SelectedIndex = _LocalDrivingLicenseApplicationInfo.LicensClassId - 1;
@@ -53,6 +57,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             lbApplicationDate.Text = _LocalDrivingLicenseApplicationInfo.applicationDate.ToShortDateString();
             lbCreatedBy.Text = _LocalDrivingLicenseApplicationInfo.CreatedByUser.ToString();
             lbApplicationFee.Text = _LocalDrivingLicenseApplicationInfo.paidFee.ToString();
+            lbLocalDrivingApplicationID.Text = _LocalDrivingLicenseApplicationInfo.LocalDrivingLicensApplicationID.ToString();
 
 
         }
@@ -70,6 +75,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
                 lbApplicationDate.Text = DateTime.Now.ToShortDateString();
                 lbCreatedBy.Text = clsGlobal.CurrentUser.UserName;
+                lbLocalDrivingApplicationID.Text = "????";
                 lbApplicationFee.Text = clsApplicationTypes.Find((int)clsApplication.enApplicationType.NewDrivingLicens).ApplicationTypeFee.ToString();
                 _LocalDrivingLicenseApplicationInfo = new clsLocalDrivingLicensApplication();
                 tpAddLocalLicensApplication.Enabled = false;
@@ -82,7 +88,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             {
 
                 // this method does not reset the form in update mode
-                // it only enables the add user tab and next button and changes the labels
+                // it only enables the add user tab and next button
                 ctrlPersonCardWithFilter1.Enabled = false;
                 tpAddLocalLicensApplication.Enabled = true;
                 btnNext.Enabled = true;

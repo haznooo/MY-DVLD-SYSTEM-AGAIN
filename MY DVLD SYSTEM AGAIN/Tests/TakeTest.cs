@@ -32,7 +32,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
 
         private void TakeTest_Load(object sender, EventArgs e)
         {
-            if (!ctrlScheduledTest2.LoadInfo(localDrivingLicneseApplicationID))
+            if (!ctrlScheduledTest2.LoadInfo(localDrivingLicneseApplicationID,_testTypes))
                 return;
 
 
