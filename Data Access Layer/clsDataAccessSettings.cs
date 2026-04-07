@@ -2,19 +2,19 @@
 
 namespace DataAccessLayer
 {
-  
+
     internal class clsDataAccessSettings
     {
         //string skibidi = "Server=.;Database=DVLD;User=sa;Password=sa123456";
 
 
-        public static string ConnectionString 
+        public static string ConnectionString
         {
             get
             {
-              return ConfigurationManager.ConnectionStrings["MyDbConnection"].ConnectionString;
-            } 
-        } 
+                return ConfigurationManager.ConnectionStrings["MyDbConnection"].ConnectionString;
+            }
+        }
     }
- }
+}
 

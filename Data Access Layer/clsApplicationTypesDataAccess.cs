@@ -45,8 +45,6 @@ namespace Data_Access_Layer
             return dt;
 
         }
-
-
         public static bool UpdateApplicationType(int ApplicationTypeID, string ApplicationTypeTitle, decimal ApplicationTYpeFee)
         {
 
@@ -91,9 +89,6 @@ namespace Data_Access_Layer
 
             return (rowsEffected > 0);
         }
-
-
-
         public static bool GetApplicationTypeInfoByID(int ApplicationTypeID, ref string ApplicationTypeTitle, ref decimal ApplicationTYpeFee)
         {
 

@@ -103,7 +103,7 @@ namespace DataAccessLayer
         }
 
 
-        public static bool GetPersonInfoByNationalNumber(ref int PersonID,int NationalNumber, ref string FirstName, ref string SecondName, ref string ThirdName
+        public static bool GetPersonInfoByNationalNumber(ref int PersonID, int NationalNumber, ref string FirstName, ref string SecondName, ref string ThirdName
       , ref string LastName, ref DateTime DateOfBirth, ref byte gender, ref string Address, ref string Phone, ref string Email, ref int CountryID, ref string ImagePath)
         {
 
@@ -199,7 +199,7 @@ namespace DataAccessLayer
 
         }
 
-        public static int AddNewPerson(int NationalNumber, string FirstName,string SecondName, string ThirdName, string LastName,
+        public static int AddNewPerson(int NationalNumber, string FirstName, string SecondName, string ThirdName, string LastName,
            DateTime DateOfBirth, byte Gender, string Address, string Phone, string Email, int CountryID, string ImagePath)
         {
             //this function will return the new person id if succeeded and -1 if not.
@@ -462,7 +462,7 @@ namespace DataAccessLayer
             return isFound;
         }
 
-        public static bool DoesNationalNumberExist(int NationalNumber,int PersonId = -1)
+        public static bool DoesNationalNumberExist(int NationalNumber, int PersonId = -1)
         {
 
             string query = "SELECT Found=1 FROM People where NationalNumber = @nationalNumber and PersonID != @PersonId ";
@@ -483,8 +483,8 @@ namespace DataAccessLayer
                 connection.Open();
                 object result = command.ExecuteScalar();
 
-                if(result == null)
-                   isFound = false;
+                if (result == null)
+                    isFound = false;
                 else isFound = true;
 
             }
