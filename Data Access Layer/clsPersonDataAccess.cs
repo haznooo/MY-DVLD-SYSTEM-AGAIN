@@ -8,6 +8,7 @@ namespace DataAccessLayer
     public class clsPersonDataAccess
     {
 
+        // crud functions
         public static bool GetPersonInfoByID(int PersonID, ref int NationalNumber, ref string FirstName, ref string SecondName, ref string ThirdName
              , ref string LastName, ref DateTime DateOfBirth, ref byte gender, ref string Address, ref string Phone, ref string Email, ref int CountryID, ref string ImagePath)
         {
@@ -428,6 +429,7 @@ namespace DataAccessLayer
 
         }
 
+        // check functions
         public static bool IsPersonExist(int PersonID)
         {
             bool isFound = false;

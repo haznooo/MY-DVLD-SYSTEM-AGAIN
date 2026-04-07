@@ -9,6 +9,18 @@ namespace MY_DVLD_SYSTEM.People.Controls
     public partial class ctrlPersonCard : UserControl
     {
 
+        private int _PersonID = -1;
+        clsPerson _Person = null;
+        public int PersonID
+        {
+            get { return _PersonID; }
+        }
+        public clsPerson CurrentPerson
+        {
+            get { return _Person; }
+        }
+
+
         public ctrlPersonCard()
         {
             InitializeComponent();
@@ -19,42 +31,63 @@ namespace MY_DVLD_SYSTEM.People.Controls
                 return;
             }
         }
-        private void ctrlPersonCard_Load(object sender, EventArgs e)
+
+
+        // loading the control
+        public void LoadAndShowPersonInfo(int personID)
         {
+
             if (this.DesignMode)
             {
 
                 return;
             }
+            ResetControl();
+            _PersonID = personID;
+            _Person = clsPerson.GetPersonInfoByID(personID);
+
+
+            if (_Person != null)
+            {
+                _PersonID = _Person.PersonID;
+                _FillPersonInfo(_Person);
+            }
+
+            else
+            {
+                MessageBox.Show("Person not found.", "internal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
 
         }
-
-        private int _PersonID = -1;
-        clsPerson _Person = null;
-        public int PersonID
+        public void LoadAndShowPersonInfoByNN(int NationalNumber)
         {
-            get { return _PersonID; }
-        }
 
-        public clsPerson CurrentPerson
-        {
-            get { return _Person; }
-        }
+            if (this.DesignMode)
+            {
+
+                return;
+            }
+            ResetControl();
+
+            _Person = clsPerson.GetPersonInfoByNationalNumber(NationalNumber);
 
 
-        public void ResetControl()
-        {
-            lbPersonID.Text = "";
-            lbAddress.Text = "";
-            lbFullName.Text = "";
-            lbDateOfBirth.Text = "";
-            lbEmail.Text = "";
-            lbPhoneNumber.Text = "";
-            lbNationalNumber.Text = "";
-            lbGender.Text = "";
-            pbPersonImage.Image = Resources.Male_512;
-            _PersonID = -1;
-            _Person = null;
+            if (_Person != null)
+            {
+                _PersonID = _Person.PersonID;
+                _FillPersonInfo(_Person);
+            }
+
+            else
+            {
+                MessageBox.Show("Person not found.", "internal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
         }
         private void _FillPersonInfo(clsPerson Person)
         {
@@ -121,65 +154,24 @@ namespace MY_DVLD_SYSTEM.People.Controls
 
         }
 
-        public void LoadAndShowPersonInfo(int personID)
+
+        //utitlity
+        public void ResetControl()
         {
-
-            if (this.DesignMode)
-            {
-
-                return;
-            }
-            ResetControl();
-            _PersonID = personID;
-            _Person = clsPerson.GetPersonInfoByID(personID);
-
-
-            if (_Person != null)
-            {
-                _PersonID = _Person.PersonID;
-                _FillPersonInfo(_Person);
-            }
-
-            else
-            {
-                MessageBox.Show("Person not found.", "internal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-
-
+            lbPersonID.Text = "";
+            lbAddress.Text = "";
+            lbFullName.Text = "";
+            lbDateOfBirth.Text = "";
+            lbEmail.Text = "";
+            lbPhoneNumber.Text = "";
+            lbNationalNumber.Text = "";
+            lbGender.Text = "";
+            pbPersonImage.Image = Resources.Male_512;
+            _PersonID = -1;
+            _Person = null;
         }
-
-        public void LoadAndShowPersonInfoByNN(int NationalNumber)
-        {
-
-            if (this.DesignMode)
-            {
-
-                return;
-            }
-            ResetControl();
-
-            _Person = clsPerson.GetPersonInfoByNationalNumber(NationalNumber);
-
-
-            if (_Person != null)
-            {
-                _PersonID = _Person.PersonID;
-                _FillPersonInfo(_Person);
-            }
-
-            else
-            {
-                MessageBox.Show("Person not found.", "internal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-
-        }
-
-
-
+     
+        // UI logic
         private void llEditPerson_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 

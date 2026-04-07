@@ -8,6 +8,7 @@ namespace MY_DVLD_SYSTEM.People.Controls
 {
     public partial class ctrlPersonCardWithFilter : UserControl
     {
+
         public ctrlPersonCardWithFilter()
         {
             InitializeComponent();
@@ -19,7 +20,6 @@ namespace MY_DVLD_SYSTEM.People.Controls
 
             }
         }
-
         public event Action<int> OnPersonSelected;
         protected virtual void PersonSelected(int PersonID)
         {
@@ -30,9 +30,24 @@ namespace MY_DVLD_SYSTEM.People.Controls
                 handler(PersonID);
             }
         }
+        private void Frm_DataBack(object sender, int PersonID)
+        {
+
+            if (PersonID != -1) { LoadAndShowPersonInfo(PersonID); }
+
+            else
+            {
+                ResetText();
+
+                MessageBox.Show("No Data Recieved from the dialog", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+
+
+        }
+
 
         private bool _EnableAddButton = true;
-
         public bool EnableAddButton
         {
             get { return _EnableAddButton; }
@@ -42,7 +57,6 @@ namespace MY_DVLD_SYSTEM.People.Controls
                 btnAddNewPerson.Enabled = value;
             }
         }
-
         private bool _FilterEnabled = true;
         public bool FilterEnabled
         {
@@ -54,9 +68,7 @@ namespace MY_DVLD_SYSTEM.People.Controls
                     gbFilter.Visible = value;
             }
         }
-
         private int _PersonID = -1;
-
         public int PersonID
         {
             get { return _PersonID; }
@@ -66,72 +78,16 @@ namespace MY_DVLD_SYSTEM.People.Controls
         {
             get { return ctrlPersonCard1.CurrentPerson; }
         }
-        private void ctrlPersonCardWithFilter_Load(object sender, EventArgs e)
+
+
+        // load the control
+        public void LoadAndShowPersonInfo(int personID)
         {
-            if (this.DesignMode)
-            {
-
-                return;
-
-            }
-
-            txtSearch.Focus();
-            cbSearchOption.SelectedIndex = 0;
-        }
-
-        private void emptyTxtBox_Validating(object sender, CancelEventArgs e)
-        {
-
-            TextBox currentTextBox = (TextBox)sender;
-
-            if (string.IsNullOrEmpty(currentTextBox.Text.Trim()))
-            {
-
-                e.Cancel = true;
-                currentTextBox.Focus();
-                errorProvider1.SetError(currentTextBox, "Field can't be empty");
-
-            }
-            else
-            {
-
-                e.Cancel = false;
-                errorProvider1.SetError(currentTextBox, "");
-            }
-        }
-
-        public void RestControl()
-        {
-
-            ctrlPersonCard1.ResetControl();
-            txtSearch.Text = "";
-            errorProvider1.SetError(txtSearch, "");
-            cbSearchOption.SelectedIndex = 0;
-
-
-        }
-
-        private void btnSearchPerson_Click(object sender, EventArgs e)
-        {
-
+            RestControl();
+            cbSearchOption.SelectedItem = "PersonID";
+            txtSearch.Text = personID.ToString();
             _FindNow();
-
         }
-
-        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Check if the pressed key is Enter (character code 13)
-            if (e.KeyChar == (char)13)
-            {
-
-                btnSearchPerson.PerformClick();
-            }
-
-            //this will allow only digits if person id is selected
-            if (cbSearchOption.Text == "PersonID")
-                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        }
-
         private void _FindNow()
         {
 
@@ -158,30 +114,79 @@ namespace MY_DVLD_SYSTEM.People.Controls
             }
 
         }
-
-        public void LoadAndShowPersonInfo(int personID)
+        private void ctrlPersonCardWithFilter_Load(object sender, EventArgs e)
         {
-            RestControl();
-            cbSearchOption.SelectedItem = "PersonID";
-            txtSearch.Text = personID.ToString();
-            _FindNow();
+            if (this.DesignMode)
+            {
+
+                return;
+
+            }
+
+            txtSearch.Focus();
+            cbSearchOption.SelectedIndex = 0;
         }
 
-        public void LoadAndShowPersonInfo(string nationalNumber)
+        // validations
+        private void emptyTxtBox_Validating(object sender, CancelEventArgs e)
         {
-            RestControl();
-            cbSearchOption.SelectedItem = "NationalNumber";
-            txtSearch.Text = nationalNumber;
-            _FindNow();
+
+            TextBox currentTextBox = (TextBox)sender;
+
+            if (string.IsNullOrEmpty(currentTextBox.Text.Trim()))
+            {
+
+                e.Cancel = true;
+                currentTextBox.Focus();
+                errorProvider1.SetError(currentTextBox, "Field can't be empty");
+
+            }
+            else
+            {
+
+                e.Cancel = false;
+                errorProvider1.SetError(currentTextBox, "");
+            }
+        }
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if the pressed key is Enter (character code 13)
+            if (e.KeyChar == (char)13)
+            {
+
+                btnSearchPerson.PerformClick();
+            }
+
+            //this will allow only digits if person id is selected
+            if (cbSearchOption.Text == "PersonID")
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
+        //utility
+        public void RestControl()
+        {
+
+            ctrlPersonCard1.ResetControl();
+            txtSearch.Text = "";
+            errorProvider1.SetError(txtSearch, "");
+            cbSearchOption.SelectedIndex = 0;
+
+
+        }
+
+        // UI logic
+        private void btnSearchPerson_Click(object sender, EventArgs e)
+        {
+
+            _FindNow();
+
+        }
         private void cbSearchOption_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtSearch.Text = "";
             errorProvider1.SetError(txtSearch, "");
             txtSearch.Focus();
         }
-
         private void btnAddNewPerson_Click(object sender, EventArgs e)
         {
             AddUpdatePeopleMenu frm = new AddUpdatePeopleMenu();
@@ -190,20 +195,6 @@ namespace MY_DVLD_SYSTEM.People.Controls
 
         }
 
-        private void Frm_DataBack(object sender, int PersonID)
-        {
 
-            if (PersonID != -1) { LoadAndShowPersonInfo(PersonID); }
-
-            else
-            {
-                ResetText();
-
-                MessageBox.Show("No Data Recieved from the dialog", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-
-
-        }
     }
 }

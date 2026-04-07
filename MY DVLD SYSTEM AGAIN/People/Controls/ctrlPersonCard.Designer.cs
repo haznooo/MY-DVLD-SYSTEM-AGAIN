@@ -400,7 +400,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gbPersonIfnos);
             this.Name = "ctrlPersonCard";
-            this.Size = new System.Drawing.Size(835, 358);
+            this.Size = new System.Drawing.Size(835, 360);
             this.gbPersonIfnos.ResumeLayout(false);
             this.gbPersonIfnos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();

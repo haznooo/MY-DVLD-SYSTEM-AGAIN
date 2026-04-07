@@ -11,7 +11,10 @@ namespace BusinessLayer
         private enMode _Mode = enMode.AddNew;
         public int PersonID { get; private set; }
         public int NationalNUmber { get; set; }
-
+        public string FirstName { get; set; }
+        public string SecondName { get; set; }
+        public string ThirdName { get; set; }
+        public string LastName { get; set; }
         public string FullName
         {
             get
@@ -19,10 +22,6 @@ namespace BusinessLayer
                 return string.Format("{0} {1} {2} {3}", FirstName, SecondName, ThirdName, LastName);
             }
         }
-        public string FirstName { get; set; }
-        public string SecondName { get; set; }
-        public string ThirdName { get; set; }
-        public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
         public byte Gender { get; set; } = 0;
         public string Address { get; set; }
@@ -30,7 +29,6 @@ namespace BusinessLayer
         public string Email { get; set; }
         public int CountryID { get; set; }
         public string ImagePath { get; set; }
-
         public string GenderTxt
         {
             get
@@ -43,12 +41,7 @@ namespace BusinessLayer
         public clsCountry CountryInfo;
 
 
-        public static DataTable GetAllPeople()
-        {
 
-            return clsPersonDataAccess.GetPeople();
-
-        }
 
         public clsPerson()
 
@@ -94,6 +87,8 @@ namespace BusinessLayer
 
         }
 
+
+        // save
         private bool _AddNewPerson()
         {
 
@@ -102,53 +97,12 @@ namespace BusinessLayer
 
             return (this.PersonID != -1);
         }
-
         private bool _UpdatePerson()
         {
 
             return clsPersonDataAccess.UpdatePerson(this.PersonID, this.NationalNUmber, this.FirstName, this.SecondName, this.ThirdName, this.LastName,
                this.DateOfBirth, this.Gender, this.Address, this.Phone, this.Email, this.CountryID, this.ImagePath);
         }
-
-        public static clsPerson GetPersonInfoByID(int PersonID)
-        {
-
-            string  FirstName = "", SecondName = "", ThirdName = "", LastName = "", Email = "", Phone = "", Address = "", ImagePath = "";
-            DateTime DateOfBirth = DateTime.Now;
-            byte Gender = 0;
-            int CountryID = -1, NationalNumber = -1;
-
-            if (clsPersonDataAccess.GetPersonInfoByID(PersonID, ref NationalNumber, ref FirstName, ref SecondName, ref ThirdName
-             , ref LastName, ref DateOfBirth, ref Gender, ref Address, ref Phone, ref Email, ref CountryID, ref ImagePath))
-
-                return new clsPerson(PersonID, NationalNumber, FirstName, SecondName, ThirdName, LastName,
-                    DateOfBirth, Gender, Address, Phone, Email, CountryID, ImagePath);
-
-            else
-                return null;
-
-        }
-
-        public static clsPerson GetPersonInfoByNationalNumber(int NationalNumber)
-        {
-
-            string FirstName = "", SecondName = "", ThirdName = "", LastName = "", Email = "", Phone = "", Address = "", ImagePath = "";
-            DateTime DateOfBirth = DateTime.Now;
-            byte Gender = 0;
-            int CountryID = -1;
-            int PersonID = -1;
-
-            if (clsPersonDataAccess.GetPersonInfoByNationalNumber(ref PersonID, NationalNumber, ref FirstName, ref SecondName, ref ThirdName
-             , ref LastName, ref DateOfBirth, ref Gender, ref Address, ref Phone, ref Email, ref CountryID, ref ImagePath))
-
-                return new clsPerson(PersonID, NationalNumber, FirstName, SecondName, ThirdName, LastName,
-                    DateOfBirth, Gender, Address, Phone, Email, CountryID, ImagePath);
-
-            else
-                return null;
-
-        }
-
         public bool Save()
         {
 
@@ -176,16 +130,65 @@ namespace BusinessLayer
             return false;
         }
 
+
+        // get data
+        public static DataTable GetAllPeople()
+        {
+
+            return clsPersonDataAccess.GetPeople();
+
+        }
+        public static clsPerson GetPersonInfoByID(int PersonID)
+        {
+
+            string  FirstName = "", SecondName = "", ThirdName = "", LastName = "", Email = "", Phone = "", Address = "", ImagePath = "";
+            DateTime DateOfBirth = DateTime.Now;
+            byte Gender = 0;
+            int CountryID = -1, NationalNumber = -1;
+
+            if (clsPersonDataAccess.GetPersonInfoByID(PersonID, ref NationalNumber, ref FirstName, ref SecondName, ref ThirdName
+             , ref LastName, ref DateOfBirth, ref Gender, ref Address, ref Phone, ref Email, ref CountryID, ref ImagePath))
+
+                return new clsPerson(PersonID, NationalNumber, FirstName, SecondName, ThirdName, LastName,
+                    DateOfBirth, Gender, Address, Phone, Email, CountryID, ImagePath);
+
+            else
+                return null;
+
+        }
+        public static clsPerson GetPersonInfoByNationalNumber(int NationalNumber)
+        {
+
+            string FirstName = "", SecondName = "", ThirdName = "", LastName = "", Email = "", Phone = "", Address = "", ImagePath = "";
+            DateTime DateOfBirth = DateTime.Now;
+            byte Gender = 0;
+            int CountryID = -1;
+            int PersonID = -1;
+
+            if (clsPersonDataAccess.GetPersonInfoByNationalNumber(ref PersonID, NationalNumber, ref FirstName, ref SecondName, ref ThirdName
+             , ref LastName, ref DateOfBirth, ref Gender, ref Address, ref Phone, ref Email, ref CountryID, ref ImagePath))
+
+                return new clsPerson(PersonID, NationalNumber, FirstName, SecondName, ThirdName, LastName,
+                    DateOfBirth, Gender, Address, Phone, Email, CountryID, ImagePath);
+
+            else
+                return null;
+
+        }
+
+
+        //delete
         public static bool DeletePerson(int ID)
         {
             return clsPersonDataAccess.DeletePerson(ID);
         }
 
+
+        //check
         public static bool isPersonExist(int PersonID)
         {
             return clsPersonDataAccess.IsPersonExist(PersonID);
         }
-
         public static bool DoesNationalNumberExist(int NationalNumber,int PersonID = -1)
         {
             return clsPersonDataAccess.DoesNationalNumberExist(NationalNumber,PersonID);

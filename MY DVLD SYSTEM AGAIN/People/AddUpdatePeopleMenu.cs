@@ -9,131 +9,55 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
 {
     public partial class AddUpdatePeopleMenu : Form
     {
+
+        int _PersonID = -1;
+        clsPerson _Person;
+        enum enMode { update, add };
+        enMode _FormMode;
+
+
+
         public AddUpdatePeopleMenu()
         {
             InitializeComponent();
 
             _FormMode = enMode.add;
         }
+        public AddUpdatePeopleMenu(int PersonID)
+        {
+            InitializeComponent();
 
-        int _PersonID = -1;
 
-        clsPerson _Person;
+            _FormMode = enMode.update;
+            _PersonID = PersonID;
 
-        enum enMode { update, add };
-        enMode _FormMode;
+
+        }
 
         public delegate void DataBackHandler(object sender, int PersonID);
 
         public event DataBackHandler DataBack;
 
-        private void _LoadPersonInfosToForm(int PersonID)
+        //functions related to loading the form
+        private void _AddUpdatePeopleMenu_Load(object sender, EventArgs e)
         {
 
-            _Person = clsPerson.GetPersonInfoByID(PersonID);
+            _resetFormValues();
 
-            if (_Person == null)
-            {
-                MessageBox.Show($"person witht the id : {_PersonID} is not found", "no person found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-                return;
-            }
-
-            txtNationalNumber.Text = _Person.NationalNUmber.ToString();
-            txtFirstName.Text = _Person.FirstName;
-            txtSecondName.Text = _Person.SecondName;
-            txtThirdName.Text = _Person.ThirdName;
-            txtLastName.Text = _Person.LastName;
-            txtAdress.Text = _Person.Address;
-            txtEmail.Text = _Person.Email;
-            txtPhone.Text = _Person.Phone;
-            dtpDateOfBirth.Value = _Person.DateOfBirth;
-            txtNationalNumber.Text = _Person.NationalNUmber.ToString();
-            cbCountries.SelectedIndex = cbCountries.FindString(_Person.CountryInfo._CountryName);
-
-            bool isNoImage = (string.IsNullOrEmpty(_Person.ImagePath));
-
-            if (_Person.Gender == 0)
-            {
-                rdMale.Checked = true;
-                rdFemale.Checked = false;
-
-                if (isNoImage)
-                {
-                    pbPersonImage.Image = Properties.Resources.Male_512;
-
-                    _Person.ImagePath = null;
-                }
-
-            }
-            else
-            {
-                rdFemale.Checked = true;
-                rdMale.Checked = false;
-
-                if (isNoImage)
-                {
-                    pbPersonImage.Image = Properties.Resources.Female_512;
-                    _Person.ImagePath = null;
-                }
-            }
-
-            if (!isNoImage)
+            if (_FormMode == enMode.update)
             {
 
-                pbPersonImage.ImageLocation = _Person.ImagePath;
-
-                llRemoveImage.Visible = (pbPersonImage.ImageLocation != null);
-
+                _LoadPersonInfosToForm(_PersonID);
             }
-
-
         }
-        private void _LoadFormInfosToPerson()
-        {
-
-            _Person.NationalNUmber = Convert.ToInt32(txtNationalNumber.Text);
-            _Person.FirstName = txtFirstName.Text;
-            _Person.SecondName = txtSecondName.Text;
-            _Person.ThirdName = txtThirdName.Text;
-            _Person.LastName = txtLastName.Text;
-            _Person.Email = txtEmail.Text;
-            _Person.Phone = txtPhone.Text;
-            _Person.Address = txtAdress.Text;
-            _Person.DateOfBirth = dtpDateOfBirth.Value;
-            // combo box starts with the index 0 but in the database everything starts with the index 1
-            _Person.CountryID = cbCountries.SelectedIndex + 1;
-
-            if (rdMale.Checked == true) { _Person.Gender = 0; }
-            else { _Person.Gender = 1; }
-
-
-
-
-
-        }
-        private void _LoadCountries()
-        {
-
-            DataTable countries = clsCountry.GetAllCountries();
-
-            foreach (DataRow row in countries.Rows)
-            {
-
-                cbCountries.Items.Add(row["CountryName"].ToString());
-
-            }
-
-
-        }
-
         private void _resetFormValues()
         {
 
 
             if (_FormMode == enMode.update)
             {
-                lbCurrentMode.Text = $"Update the person with the ID [ {_PersonID} ] ";
+                lbCurrentMode.Text = $"Update person";
+                lbPersonID.Text = _PersonID.ToString();
 
             }
             else
@@ -166,34 +90,153 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
 
 
         }
-
-
-        public AddUpdatePeopleMenu(int PersonID)
+        private void _LoadPersonInfosToForm(int PersonID)
         {
-            InitializeComponent();
+
+            _Person = clsPerson.GetPersonInfoByID(PersonID);
+
+            if (_Person == null)
+            {
+                MessageBox.Show($"person witht the id : {_PersonID} is not found", "no person found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
+            txtNationalNumber.Text = _Person.NationalNUmber.ToString();
+            txtFirstName.Text = _Person.FirstName;
+            txtSecondName.Text = _Person.SecondName;
+            txtThirdName.Text = _Person.ThirdName;
+            txtLastName.Text = _Person.LastName;
+            txtAdress.Text = _Person.Address;
+            txtEmail.Text = _Person.Email;
+            txtPhone.Text = _Person.Phone;
+            dtpDateOfBirth.Value = _Person.DateOfBirth;
+            txtNationalNumber.Text = _Person.NationalNUmber.ToString();
+            cbCountries.SelectedIndex = cbCountries.FindString(_Person.CountryInfo._CountryName);
+
+            // if there is no attached image to this person then we will use a default one
+            bool NoImagedAttached = (string.IsNullOrEmpty(_Person.ImagePath));
+
+            // 0 equals male
+            if (_Person.Gender == 0)
+            {
+                rdMale.Checked = true;
+                rdFemale.Checked = false;
+
+                if (NoImagedAttached)
+                {
+                    pbPersonImage.Image = Properties.Resources.Male_512;
+
+                    _Person.ImagePath = null;
+                }
+
+            }
+            else
+            {
+                rdFemale.Checked = true;
+                rdMale.Checked = false;
+
+                if (NoImagedAttached)
+                {
+                    pbPersonImage.Image = Properties.Resources.Female_512;
+                    _Person.ImagePath = null;
+                }
+            }
 
 
-            _FormMode = enMode.update;
-            _PersonID = PersonID;
+            if (!NoImagedAttached)
+            {
+
+                pbPersonImage.ImageLocation = _Person.ImagePath;
+
+                llRemoveImage.Visible = (pbPersonImage.ImageLocation != null);
+
+            }
+
+
+        }
+        private void _LoadCountries()
+        {
+
+            DataTable countries = clsCountry.GetAllCountries();
+
+            foreach (DataRow row in countries.Rows)
+            {
+
+                cbCountries.Items.Add(row["CountryName"].ToString());
+
+            }
 
 
         }
 
-        private void _AddUpdatePeopleMenu_Load(object sender, EventArgs e)
+
+        //functions related to saving data
+        private void btnSave_Click(object sender, EventArgs e)
         {
-
-            _resetFormValues();
-
-            if (_FormMode == enMode.update)
+            if (!this.ValidateChildren())
             {
 
-                _LoadPersonInfosToForm(_PersonID);
+                MessageBox.Show("failed to save please enter correct infos", "wrong infos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!_handelImages())
+            {
+                MessageBox.Show("failed to save image", "internal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+
+            _LoadFormInfosToPerson();
+
+            if (_Person.Save())
+            {
+
+                DataBack?.Invoke(this, _Person.PersonID);
+
+                MessageBox.Show("Person Saved succesfully", "confirmed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                _FormMode = enMode.update;
+                lbCurrentMode.Text = $"Update person";
+                lbPersonID.Text = _Person.PersonID.ToString();
+
+
+            }
+            else
+            {
+                MessageBox.Show("failed to save", "internal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
 
 
 
         }
+        private void _LoadFormInfosToPerson()
+        {
 
+            _Person.NationalNUmber = Convert.ToInt32(txtNationalNumber.Text);
+            _Person.FirstName = txtFirstName.Text;
+            _Person.SecondName = txtSecondName.Text;
+            _Person.ThirdName = txtThirdName.Text;
+            _Person.LastName = txtLastName.Text;
+            _Person.Email = txtEmail.Text;
+            _Person.Phone = txtPhone.Text;
+            _Person.Address = txtAdress.Text;
+            _Person.DateOfBirth = dtpDateOfBirth.Value;
+            // combo box starts with the index 0 but in the database everything starts with the index 1
+            _Person.CountryID = cbCountries.SelectedIndex + 1;
+
+            if (rdMale.Checked == true) { _Person.Gender = 0; }
+            else { _Person.Gender = 1; }
+
+
+
+
+
+        }
         private bool _handelImages()
         {
 
@@ -249,71 +292,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
             return true;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (!this.ValidateChildren())
-            {
 
-                MessageBox.Show("failed to save please enter correct infos", "wrong infos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (!_handelImages())
-            {
-                MessageBox.Show("failed to save image", "internal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-
-
-            _LoadFormInfosToPerson();
-
-            if (_Person.Save())
-            {
-
-                DataBack?.Invoke(this, _Person.PersonID);
-
-                MessageBox.Show("Person Saved succesfully", "confirmed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-                _FormMode = enMode.update;
-                lbCurrentMode.Text = $"Update the person with the ID [ {_Person.PersonID} ] ";
-
-
-            }
-            else
-            {
-                MessageBox.Show("failed to save", "internal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-
-
-
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void rdMale_CheckedChanged(object sender, EventArgs e)
-        {
-            //if there is already an image then we do not change it when the user change the gender
-            if (pbPersonImage.ImageLocation != null) { return; }
-
-            if (rdMale.Checked == true)
-            {
-
-                pbPersonImage.Image = Properties.Resources.Male_512;
-
-            }
-            else
-            {
-                pbPersonImage.Image = Properties.Resources.Female_512;
-
-            }
-        }
-
+         //functions related to validating the data
         private void emptyTxtBox_Validating(object sender, CancelEventArgs e)
         {
 
@@ -334,7 +314,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
                 errorProvider1.SetError(currentTextBox, "");
             }
         }
-
         private void txtNationalNumber_Validating(object sender, CancelEventArgs e)
         {
 
@@ -375,7 +354,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
                     errorProvider1.SetError(txtNationalNumber, "");
                 }
         }
-
         private void txtEmail_Validating(object sender, CancelEventArgs e)
         {
 
@@ -395,7 +373,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
                 errorProvider1.SetError(txtEmail, "");
             }
         }
-
         private void txtPhone_Validating(object sender, CancelEventArgs e)
         {
 
@@ -430,7 +407,14 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
                 errorProvider1.SetError(txtPhone, "");
             }
         }
+        private void txtNationalNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
 
+        }
+
+
+        // functions related to UI logic (user interaction)
         private void llSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
@@ -450,7 +434,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
             }
 
         }
-
         private void llRemoveImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //there is a method called _HandelImages and it will will handel chagning the values in the database
@@ -464,11 +447,26 @@ namespace MY_DVLD_SYSTEM_AGAIN.People
 
 
         }
-
-        private void txtNationalNumber_KeyPress(object sender, KeyPressEventArgs e)
+        private void rdMale_CheckedChanged(object sender, EventArgs e)
         {
-                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-       
+            //if there is already an image then we do not change it when the user change the gender
+            if (pbPersonImage.ImageLocation != null) { return; }
+
+            if (rdMale.Checked == true)
+            {
+
+                pbPersonImage.Image = Properties.Resources.Male_512;
+
+            }
+            else
+            {
+                pbPersonImage.Image = Properties.Resources.Female_512;
+
+            }
+        }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
