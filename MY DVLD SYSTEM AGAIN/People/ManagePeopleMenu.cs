@@ -20,30 +20,8 @@ namespace MY_DVLD_SYSTEM_AGAIN
 
         DataTable _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNumber", "FullName", "GenderCaption", "Address", "Phone", "Email", "CountryID", "ImagePath");
 
-        private void _refreshList()
-        {
 
-            cbSearchFilter.SelectedIndex = 0;
-            txtSearchFilter.Text = "";
-            txtSearchFilter.Visible = false;
-
-            rdFemale.Visible = false;
-            rdMale.Visible = false;
-
-            _dtAllPeople = clsPerson.GetAllPeople();
-
-            // Just pull the FullName directly from the SQL results
-            _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNumber", "FullName",
-                "DateOfBirth", "GenderCaption", "Address", "Phone", "Email", "CountryID", "ImagePath");
-
-            dgvPeople.DataSource = _dtPeople;
-            // Hide only the technical IDs/Paths
-            dgvPeople.Columns["CountryID"].Visible = false;
-            dgvPeople.Columns["ImagePath"].Visible = false;
-
-            lbTotalRecords.Text = dgvPeople.Rows.Count.ToString();
-
-        }
+        // loading 
         private void ManagePeopleMenu_Load(object sender, EventArgs e)
         {
 
@@ -78,8 +56,33 @@ namespace MY_DVLD_SYSTEM_AGAIN
             }
 
         }
+        private void _refreshList()
+        {
+
+            cbSearchFilter.SelectedIndex = 0;
+            txtSearchFilter.Text = "";
+            txtSearchFilter.Visible = false;
+
+            rdFemale.Visible = false;
+            rdMale.Visible = false;
+
+            _dtAllPeople = clsPerson.GetAllPeople();
+
+            // Just pull the FullName directly from the SQL results
+            _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNumber", "FullName",
+                "DateOfBirth", "GenderCaption", "Address", "Phone", "Email", "CountryID", "ImagePath");
+
+            dgvPeople.DataSource = _dtPeople;
+            // Hide only the technical IDs/Paths
+            dgvPeople.Columns["CountryID"].Visible = false;
+            dgvPeople.Columns["ImagePath"].Visible = false;
+
+            lbTotalRecords.Text = dgvPeople.Rows.Count.ToString();
+
+        }
 
 
+        // search filter
         private void cbSearchFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtSearchFilter.Visible = (cbSearchFilter.Text != "None" && cbSearchFilter.Text != "Gender");
@@ -118,7 +121,6 @@ namespace MY_DVLD_SYSTEM_AGAIN
 
             }
         }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string FilterColumn = "";
@@ -215,13 +217,8 @@ namespace MY_DVLD_SYSTEM_AGAIN
 
         }
 
-        private void btnAddUpdate_Click(object sender, EventArgs e)
-        {
 
-            AddUpdatePeopleMenu frm = new AddUpdatePeopleMenu();
-            frm.ShowDialog();
-            _refreshList();
-        }
+        // context menu
         private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -261,7 +258,12 @@ namespace MY_DVLD_SYSTEM_AGAIN
         }
 
 
-
-
+        // else
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddUpdatePeopleMenu frm = new AddUpdatePeopleMenu();
+            frm.ShowDialog();
+            _refreshList();
+        }
     }
 }

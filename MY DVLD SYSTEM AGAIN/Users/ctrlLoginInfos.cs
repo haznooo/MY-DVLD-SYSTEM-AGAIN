@@ -30,7 +30,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
             }
 
         }
-
         private void _FillControl()
         {
             lbUsername.Text = _user.UserName;
@@ -39,13 +38,5 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
             ctrlPersonCard1.LoadAndShowPersonInfo(_user.PersonID);
         }
 
-
-        public void ResetControl()
-        {
-            lbUsername.Text = "";
-            lbUserID.Text = "";
-            lbIsActive.Text = "";
-            ctrlPersonCard1.ResetControl();
-        }
     }
 }

@@ -14,19 +14,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
         }
         static DataTable _dtAllUsers = clsUser.GetAllUsers();
         int _totalRecords = _dtAllUsers.Rows.Count;
-        private void _refreshList()
-        {
-
-            cbSearchFilter.SelectedIndex = 0;
 
 
-            _dtAllUsers = clsUser.GetAllUsers();
-
-
-            dgvUsers.DataSource = _dtAllUsers;
-            lbTotalRecords.Text = dgvUsers.Rows.Count.ToString();
-
-        }
+        //load
         private void ManageUsersMenu_Load(object sender, EventArgs e)
         {
 
@@ -53,8 +43,22 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
             }
 
         }
+        private void _refreshList()
+        {
+
+            cbSearchFilter.SelectedIndex = 0;
 
 
+            _dtAllUsers = clsUser.GetAllUsers();
+
+
+            dgvUsers.DataSource = _dtAllUsers;
+            lbTotalRecords.Text = dgvUsers.Rows.Count.ToString();
+
+        }
+
+
+        // search filter
         private void cbSearchFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -165,6 +169,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
             lbTotalRecords.Text = dgvUsers.Rows.Count.ToString();
         }
 
+
+        // ui logic
         private void btnAddUpdate_Click(object sender, EventArgs e)
         {
 
@@ -174,6 +180,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
         }
 
 
+        // context menu
         private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -208,16 +215,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
             }
             _refreshList();
         }
-
-        private void editToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            AddUpdateUsersMenu frm = new AddUpdateUsersMenu((int)dgvUsers.CurrentRow.Cells[0].Value);
-            frm.ShowDialog();
-            _refreshList();
-        }
-
-
-
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
 

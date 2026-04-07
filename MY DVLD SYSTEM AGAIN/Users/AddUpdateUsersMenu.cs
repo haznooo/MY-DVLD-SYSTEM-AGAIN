@@ -37,7 +37,20 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
         int _PersonID = -1;
         clsUser _User = null;
 
+        // loading
+        private void _AddUpdateUsersMenu_Load(object sender, EventArgs e)
+        {
 
+            if (this.DesignMode) { return; }
+
+            _ResetForm();
+
+            if (_Mode == enMode.UpdateUser)
+            {
+                _LoadUserInfos(_UserID);
+            }
+
+        }
         private void _LoadUserInfos(int UserID)
         {
 
@@ -75,7 +88,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
             }
 
         }
-
         private void _ResetForm()
         {
             if (_Mode == enMode.AddUser)
@@ -116,29 +128,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
                 lbAddUserMessage.Text = "Update User infos";
             }
         }
-        private void _AddUpdateUsersMenu_Load(object sender, EventArgs e)
-        {
-
-            if (this.DesignMode) { return; }
-
-            _ResetForm();
-
-            if (_Mode == enMode.UpdateUser)
-            {
-                _LoadUserInfos(_UserID);
-            }
-
-        }
-
-        private void _ClearErrorPorvider()
-        {
-
-            errorProvider1.SetError(txtConfirmPassword, "");
-            errorProvider1.SetError(txtPassword, "");
-            errorProvider1.SetError(txtUserName, "");
-        }
-
-
+ 
+    
+        // selecting a person
         private void ctrlPersonCardWithFilter1_OnPersonSelected(int obj)
         {
 
@@ -157,6 +149,17 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
             btnNext.Enabled = true;
             _PersonID = obj;
         }
+ 
+        private void _ClearErrorPorvider()
+        {
+
+            errorProvider1.SetError(txtConfirmPassword, "");
+            errorProvider1.SetError(txtPassword, "");
+            errorProvider1.SetError(txtUserName, "");
+        }
+
+
+        // Ui logic
         private void btnNext_Click(object sender, EventArgs e)
         {
             tcAddUpdateUsers.SelectedTab = tpAddUser;
@@ -166,43 +169,20 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
         {
             Close();
         }
-
-
-
-
         private void btnBack_Click(object sender, EventArgs e)
         {
             _ClearErrorPorvider();
             tcAddUpdateUsers.SelectedTab = tpLinkPerson;
 
         }
-        private void emptyTxtBox_Validating(object sender, CancelEventArgs e)
-        {
-
-            TextBox currentTextBox = (TextBox)sender;
-
-            if (string.IsNullOrEmpty(currentTextBox.Text.Trim()))
-            {
-
-                e.Cancel = true;
-                errorProvider1.SetError(currentTextBox, "This info is required");
-                btnBack.Enabled = false;
-            }
-            else
-            {
-
-                e.Cancel = false;
-                errorProvider1.SetError(currentTextBox, "");
-                btnBack.Enabled = true;
-            }
-        }
-
         private void tcAddUpdateUsers_Selecting(object sender, TabControlCancelEventArgs e)
         {
             _ClearErrorPorvider();
             txtUserName.Focus();
         }
 
+
+        // saving
         private void btnSave_Click(object sender, EventArgs e)
         {
 
@@ -262,7 +242,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
         }
 
 
-
+        //validation
         private void txtConfirmPassword_Validating(object sender, CancelEventArgs e)
         {
             if (txtConfirmPassword.Text != txtPassword.Text)
@@ -280,6 +260,26 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
                 errorProvider1.SetError(txtConfirmPassword, "");
 
 
+            }
+        }
+        private void emptyTxtBox_Validating(object sender, CancelEventArgs e)
+        {
+
+            TextBox currentTextBox = (TextBox)sender;
+
+            if (string.IsNullOrEmpty(currentTextBox.Text.Trim()))
+            {
+
+                e.Cancel = true;
+                errorProvider1.SetError(currentTextBox, "This info is required");
+                btnBack.Enabled = false;
+            }
+            else
+            {
+
+                e.Cancel = false;
+                errorProvider1.SetError(currentTextBox, "");
+                btnBack.Enabled = true;
             }
         }
     }

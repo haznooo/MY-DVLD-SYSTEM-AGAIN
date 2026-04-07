@@ -17,7 +17,30 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
             this.UserID = UserID;
         }
 
+        //load
+        private void ChangePasswordMenu_Load(object sender, EventArgs e)
+        {
 
+            if (this.DesignMode) { return; }
+
+            User = clsUser.GetUserByID(UserID);
+
+
+            if (User == null)
+            {
+
+                MessageBox.Show("User not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+
+            }
+
+            ctrlLoginInfos1.LoadUserInfos(User.UserID);
+
+
+        }
+
+        //save
         private void btnChange_Click(object sender, EventArgs e)
         {
 
@@ -56,31 +79,12 @@ namespace MY_DVLD_SYSTEM_AGAIN.Users
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        //ui logic
+        private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void ChangePasswordMenu_Load(object sender, EventArgs e)
-        {
 
-            if (this.DesignMode) { return; }
-
-            User = clsUser.GetUserByID(UserID);
-
-
-            if (User == null)
-            {
-
-                MessageBox.Show("User not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-                return;
-
-            }
-
-            ctrlLoginInfos1.LoadUserInfos(User.UserID);
-
-
-        }
     }
 }

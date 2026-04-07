@@ -161,7 +161,7 @@
             this.btnAddUpdate.Size = new System.Drawing.Size(87, 75);
             this.btnAddUpdate.TabIndex = 21;
             this.btnAddUpdate.UseVisualStyleBackColor = true;
-            this.btnAddUpdate.Click += new System.EventHandler(this.btnAddUpdate_Click);
+            this.btnAddUpdate.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dgvPeople
             // 
