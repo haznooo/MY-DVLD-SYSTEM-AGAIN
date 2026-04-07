@@ -14,19 +14,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
 
         static DataTable _dtApplicationTypes = clsApplicationTypes.GetAllApplicationTypes();
 
-
-
-        private void _refreshList()
-        {
-
-            _dtApplicationTypes = clsApplicationTypes.GetAllApplicationTypes();
-
-
-            dgvApplications.DataSource = _dtApplicationTypes;
-            lbTotalRecords.Text = dgvApplications.Rows.Count.ToString();
-
-        }
-
+        //load
         private void ApplicationTypesMenu_Load(object sender, EventArgs e)
         {
             _refreshList();
@@ -50,7 +38,20 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
 
             }
         }
+        private void _refreshList()
+        {
 
+            _dtApplicationTypes = clsApplicationTypes.GetAllApplicationTypes();
+
+
+            dgvApplications.DataSource = _dtApplicationTypes;
+            lbTotalRecords.Text = dgvApplications.Rows.Count.ToString();
+
+        }
+
+
+
+        //context menu
         private void editApplicationTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UpdateApplicationTypeMenu frm = new UpdateApplicationTypeMenu((int)dgvApplications.CurrentRow.Cells[0].Value);

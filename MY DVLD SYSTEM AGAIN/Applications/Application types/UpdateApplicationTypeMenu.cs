@@ -22,6 +22,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
             _appTypeID = appType;
         }
 
+        //load
         private void UpdateApplicationTypeMenu_Load(object sender, EventArgs e)
         {
 
@@ -31,6 +32,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
             txtApplicationFee.Text = appType.ApplicationTypeFee.ToString();
         }
 
+        //save
         private void btnChange_Click(object sender, EventArgs e)
         {
 
@@ -63,7 +65,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Application_types
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        //ui logic
+        private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }

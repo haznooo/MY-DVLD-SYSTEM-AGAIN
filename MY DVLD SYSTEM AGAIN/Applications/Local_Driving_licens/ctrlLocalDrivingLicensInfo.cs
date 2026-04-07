@@ -5,13 +5,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 {
     public partial class ctrlLocalDrivingLicensInfo : UserControl
     {
-        public ctrlLocalDrivingLicensInfo()
-        {
-            InitializeComponent();
-        }
 
         private clsLocalDrivingLicensApplication _localDrivingLicensApp;
-
         private int _localDrivingLicensAppID = 0;
         public int LocalDrivingLicensAppID
         {
@@ -19,6 +14,14 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         }
         private int LicenseID = -1;
         public int passedTests = 0;
+
+        public ctrlLocalDrivingLicensInfo()
+        {
+            InitializeComponent();
+        }
+
+ 
+        //load
         public bool loadApplicationInfoByLocalDrivingLicenseAppID(int localDrivingAppID)
         {
 
@@ -49,24 +52,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
 
         }
-        private void _resetControl()
-        {
-
-            lbDLappID.Text = "????";
-            lbLicensClass.Text = "??????????";
-            lbPassedTests.Text = "??????????";
-
-            lbAppID.Text = "????";
-            lbApplicantName.Text = "??????????";
-            lbCreatedBy.Text = "??????????";
-            lbFees.Text = "????";
-            lbDate.Text = "??????????";
-            lbStatus.Text = "??????????";
-            lbStatusDate.Text = "??????????";
-            lbType.Text = "??????????";
-
-        }
-
         private void _FillLocalDrivingLicensInfo()
         {
             lbDLappID.Text = _localDrivingLicensApp.LocalDrivingLicensApplicationID.ToString();
@@ -88,13 +73,32 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
         }
 
+
+        // utility
+        private void _resetControl()
+        {
+
+            lbDLappID.Text = "????";
+            lbLicensClass.Text = "??????????";
+            lbPassedTests.Text = "??????????";
+
+            lbAppID.Text = "????";
+            lbApplicantName.Text = "??????????";
+            lbCreatedBy.Text = "??????????";
+            lbFees.Text = "????";
+            lbDate.Text = "??????????";
+            lbStatus.Text = "??????????";
+            lbStatusDate.Text = "??????????";
+            lbType.Text = "??????????";
+
+        }
+
+        // ui logic
         private void llPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             PersonDetails frm = new PersonDetails(_localDrivingLicensApp.applicantID);
             frm.ShowDialog();
         }
-
-
         private void llLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MessageBox.Show("Viewing License Class details is not implemented yet");

@@ -34,11 +34,21 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
         }
 
+
+        //load
+        private void _AddUpdateLocalLicensApplication_Load(object sender, EventArgs e)
+        {
+            _ResetForm();
+
+            if (_Mode == enMode.Update)
+            {
+                _LoadLocalLicensApplicationinfos(_LocalDrivingLicensApplicationID);
+            }
+
+        }
         private void _LoadLocalLicensApplicationinfos(int LocalDrivingLicensApplicationID)
         {
-            // this method is used to load the form with application infos during update mode
-
-           
+            // this method is used to load the form with application infos during update mode   
 
             _LocalDrivingLicenseApplicationInfo = clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(LocalDrivingLicensApplicationID);
 
@@ -61,7 +71,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
 
         }
-
         private void _ResetForm()
         {
             _HandelFormLabels();
@@ -125,6 +134,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         }
 
 
+        //person selected
         private void ctrlPersonCardWithFilter1_OnPersonSelected(int obj)
         {
 
@@ -133,22 +143,9 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             btnNext.Enabled = true;
             _PersonID = obj;
         }
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            tcAddUpdateLocalLicensApplication.SelectedTab = tpAddLocalLicensApplication;
+  
 
-        }
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            tcAddUpdateLocalLicensApplication.SelectedTab = tpLinkPerson;
-
-        }
-
+        // save
         private void btnSave_Click(object sender, EventArgs e)
         {
 
@@ -222,16 +219,24 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
         }
 
-        private void _AddUpdateLocalLicensApplication_Load(object sender, EventArgs e)
-        {
-            _ResetForm();
 
-            if (_Mode == enMode.Update)
-            {
-                _LoadLocalLicensApplicationinfos(_LocalDrivingLicensApplicationID);
-            }
+        //ui logic
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            tcAddUpdateLocalLicensApplication.SelectedTab = tpAddLocalLicensApplication;
 
         }
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            tcAddUpdateLocalLicensApplication.SelectedTab = tpLinkPerson;
+
+        }
+
 
 
     }

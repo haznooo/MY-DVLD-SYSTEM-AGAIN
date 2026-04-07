@@ -19,7 +19,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }

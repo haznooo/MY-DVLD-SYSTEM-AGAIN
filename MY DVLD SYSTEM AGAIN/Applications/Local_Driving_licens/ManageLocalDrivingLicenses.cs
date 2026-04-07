@@ -20,19 +20,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
         static DataTable _dtAllLocalDrivingLicensApplications = null;
         
-        private void _refreshList()
-        {
-
-            cbSearchFilter.SelectedIndex = 0;
-
-
-            _dtAllLocalDrivingLicensApplications = clsLocalDrivingLicensApplication.GetAllLocalDrivingLicensApplications();
-
-
-            dgvApplications.DataSource = _dtAllLocalDrivingLicensApplications;
-            lbTotalRecords.Text = dgvApplications.Rows.Count.ToString();
-
-        }
+        //load
         private void ManagePeopleMenu_Load(object sender, EventArgs e)
         {
 
@@ -70,12 +58,69 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             }
 
         }
+        private void _refreshList()
+        {
 
-        private void btnAddUpdate_Click(object sender, EventArgs e)
+            cbSearchFilter.SelectedIndex = 0;
+
+
+            _dtAllLocalDrivingLicensApplications = clsLocalDrivingLicensApplication.GetAllLocalDrivingLicensApplications();
+
+
+            dgvApplications.DataSource = _dtAllLocalDrivingLicensApplications;
+            lbTotalRecords.Text = dgvApplications.Rows.Count.ToString();
+
+        }
+
+
+        //ui logic
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             AddUpdateLocalDrivingLicensApplication frm = new AddUpdateLocalDrivingLicensApplication();
             frm.ShowDialog();
             _refreshList();
+        }
+
+
+        //context menu
+        private void cmsApplicationOpetions_Opening(object sender, CancelEventArgs e)
+        {
+            int passedTests = clsTest.GetPassedTestsCount(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
+
+            bool isCompleted = clsLocalDrivingLicensApplication.isCompleted(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
+
+            if (passedTests == 3)
+            {
+                issueDrivingLicensfristTimeToolStripMenuItem.Enabled = true;
+                editToolStripMenuItem.Enabled = false;
+                cancelToolStripMenuItem.Enabled = false;
+                deleteToolStripMenuItem.Enabled = false;
+                sToolStripMenuItem.Enabled = false;
+                showLicensToolStripMenuItem.Enabled = false;
+
+                if (isCompleted)
+                {
+                    issueDrivingLicensfristTimeToolStripMenuItem.Enabled = false;
+                    showLicensToolStripMenuItem.Enabled = true;
+                }
+
+
+
+
+
+            }
+            else
+            {
+                editToolStripMenuItem.Enabled = true;
+                cancelToolStripMenuItem.Enabled = true;
+                deleteToolStripMenuItem.Enabled = true;
+                sToolStripMenuItem.Enabled = true;
+
+                showLicensToolStripMenuItem.Enabled = false;
+                issueDrivingLicensfristTimeToolStripMenuItem.Enabled = false;
+
+            }
+
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -91,20 +136,17 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
                 MessageBox.Show("Failed to delete application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             localDrivingLicensInfo frm = new localDrivingLicensInfo(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
             frm.ShowDialog();
         }
-
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddUpdateLocalDrivingLicensApplication frm = new AddUpdateLocalDrivingLicensApplication(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
             frm.ShowDialog();
             _refreshList();
         }
-
         private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (clsLocalDrivingLicensApplication.FindLocalDrivingLicensApplicationByID(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value)).Cancel())
@@ -118,15 +160,30 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             _refreshList();
 
         }
-
-        private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        private void issueDrivingLicensfristTimeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // idk why but i tried the property 'CurrentRow' and it did not works well "Alway use the first row value"
-            listTestAppointments frm = new listTestAppointments(Convert.ToInt32(dgvApplications.Rows[_CurrentRowIndex].Cells[0].Value), clsTestTypes.enTestType.vissionTest);
+            IssueDriverLicenseForFirstTime frm = new IssueDriverLicenseForFirstTime(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
             frm.ShowDialog();
             _refreshList();
         }
+        private void showLicensToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
+            // kinda goofy ngl
+            DriverLicenseInfo frm = new DriverLicenseInfo(clsLocalDrivingLicensApplication.GetLicneseID_IfIssued(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value)));
+            frm.Show();
+        }
+        private void licensesHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int PersonNN = Convert.ToInt32(dgvApplications.CurrentRow.Cells[2].Value);
+
+            PersonLicenseHistory frm = new PersonLicenseHistory(clsPerson.GetPersonInfoByNationalNumber(PersonNN).PersonID);
+            frm.ShowDialog();
+
+        }
+
+
+        //context menu "scedule test"
         private void sToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
         {
             _CurrentRowIndex = Convert.ToInt32(dgvApplications.CurrentRow.Index);
@@ -167,7 +224,18 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
 
             }
         }
+        private void sToolStripMenuItem_DropDownClosed(object sender, EventArgs e)
+        {
+            _refreshList();
+        }
 
+        private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // idk why but i tried the property 'CurrentRow' and it did not works well "Alway use the first row value"
+            listTestAppointments frm = new listTestAppointments(Convert.ToInt32(dgvApplications.Rows[_CurrentRowIndex].Cells[0].Value), clsTestTypes.enTestType.vissionTest);
+            frm.ShowDialog();
+            _refreshList();
+        }
         private void writtenTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // idk why but i tried the property 'CurrentRow' and it did not works well "Alway use the first row value"
@@ -175,7 +243,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             frm.ShowDialog();
             _refreshList();
         }
-
         private void streetTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // idk why but i tried the property 'CurrentRow' and it did not works well "Alway use the first row value"
@@ -184,64 +251,6 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             _refreshList();
         }
 
-        private void cmsApplicationOpetions_Opening(object sender, CancelEventArgs e)
-        {
-            int passedTests = clsTest.GetPassedTestsCount(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
 
-            bool isCompleted = clsLocalDrivingLicensApplication.isCompleted(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
-
-            if (passedTests == 3)
-            {
-                issueDrivingLicensfristTimeToolStripMenuItem.Enabled = true;
-                editToolStripMenuItem.Enabled = false;
-                cancelToolStripMenuItem.Enabled = false;
-                deleteToolStripMenuItem.Enabled = false;
-                sToolStripMenuItem.Enabled = false;
-                showLicensToolStripMenuItem.Enabled = false;
-
-                if (isCompleted)
-                {
-                    issueDrivingLicensfristTimeToolStripMenuItem.Enabled = false;
-                    showLicensToolStripMenuItem.Enabled = true;
-                }
-
-
-
-
-
-            }
-            else
-            {
-                editToolStripMenuItem.Enabled = true;
-                cancelToolStripMenuItem.Enabled = true;
-                deleteToolStripMenuItem.Enabled = true;
-                sToolStripMenuItem.Enabled = true;
-
-                showLicensToolStripMenuItem.Enabled = false;
-                issueDrivingLicensfristTimeToolStripMenuItem.Enabled = false;
-
-            }
-            
-        }
-
-        private void issueDrivingLicensfristTimeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            IssueDriverLicenseForFirstTime frm = new IssueDriverLicenseForFirstTime(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value));
-            frm.ShowDialog();
-            _refreshList();
-        }
-
-        private void showLicensToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            // kinda goofy ngl
-            DriverLicenseInfo frm = new DriverLicenseInfo(clsLocalDrivingLicensApplication.GetLicneseID_IfIssued(Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value)));
-            frm.Show();
-        }
-
-        private void sToolStripMenuItem_DropDownClosed(object sender, EventArgs e)
-        {
-            _refreshList();
-        }
     }
 }

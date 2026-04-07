@@ -125,7 +125,7 @@ namespace DataAccessLayer
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("nationalNumber", PersonID);
+            command.Parameters.AddWithValue("nationalNumber", NationalNumber);
 
 
             try

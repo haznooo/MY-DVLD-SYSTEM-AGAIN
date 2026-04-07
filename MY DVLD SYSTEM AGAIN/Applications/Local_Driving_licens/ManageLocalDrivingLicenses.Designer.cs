@@ -127,7 +127,7 @@
             this.btnAddUpdate.Size = new System.Drawing.Size(87, 75);
             this.btnAddUpdate.TabIndex = 33;
             this.btnAddUpdate.UseVisualStyleBackColor = true;
-            this.btnAddUpdate.Click += new System.EventHandler(this.btnAddUpdate_Click);
+            this.btnAddUpdate.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dgvApplications
             // 
@@ -271,6 +271,7 @@
             this.licensesHistoryToolStripMenuItem.Name = "licensesHistoryToolStripMenuItem";
             this.licensesHistoryToolStripMenuItem.Size = new System.Drawing.Size(245, 36);
             this.licensesHistoryToolStripMenuItem.Text = "licenses history";
+            this.licensesHistoryToolStripMenuItem.Click += new System.EventHandler(this.licensesHistoryToolStripMenuItem_Click);
             // 
             // ManageLocalDrivingLicenses
             // 
