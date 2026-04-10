@@ -251,6 +251,103 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Local_Driving_licens
             _refreshList();
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string FilterColumn = "";
+            //Map Selected Filter to real Column name 
+            switch (cbSearchFilter.Text)
+            {
+                case "Person ID":
+                    FilterColumn = "PersonID";
+                    break;
 
+                case "National Number":
+                    FilterColumn = "NationalNumber";
+                    break;
+
+                case "Full Name":
+                    FilterColumn = "FullName";
+                    break;
+                case "Address":
+                    FilterColumn = "Address";
+                    break;
+
+                case "Gender":
+                    FilterColumn = "GenderCaption";
+                    break;
+
+                case "Phone":
+                    FilterColumn = "Phone";
+                    break;
+
+                case "Email":
+                    FilterColumn = "Email";
+                    break;
+
+                default:
+                    FilterColumn = "None";
+                    break;
+
+            }
+
+            if (FilterColumn == "None")
+            {
+
+                _dtAllLocalDrivingLicensApplications.DefaultView.RowFilter = "";
+                lbTotalRecords.Text = _dtAllLocalDrivingLicensApplications.Rows.Count.ToString();
+                return;
+
+            }
+
+
+            if (FilterColumn == "PersonID")
+            {
+                _dtAllLocalDrivingLicensApplications.DefaultView.RowFilter = string.Format("Convert([{0}], 'System.String') LIKE '{1}*'", FilterColumn, txtSearchFilter.Text.Trim());
+            }
+
+            else if (FilterColumn == "GenderCaption")
+            {
+
+            }
+
+            else if (FilterColumn == "Email")
+            {
+                _dtAllLocalDrivingLicensApplications.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}*'", FilterColumn, txtSearchFilter.Text.Trim());
+            }
+
+            else if (FilterColumn == "FullName")
+            {
+
+                _dtAllLocalDrivingLicensApplications.DefaultView.RowFilter = string.Format("FullName LIKE '{0}%'", txtSearchFilter.Text.Trim());
+
+
+            }
+            else if (FilterColumn == "Address")
+            {
+
+                _dtAllLocalDrivingLicensApplications.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}*'", FilterColumn, txtSearchFilter.Text.Trim());
+
+
+            }
+            else if (FilterColumn == "Phone")
+            {
+                _dtAllLocalDrivingLicensApplications.DefaultView.RowFilter = string.Format("Convert([{0}], 'System.String') LIKE '{1}*'", FilterColumn, txtSearchFilter.Text.Trim());
+            }
+            else if (FilterColumn == "NationalNumber")
+            {
+                _dtAllLocalDrivingLicensApplications.DefaultView.RowFilter = string.Format("Convert([{0}], 'System.String') LIKE '{1}*'", FilterColumn, txtSearchFilter.Text.Trim());
+            }
+
+
+
+
+            lbTotalRecords.Text = _dtAllLocalDrivingLicensApplications.Rows.Count.ToString();
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

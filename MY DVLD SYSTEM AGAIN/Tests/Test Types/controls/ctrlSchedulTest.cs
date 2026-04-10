@@ -198,7 +198,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
             }
 
 
-            if (_testAppointmentt.RetakeTestApplicationID == -1)
+            if (_testAppointmentt.RetakeTestApplicationID <= 0)
             {
 
                 lbRetakeTestAppID.Text = "N/A";
@@ -244,7 +244,10 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
             if (_localDrivingLicensApplication.DoesPassTestType((int)_testType)) 
             {
                 MessageBox.Show("you already passed this test type", "test passed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                btnSave.Enabled = false;
+               
+                return;
+                
             }
 
             if (_localDrivingLicensApplication.DoesAttendTestType((int)TestType))
@@ -312,8 +315,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests.Test_Types.controls
             if (!_handleRetakeTest()) return;
 
 
-
-            if (clsTestAppointment.DoesHaveActiveTestAppointment(_localDrivingLicnesApplicationID, (int)_testType))
+            //if we are in the update mode then it is clear that we have an active test appointment 
+            if (clsTestAppointment.DoesHaveActiveTestAppointment(_localDrivingLicnesApplicationID, (int)_testType) && _mode != enMode.update)
             {
                 MessageBox.Show("you already have an active appointment of this type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

@@ -37,7 +37,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
         private void scheduleTest_Load(object sender, EventArgs e)
         {
             ctrlSchedulTest1.TestType = this._testType;
-            ctrlSchedulTest1.LoadInfo(_LocalDrivingLicenseApplicationID);
+            ctrlSchedulTest1.LoadInfo(_LocalDrivingLicenseApplicationID, _appointmentID);
         }
     }
 }

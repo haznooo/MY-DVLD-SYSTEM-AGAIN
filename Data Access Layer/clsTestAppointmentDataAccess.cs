@@ -27,7 +27,7 @@ namespace Data_Access_Layer
                 if (reader.Read())
                 {
                     testTypeID = Convert.ToInt32(reader["TestTypeID"]);
-                    LocalDrivingLicensApplicationID = Convert.ToInt32(reader["LocalDrivingLicensApplicationID"]);
+                    LocalDrivingLicensApplicationID = Convert.ToInt32(reader["LocalDrivingLicenseApplicationID"]);
                     appointmentDate = Convert.ToDateTime(reader["AppointmentDate"]);
                     paidFees = Convert.ToSingle(reader["PaidFees"]);
                     createdByUserID = Convert.ToInt32(reader["CreatedByUserID"]);
@@ -196,7 +196,7 @@ namespace Data_Access_Layer
         {
             string query = @"UPDATE TestAppointments SET
                         TestTypeID = @TestTypeID,
-                        LocalDrivingLicensApplicationID = @LocalDrivingLicensApplicationID,
+                        LocalDrivingLicenseApplicationID = @LocalDrivingLicensApplicationID,
                         AppointmentDate = @AppointmentDate,
                         PaidFees = @PaidFees,
                         CreatedByUserID = @CreatedByUserID,

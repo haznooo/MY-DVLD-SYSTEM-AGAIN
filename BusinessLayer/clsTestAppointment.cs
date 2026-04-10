@@ -58,7 +58,7 @@ namespace BusinessLayer
         private bool _UpdateTestAppointment()
         {
 
-            return clsTestAppointmentDataAccess.updateTestAppointment(TestAppointmentID, (int)TestType.TestType, localDrivingLicensesApplicantID, AppointmentDate, paidFees, createdByUserID, isLocked);
+            return clsTestAppointmentDataAccess.updateTestAppointment(TestAppointmentID,TestTypeID, localDrivingLicensesApplicantID, AppointmentDate, paidFees, createdByUserID, isLocked);
 
         }
 

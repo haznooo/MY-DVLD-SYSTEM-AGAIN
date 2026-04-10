@@ -113,8 +113,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Tests
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("not implemented");
-            return;
+            scheduleTest frm = new scheduleTest(_localDrivingLicenseApplicationID, _TestType,Convert.ToInt32(dgvAppoinments.CurrentRow.Cells[0].Value));
+            frm.ShowDialog();
             _refreshList();
         }
 

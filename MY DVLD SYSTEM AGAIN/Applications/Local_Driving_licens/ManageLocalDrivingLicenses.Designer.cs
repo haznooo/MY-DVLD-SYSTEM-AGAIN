@@ -51,6 +51,8 @@
             this.issueDrivingLicensfristTimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showLicensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.licensesHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearchFilter = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplications)).BeginInit();
             this.cmsApplicationOpetions.SuspendLayout();
@@ -100,7 +102,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Applications;
-            this.pictureBox1.Location = new System.Drawing.Point(598, 14);
+            this.pictureBox1.Location = new System.Drawing.Point(632, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(284, 197);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -113,7 +115,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Constantia", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(425, 221);
+            this.label1.Location = new System.Drawing.Point(480, 214);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(631, 66);
             this.label1.TabIndex = 34;
@@ -173,7 +175,7 @@
             this.showLicensToolStripMenuItem,
             this.licensesHistoryToolStripMenuItem});
             this.cmsApplicationOpetions.Name = "cmsPeopleOpetions";
-            this.cmsApplicationOpetions.Size = new System.Drawing.Size(246, 314);
+            this.cmsApplicationOpetions.Size = new System.Drawing.Size(246, 292);
             this.cmsApplicationOpetions.Opening += new System.ComponentModel.CancelEventHandler(this.cmsApplicationOpetions_Opening);
             // 
             // detailsToolStripMenuItem
@@ -225,7 +227,7 @@
             // 
             this.visionTestToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Vision_Test_Schdule;
             this.visionTestToolStripMenuItem.Name = "visionTestToolStripMenuItem";
-            this.visionTestToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.visionTestToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.visionTestToolStripMenuItem.Text = "vision test";
             this.visionTestToolStripMenuItem.Click += new System.EventHandler(this.visionTestToolStripMenuItem_Click);
             // 
@@ -234,7 +236,7 @@
             this.writtenTestToolStripMenuItem.Enabled = false;
             this.writtenTestToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Written_Test_32_Sechdule;
             this.writtenTestToolStripMenuItem.Name = "writtenTestToolStripMenuItem";
-            this.writtenTestToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.writtenTestToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.writtenTestToolStripMenuItem.Text = "written test";
             this.writtenTestToolStripMenuItem.Click += new System.EventHandler(this.writtenTestToolStripMenuItem_Click);
             // 
@@ -243,7 +245,7 @@
             this.streetTestToolStripMenuItem.Enabled = false;
             this.streetTestToolStripMenuItem.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Street_Test_32;
             this.streetTestToolStripMenuItem.Name = "streetTestToolStripMenuItem";
-            this.streetTestToolStripMenuItem.Size = new System.Drawing.Size(194, 36);
+            this.streetTestToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.streetTestToolStripMenuItem.Text = "street test";
             this.streetTestToolStripMenuItem.Click += new System.EventHandler(this.streetTestToolStripMenuItem_Click);
             // 
@@ -273,11 +275,31 @@
             this.licensesHistoryToolStripMenuItem.Text = "licenses history";
             this.licensesHistoryToolStripMenuItem.Click += new System.EventHandler(this.licensesHistoryToolStripMenuItem_Click);
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(217, 264);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(56, 23);
+            this.btnSearch.TabIndex = 41;
+            this.btnSearch.Text = "button1";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtSearchFilter
+            // 
+            this.txtSearchFilter.Location = new System.Drawing.Point(290, 266);
+            this.txtSearchFilter.Name = "txtSearchFilter";
+            this.txtSearchFilter.Size = new System.Drawing.Size(100, 20);
+            this.txtSearchFilter.TabIndex = 42;
+            this.txtSearchFilter.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // ManageLocalDrivingLicenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1382, 728);
+            this.Controls.Add(this.txtSearchFilter);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbSearchFilter);
             this.Controls.Add(this.lbTotalRecords);
@@ -318,5 +340,7 @@
         private System.Windows.Forms.ToolStripMenuItem licensesHistoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem writtenTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem streetTestToolStripMenuItem;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtSearchFilter;
     }
 }
