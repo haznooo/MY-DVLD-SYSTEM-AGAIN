@@ -52,7 +52,7 @@
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1013, 320);
+            this.tabControl1.Size = new System.Drawing.Size(812, 322);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -64,7 +64,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1005, 291);
+            this.tabPage1.Size = new System.Drawing.Size(804, 293);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Local Licenses";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -91,10 +91,16 @@
             // 
             // dgvAllLocalLicenses
             // 
+            this.dgvAllLocalLicenses.AllowUserToAddRows = false;
+            this.dgvAllLocalLicenses.AllowUserToDeleteRows = false;
+            this.dgvAllLocalLicenses.AllowUserToResizeColumns = false;
+            this.dgvAllLocalLicenses.AllowUserToResizeRows = false;
             this.dgvAllLocalLicenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllLocalLicenses.Location = new System.Drawing.Point(6, 6);
             this.dgvAllLocalLicenses.Name = "dgvAllLocalLicenses";
-            this.dgvAllLocalLicenses.Size = new System.Drawing.Size(993, 260);
+            this.dgvAllLocalLicenses.ReadOnly = true;
+            this.dgvAllLocalLicenses.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvAllLocalLicenses.Size = new System.Drawing.Size(786, 260);
             this.dgvAllLocalLicenses.TabIndex = 2;
             // 
             // tabPage2
@@ -106,7 +112,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(542, 291);
+            this.tabPage2.Size = new System.Drawing.Size(804, 293);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "International Licenses";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -136,7 +142,7 @@
             this.dgvAllInternationalLicenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllInternationalLicenses.Location = new System.Drawing.Point(3, 6);
             this.dgvAllInternationalLicenses.Name = "dgvAllInternationalLicenses";
-            this.dgvAllInternationalLicenses.Size = new System.Drawing.Size(530, 260);
+            this.dgvAllInternationalLicenses.Size = new System.Drawing.Size(795, 260);
             this.dgvAllInternationalLicenses.TabIndex = 0;
             // 
             // ctrlDriverLicenses
@@ -145,7 +151,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl1);
             this.Name = "ctrlDriverLicenses";
-            this.Size = new System.Drawing.Size(1019, 328);
+            this.Size = new System.Drawing.Size(814, 328);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

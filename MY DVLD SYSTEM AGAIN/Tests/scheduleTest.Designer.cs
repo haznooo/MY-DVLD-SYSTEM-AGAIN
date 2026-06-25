@@ -69,6 +69,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.ctrlSchedulTest1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "scheduleTest";
             this.Text = "scheduleTest";
             this.Load += new System.EventHandler(this.scheduleTest_Load);

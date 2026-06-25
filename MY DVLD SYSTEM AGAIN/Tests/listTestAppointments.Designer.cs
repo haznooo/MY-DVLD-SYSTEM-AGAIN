@@ -198,6 +198,7 @@
             this.Controls.Add(this.lbTestType);
             this.Controls.Add(this.pbTestType);
             this.Controls.Add(this.ctrlLocalDrivingLicensInfo1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "listTestAppointments";
             this.Text = "listTestAppointments";
             this.Load += new System.EventHandler(this.listTestAppointments_Load);

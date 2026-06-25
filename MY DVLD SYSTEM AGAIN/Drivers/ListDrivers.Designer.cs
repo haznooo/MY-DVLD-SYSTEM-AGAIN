@@ -105,7 +105,7 @@
             this.issueInternationalLicenseToolStripMenuItem,
             this.showLicenseHistoryToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(277, 146);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(277, 124);
             // 
             // showPersonInfoToolStripMenuItem
             // 
@@ -143,6 +143,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ListDrivers";
             this.Text = "ListDrivers";
             this.Load += new System.EventHandler(this.ListDrivers_Load);

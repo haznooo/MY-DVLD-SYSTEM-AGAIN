@@ -340,6 +340,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ReplacementDamageLostLicenses";
             this.Text = "ReplacementDamageLostLicenses";
             this.Load += new System.EventHandler(this.ReplacementDamageLostLicenses_Load);

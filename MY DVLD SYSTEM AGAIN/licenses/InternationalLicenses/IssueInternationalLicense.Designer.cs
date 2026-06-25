@@ -251,6 +251,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ctrlDriverLicenseInfoWithSearch1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "IssueInternationalLicense";
             this.Text = "IssueInternationalLicense";
             this.ResumeLayout(false);

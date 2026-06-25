@@ -184,6 +184,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDetainLicense);
             this.Controls.Add(this.dgvDetainedLicenses);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ManageDetainedLicenses";
             this.Text = "ManageDetainedLicenses";
             this.Load += new System.EventHandler(this.ManageDetainedLicenses_Load);

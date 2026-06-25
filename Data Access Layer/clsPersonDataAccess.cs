@@ -141,7 +141,7 @@ namespace DataAccessLayer
 
                     isFound = true;
 
-                    NationalNumber = (int)reader["NationalNumber"];
+                    PersonID = (int)reader["PersonID"];
                     FirstName = (string)reader["FirstName"];
                     SecondName = (string)reader["SecondName"];
 

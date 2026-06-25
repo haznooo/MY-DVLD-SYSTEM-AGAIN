@@ -268,6 +268,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ctrlDriverLicenseInfoWithSearch1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DetainLicense";
             this.Text = "DetainLicense";
             this.Load += new System.EventHandler(this.DetainLicense_Load);

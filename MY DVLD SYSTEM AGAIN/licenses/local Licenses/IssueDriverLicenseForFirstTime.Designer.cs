@@ -110,6 +110,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ctrlLocalDrivingLicensInfo1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "IssueDriverLicenseForFirstTime";
             this.Text = "IssueDriverLicenseForFirstTime";
             this.Load += new System.EventHandler(this.IssueDriverLicenseForFirstTime_Load);

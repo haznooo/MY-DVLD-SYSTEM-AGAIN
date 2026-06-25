@@ -347,6 +347,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ReleaseDetainedLicense";
             this.Text = "ReleaseDetainedLicense";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();

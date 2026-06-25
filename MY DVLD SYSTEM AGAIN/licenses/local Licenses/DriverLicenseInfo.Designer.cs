@@ -70,6 +70,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ctrlDriverLicenseInfo1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DriverLicenseInfo";
             this.Text = "DriverLicenseInfo";
             this.Load += new System.EventHandler(this.ctrlDriverLicenseInfo1_Load);

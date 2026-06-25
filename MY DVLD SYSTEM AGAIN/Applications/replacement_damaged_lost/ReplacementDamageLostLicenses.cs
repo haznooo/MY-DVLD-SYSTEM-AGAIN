@@ -75,6 +75,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.replacement_damaged_lost
             else
             {
                 MessageBox.Show("License replaced seccusfully", "succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // easy way to froce the user to use ctrlDriverLicenseInfoWithSearch1 after replacing the license so it will get verfied again 
+                btnIssueReplacementLicense.Enabled = false;
 
 
             }

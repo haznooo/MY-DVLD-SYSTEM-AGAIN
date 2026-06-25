@@ -164,6 +164,7 @@
             this.Controls.Add(this.rdFaild);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "TakeTest";
             this.Text = "TakeTest";
             this.Load += new System.EventHandler(this.TakeTest_Load);

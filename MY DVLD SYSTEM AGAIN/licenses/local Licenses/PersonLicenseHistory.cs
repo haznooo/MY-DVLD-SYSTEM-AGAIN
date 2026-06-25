@@ -37,7 +37,8 @@ namespace MY_DVLD_SYSTEM_AGAIN.licenses.local_Licenses
             }
             else
             {
-
+                ctrlPersonCardWithFilter1.FilterEnabled = false;
+                ctrlPersonCardWithFilter1.LoadAndShowPersonInfo(_personID);
                 ctrlDriverLicenses1.LoadInfo(clsDriver.GetDriverInfoByPersonID(_personID).DriverID);
                 ctrlPersonCardWithFilter1.FilterEnabled = false;
             }

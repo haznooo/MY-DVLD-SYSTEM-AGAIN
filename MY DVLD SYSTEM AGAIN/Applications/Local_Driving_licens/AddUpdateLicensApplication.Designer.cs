@@ -37,6 +37,9 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.lbLinkPersonMessage = new System.Windows.Forms.Label();
             this.tpAddLocalLicensApplication = new System.Windows.Forms.TabPage();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.lbLocalDrivingApplicationID = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.cbLicensClass = new System.Windows.Forms.ComboBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -57,18 +60,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.lbLocalDrivingApplicationID = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.tcAddUpdateLocalLicensApplication.SuspendLayout();
             this.tpLinkPerson.SuspendLayout();
             this.tpAddLocalLicensApplication.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // tcAddUpdateLocalLicensApplication
@@ -194,6 +194,36 @@
             this.tpAddLocalLicensApplication.TabIndex = 1;
             this.tpAddLocalLicensApplication.Text = "Local drving licens Application";
             this.tpAddLocalLicensApplication.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Number_32;
+            this.pictureBox6.Location = new System.Drawing.Point(222, 149);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 35;
+            this.pictureBox6.TabStop = false;
+            // 
+            // lbLocalDrivingApplicationID
+            // 
+            this.lbLocalDrivingApplicationID.AutoSize = true;
+            this.lbLocalDrivingApplicationID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLocalDrivingApplicationID.Location = new System.Drawing.Point(293, 157);
+            this.lbLocalDrivingApplicationID.Name = "lbLocalDrivingApplicationID";
+            this.lbLocalDrivingApplicationID.Size = new System.Drawing.Size(50, 24);
+            this.lbLocalDrivingApplicationID.TabIndex = 34;
+            this.lbLocalDrivingApplicationID.Text = "????";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(45, 157);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(158, 24);
+            this.label11.TabIndex = 33;
+            this.label11.Text = "LD Application ID:";
             // 
             // cbLicensClass
             // 
@@ -397,42 +427,13 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Application ID:";
             // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::MY_DVLD_SYSTEM_AGAIN.Properties.Resources.Number_32;
-            this.pictureBox6.Location = new System.Drawing.Point(222, 149);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 35;
-            this.pictureBox6.TabStop = false;
-            // 
-            // lbLocalDrivingApplicationID
-            // 
-            this.lbLocalDrivingApplicationID.AutoSize = true;
-            this.lbLocalDrivingApplicationID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLocalDrivingApplicationID.Location = new System.Drawing.Point(293, 157);
-            this.lbLocalDrivingApplicationID.Name = "lbLocalDrivingApplicationID";
-            this.lbLocalDrivingApplicationID.Size = new System.Drawing.Size(50, 24);
-            this.lbLocalDrivingApplicationID.TabIndex = 34;
-            this.lbLocalDrivingApplicationID.Text = "????";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(45, 157);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(158, 24);
-            this.label11.TabIndex = 33;
-            this.label11.Text = "LD Application ID:";
-            // 
             // AddUpdateLocalDrivingLicensApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1020, 566);
             this.Controls.Add(this.tcAddUpdateLocalLicensApplication);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddUpdateLocalDrivingLicensApplication";
             this.Text = "AddUpdateLicens";
             this.Load += new System.EventHandler(this._AddUpdateLocalLicensApplication_Load);
@@ -441,12 +442,12 @@
             this.tpLinkPerson.PerformLayout();
             this.tpAddLocalLicensApplication.ResumeLayout(false);
             this.tpAddLocalLicensApplication.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }

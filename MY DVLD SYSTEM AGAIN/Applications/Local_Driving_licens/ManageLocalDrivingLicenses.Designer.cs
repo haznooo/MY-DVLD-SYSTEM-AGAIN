@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbSearchFilter = new System.Windows.Forms.ComboBox();
             this.lbTotalRecords = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -51,33 +49,10 @@
             this.issueDrivingLicensfristTimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showLicensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.licensesHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.txtSearchFilter = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplications)).BeginInit();
             this.cmsApplicationOpetions.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(10, 266);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 25);
-            this.label3.TabIndex = 40;
-            this.label3.Text = "Filter:";
-            // 
-            // cbSearchFilter
-            // 
-            this.cbSearchFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSearchFilter.FormattingEnabled = true;
-            this.cbSearchFilter.Items.AddRange(new object[] {
-            "none"});
-            this.cbSearchFilter.Location = new System.Drawing.Point(76, 263);
-            this.cbSearchFilter.Name = "cbSearchFilter";
-            this.cbSearchFilter.Size = new System.Drawing.Size(121, 28);
-            this.cbSearchFilter.TabIndex = 38;
             // 
             // lbTotalRecords
             // 
@@ -275,39 +250,18 @@
             this.licensesHistoryToolStripMenuItem.Text = "licenses history";
             this.licensesHistoryToolStripMenuItem.Click += new System.EventHandler(this.licensesHistoryToolStripMenuItem_Click);
             // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(217, 264);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(56, 23);
-            this.btnSearch.TabIndex = 41;
-            this.btnSearch.Text = "button1";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // txtSearchFilter
-            // 
-            this.txtSearchFilter.Location = new System.Drawing.Point(290, 266);
-            this.txtSearchFilter.Name = "txtSearchFilter";
-            this.txtSearchFilter.Size = new System.Drawing.Size(100, 20);
-            this.txtSearchFilter.TabIndex = 42;
-            this.txtSearchFilter.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
             // ManageLocalDrivingLicenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1382, 728);
-            this.Controls.Add(this.txtSearchFilter);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.cbSearchFilter);
             this.Controls.Add(this.lbTotalRecords);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAddUpdate);
             this.Controls.Add(this.dgvApplications);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ManageLocalDrivingLicenses";
             this.Text = "ManageLocalDrivingLicenses";
             this.Load += new System.EventHandler(this.ManagePeopleMenu_Load);
@@ -320,8 +274,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbSearchFilter;
         private System.Windows.Forms.Label lbTotalRecords;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -340,7 +292,5 @@
         private System.Windows.Forms.ToolStripMenuItem licensesHistoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem writtenTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem streetTestToolStripMenuItem;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox txtSearchFilter;
     }
 }

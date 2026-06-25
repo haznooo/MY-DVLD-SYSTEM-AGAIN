@@ -236,6 +236,8 @@ namespace BusinessLayer
         public clsLicense Replace(int userID, byte issueReasonID)
         {
 
+
+
             clsApplication newApplication = new clsApplication();
 
             newApplication.applicantID = this.DriverInfo.PersonID;
@@ -251,7 +253,7 @@ namespace BusinessLayer
             }
             clsLicense newLicense = new clsLicense();
 
-
+          
 
             int DefaultValidityLength = this.LicenceClassesInfo.validityYears;
             decimal LicenseFees = this.LicenceClassesInfo.Fee;
