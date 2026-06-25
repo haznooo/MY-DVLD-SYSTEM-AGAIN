@@ -26,6 +26,14 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.replacement_damaged_lost
 
         private void ctrlDriverLicenseInfoWithSearch1_OnLicenseSelected(int obj)
         {
+
+            if (ctrlDriverLicenseInfoWithSearch1.LicenseInfo == null)
+            {
+                btnIssueReplacementLicense.Enabled = false;
+                return;
+            }
+
+
             if (!ctrlDriverLicenseInfoWithSearch1.LicenseInfo.isActive)
             {
                 MessageBox.Show("This license is not active\nyou can not renew an unactive licnese", "unactive licnese", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -76,6 +84,7 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.replacement_damaged_lost
             {
                 MessageBox.Show("License replaced seccusfully", "succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // easy way to froce the user to use ctrlDriverLicenseInfoWithSearch1 after replacing the license so it will get verfied again 
+                // the verfication only happens when "OnLicenseSelected"
                 btnIssueReplacementLicense.Enabled = false;
 
 

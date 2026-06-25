@@ -14,31 +14,29 @@ namespace MY_DVLD_SYSTEM_AGAIN.Applications.Renew_Licenses
 
         private void ctrlDriverLicenseInfoWithSearch1_OnLicenseSelected(int obj)
         {
-
-            int oldLicenseID = obj;
-            lbOldLicenseID.Text = oldLicenseID.ToString();
-
-            if (oldLicenseID <= 0) return;
-
-            int DefaultValidityLength = ctrlDriverLicenseInfoWithSearch1.LicenseInfo.LicenceClassesInfo.validityYears;
-            lbExpirationDate.Text = DateTime.Now.AddYears(DefaultValidityLength).ToString();
-            lbLicenseFees.Text = ctrlDriverLicenseInfoWithSearch1.LicenseInfo.LicenceClassesInfo.Fee.ToString();
-            txtNotes.Text = ctrlDriverLicenseInfoWithSearch1.LicenseInfo.Notes;
-            float totalFees = (Convert.ToSingle(lbApplicationFees.Text) + Convert.ToSingle(lbLicenseFees.Text));
-            lbTotalFees.Text = totalFees.ToString();
+            if (ctrlDriverLicenseInfoWithSearch1.LicenseInfo == null)
+            {
+                btnIssueReNewLicense.Enabled = false;
+                return;
+            }
 
             if (!ctrlDriverLicenseInfoWithSearch1.LicenseInfo.isActive)
             {
                 MessageBox.Show("This license is not active\nyou can not renew an unactive licnese", "unactive licnese", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (ctrlDriverLicenseInfoWithSearch1.LicenseInfo.ExpirationDate > DateTime.Now)
+            if (ctrlDriverLicenseInfoWithSearch1.LicenseInfo.ExpirationDate < DateTime.Now)
             {
-                MessageBox.Show("This license is not expired\nyou can not renew an active licnese", "active licnese", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("This license is expired\nyou can not replace an expired licnese", "expired licnese", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
 
             }
             btnIssueReNewLicense.Enabled = true;
+            int oldLicenseID = obj;
+            lbOldLicenseID.Text = oldLicenseID.ToString();
+
+            if (oldLicenseID <= 0) return;
+         
 
         }
 
